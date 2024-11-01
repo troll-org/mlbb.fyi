@@ -9,10 +9,15 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import matplotlib.pyplot as plt
 from pymongo import MongoClient 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+DB_URL = os.environ['DATABASE_URL']
 
 def get_tournament_stats():
     try:
-        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
+        client = MongoClient(DB_URL)
         db = client['mlbb']     
         stats = db['TourneyStats'].find().sort('_id', -1).limit(10)
         return list(stats)
@@ -21,7 +26,7 @@ def get_tournament_stats():
 
 def get_heroes():
     try:
-        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
+        client = MongoClient(DB_URL)
         db = client['mlbb']     
         stats = db['Hero'].find()
         return list(stats)
@@ -31,7 +36,7 @@ def get_heroes():
 
 def update_heroes():
     try:
-        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
+        client = MongoClient(DB_URL)
         db = client['mlbb']
         for entry in filtered_data:
             hero_name = entry['name']
