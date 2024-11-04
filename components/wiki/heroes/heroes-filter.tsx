@@ -1,4 +1,3 @@
-// @ts-nocheck
 "use client";
 
 import React, { useState } from "react";
@@ -29,7 +28,7 @@ const HeroesFilter = () => {
     }
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
@@ -46,7 +45,12 @@ const HeroesFilter = () => {
                 <li className="flex w-full items-center gap-1.5">
                   <Checkbox
                     id={type.name}
-                    onClick={() => addOrRemove(type.name, "type")}
+                    onClick={() =>
+                      addOrRemove(
+                        type.name.toLowerCase().replace(" ", ""),
+                        "type"
+                      )
+                    }
                   />
                   <Label htmlFor={type.name} className="mt-[1px]">
                     {type.name}
@@ -62,7 +66,12 @@ const HeroesFilter = () => {
                 <li className="flex w-full items-center gap-1.5">
                   <Checkbox
                     id={role.name}
-                    onClick={() => addOrRemove(role.name, "role")}
+                    onClick={() =>
+                      addOrRemove(
+                        role.name.toLowerCase().replace(" ", ""),
+                        "role"
+                      )
+                    }
                   />
                   <Label htmlFor={role.name} className="mt-[1px]">
                     {role.name}

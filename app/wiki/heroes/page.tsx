@@ -1,6 +1,6 @@
 import getHeroes from "@/lib/actions/getHeroes";
 
-import { Hero } from "@prisma/client";
+import { Hero, NewHero } from "@prisma/client";
 
 import { TabsContent } from "@/components/shared/tabs";
 import HeroesContainer from "@/components/wiki/heroes/heroes-container";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 async function HeroesPage() {
-  const heroes: Hero[] | null = await getHeroes();
+  const heroes: NewHero[] | null = await getHeroes();
 
   return (
     <TabsContent

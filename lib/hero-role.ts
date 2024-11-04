@@ -4,15 +4,15 @@ export const HeroRole = [
     icon: "",
   },
   {
-    name: "Mid",
+    name: "Mid Lane",
     icon: "",
   },
   {
-    name: "Exp",
+    name: "Exp Lane",
     icon: "",
   },
   {
-    name: "Gold",
+    name: "Gold Lane",
     icon: "",
   },
   {

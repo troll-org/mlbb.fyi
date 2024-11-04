@@ -1,9 +1,8 @@
-// @ts-nocheck
 "use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Hero } from "@prisma/client";
+import { Hero, NewHero } from "@prisma/client";
 import useHeroFilter from "@/lib/state/useHeroFilter";
 import HeroesFilter from "./heroes-filter";
 import HeroCard from "./hero-card";
@@ -11,13 +10,13 @@ import { Input } from "@/components/shared/input";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 
 interface IHeroesContainer {
-  heroes: Hero[] | null;
+  heroes: NewHero[] | null;
 }
 
 const HeroesContainer = ({ heroes }: IHeroesContainer) => {
   const router = useRouter();
   const heroFilter = useHeroFilter();
-  const [filteredHeroes, setFilteredHeroes] = useState<Hero[] | null>(null);
+  const [filteredHeroes, setFilteredHeroes] = useState<NewHero[] | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -41,19 +40,20 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
         }
 
         if (isTypeFilterEmpty) {
-          return heroFilter.role.every((role) => hero.role.includes(role));
+          return heroFilter.role.every((role) =>
+            hero.heroLaneType.includes(role)
+          );
         }
 
         if (isRoleFilterEmpty) {
           return heroFilter.type.every((type) =>
-            hero.details.heroType.includes(type)
+            hero.heroRoleType.includes(type)
           );
         }
 
         return (
-          heroFilter.type.every((type) =>
-            hero.details.heroType.includes(type)
-          ) && heroFilter.role.every((role) => hero.role.includes(role))
+          heroFilter.type.every((type) => hero.heroRoleType.includes(type)) &&
+          heroFilter.role.every((role) => hero.heroLaneType.includes(role))
         );
       });
 
@@ -63,14 +63,14 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
     }
   }, [heroFilter.type, heroFilter.role, heroes]);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
   const displayedHeroes = filteredHeroes || heroes;
 
   const filteredDisplayedHeroes = displayedHeroes?.filter((hero) =>
-    hero.name.toLowerCase().includes(searchTerm.toLowerCase())
+    hero.heroName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -91,7 +91,7 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
             <HeroCard
               hero={hero}
               onClick={() => {
-                router.push(`/wiki/heroes/${hero.name.toLowerCase()}`);
+                router.push(`/wiki/heroes/${hero.heroName.toLowerCase()}`);
               }}
             />
           </div>

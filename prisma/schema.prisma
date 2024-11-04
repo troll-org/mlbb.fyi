@@ -79,6 +79,41 @@ model Hero {
   details HeroDetails?
 }
 
+model NewHero {
+  id           String          @id @default(auto()) @map("_id") @db.ObjectId
+  heroId       Int             @unique
+  heroDetails  HeroDetailsType
+  heroImg      String
+  heroImage    String
+  heroLaneType String[]
+  heroName     String
+  heroRoleType String[]
+}
+
+type HeroDetailsType {
+  heroSpeciality  String[]
+  heroAbility     Int
+  heroOffense     Int
+  heroDurability  Int
+  heroDifficulity Int
+  heroSkill       HeroSkill[]
+}
+
+type HeroSkill {
+  skillId            Int
+  skillName          String
+  skillCooldown      Float?
+  skillDescription   String
+  skillIconOriginUrl String
+  skillTag           SkillTag[]
+}
+
+type SkillTag {
+  skillTagId   Int
+  skillTagName String
+  skillTagRGB  Int[]
+}
+
 type PickStats {
   picks    String
   win      String
