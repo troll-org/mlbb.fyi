@@ -15,11 +15,11 @@ export async function generateMetadata({
     metadataBase: new URL("https://mlbb.fyi"),
     title: `@${params.username} - mlbb.fyi`,
     description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
+      "Access hero statistics, optimal builds, and connect with a community of expert players.",
     openGraph: {
       title: `@${params.username} - mlbb.fyi`,
       description:
-        "Access hero stats, optimal builds, and connect with a community of expert players.",
+        "Access hero statistics, optimal builds, and connect with a community of expert players.",
       url: "https://mlbb.fyi",
       siteName: "mlbb.fyi",
       images: [
@@ -36,7 +36,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `@${params.username} - mlbb.fyi`,
       description:
-        "Access hero stats, optimal builds, and connect with a community of expert players.",
+        "Access hero statistics, optimal builds, and connect with a community of expert players.",
       images: ["/og.jpg"],
     },
   };

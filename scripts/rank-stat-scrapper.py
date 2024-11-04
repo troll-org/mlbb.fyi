@@ -151,7 +151,7 @@ for hero_data in combined_data:
         db.Hero.update_one(query, update)
         print(hero_name)
 
-print("Hero stats updated in MongoDB")
+print("hero statistics updated in MongoDB")
 
 # Close the browser
 driver.quit()

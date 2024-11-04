@@ -11,7 +11,7 @@ export default async function Home() {
             Elevate Your Mobile <br className="hidden md:block" /> Legends Game
           </h1>
           <p className="pt-3 text-[14px] leading-tight text-gray-100 md:text-[18px]">
-            Access hero stats, optimal builds, and connect
+            Access hero statistics, optimal builds, and connect
             <br className="hidden md:block" /> with a community of expert
             players.
           </p>

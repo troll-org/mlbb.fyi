@@ -8,11 +8,11 @@ export const metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
   title: "Explore - mlbb.fyi",
   description:
-    "Access hero stats, optimal builds, and connect with a community of expert players.",
+    "Access hero statistics, optimal builds, and connect with a community of expert players.",
   openGraph: {
     title: "Explore - mlbb.fyi",
     description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
+      "Access hero statistics, optimal builds, and connect with a community of expert players.",
     url: "https://mlbb.fyi",
     siteName: "mlbb.fyi",
     images: [
@@ -29,7 +29,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Explore - mlbb.fyi",
     description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
+      "Access hero statistics, optimal builds, and connect with a community of expert players.",
     images: ["/og.jpg"],
   },
 };
