@@ -1,35 +1,24 @@
+import { Metadata } from "next";
+
 import getHeroes from "@/lib/actions/getHeroes";
 import { Hero } from "@prisma/client";
 import { TabsContent } from "@/components/shared/tabs";
 import TierContainer from "@/components/wiki/tier-list/tier-list-container";
+import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
-export const metadata = {
-  metadataBase: new URL("https://mlbb.fyi"),
-  title: "Tier List - mlbb.fyi",
-  description:
-    "Access hero stats, optimal builds, and connect with a community of expert players.",
+export const metadata: Metadata = {
+  title: "Tier List",
+  description: "Tier List of all heroes in Mobile Legends: Bang Bang",
   openGraph: {
-    title: "Tier List - mlbb.fyi",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    url: "https://mlbb.fyi",
-    siteName: "mlbb.fyi",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1260,
-        height: 600,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
+    title: "Tier List",
+    description: "Tier List of all heroes in Mobile Legends: Bang Bang",
+    url: "https://mlbb.fyi/wiki/tier-list",
+    ...defaultOpenGraphMD,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Tier List - mlbb.fyi",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    images: ["/og.jpg"],
+    title: "Tier List",
+    description: "Tier List of all heroes in Mobile Legends: Bang Bang",
+    ...defaultTwitterMD,
   },
 };
 

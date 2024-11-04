@@ -12,7 +12,7 @@ warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
 def get_tournament_stats():
     try:
-        client = MongoClient('mongodb+srv://dev:6vLQBbitC6D1b4p9@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
+        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
         db = client['mlbb']     
         stats = db['TourneyStats'].find().sort('_id', -1).limit(10)
         return list(stats)
@@ -21,7 +21,7 @@ def get_tournament_stats():
 
 def get_heroes():
     try:
-        client = MongoClient('mongodb+srv://dev:6vLQBbitC6D1b4p9@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
+        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
         db = client['mlbb']     
         stats = db['Hero'].find()
         return list(stats)
@@ -31,7 +31,7 @@ def get_heroes():
 
 def update_heroes():
     try:
-        client = MongoClient('mongodb+srv://dev:6vLQBbitC6D1b4p9@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
+        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
         db = client['mlbb']
         for entry in filtered_data:
             hero_name = entry['name']
@@ -54,6 +54,17 @@ for entry in heroes:
     hero_name = entry["name"]
     tier = entry["tier"]
     hero_tiers[hero_name] = tier
+
+# For jsons
+# with open("index.json") as file:
+#     mythic_data = json.load(file)
+
+# hero_tiers = {}
+# for entry in mythic_data:
+#     hero_name = entry["name"]
+#     tier = entry["tier"]
+#     hero_tiers[hero_name] = tier
+
 
 # Initialize empty lists to store data
 heroes = []
@@ -211,7 +222,6 @@ filtered_data = [{"name": hero, "tier": tier} for hero, tier in filtered_tier_li
 # Call the update_heroes function to update the Hero collection
 update_heroes()
 
-
 # Calculate evaluation metrics
 accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted', zero_division=0)
@@ -224,5 +234,6 @@ print(f"Accuracy: {accuracy:.2f}")
 print(f"Precision: {precision:.2f}")
 print(f"Recall: {recall:.2f}")
 print(f"F1 Score: {f1:.2f}")
+
 
 

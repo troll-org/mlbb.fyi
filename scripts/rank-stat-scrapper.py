@@ -6,9 +6,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import pymongo
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+DB_URL = os.environ['DATABASE_URL']
 
 # Establish a connection to MongoDB
-client = pymongo.MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
+client = pymongo.MongoClient(DB_URL)
 db = client['mlbb']  
 collection = db['hero']  
 

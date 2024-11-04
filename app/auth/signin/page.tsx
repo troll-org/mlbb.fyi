@@ -3,6 +3,24 @@ import LoginForm from "@/components/login-form";
 import getCurrentUser from "@/lib/actions/getCurrentUser";
 import Redirect from "@/components/redirect";
 import { Suspense } from "react";
+import { Metadata } from "next";
+import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
+
+export const metadata: Metadata = {
+  title: "Sign in",
+  description: "Sign in to mlbb.fyi",
+  openGraph: {
+    title: "Sign in",
+    description: "Sign in to mlbb.fyi",
+    url: "https://mlbb.fyi/auth/signin",
+    ...defaultOpenGraphMD,
+  },
+  twitter: {
+    title: "Sign in",
+    description: "Sign in to mlbb.fyi",
+    ...defaultTwitterMD,
+  },
+};
 
 export default async function Signin() {
   const csrfToken = await getCsrfToken();

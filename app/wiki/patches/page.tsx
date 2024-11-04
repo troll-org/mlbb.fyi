@@ -1,37 +1,25 @@
 import getPatches from "@/lib/actions/getPatches";
 
 import { Patch } from "@prisma/client";
+import { Metadata } from "next";
 
 import { TabsContent } from "@/components/shared/tabs";
 import PatchesContainer from "@/components/wiki/patches/patches-container";
+import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
-export const metadata = {
-  metadataBase: new URL("https://mlbb.fyi"),
-  title: "Patches - mlbb.fyi",
-  description:
-    "Access hero stats, optimal builds, and connect with a community of expert players.",
+export const metadata: Metadata = {
+  title: "Patches",
+  description: "List of all patches in Mobile Legends: Bang Bang",
   openGraph: {
-    title: "Patches - mlbb.fyi",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    url: "https://mlbb.fyi",
-    siteName: "mlbb.fyi",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1260,
-        height: 600,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
+    title: "Patches",
+    description: "List of all patches in Mobile Legends: Bang Bang",
+    url: "https://mlbb.fyi/wiki/patches",
+    ...defaultOpenGraphMD,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Patches - mlbb.fyi",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    images: ["/og.jpg"],
+    title: "Patches",
+    description: "List of all patches in Mobile Legends: Bang Bang",
+    ...defaultTwitterMD,
   },
 };
 

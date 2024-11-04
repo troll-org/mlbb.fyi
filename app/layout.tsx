@@ -2,11 +2,13 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { Metadata } from "next";
 
 import getCurrentUser from "@/lib/actions/getCurrentUser";
 import ToasterProvider from "@/components/providers/toaster-provider";
 import Navbar from "@/components/shared/navbar/navbar";
 import { cn } from "@/lib/utils";
+import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +20,35 @@ const fontSatoshi = localFont({
   src: "../public/assets/fonts/Satoshi-Variable.ttf",
   variable: "--font-satoshi",
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://mlbb.fyi"),
+  title: {
+    template: "%s - mlbb.fyi",
+    default: "mlbb.fyi - Elevate Your Mobile Legends Game",
+  },
+  description:
+    "Access hero stats, optimal builds, and connect with a community of expert players.",
+  openGraph: {
+    title: {
+      template: "%s - mlbb.fyi",
+      default: "mlbb.fyi - Elevate Your Mobile Legends Game",
+    },
+    description:
+      "Access hero stats, optimal builds, and connect with a community of expert players.",
+    url: "https://mlbb.fyi",
+    ...defaultOpenGraphMD,
+  },
+  twitter: {
+    title: {
+      template: "%s - mlbb.fyi",
+      default: "mlbb.fyi - Elevate Your Mobile Legends Game",
+    },
+    description:
+      "Access hero stats, optimal builds, and connect with a community of expert players.",
+    ...defaultTwitterMD,
+  },
+};
 
 export default async function RootLayout({
   children,
@@ -71,4 +102,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
