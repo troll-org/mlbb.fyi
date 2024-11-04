@@ -8,7 +8,7 @@ export default async function Home() {
       <main className="mt-24">
         <div className="mx-auto flex max-w-xl flex-col justify-center text-center">
           <h1 className="font-heading text-[44px] font-bold leading-10 md:text-[60px] md:leading-[56px]">
-            Elevate Your Mobile <br className="hidden md:block" /> Legends Game
+            Elevates Your Mobile <br className="hidden md:block" /> Legends Game
           </h1>
           <p className="pt-3 text-[14px] leading-tight text-gray-100 md:text-[18px]">
             Access hero stats, optimal builds, and connect
