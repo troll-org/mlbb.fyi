@@ -8,16 +8,19 @@ import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 export const metadata: Metadata = {
   title: "Tier List",
-  description: "Tier List of all heroes in Mobile Legends: Bang Bang",
+  description:
+    "Discover the tier list of heroes in Mobile Legends based on win, pick, and ban rates from major tournaments. Access hero stats, builds, and join a community of expert players.",
   openGraph: {
     title: "Tier List",
-    description: "Tier List of all heroes in Mobile Legends: Bang Bang",
+    description:
+      "Discover the tier list of heroes in Mobile Legends based on win, pick, and ban rates from major tournaments. Access hero stats, builds, and join a community of expert players.",
     url: "https://mlbb.fyi/wiki/tier-list",
     ...defaultOpenGraphMD,
   },
   twitter: {
     title: "Tier List",
-    description: "Tier List of all heroes in Mobile Legends: Bang Bang",
+    description:
+      "Discover the tier list of heroes in Mobile Legends based on win, pick, and ban rates from major tournaments. Access hero stats, builds, and join a community of expert players.",
     ...defaultTwitterMD,
   },
 };
