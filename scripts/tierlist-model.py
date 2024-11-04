@@ -9,15 +9,10 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 import matplotlib.pyplot as plt
 from pymongo import MongoClient 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-DB_URL = os.environ['DATABASE_URL']
 
 def get_tournament_stats():
     try:
-        client = MongoClient(DB_URL)
+        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
         db = client['mlbb']     
         stats = db['TourneyStats'].find().sort('_id', -1).limit(10)
         return list(stats)
@@ -26,7 +21,7 @@ def get_tournament_stats():
 
 def get_heroes():
     try:
-        client = MongoClient(DB_URL)
+        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
         db = client['mlbb']     
         stats = db['Hero'].find()
         return list(stats)
@@ -36,7 +31,7 @@ def get_heroes():
 
 def update_heroes():
     try:
-        client = MongoClient(DB_URL)
+        client = MongoClient('mongodb+srv://dev:ApT8FJOOl9W4FLLF@mlbbfyi.egxz5i5.mongodb.net/mlbb?retryWrites=true&w=majority')
         db = client['mlbb']
         for entry in filtered_data:
             hero_name = entry['name']
@@ -227,9 +222,6 @@ filtered_data = [{"name": hero, "tier": tier} for hero, tier in filtered_tier_li
 # Call the update_heroes function to update the Hero collection
 update_heroes()
 
-# with open('index.json', 'w') as file:
-#     json.dump(filtered_data, file, indent=2)
-
 # Calculate evaluation metrics
 accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted', zero_division=0)
@@ -243,45 +235,5 @@ print(f"Precision: {precision:.2f}")
 print(f"Recall: {recall:.2f}")
 print(f"F1 Score: {f1:.2f}")
 
-# # Calculate the confusion matrix
-# cm = confusion_matrix(y_test, y_pred)
-
-# # Print the confusion matrix
-# print("Confusion Matrix:")
-# print(cm)
-
-
-# # Exclude non-numeric columns from correlation calculation
-# numeric_cols = df.select_dtypes(include='number')
-
-# # Calculate the correlation matrix
-# correlation_matrix = numeric_cols.corr()
-
-# # Create a figure and axes
-# fig, ax = plt.subplots(figsize=(8, 6))
-
-# # Create a heatmap using Matplotlib
-# heatmap = ax.matshow(correlation_matrix, cmap='coolwarm')
-
-# # Add a colorbar
-# cbar = plt.colorbar(heatmap)
-
-# # Set the tick labels and positions
-# ax.set_xticks(range(len(correlation_matrix.columns)))
-# ax.set_yticks(range(len(correlation_matrix.columns)))
-# ax.set_xticklabels(correlation_matrix.columns, rotation=45, ha='left')
-# ax.set_yticklabels(correlation_matrix.columns)
-
-# # Add the correlation values to each cell
-# for i in range(len(correlation_matrix.columns)):
-#     for j in range(len(correlation_matrix.columns)):
-#         text = ax.text(j, i, f'{correlation_matrix.iloc[i, j]:.2f}', ha='center', va='center', color='black')
-
-# # Set the title
-# ax.set_title('Correlation Matrix of Tier List')
-
-# # Display the graph
-# plt.tight_layout()
-# plt.show()
 
 
