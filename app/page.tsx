@@ -2,36 +2,6 @@ import { buttonVariants } from "@/components/shared/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-export const metadata = {
-  metadataBase: new URL("https://mlbb.fyi"),
-  title: "mlbb.fyi - Elevate Your Mobile Legends Game",
-  description:
-    "Access hero stats, optimal builds, and connect with a community of expert players.",
-  openGraph: {
-    title: "mlbb.fyi - Elevate Your Mobile Legends Game",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    url: "https://mlbb.fyi",
-    siteName: "mlbb.fyi",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1260,
-        height: 600,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "mlbb.fyi - Elevate Your Mobile Legends Game",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    images: ["/og.jpg"],
-  },
-};
-
 export default async function Home() {
   return (
     <>

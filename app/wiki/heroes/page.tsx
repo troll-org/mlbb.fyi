@@ -4,34 +4,22 @@ import { Hero } from "@prisma/client";
 
 import { TabsContent } from "@/components/shared/tabs";
 import HeroesContainer from "@/components/wiki/heroes/heroes-container";
+import { Metadata } from "next";
+import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
-export const metadata = {
-  metadataBase: new URL("https://mlbb.fyi"),
-  title: "Heroes - mlbb.fyi",
-  description:
-    "Access hero stats, optimal builds, and connect with a community of expert players.",
+export const metadata: Metadata = {
+  title: "Heroes",
+  description: "List of all heroes in Mobile Legends: Bang Bang",
   openGraph: {
-    title: "Heroes - mlbb.fyi",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    url: "https://mlbb.fyi",
-    siteName: "mlbb.fyi",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1260,
-        height: 600,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
+    title: "Heroes",
+    description: "List of all heroes in Mobile Legends: Bang Bang",
+    url: "https://mlbb.fyi/wiki/heroes",
+    ...defaultOpenGraphMD,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Heroes - mlbb.fyi",
-    description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    images: ["/og.jpg"],
+    title: "Heroes",
+    description: "List of all heroes in Mobile Legends: Bang Bang",
+    ...defaultTwitterMD,
   },
 };
 

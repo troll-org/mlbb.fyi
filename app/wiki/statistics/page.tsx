@@ -1,36 +1,28 @@
+import { Metadata } from "next";
+
 import getTournamentStats from "@/lib/actions/getTournamentStats";
 import getHeroes from "@/lib/actions/getHeroes";
+import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 import { TabsContent } from "@/components/shared/tabs";
 import StatsContainer from "@/components/wiki/statistics/stats-container";
 
-export const metadata = {
-  metadataBase: new URL("https://mlbb.fyi"),
-  title: "Statistics - mlbb.fyi",
+export const metadata: Metadata = {
+  title: "Statistics",
   description:
-    "Access hero stats, optimal builds, and connect with a community of expert players.",
+    "Get the latest statistics of win rates, pick rates, ban rates of heroes in Mobile Legends: Bang Bang",
   openGraph: {
-    title: "Statistics - mlbb.fyi",
+    title: "Statistics",
     description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    url: "https://mlbb.fyi",
-    siteName: "mlbb.fyi",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1260,
-        height: 600,
-      },
-    ],
-    locale: "en-US",
-    type: "website",
+      "Get the latest statistics of win rates, pick rates, ban rates of heroes in Mobile Legends: Bang Bang",
+    url: "https://mlbb.fyi/wiki/patches",
+    ...defaultOpenGraphMD,
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Statistics - mlbb.fyi",
+    title: "Statistics",
     description:
-      "Access hero stats, optimal builds, and connect with a community of expert players.",
-    images: ["/og.jpg"],
+      "Get the latest statistics of win rates, pick rates, ban rates of heroes in Mobile Legends: Bang Bang",
+    ...defaultTwitterMD,
   },
 };
 
