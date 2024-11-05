@@ -93,8 +93,8 @@ export default function HeroFyi({
             <Image
               src={hero?.img || ""}
               alt={hero?.name || ""}
-              width={96}
-              height={128}
+              width={192}
+              height={256}
               className="h-[255px] w-[240px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat sm:h-[300px] sm:w-[270px]"
               priority
             />
