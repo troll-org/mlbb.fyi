@@ -139,43 +139,6 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
       break;
   }
 
-  // switch (selectedSortingOption) {
-  //   case "alphabet":
-  //     sortedList = sortedList.sort((a, b) => {
-  //       const nameA = a.heroName;
-  //       const nameB = b.heroName;
-  //       return nameA.localeCompare(nameB);
-  //     });
-  //     break;
-  //   case "pick":
-  //     sortedList = sortedList.sort((a, b) => {
-  //       const valueA =
-  //         a.use?.slice(0, -1) || a.heroPicks.rate?.slice(0, -1) || "0";
-  //       const valueB =
-  //         b.use?.slice(0, -1) || b.heroPicks.rate?.slice(0, -1) || "0";
-  //       return parseFloat(valueB) - parseFloat(valueA);
-  //     });
-  //     break;
-  //   case "ban":
-  //     sortedList = sortedList.sort((a, b) => {
-  //       const valueA =
-  //         a.ban?.slice(0, -1) || a.heroBans.rate.slice(0, -1) || "0";
-  //       const valueB =
-  //         b.ban?.slice(0, -1) || b.heroBans.rate.slice(0, -1) || "0";
-  //       return parseFloat(valueB) - parseFloat(valueA);
-  //     });
-  //     break;
-  //   case "winrate":
-  //     sortedList = sortedList.sort((a, b) => {
-  //       const valueA =
-  //         a.win?.slice(0, -1) || a.heroPicks.winRate.slice(0, -1) || "0.0";
-  //       const valueB =
-  //         b.win?.slice(0, -1) || b.heroPicks.winRate.slice(0, -1) || "0.0";
-  //       return parseFloat(valueB) - parseFloat(valueA);
-  //     });
-  //     break;
-  // }
-
   const sortedListCopy = ascendingOrder
     ? [...sortedList]
     : [...sortedList].reverse();
