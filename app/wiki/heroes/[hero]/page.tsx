@@ -9,12 +9,12 @@ import prisma from "@/lib/prismadb";
 import Redirect from "@/components/redirect";
 
 async function getHero(name: string) {
-  const hero = await prisma.hero.findFirst({
+  const hero = await prisma.newHero.findFirst({
     where: {
-      name: name,
+      heroName: name,
     },
     include: {
-      details: true,
+      heroDetails: true,
     },
   });
   return hero;

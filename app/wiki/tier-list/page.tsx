@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import getHeroes from "@/lib/actions/getHeroes";
-import { Hero } from "@prisma/client";
+import { NewHero } from "@prisma/client";
 import { TabsContent } from "@/components/shared/tabs";
 import TierContainer from "@/components/wiki/tier-list/tier-list-container";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 async function TierListPage() {
-  const heroes: Hero[] | null = await getHeroes();
+  const heroes: NewHero[] | null = await getHeroes();
   return (
     <TabsContent
       value="tier-list"

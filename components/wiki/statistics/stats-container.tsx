@@ -1,17 +1,17 @@
-// @ts-nocheck
 "use client";
 
 import React, { useState } from "react";
-import { TourneyStats } from "@prisma/client";
-import { Hero } from "@prisma/client";
+import { NewTournamentsData } from "@prisma/client";
+import { PickedHero } from "@prisma/client";
+import { NewHero } from "@prisma/client";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { ArrowDown, ArrowUp } from "lucide-react";
 
 interface IStats {
-  heroes: Hero[];
-  tourneyStats: TourneyStats[];
+  heroes: NewHero[];
+  tourneyStats: NewTournamentsData[];
 }
 
 export default function StatsContainer({ heroes, tourneyStats }: IStats) {
@@ -22,12 +22,12 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
 
   let isStatEmpty = false;
   for (const hero of heroes) {
-    const allStat = { name: hero.name, ...hero.stats.all };
-    const mythicStat = { name: hero.name, ...hero.stats.mythic };
-    const gloryStat = { name: hero.name, ...hero.stats.glory };
-    isStatEmpty = Object.values(hero.stats.glory).every(
-      (value) => value === "0.00%"
-    );
+    const allStat = { name: hero.heroName, ...hero.stats?.all };
+    const mythicStat = { name: hero.heroName, ...hero.stats?.mythic };
+    const gloryStat = { name: hero.heroName, ...hero.stats?.glory };
+    isStatEmpty = hero.stats?.glory
+      ? Object.values(hero.stats.glory).every((value) => value === "0.00%")
+      : true;
 
     allStats.push(allStat);
     mythicStats.push(mythicStat);
@@ -64,40 +64,117 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
   ];
 
   let sortedList = [...renderList[selectedTourneyIndex + 3]];
+
+  function isNewHero(item: any): item is NewHero {
+    return (
+      (item as NewHero).heroName !== undefined &&
+      (item as NewHero).stats !== undefined
+    );
+  }
+
+  function isPickedHero(item: any): item is PickedHero {
+    return (item as PickedHero).heroPicks !== undefined;
+  }
+
   switch (selectedSortingOption) {
     case "alphabet":
       sortedList = sortedList.sort((a, b) => {
-        const nameA = a.name || a.hero;
-        const nameB = b.name || b.hero;
+        const nameA = isNewHero(a)
+          ? a.heroName
+          : isPickedHero(a)
+          ? a.heroName
+          : "";
+        const nameB = isNewHero(b)
+          ? b.heroName
+          : isPickedHero(b)
+          ? b.heroName
+          : "";
         return nameA.localeCompare(nameB);
       });
       break;
     case "pick":
       sortedList = sortedList.sort((a, b) => {
-        const valueA =
-          a.use?.slice(0, -1) || a.picks?.presence.slice(0, -1) || "0";
-        const valueB =
-          b.use?.slice(0, -1) || b.picks?.presence.slice(0, -1) || "0";
+        const valueA = isNewHero(a)
+          ? a.stats?.all?.use?.slice(0, -1) || "0"
+          : isPickedHero(a)
+          ? a.heroPicks.rate?.toString().slice(0, -1) || "0"
+          : "0";
+        const valueB = isNewHero(b)
+          ? b.stats?.all?.use?.slice(0, -1) || "0"
+          : isPickedHero(b)
+          ? b.heroPicks.rate?.toString().slice(0, -1) || "0"
+          : "0";
         return parseFloat(valueB) - parseFloat(valueA);
       });
       break;
     case "ban":
       sortedList = sortedList.sort((a, b) => {
-        const valueA = a.ban?.slice(0, -1) || a.banPresence.slice(0, -1) || "0";
-        const valueB = b.ban?.slice(0, -1) || b.banPresence.slice(0, -1) || "0";
+        const valueA = isNewHero(a)
+          ? a.stats?.all?.ban?.slice(0, -1) || "0"
+          : isPickedHero(a)
+          ? a.heroBans.rate.toString().slice(0, -1) || "0"
+          : "0";
+        const valueB = isNewHero(b)
+          ? b.stats?.all?.ban?.slice(0, -1) || "0"
+          : isPickedHero(b)
+          ? b.heroBans.rate.toString().slice(0, -1) || "0"
+          : "0";
         return parseFloat(valueB) - parseFloat(valueA);
       });
       break;
     case "winrate":
       sortedList = sortedList.sort((a, b) => {
-        const valueA =
-          a.win?.slice(0, -1) || a.picks?.winRate.slice(0, -1) || "0.0";
-        const valueB =
-          b.win?.slice(0, -1) || b.picks?.winRate.slice(0, -1) || "0.0";
+        const valueA = isNewHero(a)
+          ? a.stats?.all?.win?.slice(0, -1) || "0.0"
+          : isPickedHero(a)
+          ? a.heroPicks.winRate.toString().slice(0, -1) || "0.0"
+          : "0.0";
+        const valueB = isNewHero(b)
+          ? b.stats?.all?.win?.slice(0, -1) || "0.0"
+          : isPickedHero(b)
+          ? b.heroPicks.winRate.toString().slice(0, -1) || "0.0"
+          : "0.0";
         return parseFloat(valueB) - parseFloat(valueA);
       });
       break;
   }
+
+  // switch (selectedSortingOption) {
+  //   case "alphabet":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const nameA = a.heroName;
+  //       const nameB = b.heroName;
+  //       return nameA.localeCompare(nameB);
+  //     });
+  //     break;
+  //   case "pick":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const valueA =
+  //         a.use?.slice(0, -1) || a.heroPicks.rate?.slice(0, -1) || "0";
+  //       const valueB =
+  //         b.use?.slice(0, -1) || b.heroPicks.rate?.slice(0, -1) || "0";
+  //       return parseFloat(valueB) - parseFloat(valueA);
+  //     });
+  //     break;
+  //   case "ban":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const valueA =
+  //         a.ban?.slice(0, -1) || a.heroBans.rate.slice(0, -1) || "0";
+  //       const valueB =
+  //         b.ban?.slice(0, -1) || b.heroBans.rate.slice(0, -1) || "0";
+  //       return parseFloat(valueB) - parseFloat(valueA);
+  //     });
+  //     break;
+  //   case "winrate":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const valueA =
+  //         a.win?.slice(0, -1) || a.heroPicks.winRate.slice(0, -1) || "0.0";
+  //       const valueB =
+  //         b.win?.slice(0, -1) || b.heroPicks.winRate.slice(0, -1) || "0.0";
+  //       return parseFloat(valueB) - parseFloat(valueA);
+  //     });
+  //     break;
+  // }
 
   const sortedListCopy = ascendingOrder
     ? [...sortedList]
@@ -116,7 +193,7 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
           <option value={-1}>Glory</option>
           {tourneyStats.map((tourney, index) => (
             <option key={tourney.id} value={index}>
-              {tourney.tournament}
+              {tourney.tournamentName}
             </option>
           ))}
         </select>
@@ -160,46 +237,65 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
           </div>
 
           {sortedListCopy.map((hero, i) => {
+            const isHeroNewHero = isNewHero(hero);
+            const isHeroPickedHero = isPickedHero(hero);
+
             return (
               <React.Fragment key={i}>
                 <div className="flex flex-row text-start font-sat text-sm md:text-[16px]">
-                  <Image
-                    src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_192,w_192,g_north/v1686210606/mlbb.fyi/hero/${(
-                      hero.name || hero.hero
-                    ).replace(/[ '\s]/g, "_")}.webp`}
-                    alt={hero.name || hero.hero}
-                    width={48}
-                    height={48}
-                    className="mr-2 h-[24px] w-[24px] rounded-full md:mr-4 md:h-[48px] md:w-[48px]"
-                    loading="lazy"
-                  />
+                  {isHeroNewHero || isHeroPickedHero ? (
+                    <Image
+                      src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_192,w_192,g_north/v1686210606/mlbb.fyi/hero/${(
+                        hero as NewHero | PickedHero
+                      ).heroName.replace(/[ '\s]/g, "_")}.webp`}
+                      alt={(hero as NewHero | PickedHero).heroName}
+                      width={48}
+                      height={48}
+                      className="mr-2 h-[24px] w-[24px] rounded-full md:mr-4 md:h-[48px] md:w-[48px]"
+                      loading="lazy"
+                    />
+                  ) : null}
                   <p
                     className="flex flex-row items-center hover:cursor-pointer hover:underline"
                     onClick={() =>
-                      router.push(
-                        `heroes/${
-                          hero.name
-                            ? hero.name.toLowerCase()
-                            : hero.hero.toLowerCase()
-                        }`
-                      )
+                      isHeroNewHero || isHeroPickedHero
+                        ? router.push(
+                            `heroes/${(
+                              hero as NewHero | PickedHero
+                            ).heroName.toLowerCase()}`
+                          )
+                        : null
                     }
                   >
-                    {hero.name || hero.hero}
+                    {isHeroNewHero || isHeroPickedHero
+                      ? (hero as NewHero | PickedHero).heroName
+                      : ""}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-end font-sat text-sm md:text-[16px]">
-                  {hero.win?.slice(0, -1) ||
-                    hero.picks?.winRate.slice(0, -1) ||
-                    (0.0).toFixed(2)}
+                  {isHeroNewHero
+                    ? hero.stats?.all?.win?.slice(0, -1) || (0.0).toFixed(2)
+                    : isHeroPickedHero
+                    ? hero.heroPicks.winRate.toString().slice(0, -1) ||
+                      (0.0).toFixed(2)
+                    : ""}
                 </div>
                 <div className="flex items-center justify-end font-sat text-sm md:text-[16px]">
-                  {hero.use?.slice(0, -1) || hero.picks?.presence.slice(0, -1)}
+                  {isHeroNewHero
+                    ? hero.stats?.all?.use?.slice(0, -1) || ""
+                    : isHeroPickedHero
+                    ? hero.heroPicks.rate?.toString().slice(0, -1) || ""
+                    : ""}
                 </div>
                 <div className="flex items-center justify-end font-sat text-sm md:text-[16px]">
-                  {hero.ban?.slice(0, -1) || hero.banPresence.slice(0, -1)}
+                  {isHeroNewHero
+                    ? hero.stats?.all?.ban?.slice(0, -1) || ""
+                    : isHeroPickedHero
+                    ? hero.heroBans.rate?.toString().slice(0, -1) || ""
+                    : ""}
                 </div>
+
                 {i + 1 !== sortedListCopy.length && (
                   <div
                     className="inset-x-0 h-0.5 w-full bg-navy-400/30"

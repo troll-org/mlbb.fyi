@@ -1,6 +1,6 @@
 import getHeroes from "@/lib/actions/getHeroes";
 
-import { Hero, NewHero } from "@prisma/client";
+import { NewHero } from "@prisma/client";
 
 import { TabsContent } from "@/components/shared/tabs";
 import HeroesContainer from "@/components/wiki/heroes/heroes-container";

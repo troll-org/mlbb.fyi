@@ -1,6 +1,6 @@
 "use client";
 
-import { Hero, NewHero } from "@prisma/client";
+import { NewHero } from "@prisma/client";
 import Image from "next/image";
 
 const HeroCard = ({
