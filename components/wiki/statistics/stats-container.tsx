@@ -14,20 +14,23 @@ interface IStats {
   tourneyStats: NewTournamentsData[];
 }
 
+function isDataEmpty(statsList: any[]): boolean {
+  return (
+    statsList.length === 0 ||
+    statsList.every((hero) => !hero.stats && !hero.heroPicks)
+  );
+}
+
 export default function StatsContainer({ heroes, tourneyStats }: IStats) {
   const router = useRouter();
   const allStats = [];
   const mythicStats = [];
   const gloryStats = [];
 
-  let isStatEmpty = false;
   for (const hero of heroes) {
     const allStat = { name: hero.heroName, ...hero.stats?.all };
     const mythicStat = { name: hero.heroName, ...hero.stats?.mythic };
-    const gloryStat = { name: hero.heroName, ...hero.stats?.glory };
-    isStatEmpty = hero.stats?.glory
-      ? Object.values(hero.stats.glory).every((value) => value === "0.00%")
-      : true;
+    const gloryStat = { name: hero.heroName, ...hero.stats?.mythicalGlory };
 
     allStats.push(allStat);
     mythicStats.push(mythicStat);
@@ -55,13 +58,15 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
     setAscendingOrder(!ascendingOrder);
   };
 
-  const selectedTourney = tourneyStats[selectedTourneyIndex] || null;
   const renderList = [
     allStats,
     mythicStats,
     gloryStats,
     ...tourneyStats.map((tourney) => tourney.data),
   ];
+
+  const selectedStatsList = renderList[selectedTourneyIndex + 3] || [];
+  const isStatEmpty = isDataEmpty(selectedStatsList);
 
   let sortedList = [...renderList[selectedTourneyIndex + 3]];
 
@@ -97,12 +102,12 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
         const valueA = isNewHero(a)
           ? a.stats?.all?.use?.slice(0, -1) || "0"
           : isPickedHero(a)
-          ? a.heroPicks.rate?.toString().slice(0, -1) || "0"
+          ? a.heroPicks?.rate?.toString().slice(0, -1) || "0"
           : "0";
         const valueB = isNewHero(b)
           ? b.stats?.all?.use?.slice(0, -1) || "0"
           : isPickedHero(b)
-          ? b.heroPicks.rate?.toString().slice(0, -1) || "0"
+          ? b.heroPicks?.rate?.toString().slice(0, -1) || "0"
           : "0";
         return parseFloat(valueB) - parseFloat(valueA);
       });
@@ -112,12 +117,12 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
         const valueA = isNewHero(a)
           ? a.stats?.all?.ban?.slice(0, -1) || "0"
           : isPickedHero(a)
-          ? a.heroBans.rate.toString().slice(0, -1) || "0"
+          ? a.heroBans?.rate?.toString().slice(0, -1) || "0"
           : "0";
         const valueB = isNewHero(b)
           ? b.stats?.all?.ban?.slice(0, -1) || "0"
           : isPickedHero(b)
-          ? b.heroBans.rate.toString().slice(0, -1) || "0"
+          ? b.heroBans?.rate?.toString().slice(0, -1) || "0"
           : "0";
         return parseFloat(valueB) - parseFloat(valueA);
       });
@@ -127,12 +132,12 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
         const valueA = isNewHero(a)
           ? a.stats?.all?.win?.slice(0, -1) || "0.0"
           : isPickedHero(a)
-          ? a.heroPicks.winRate.toString().slice(0, -1) || "0.0"
+          ? a.heroPicks?.winRate?.toString().slice(0, -1) || "0.0"
           : "0.0";
         const valueB = isNewHero(b)
           ? b.stats?.all?.win?.slice(0, -1) || "0.0"
           : isPickedHero(b)
-          ? b.heroPicks.winRate.toString().slice(0, -1) || "0.0"
+          ? b.heroPicks?.winRate?.toString().slice(0, -1) || "0.0"
           : "0.0";
         return parseFloat(valueB) - parseFloat(valueA);
       });
@@ -182,9 +187,9 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
         </button>
       </div>
 
-      {isStatEmpty && selectedTourneyIndex === -1 ? (
+      {isStatEmpty ? (
         <p className="font-heading text-sm md:text-xl">
-          There is no data available for the Mythical Glory option yet.
+          There is no data available for this option yet.
         </p>
       ) : sortedListCopy.length !== 0 ? (
         <div className="grid grid-cols-4 gap-4">
@@ -240,22 +245,25 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
                   {isHeroNewHero
                     ? hero.stats?.all?.win?.slice(0, -1) || (0.0).toFixed(2)
                     : isHeroPickedHero
-                    ? hero.heroPicks.winRate.toString().slice(0, -1) ||
-                      (0.0).toFixed(2)
+                    ? typeof hero.heroPicks?.winRate === "number"
+                      ? (hero.heroPicks?.winRate * 100).toFixed(2)
+                      : "0.00"
                     : ""}
                 </div>
                 <div className="flex items-center justify-end font-sat text-sm md:text-[16px]">
                   {isHeroNewHero
                     ? hero.stats?.all?.use?.slice(0, -1) || ""
                     : isHeroPickedHero
-                    ? hero.heroPicks.rate?.toString().slice(0, -1) || ""
+                    ? (hero.heroPicks?.rate
+                        ? (hero.heroPicks?.rate * 100).toFixed(2)
+                        : 0.0) || "0.00"
                     : ""}
                 </div>
                 <div className="flex items-center justify-end font-sat text-sm md:text-[16px]">
                   {isHeroNewHero
-                    ? hero.stats?.all?.ban?.slice(0, -1) || ""
+                    ? hero.stats?.all?.ban?.slice(0, -1) || "0.00"
                     : isHeroPickedHero
-                    ? hero.heroBans.rate?.toString().slice(0, -1) || ""
+                    ? (hero.heroBans?.rate * 100).toFixed(2) || "0.00"
                     : ""}
                 </div>
 

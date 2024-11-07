@@ -34,6 +34,39 @@ model Item {
   attribute String[]
 }
 
+model Hero {
+  id      String       @id @default(auto()) @map("_id") @db.ObjectId
+  name    String       @unique
+  img     String
+  heroId  Int          @unique
+  tier    String
+  role    String[]
+  stats   HeroStats
+  details HeroDetails?
+}
+
+type HeroDetailsSkills {
+  name        String
+  icon        String
+  description String
+  tips        String
+}
+
+model HeroDetails {
+  id             String              @id @default(auto()) @map("_id") @db.ObjectId
+  heroId         String              @unique @db.ObjectId
+  heroType       String
+  heroName       String
+  coverPicture   String
+  galleryPicture String
+  ability        String
+  offense        String
+  durability     String
+  difficulty     String
+  skill          HeroDetailsSkills[]
+  hero           Hero                @relation(fields: [heroId], references: [id])
+}
+
 model NewHero {
   id           String          @id @default(auto()) @map("_id") @db.ObjectId
   heroId       Int             @unique
@@ -71,9 +104,12 @@ type SkillTag {
 }
 
 type HeroStats {
-  all    Stats
-  mythic Stats
-  glory  Stats
+  all           Stats
+  epic          Stats
+  legend        Stats
+  mythic        Stats
+  mythicalHonor Stats
+  mythicalGlory Stats
 }
 
 type Stats {
@@ -102,11 +138,12 @@ type PickedHero {
 }
 
 type PickStats {
-  picks   Int
-  win     Int
-  lose    Int
-  winRate Float
-  rate    Float?
+  totalpicks Int?
+  total      Int?
+  totalWin   Int
+  totalLose  Int
+  winRate    Json?
+  rate       Float?
 }
 
 type BanStats {

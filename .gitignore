@@ -17,7 +17,8 @@
 
 # production
 /build
-app/cms/
+/app/cms/
+/lib/model/
 
 # misc
 .DS_Store
