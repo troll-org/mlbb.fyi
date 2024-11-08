@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx prisma generate && next dev -p 3010",
+    "dev": "npx prisma generate && next dev -p 3010 --turbo",
     "build": "next build",
     "start": "next start",
     "local": "next build && next start",
