@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 async function HeroesPage() {
   const heroes = await getHeroes({
-    select: "-heroDetails -heroImageOriginUrl",
+    select: "-heroDetails -heroImageOriginUrl -_id",
   });
 
   return (

@@ -1,9 +1,10 @@
-import mongoose, { ObjectId, Schema } from "mongoose";
+import mongoose, { ObjectId, Schema, Types } from "mongoose";
 
 export interface HeroesDocument {
   _id?: ObjectId;
   heroId: number;
   heroName: string;
+  heroPath: string;
   heroImg: string;
   heroRoleType: string[];
   heroLaneType: string[];
@@ -43,7 +44,7 @@ export interface IHeroDetails {
   heroOffense: number;
   heroDurability: number;
   heroDifficulity: number;
-  heroSkill: IHeroSkills;
+  heroSkill: IHeroSkills[];
 }
 
 const SkillTagSchema = new Schema({
@@ -86,13 +87,18 @@ const HeroDetailsSchema = new Schema({
   heroOffense: { type: Number, required: true },
   heroDurability: { type: Number, required: true },
   heroDifficulity: { type: Number, required: true },
-  heroSkill: { type: HeroSkillsSchema, required: true },
+  heroSkill: [{ type: HeroSkillsSchema, required: true }],
 });
 
 const HeroesSchema = new Schema<HeroesDocument>(
   {
+    _id: {
+      type: Types.ObjectId,
+      unique: true,
+    },
     heroId: { type: Number, required: true, unique: true },
     heroName: { type: String, required: true },
+    heroPath: { type: String, required: true },
     heroImg: { type: String, required: true },
     heroRoleType: { type: [String], required: true },
     heroLaneType: { type: [String], required: true },
