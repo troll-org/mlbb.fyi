@@ -15,7 +15,7 @@ const HeroCard = ({
     <div className="w-fit cursor-pointer p-1.5 " onClick={onClick}>
       <div className="relative h-32 w-24 overflow-hidden rounded-lg">
         <Image
-          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_256,w_192,g_north/v1730741325/mlbb.fyi/hero/${hero.heroName}.webp`}
+          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_256,w_192,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
           alt={hero.heroName}
           width={96}
           height={128}
