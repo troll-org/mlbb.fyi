@@ -2,7 +2,7 @@
 
 import { CounterModel } from "@/lib/model/counter.model";
 import { HeroModel } from "lib/model/hero.model";
-import clientPromise from "lib/mongoose";
+import clientPromise from "@/lib/mongoose";
 import mongoose, { Mongoose, ObjectId, mongo } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
 

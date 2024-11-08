@@ -2,7 +2,7 @@
 
 import { BuildModel } from "lib/model/build.model";
 import { HeroModel } from "lib/model/hero.model";
-import clientPromise from "lib/mongoose";
+import clientPromise from "@/lib/mongoose";
 import mongoose, { Mongoose, ObjectId, mongo } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -20,18 +20,11 @@ export default async function create(
   switch (method) {
     case "POST":
       try {
-        const items = [
-          choice1,
-          choice2,
-          choice3,
-          choice4,
-          choice5,
-          choice6,
-        ]
+        const items = [choice1, choice2, choice3, choice4, choice5, choice6];
 
         const set = await BuildModel.create({
           heroId: hero,
-          items
+          items,
         });
 
         return res.status(200).json({

@@ -2,7 +2,7 @@
 
 import { EmblemsModel } from "@/lib/model/emblem.model";
 import { HeroModel } from "lib/model/hero.model";
-import clientPromise from "lib/mongoose";
+import clientPromise from "@/lib/mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function get(
