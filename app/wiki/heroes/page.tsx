@@ -24,7 +24,9 @@ export const metadata: Metadata = {
 };
 
 async function HeroesPage() {
-  const heroes: NewHero[] | null = await getHeroes();
+  const heroes = await getHeroes({
+    select: "-heroDetails -heroImageOriginUrl",
+  });
 
   return (
     <TabsContent

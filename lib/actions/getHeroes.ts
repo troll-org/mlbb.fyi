@@ -1,9 +1,12 @@
-import prisma from "@/lib/prismadb";
+import clientPromise from "@/lib/mongoose";
+import Heroes from "@/lib/mongoose/schema/heroes";
 
-export default async function getHeroes() {
+export default async function getHeroes({ select }: { select?: string }) {
   try {
-    const heroes = await prisma.newHero.findMany();
-    return heroes;
+    await clientPromise("game-core");
+    const heroesData = await Heroes.find().select(select || "");
+
+    return heroesData;
   } catch (error) {
     console.log(error);
 
