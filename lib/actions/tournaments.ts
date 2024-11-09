@@ -1,5 +1,7 @@
 import clientPromise from "@/lib/mongoose";
-import Tournaments from "@/lib/mongoose/schema/tournaments";
+import Tournaments, {
+  TournamentsDocument,
+} from "@/lib/mongoose/schema/tournaments";
 import { Types } from "mongoose";
 
 export async function getAllHeroTournaments() {
@@ -14,6 +16,7 @@ export async function getAllHeroTournaments() {
           tournaments: {
             $push: {
               tournamentName: "$tournamentName",
+              tournamentPath: "$tournamentPath",
               tournamentDates: "$tournamentDates",
               heroPicks: "$data.heroPicks",
               // blueSidePicks: "$data.blueSidePicks",
@@ -35,10 +38,12 @@ export async function getAllHeroTournaments() {
   }
 }
 
-export async function getAllTournamentsName() {
+export async function getAllTournamentsName(): Promise<TournamentsDocument[]> {
   try {
     await clientPromise("game-core");
-    const heroData = await Tournaments.find({}).select("tournamentName");
+    const heroData: TournamentsDocument[] = await Tournaments.find({}).select(
+      "tournamentName tournamentPath"
+    );
 
     return JSON.parse(JSON.stringify(heroData));
   } catch (error) {
@@ -47,12 +52,12 @@ export async function getAllTournamentsName() {
   }
 }
 
-export async function getAllHeroStatsByTournamentID(tournamentId: string) {
+export async function getAllHeroStatsByTournamentPath(tournamentPath: string) {
   try {
     await clientPromise("game-core");
     const heroDataForTournament = await Tournaments.aggregate([
       {
-        $match: { _id: new Types.ObjectId(tournamentId) },
+        $match: { tournamentPath: tournamentPath },
       },
       {
         $project: {
@@ -70,11 +75,12 @@ export async function getAllHeroStatsByTournamentID(tournamentId: string) {
           // scrapedAt: 1,
           tournamentDates: 1,
           tournamentName: 1,
+          tournamentPath: 1,
         },
       },
     ]);
 
-    return JSON.parse(JSON.stringify(heroDataForTournament));
+    return JSON.parse(JSON.stringify(heroDataForTournament[0]));
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch heroes");

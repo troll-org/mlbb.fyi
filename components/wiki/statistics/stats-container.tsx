@@ -1,17 +1,22 @@
 "use client";
 
 import React, { useState } from "react";
-import { NewTournamentsData } from "@prisma/client";
-import { PickedHero } from "@prisma/client";
-import { NewHero } from "@prisma/client";
 import { GradiantCard } from "@/components/shared/gradiant-card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/shared/select";
+import { TournamentsDocument } from "@/lib/mongoose/schema/tournaments";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { ArrowDown, ArrowUp } from "lucide-react";
 
 interface IStats {
-  heroes: NewHero[];
-  tourneyStats: NewTournamentsData[];
+  // heroes: NewHero[];
+  // tourneyStats: NewTournamentsData[];
+  children: React.ReactNode;
+  tourNames: TournamentsDocument[];
 }
 
 function isDataEmpty(statsList: any[]): boolean {
@@ -21,173 +26,169 @@ function isDataEmpty(statsList: any[]): boolean {
   );
 }
 
-export default function StatsContainer({ heroes, tourneyStats }: IStats) {
+export default function StatsContainer({
+  // heroes,
+  // tourneyStats,
+  children,
+  tourNames,
+}: IStats) {
   const router = useRouter();
-  const allStats = [];
-  const mythicStats = [];
-  const gloryStats = [];
+  // const allStats = [];
+  // const mythicStats = [];
+  // const gloryStats = [];
 
-  for (const hero of heroes) {
-    const allStat = { name: hero.heroName, ...hero.stats?.all };
-    const mythicStat = { name: hero.heroName, ...hero.stats?.mythic };
-    const gloryStat = { name: hero.heroName, ...hero.stats?.mythicalGlory };
+  // for (const hero of heroes) {
+  //   const allStat = { name: hero.heroName, ...hero.stats?.all };
+  //   const mythicStat = { name: hero.heroName, ...hero.stats?.mythic };
+  //   const gloryStat = { name: hero.heroName, ...hero.stats?.mythicalGlory };
 
-    allStats.push(allStat);
-    mythicStats.push(mythicStat);
-    gloryStats.push(gloryStat);
-  }
+  //   allStats.push(allStat);
+  //   mythicStats.push(mythicStat);
+  //   gloryStats.push(gloryStat);
+  // }
 
-  const [selectedTourneyIndex, setSelectedTourneyIndex] = useState<number>(-3);
-  const [selectedSortingOption, setSelectedSortingOption] =
-    useState<string>("alphabet");
-  const [ascendingOrder, setAscendingOrder] = useState<boolean>(true);
+  // const [selectedTourneyIndex, setSelectedTourneyIndex] = useState<number>(-3);
+  // const [selectedSortingOption, setSelectedSortingOption] =
+  //   useState<string>("alphabet");
+  // const [ascendingOrder, setAscendingOrder] = useState<boolean>(true);
 
-  const handleTourneyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedTourneyIndex = Number(event.target.value);
-    setSelectedTourneyIndex(selectedTourneyIndex);
-  };
+  // const handleTourneyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedTourneyIndex = Number(event.target.value);
+  //   setSelectedTourneyIndex(selectedTourneyIndex);
+  // };
 
-  const handleSortingOptionChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const selectedSortingOption = event.target.value;
-    setSelectedSortingOption(selectedSortingOption);
-  };
+  // const handleSortingOptionChange = (
+  //   event: React.ChangeEvent<HTMLSelectElement>
+  // ) => {
+  //   const selectedSortingOption = event.target.value;
+  //   setSelectedSortingOption(selectedSortingOption);
+  // };
 
-  const handleReverseList = () => {
-    setAscendingOrder(!ascendingOrder);
-  };
+  // const handleReverseList = () => {
+  //   setAscendingOrder(!ascendingOrder);
+  // };
 
-  const renderList = [
-    allStats,
-    mythicStats,
-    gloryStats,
-    ...tourneyStats.map((tourney) => tourney.data),
-  ];
+  // const renderList = [
+  //   allStats,
+  //   mythicStats,
+  //   gloryStats,
+  //   ...tourneyStats.map((tourney) => tourney.data),
+  // ];
 
-  const selectedStatsList = renderList[selectedTourneyIndex + 3] || [];
-  const isStatEmpty = isDataEmpty(selectedStatsList);
+  // const selectedStatsList = renderList[selectedTourneyIndex + 3] || [];
+  // const isStatEmpty = isDataEmpty(selectedStatsList);
 
-  let sortedList = [...renderList[selectedTourneyIndex + 3]];
+  // let sortedList = [...renderList[selectedTourneyIndex + 3]];
 
-  function isNewHero(item: any): item is NewHero {
-    return (
-      (item as NewHero).heroName !== undefined &&
-      (item as NewHero).stats !== undefined
-    );
-  }
+  // function isNewHero(item: any): item is NewHero {
+  //   return (
+  //     (item as NewHero).heroName !== undefined &&
+  //     (item as NewHero).stats !== undefined
+  //   );
+  // }
 
-  function isPickedHero(item: any): item is PickedHero {
-    return (item as PickedHero).heroPicks !== undefined;
-  }
+  // function isPickedHero(item: any): item is PickedHero {
+  //   return (item as PickedHero).heroPicks !== undefined;
+  // }
 
-  switch (selectedSortingOption) {
-    case "alphabet":
-      sortedList = sortedList.sort((a, b) => {
-        const nameA = isNewHero(a)
-          ? a.heroName
-          : isPickedHero(a)
-          ? a.heroName
-          : "";
-        const nameB = isNewHero(b)
-          ? b.heroName
-          : isPickedHero(b)
-          ? b.heroName
-          : "";
-        return nameA.localeCompare(nameB);
-      });
-      break;
-    case "pick":
-      sortedList = sortedList.sort((a, b) => {
-        const valueA = isNewHero(a)
-          ? a.stats?.all?.use?.slice(0, -1) || "0"
-          : isPickedHero(a)
-          ? a.heroPicks?.rate?.toString().slice(0, -1) || "0"
-          : "0";
-        const valueB = isNewHero(b)
-          ? b.stats?.all?.use?.slice(0, -1) || "0"
-          : isPickedHero(b)
-          ? b.heroPicks?.rate?.toString().slice(0, -1) || "0"
-          : "0";
-        return parseFloat(valueB) - parseFloat(valueA);
-      });
-      break;
-    case "ban":
-      sortedList = sortedList.sort((a, b) => {
-        const valueA = isNewHero(a)
-          ? a.stats?.all?.ban?.slice(0, -1) || "0"
-          : isPickedHero(a)
-          ? a.heroBans?.rate?.toString().slice(0, -1) || "0"
-          : "0";
-        const valueB = isNewHero(b)
-          ? b.stats?.all?.ban?.slice(0, -1) || "0"
-          : isPickedHero(b)
-          ? b.heroBans?.rate?.toString().slice(0, -1) || "0"
-          : "0";
-        return parseFloat(valueB) - parseFloat(valueA);
-      });
-      break;
-    case "winrate":
-      sortedList = sortedList.sort((a, b) => {
-        const valueA = isNewHero(a)
-          ? a.stats?.all?.win?.slice(0, -1) || "0.0"
-          : isPickedHero(a)
-          ? a.heroPicks?.winRate?.toString().slice(0, -1) || "0.0"
-          : "0.0";
-        const valueB = isNewHero(b)
-          ? b.stats?.all?.win?.slice(0, -1) || "0.0"
-          : isPickedHero(b)
-          ? b.heroPicks?.winRate?.toString().slice(0, -1) || "0.0"
-          : "0.0";
-        return parseFloat(valueB) - parseFloat(valueA);
-      });
-      break;
-  }
+  // switch (selectedSortingOption) {
+  //   case "alphabet":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const nameA = isNewHero(a)
+  //         ? a.heroName
+  //         : isPickedHero(a)
+  //         ? a.heroName
+  //         : "";
+  //       const nameB = isNewHero(b)
+  //         ? b.heroName
+  //         : isPickedHero(b)
+  //         ? b.heroName
+  //         : "";
+  //       return nameA.localeCompare(nameB);
+  //     });
+  //     break;
+  //   case "pick":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const valueA = isNewHero(a)
+  //         ? a.stats?.all?.use?.slice(0, -1) || "0"
+  //         : isPickedHero(a)
+  //         ? a.heroPicks?.rate?.toString().slice(0, -1) || "0"
+  //         : "0";
+  //       const valueB = isNewHero(b)
+  //         ? b.stats?.all?.use?.slice(0, -1) || "0"
+  //         : isPickedHero(b)
+  //         ? b.heroPicks?.rate?.toString().slice(0, -1) || "0"
+  //         : "0";
+  //       return parseFloat(valueB) - parseFloat(valueA);
+  //     });
+  //     break;
+  //   case "ban":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const valueA = isNewHero(a)
+  //         ? a.stats?.all?.ban?.slice(0, -1) || "0"
+  //         : isPickedHero(a)
+  //         ? a.heroBans?.rate?.toString().slice(0, -1) || "0"
+  //         : "0";
+  //       const valueB = isNewHero(b)
+  //         ? b.stats?.all?.ban?.slice(0, -1) || "0"
+  //         : isPickedHero(b)
+  //         ? b.heroBans?.rate?.toString().slice(0, -1) || "0"
+  //         : "0";
+  //       return parseFloat(valueB) - parseFloat(valueA);
+  //     });
+  //     break;
+  //   case "winrate":
+  //     sortedList = sortedList.sort((a, b) => {
+  //       const valueA = isNewHero(a)
+  //         ? a.stats?.all?.win?.slice(0, -1) || "0.0"
+  //         : isPickedHero(a)
+  //         ? a.heroPicks?.winRate?.toString().slice(0, -1) || "0.0"
+  //         : "0.0";
+  //       const valueB = isNewHero(b)
+  //         ? b.stats?.all?.win?.slice(0, -1) || "0.0"
+  //         : isPickedHero(b)
+  //         ? b.heroPicks?.winRate?.toString().slice(0, -1) || "0.0"
+  //         : "0.0";
+  //       return parseFloat(valueB) - parseFloat(valueA);
+  //     });
+  //     break;
+  // }
 
-  const sortedListCopy = ascendingOrder
-    ? [...sortedList]
-    : [...sortedList].reverse();
+  // const sortedListCopy = ascendingOrder
+  //   ? [...sortedList]
+  //   : [...sortedList].reverse();
 
   return (
-    <GradiantCard variant="clean">
+    <GradiantCard variant="clean" className="min-h-screen">
       <div className="mb-8 flex gap-4">
-        <select
-          className="h-10 w-1/2 rounded-xl border border-navy-300/50 bg-black p-2 shadow-sm focus:outline-none"
-          value={selectedTourneyIndex}
-          onChange={handleTourneyChange}
+        <Select
+          onValueChange={(value) => {
+            router.push(`/wiki/statistics/${value}`);
+          }}
         >
-          <option value={-3}>All ranks</option>
-          <option value={-2}>Mythic</option>
-          <option value={-1}>Glory</option>
-          {tourneyStats.map((tourney, index) => (
-            <option key={tourney.id} value={index}>
-              {tourney.tournamentName}
-            </option>
-          ))}
-        </select>
-        <select
-          className="h-10 w-1/2 rounded-xl border border-navy-300/50 bg-black p-2 shadow-sm focus:outline-none"
-          value={selectedSortingOption}
-          onChange={handleSortingOptionChange}
-        >
-          <option value="alphabet">Alphabet</option>
-          <option value="pick">Pick</option>
-          <option value="ban">Ban</option>
-          <option value="winrate">Win Rate</option>
-        </select>
-        <button
-          className="flex flex-row items-center transition-all duration-300 hover:text-navy-300"
-          onClick={handleReverseList}
-        >
-          {ascendingOrder ? (
-            <ArrowUp className="h-6 w-6" />
-          ) : (
-            <ArrowDown className="h-6 w-6" />
-          )}
-        </button>
+          <SelectTrigger className="w-full max-w-sm">
+            <SelectValue
+              placeholder={
+                tourNames[0]?.tournamentName || "Select a tournament"
+              }
+            />
+          </SelectTrigger>
+          <SelectContent>
+            {tourNames.map((tourney) => (
+              <SelectItem
+                key={tourney.tournamentPath}
+                value={tourney.tournamentPath}
+              >
+                {tourney.tournamentName}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
-      {isStatEmpty ? (
+      {children}
+
+      {/* {isStatEmpty ? (
         <p className="font-heading text-sm md:text-xl">
           There is no data available for this option yet.
         </p>
@@ -281,7 +282,7 @@ export default function StatsContainer({ heroes, tourneyStats }: IStats) {
         <p className="font-heading text-sm md:text-xl">
           There is no such data yet
         </p>
-      )}
+      )} */}
     </GradiantCard>
   );
 }

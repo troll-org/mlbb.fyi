@@ -6,6 +6,16 @@ import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 import { TabsContent } from "@/components/shared/tabs";
 import StatsContainer from "@/components/wiki/statistics/stats-container";
+import { getAllTournamentsName } from "@/lib/actions/tournaments";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/shared/select";
+import { GradiantCard } from "@/components/shared/gradiant-card";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Statistics",
@@ -26,16 +36,15 @@ export const metadata: Metadata = {
   },
 };
 
-async function StatisticsPage() {
-  const heroes = await getHeroes();
-  const tourneyStats = await getTournamentStats();
+async function StatisticsPage({ children }: { children: React.ReactNode }) {
+  const tourNames = await getAllTournamentsName();
 
   return (
     <TabsContent
       value="statistics"
       className="flex w-full flex-col gap-5 md:flex-row"
     >
-      <StatsContainer heroes={heroes} tourneyStats={tourneyStats} />
+      <StatsContainer tourNames={tourNames}> {children} </StatsContainer>
     </TabsContent>
   );
 }

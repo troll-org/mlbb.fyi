@@ -93,15 +93,13 @@ export default async function RootLayout({
       )}
       <body
         className={cn(
-          "relative mx-auto mb-8 bg-bgblack pt-24 text-pwhite selection:bg-navy-400 selection:text-white",
+          "relative mx-auto mb-8 mt-24 bg-bgblack text-pwhite selection:bg-navy-400 selection:text-white",
           "after:fixed after:inset-x-0 after:top-[-1450px] after:z-[-1] after:mx-auto after:h-[1280px] after:w-[1880px] after:rounded-full after:bg-navy-500 after:blur-[400px]"
         )}
       >
         <ToasterProvider />
         <Navbar currentUser={currentUser} />
-        <div className="">
-          <div className="relative mx-auto max-w-[1080px] px-4">{children}</div>
-        </div>
+        <div className="relative mx-auto max-w-[1080px] px-4">{children}</div>
       </body>
     </html>
   );

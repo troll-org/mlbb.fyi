@@ -64,6 +64,7 @@ export interface TournamentsDocument {
   scrapedAt: Date;
   tournamentDates: TournamentDates;
   tournamentName: string;
+  tournamentPath: string;
 }
 
 const HeroTopPlayedWithSchema = new mongoose.Schema({
@@ -127,6 +128,7 @@ const TournamentsSchema = new mongoose.Schema<TournamentsDocument>(
       endDate: Date,
     },
     tournamentName: String,
+    tournamentPath: String,
   },
   {
     collection: "Tournaments",
@@ -135,6 +137,6 @@ const TournamentsSchema = new mongoose.Schema<TournamentsDocument>(
 
 const Tournaments =
   (mongoose.models.Tournaments as mongoose.Model<TournamentsDocument>) ||
-  mongoose.model("Tournaments", TournamentsSchema);
+  mongoose.model<TournamentsDocument>("Tournaments", TournamentsSchema);
 
 export default Tournaments;
