@@ -1,5 +1,6 @@
 import clientPromise from "@/lib/mongoose";
 import Heroes from "@/lib/mongoose/schema/heroes";
+import prisma from "@/lib/prismadb";
 
 export default async function getHeroes({ select }: { select?: string }) {
   try {
@@ -11,6 +12,17 @@ export default async function getHeroes({ select }: { select?: string }) {
     return heroesData;
   } catch (error) {
     console.error(error);
+    throw new Error("Failed to fetch heroes");
+  }
+}
+
+export async function getOldHeroes() {
+  try {
+    const heroes = await prisma.newHero.findMany();
+    return heroes;
+  } catch (error) {
+    console.log(error);
+
     throw new Error("Failed to fetch heroes");
   }
 }
