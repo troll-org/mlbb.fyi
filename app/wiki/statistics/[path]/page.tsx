@@ -1,3 +1,4 @@
+import StatsDetailContent from "@/app/wiki/statistics/[path]/_components/content";
 import { getAllHeroStatsByTournamentPath } from "@/lib/actions/tournaments";
 import { TournamentsDocument } from "@/lib/mongoose/schema/tournaments";
 import React from "react";
@@ -12,7 +13,7 @@ async function TournamentsDetailPage({
   const tournamentData: TournamentsDocument =
     await getAllHeroStatsByTournamentPath(params.path);
 
-  return <div>TournamentsDetailPage: {tournamentData.tournamentName}</div>;
+  return <StatsDetailContent tournamentData={tournamentData} />;
 }
 
 export default TournamentsDetailPage;
