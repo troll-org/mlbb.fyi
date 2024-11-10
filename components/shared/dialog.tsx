@@ -9,12 +9,16 @@ const Dialog = DialogPrimitive.Root;
 
 const DialogTrigger = DialogPrimitive.Trigger;
 
+interface ExtendedDialogPortalProps extends DialogPrimitive.DialogPortalProps {
+  className?: string;
+}
+
 const DialogPortal = ({
   className,
   children,
   ...props
-}: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal className={clsx(className)} {...props}>
+}: ExtendedDialogPortalProps) => (
+  <DialogPrimitive.Portal {...props}>
     <div className="fixed inset-0 z-50 flex w-full items-center justify-center">
       {children}
     </div>
@@ -46,7 +50,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={clsx(
-        "fixed left-[50%] z-50 flex flex-col w-11/12 max-w-md translate-x-[-50%] gap-4 rounded-lg border border-none bg-zinc-900 p-6 shadow-lg animate-in data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0 active:border-none active:outline-none focus:outline-none focus:border-zinc-300",
+        "fixed left-[50%] z-50 flex w-11/12 max-w-md translate-x-[-50%] flex-col gap-4 rounded-lg border border-none bg-zinc-900 p-6 shadow-lg animate-in focus:border-zinc-300 focus:outline-none active:border-none active:outline-none data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0",
         className
       )}
       {...props}
@@ -71,7 +75,10 @@ const DialogHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={clsx("flex flex-col space-y-1.5 text-left overflow-auto", className)}
+    className={clsx(
+      "flex flex-col space-y-1.5 overflow-auto text-left",
+      className
+    )}
     {...props}
   />
 );

@@ -2,21 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Hero, NewHero } from "@prisma/client";
+import { NewHero } from "@prisma/client";
 import useHeroFilter from "@/lib/state/useHeroFilter";
 import HeroesFilter from "./heroes-filter";
 import HeroCard from "./hero-card";
 import { Input } from "@/components/shared/input";
 import { GradiantCard } from "@/components/shared/gradiant-card";
+import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
 
 interface IHeroesContainer {
-  heroes: NewHero[] | null;
+  heroes: HeroesDocument[];
 }
 
 const HeroesContainer = ({ heroes }: IHeroesContainer) => {
   const router = useRouter();
   const heroFilter = useHeroFilter();
-  const [filteredHeroes, setFilteredHeroes] = useState<NewHero[] | null>(null);
+  const [filteredHeroes, setFilteredHeroes] = useState<HeroesDocument[] | null>(
+    null
+  );
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -87,11 +90,11 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
       </GradiantCard>
       <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
         {filteredDisplayedHeroes?.map((hero) => (
-          <div key={hero.id} className="mx-auto">
+          <div key={hero.heroName} className="mx-auto">
             <HeroCard
               hero={hero}
               onClick={() => {
-                router.push(`/wiki/heroes/${hero.heroName.toLowerCase()}`);
+                router.push(`/wiki/heroes/${hero.heroPath}`);
               }}
             />
           </div>

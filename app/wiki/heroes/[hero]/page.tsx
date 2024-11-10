@@ -4,21 +4,11 @@ import getHeroEmblem from "@/lib/actions/getHeroEmblem";
 import getHeroCounter from "@/lib/actions/getHeroCounter";
 import getHeroCorr from "@/lib/actions/getHeroCorr";
 
-import HeroFyi from "@/components/wiki/heroes/hero-info";
 import prisma from "@/lib/prismadb";
 import Redirect from "@/components/redirect";
-
-async function getHero(name: string) {
-  const hero = await prisma.hero.findFirst({
-    where: {
-      name: name,
-    },
-    include: {
-      details: true,
-    },
-  });
-  return hero;
-}
+import getHeroStats from "@/lib/actions/getHeroStats";
+import { getOneHero } from "@/lib/actions/getHeroes";
+import HeroDetails from "@/components/wiki/heroes/hero-details";
 
 async function findIndexById(arr: any[], targetId: string): Promise<number> {
   for (let i = 0; i < arr.length; i++) {
@@ -34,40 +24,41 @@ export default async function HeroPage({
 }: {
   params: { hero: string };
 }) {
-  const decodedString = decodeURIComponent(params?.hero.replace(/\+/g, " "));
-  const parseHero =
-    decodedString === "popol and kupa"
-      ? "Popol and Kupa"
-      : decodedString === "yi sun-shin"
-      ? "Yi Sun-shin"
-      : decodedString === "chang'e"
-      ? "Chang'e"
-      : decodedString.replace(/\b\w/g, (c) => c.toUpperCase());
-  const isExistingHero = await getHero(parseHero);
+  const hero = await getOneHero(params?.hero);
 
-  if (!isExistingHero) {
+  if (!hero) {
     return <Redirect destination="not-found" />;
   }
 
-  const [heroBuild, heroSpell, heroEmblem, heroCounter, heroCorr] =
-    await Promise.all([
-      getHeroBuild(isExistingHero.id),
-      getHeroSpell(isExistingHero.id),
-      getHeroEmblem(isExistingHero.id),
-      getHeroCounter(isExistingHero.id),
-      getHeroCorr(isExistingHero.id),
-    ]);
+  const heroStats = await getHeroStats(hero?._id.toString());
 
-  const strongAgainst = heroCorr.data?.map((item: any) => item.heroId) || [];
+  // const [heroBuild, heroSpell, heroEmblem, heroCounter, heroCorr] =
+  //   await Promise.all([
+  //     getHeroBuild(isExistingHero.id),
+  //     getHeroSpell(isExistingHero.id),
+  //     getHeroEmblem(isExistingHero.id),
+  //     getHeroCounter(isExistingHero.id),
+  //     getHeroCorr(isExistingHero.id),
+  //   ]);
+
+  // const strongAgainst = heroCorr.data?.map((item: any) => item.heroId) || [];
 
   return (
-    <HeroFyi
-      hero={isExistingHero}
-      heroBuild={heroBuild.data?.items || []}
-      heroSpell={heroSpell.data?.spells || []}
-      heroEmblem={heroEmblem.data?.emblems || []}
-      heroWeakAgainst={heroCounter.data?.counters || []}
-      heroStrongAgainst={strongAgainst}
-    />
+    <>
+      <HeroDetails
+        hero={hero}
+        heroStats={heroStats[0]}
+        // hero={hero}
+        // heroBuild={heroBuild.data?.items || []}
+        // heroSpell={heroSpell.data?.spells || []}
+        // heroEmblem={heroEmblem.data?.emblems || []}
+        // heroWeakAgainst={heroCounter.data?.counters || []}
+        // heroBuild={[]}
+        // heroSpell={[]}
+        // heroEmblem={[]}
+        // heroWeakAgainst={[]}
+        // heroStrongAgainst={strongAgainst}
+      />
+    </>
   );
 }

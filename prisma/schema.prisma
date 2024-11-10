@@ -34,6 +34,17 @@ model Item {
   attribute String[]
 }
 
+model Hero {
+  id      String       @id @default(auto()) @map("_id") @db.ObjectId
+  name    String       @unique
+  img     String
+  heroId  Int          @unique
+  tier    String
+  role    String[]
+  stats   HeroStats
+  details HeroDetails?
+}
+
 type HeroDetailsSkills {
   name        String
   icon        String
@@ -56,38 +67,16 @@ model HeroDetails {
   hero           Hero                @relation(fields: [heroId], references: [id])
 }
 
-type Stats {
-  win String?
-  use String?
-  ban String?
-}
-
-type HeroStats {
-  all    Stats
-  mythic Stats
-  glory  Stats
-}
-
-model Hero {
-  id      String       @id @default(auto()) @map("_id") @db.ObjectId
-  name    String       @unique
-  img     String
-  heroId  Int          @unique
-  tier    String
-  role    String[]
-  stats   HeroStats
-  details HeroDetails?
-}
-
 model NewHero {
   id           String          @id @default(auto()) @map("_id") @db.ObjectId
   heroId       Int             @unique
   heroDetails  HeroDetailsType
   heroImg      String
-  heroImage    String
   heroLaneType String[]
   heroName     String
   heroRoleType String[]
+  stats        HeroStats?
+  tier         String?
 }
 
 type HeroDetailsType {
@@ -114,30 +103,58 @@ type SkillTag {
   skillTagRGB  Int[]
 }
 
-type PickStats {
-  picks    String
-  win      String
-  lose     String
-  winRate  String
-  presence String?
+type HeroStats {
+  all           Stats
+  epic          Stats
+  legend        Stats
+  mythic        Stats
+  mythicalHonor Stats
+  mythicalGlory Stats
+}
+
+type Stats {
+  win String?
+  use String?
+  ban String?
+}
+
+model NewTournamentsData {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  tournamentName String
+  dataSourceUrl  String
+  data           PickedHero[]
+  scrapedAt      DateTime
 }
 
 type PickedHero {
-  id                 String
-  hero               String
-  picks              PickStats
-  blueSide           PickStats
-  redSide            PickStats
-  totalBans          String
-  banPresence        String
-  pickAndBan         String
-  pickAndBanPresence String
+  heroName          String
+  heroPicks         PickStats
+  blueSidePicks     PickStats
+  redSidePicks      PickStats
+  heroBans          BanStats
+  pickAndBans       BanStats
+  heroTopPlayedWith HeroPlayStats[]
+  heroTopPlayedVs   HeroPlayStats[]
 }
 
-model TourneyStats {
-  id         String       @id @default(auto()) @map("_id") @db.ObjectId
-  tournament String
-  data       PickedHero[]
+type PickStats {
+  totalpicks Int?
+  total      Int?
+  totalWin   Int
+  totalLose  Int
+  winRate    Json?
+  rate       Float?
+}
+
+type BanStats {
+  total Int
+  rate  Float
+}
+
+type HeroPlayStats {
+  heroName       String
+  totalMatchWin  Int
+  totalMatchLose Int
 }
 
 model MlbbAcc {
