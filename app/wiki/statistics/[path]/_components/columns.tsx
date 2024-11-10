@@ -9,6 +9,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 
 export const columns: ColumnDef<HeroData>[] = [
   {
@@ -27,7 +28,9 @@ export const columns: ColumnDef<HeroData>[] = [
           loading="lazy"
         />
         <Link
-          href={`/heroes/${(row.getValue("heroName") as string).toLowerCase()}`}
+          href={`/wiki/heroes/${(
+            row.getValue("heroName") as string
+          ).toLowerCase()}`}
           className="flex flex-row items-center hover:cursor-pointer hover:underline"
         >
           {row.getValue("heroName")}
@@ -48,6 +51,9 @@ export const columns: ColumnDef<HeroData>[] = [
         </Button>
       );
     },
+    cell: ({ cell }) => {
+      return <p>{(cell.row.original.heroPicks.winRate * 100).toFixed(2)}%</p>;
+    },
   },
   {
     accessorKey: "heroPicks.totalpicks",
@@ -57,10 +63,13 @@ export const columns: ColumnDef<HeroData>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Total Pick
+          Pick (%)
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ cell }) => {
+      return <p>{(cell.row.original.heroPicks.rate * 100).toFixed(2)}%</p>;
     },
   },
   {
@@ -75,6 +84,9 @@ export const columns: ColumnDef<HeroData>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ cell }) => {
+      return <p>{(cell.row.original.heroBans.rate * 100).toFixed(2)}%</p>;
     },
   },
 ];

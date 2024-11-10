@@ -30,6 +30,8 @@ function StatsDetailContent({
 }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
+  console.log(tournamentData.data[0]);
+
   const table = useReactTable({
     data: tournamentData.data,
     columns: columns,
@@ -43,7 +45,9 @@ function StatsDetailContent({
 
   return (
     <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      <TableCaption>
+        Hero Statistics for {tournamentData.tournamentName}
+      </TableCaption>
       <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>
