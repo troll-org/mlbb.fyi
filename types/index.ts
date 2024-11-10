@@ -24,6 +24,8 @@ declare global {
       CDN_API_KEY: string;
       CDN_API_SECRET: string;
       CLOUDINARY_FOLDER: string;
+      NEXT_PUBLIC_POSTHOG_KEY: string;
+      NEXT_PUBLIC_POSTHOG_HOST: string;
     }
   }
 }

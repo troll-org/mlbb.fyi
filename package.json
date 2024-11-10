@@ -42,6 +42,7 @@
     "next-auth": "^4.24.7",
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.9",
+    "posthog-js": "^1.181.0",
     "react": "^18.2.0",
     "react-avatar-editor": "^13.0.0",
     "react-circular-progressbar": "^2.1.0",
