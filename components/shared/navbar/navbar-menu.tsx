@@ -11,6 +11,7 @@ import Close from "../icons/close";
 import Burger from "../icons/burger";
 import { Button } from "../button";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 interface NavMenuProps {
   currentUser?: SafeUser | null;
@@ -93,21 +94,24 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                 key={menu.name}
                 onClick={() => {
                   setCollapse(false);
-                  router.push(
+                }}
+              >
+                <Link
+                  href={
                     menu.href === "/profile"
                       ? currentUser?.username
                         ? `/profile/${currentUser?.username}`
                         : "/profile/stg"
                       : menu.href
-                  );
-                }}
-                className={cn(
-                  "cursor-pointer font-medium hover:text-navy-300 hover:transition-all hover:duration-300",
-                  active === menu.name.toLowerCase() &&
-                    "underline:ease-in-out underline decoration-navy-300 decoration-2 underline-offset-4"
-                )}
-              >
-                {menu.name}
+                  }
+                  className={cn(
+                    "cursor-pointer font-medium hover:text-navy-300 hover:transition-all hover:duration-300",
+                    active === menu.name.toLowerCase() &&
+                      "underline:ease-in-out underline decoration-navy-300 decoration-2 underline-offset-4"
+                  )}
+                >
+                  {menu.name}
+                </Link>
               </li>
             );
           })}
