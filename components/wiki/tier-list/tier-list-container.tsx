@@ -66,7 +66,7 @@ export default function TierContainer({ heroes }: TierListProps) {
                           loading="lazy"
                         />
                       </div>
-                      <p className="mt-2 text-center text-[10px] md:text-[14px]">
+                      <p className="mt-2 text-center text-[10px] font-semibold md:text-[14px]">
                         {hero?.name}
                       </p>
                     </div>
