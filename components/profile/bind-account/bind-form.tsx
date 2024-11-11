@@ -44,7 +44,7 @@ const BindForm: React.FC<BindFormProps> = ({ currentUser }) => {
       onSubmit={async (e) => {
         e.preventDefault();
         setLoadingSend(true);
-        const sendCode = await fetch("/api/code", {
+        const sendCode = await fetch("/api/mlbb-otp", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

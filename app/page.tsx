@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function Home() {
   return (
     <>
-      <main className="mt-24">
+      <main className="mt-60 flex items-center justify-center">
         <div className="mx-auto flex max-w-xl flex-col justify-center text-center">
           <h1 className="font-heading text-[44px] font-bold leading-10 md:text-[60px] md:leading-[56px]">
             Elevate Your Mobile <br className="hidden md:block" /> Legends Game

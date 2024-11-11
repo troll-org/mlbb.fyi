@@ -47,7 +47,7 @@ export default async function HeroPage({
     <>
       <HeroDetails
         hero={hero}
-        heroStats={heroStats[0]}
+        heroStats={heroStats}
         // hero={hero}
         // heroBuild={heroBuild.data?.items || []}
         // heroSpell={heroSpell.data?.spells || []}

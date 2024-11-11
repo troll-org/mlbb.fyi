@@ -11,6 +11,8 @@ import { Progress } from "@/components/shared/progress";
 import Image from "next/image";
 import MatchInsights from "@/components/profile/profile-stats/match-insights";
 import { HeroStatsDocuments } from "@/lib/mongoose/schema/heroes-statistics";
+import { Button } from "@/components/shared/button";
+import { RefreshCcw } from "lucide-react";
 
 interface HeroFyiContainer {
   hero: HeroesDocument;
@@ -46,17 +48,6 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
     window.scrollTo(0, 0);
   }, []);
 
-  // const tier = () => {
-  //   for (let i = 0; i < tier.length; i++) {
-  //     if (hero?.tiers === tiers[i].tier) {
-  //       return i;
-  //     } else if (hero?.tiers === "SS") {
-  //       return 0;
-  //     }
-  //   }
-  //   return -1;
-  // };
-
   // const uniqueSpells = Array.from(
   //   new Set(heroSpell?.map((spell) => spell.name))
   // );
@@ -88,6 +79,7 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
       value: heroDetails.heroDifficulity,
     },
   ];
+
   function capitalize(word: String) {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
   }
@@ -117,6 +109,19 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
     return `${roleType} (${laneType})`;
   }
 
+  function formatRankName(rankName: string) {
+    if (rankName.toLowerCase() === "mythicalhonor") {
+      return "Honor";
+    } else if (rankName.toLowerCase() === "mythicalgloryplus") {
+      return "Glory+";
+    }
+    return formatWord(
+      rankName
+        .replace(/([a-z])([A-Z])/g, "$1 $2")
+        .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
+    );
+  }
+
   return (
     <div className="flex flex-col">
       <div className="flex flex-col sm:flex-row sm:gap-x-1.5">
@@ -135,7 +140,7 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
               alt={hero.heroName}
               width={600}
               height={800}
-              className="absolute top-0 z-0 h-[256px] min-w-full overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat opacity-50 transition-opacity duration-500 ease-in-out sm:opacity-0"
+              className="absolute top-0 -z-10 h-[256px] min-w-full overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat opacity-50 transition-opacity duration-500 ease-in-out sm:opacity-0"
               priority
             />
 
@@ -181,7 +186,7 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
                 </p>
               </div>
 
-              <div className="my-3 flex flex-row gap-4   sm:gap-8">
+              <div className="my-3 flex flex-row items-center   gap-4 sm:gap-8">
                 <div className="flex flex-col">
                   <p className="font-heading text-[12px] sm:text-[16px]">
                     Winrate
@@ -210,6 +215,24 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
                     ).toFixed(2)}%` || "0.00%"}
                   </p>
                 </div>
+                {heroStats.data && heroStats.data.length > 0 && (
+                  <Button
+                    onClick={() =>
+                      setSelectedRankState(
+                        (selectedRankState + 1) % heroStats.data.length
+                      )
+                    }
+                    variant="gradiantNavySec"
+                    className="self-start rounded-full"
+                  >
+                    <span className="text-lg mr-2 text-[12px] font-bold sm:text-[16px]">
+                      {formatRankName(
+                        heroStats.data[selectedRankState].rankName
+                      )}
+                    </span>{" "}
+                    <RefreshCcw size={12} />
+                  </Button>
+                )}
               </div>
 
               {data.map((item, i) => (
