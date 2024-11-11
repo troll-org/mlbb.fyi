@@ -1,21 +1,10 @@
 import { Metadata } from "next";
 
-import getTournamentStats from "@/lib/actions/getTournamentStats";
-import getHeroes from "@/lib/actions/getHeroes";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 import { TabsContent } from "@/components/shared/tabs";
-import StatsContainer from "@/components/wiki/statistics/stats-container";
+import TournamentsPopover from "@/components/wiki/statistics/tournaments-popover";
 import { getAllTournamentsName } from "@/lib/actions/tournaments";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/shared/select";
-import { GradiantCard } from "@/components/shared/gradiant-card";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Statistics",
@@ -44,7 +33,7 @@ async function StatisticsPage({ children }: { children: React.ReactNode }) {
       value="statistics"
       className="flex w-full flex-col gap-5 md:flex-row"
     >
-      <StatsContainer tourNames={tourNames}> {children} </StatsContainer>
+      <TournamentsPopover tourNames={tourNames}>{children}</TournamentsPopover>
     </TabsContent>
   );
 }

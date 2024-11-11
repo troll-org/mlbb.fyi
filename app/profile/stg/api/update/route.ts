@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const currentUser = await getCurrentUser();
-  //console.log(currentUser?.name);
 
   const {
     username,
@@ -12,7 +11,6 @@ export async function POST(req: Request) {
     links,
   }: { username: string; description: string; links: string[] } =
     await req.json();
-  //console.log("username", username);
 
   const findUsername = await prisma.user.findFirst({
     where: {

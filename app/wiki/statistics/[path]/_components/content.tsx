@@ -12,8 +12,7 @@ import {
 } from "@/components/shared/table";
 
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+
 import {
   flexRender,
   getCoreRowModel,
@@ -30,8 +29,6 @@ function StatsDetailContent({
 }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
-  console.log(tournamentData.data[0]);
-
   const table = useReactTable({
     data: tournamentData.data,
     columns: columns,
@@ -45,15 +42,12 @@ function StatsDetailContent({
 
   return (
     <Table>
-      <TableCaption>
-        Hero Statistics for {tournamentData.tournamentName}
-      </TableCaption>
       <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id}>
+          <TableRow key={headerGroup.id} className="border-b border-navy-700">
             {headerGroup.headers.map((header) => {
               return (
-                <TableHead key={header.id}>
+                <TableHead key={header.id} className="px-0">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -72,9 +66,10 @@ function StatsDetailContent({
             <TableRow
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
+              className="border-b border-navy-700"
             >
               {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
+                <TableCell key={cell.id} className="px-0 py-2 sm:p-4">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>
               ))}
@@ -82,8 +77,11 @@ function StatsDetailContent({
           ))
         ) : (
           <TableRow>
-            <TableCell colSpan={columns.length} className="h-24 text-center">
-              No results.
+            <TableCell
+              colSpan={columns.length}
+              className="text-lg font-heading md:text-xl"
+            >
+              There is currently no results for this tournament
             </TableCell>
           </TableRow>
         )}

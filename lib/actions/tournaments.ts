@@ -2,7 +2,6 @@ import clientPromise from "@/lib/mongoose";
 import Tournaments, {
   TournamentsDocument,
 } from "@/lib/mongoose/schema/tournaments";
-import { Types } from "mongoose";
 
 export async function getAllHeroTournaments() {
   try {
@@ -34,7 +33,7 @@ export async function getAllHeroTournaments() {
     return JSON.parse(JSON.stringify(heroData));
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to fetch heroes");
+    throw new Error("Failed to fetch tournaments");
   }
 }
 
@@ -48,7 +47,7 @@ export async function getAllTournamentsName(): Promise<TournamentsDocument[]> {
     return JSON.parse(JSON.stringify(heroData));
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to fetch heroes");
+    throw new Error("Failed to fetch tournaments");
   }
 }
 
@@ -83,6 +82,6 @@ export async function getAllHeroStatsByTournamentPath(tournamentPath: string) {
     return JSON.parse(JSON.stringify(heroDataForTournament[0]));
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to fetch heroes");
+    throw new Error("Failed to fetch tournaments");
   }
 }

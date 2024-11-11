@@ -45,7 +45,6 @@ export async function GET(req: Request) {
 
     return NextResponse.json(postInfo);
   } catch (error) {
-    console.log("Error: ", error);
     return NextResponse.json(
       {
         message: "An error occured",

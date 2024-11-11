@@ -36,7 +36,6 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
             callbackUrl: "/profile/stg?ref=signin",
           })
             .then((res) => {
-              //console.log(res);
               if (res?.ok) {
                 toast.success(
                   "Kindly check your inbox or spam folders for the login link"

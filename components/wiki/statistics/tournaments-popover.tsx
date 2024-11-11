@@ -2,13 +2,6 @@
 
 import React, { useState } from "react";
 import { GradiantCard } from "@/components/shared/gradiant-card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/shared/select";
 import { TournamentsDocument } from "@/lib/mongoose/schema/tournaments";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -27,25 +20,11 @@ import {
 import { Button } from "@/components/shared/button";
 
 interface IStats {
-  // heroes: NewHero[];
-  // tourneyStats: NewTournamentsData[];
   children: React.ReactNode;
   tourNames: TournamentsDocument[];
 }
 
-function isDataEmpty(statsList: any[]): boolean {
-  return (
-    statsList.length === 0 ||
-    statsList.every((hero) => !hero.stats && !hero.heroPicks)
-  );
-}
-
-export default function StatsContainer({
-  // heroes,
-  // tourneyStats,
-  children,
-  tourNames,
-}: IStats) {
+export default function StatsContainer({ children, tourNames }: IStats) {
   const router = useRouter();
   const pathname = usePathname();
   const [selectedTournament, setSelectedTournament] = useState(
@@ -59,7 +38,7 @@ export default function StatsContainer({
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              className="w-full max-w-md justify-between"
+              className="w-full max-w-md justify-between border-navy-700 font-semibold data-[state=open]:bg-white/10"
               // aria-expanded={!!selectedTournament}
             >
               {selectedTournament
@@ -69,11 +48,16 @@ export default function StatsContainer({
                 : "Select a tournament..."}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-full max-w-md p-0">
+          <PopoverContent className="w-full max-w-md border-navy-700 p-0">
             <Command>
-              <CommandInput placeholder="Search tournament..." />
+              <CommandInput
+                placeholder="Search tournament..."
+                className=" p-0 font-semibold"
+              />
               <CommandList>
-                <CommandEmpty>No tournament found.</CommandEmpty>
+                <CommandEmpty className="p-4 text-sm font-semibold">
+                  No tournament found
+                </CommandEmpty>
                 <CommandGroup>
                   {tourNames.map((tourney) => (
                     <CommandItem
@@ -83,6 +67,7 @@ export default function StatsContainer({
                         setSelectedTournament(currentValue);
                         router.push(`/wiki/statistics/${currentValue}`);
                       }}
+                      className="cursor-pointer font-semibold transition-all duration-300 ease-in-out hover:bg-white/10"
                     >
                       {tourney.tournamentName}
                     </CommandItem>

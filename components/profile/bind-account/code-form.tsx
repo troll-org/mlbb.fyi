@@ -29,7 +29,6 @@ const CodeForm: React.FC<CodeFormProps> = ({ currentUser }) => {
 
   const accId = params?.getAll("id")[0];
   const accServer = params?.getAll("id")[1];
-  //console.log(params?.getAll);
 
   const [form, setForm] = useState({
     accId: accId ? accId : null,
