@@ -30,11 +30,12 @@ export default function StatsContainer({ children, tourNames }: IStats) {
   const [selectedTournament, setSelectedTournament] = useState(
     pathname?.split("/")[3]
   );
+  const [popoverOpen, setPopoverOpen] = useState(false);
 
   return (
     <GradiantCard variant="clean" className="min-h-screen">
       <div className="mb-8 flex gap-4">
-        <Popover>
+        <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
           <PopoverTrigger asChild>
             <Button
               variant="outline"
@@ -66,6 +67,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
                       onSelect={(currentValue) => {
                         setSelectedTournament(currentValue);
                         router.push(`/wiki/statistics/${currentValue}`);
+                        setPopoverOpen(false);
                       }}
                       className="cursor-pointer font-semibold transition-all duration-300 ease-in-out hover:bg-white/10"
                     >
