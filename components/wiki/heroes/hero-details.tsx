@@ -165,7 +165,7 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
                     ))}
                 </div>
                 <div className="text-md mb-1 rounded-full bg-navy-600 px-4 font-semibold ">
-                  {/* <p>{hero?.tier || "X"}</p> */}
+                  <p>{"X"}</p>
                 </div>
               </div>
               <div className="mb-1 flex flex-row items-center">
@@ -223,7 +223,7 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
                       )
                     }
                     variant="gradiantNavySec"
-                    className="self-start rounded-full"
+                    className="self-end rounded-full"
                   >
                     <span className="text-lg mr-2 text-[12px] font-bold sm:text-[16px]">
                       {formatRankName(
