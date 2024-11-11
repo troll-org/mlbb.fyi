@@ -54,30 +54,19 @@ export default function TierContainer({ heroes }: TierListProps) {
                       onClick={() => {
                         router.push(`/wiki/heroes/${hero.name.toLowerCase()}`);
                       }}
-                      className="mx-auto cursor-pointer"
+                      className="relative mx-auto cursor-pointer"
                     >
-                      <div className="relative">
+                      <div className="overflow-hidden rounded-full">
                         <Image
                           src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_220,w_220,g_north/mlbb.fyi/hero/${hero.name}.webp`}
                           alt={hero.name}
                           width={110}
                           height={110}
-                          className="h-[55px] w-[55px] rounded-full sm:h-[110px] sm:w-[110px]"
+                          className="h-[55px] w-[55px] bg-cover bg-top bg-no-repeat transition-all duration-300 ease-in-out hover:scale-110 sm:h-[110px] sm:w-[110px]"
                           loading="lazy"
                         />
-
-                        <div className="bg-opacity/75 absolute bottom-0 left-0 h-[55px] w-[55px] items-center rounded-full bg-black/80 py-1 text-center text-sm font-medium text-white opacity-0 transition-opacity duration-200 sm:h-[110px] sm:w-[110px]">
-                          {/* <p className="mt-3 justify-center text-[10px] md:mt-11 md:text-[14px]">
-          {hero?.name}
-              </p> */}
-                        </div>
                       </div>
-                      <style jsx>{`
-                        .relative:hover .absolute {
-                          opacity: 1;
-                        }
-                      `}</style>
-                      <p className="mt-2 text-center text-[10px]  md:text-[14px]">
+                      <p className="mt-2 text-center text-[10px] md:text-[14px]">
                         {hero?.name}
                       </p>
                     </div>
