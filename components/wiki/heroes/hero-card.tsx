@@ -19,7 +19,7 @@ const HeroCard = ({
           alt={hero.heroName}
           width={96}
           height={128}
-          className="h-[128px] w-[96px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat ease-in-out hover:opacity-50 hover:duration-300"
+          className="h-[128px] w-[96px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat transition-all duration-300 ease-in-out hover:scale-110"
           loading="lazy"
         />
       </div>

@@ -42,10 +42,10 @@ export default function TierContainer({ heroes }: TierListProps) {
           return (
             <div
               key={i}
-              className="flex w-full flex-row items-center rounded-xl  pl-4"
+              className="flex w-full flex-row items-center rounded-xl pl-4"
               style={{ background: item.color }}
             >
-              <p className="font-heading">{item.tier}</p>
+              <p className="w-6 text-center font-heading">{item.tier}</p>
               <div className="ml-4 h-fit w-full rounded-r-lg bg-black py-8">
                 <div className="mx-4 grid grid-cols-3 flex-row gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
                   {filteredHeroes?.map((hero, j) => (
@@ -74,8 +74,8 @@ export default function TierContainer({ heroes }: TierListProps) {
 
                         <div className="bg-opacity/75 absolute bottom-0 left-0 h-[55px] w-[55px] items-center rounded-full bg-black/80 py-1 text-center text-sm font-medium text-white opacity-0 transition-opacity duration-200 sm:h-[110px] sm:w-[110px]">
                           {/* <p className="mt-3 justify-center text-[10px] md:mt-11 md:text-[14px]">
-                            {hero?.name}
-                          </p> */}
+          {hero?.name}
+              </p> */}
                         </div>
                       </div>
                       <style jsx>{`
@@ -83,7 +83,7 @@ export default function TierContainer({ heroes }: TierListProps) {
                           opacity: 1;
                         }
                       `}</style>
-                      <p className="mt-2 text-center text-[10px]  md:text-[14px]">
+                      <p className="mt-2 text-center text-[10px] md:text-[14px]">
                         {hero.heroName}
                       </p>
                     </div>

@@ -2,12 +2,10 @@
 
 import React, { useState } from "react";
 import { Checkbox } from "@/components/shared/checkbox";
-import { GradiantCard } from "@/components/shared/gradiant-card";
 import { Label } from "@/components/shared/label";
 import { HeroType } from "@/lib/hero-type";
 import useHeroFilter from "@/lib/state/useHeroFilter";
 import { HeroRole } from "@/lib/hero-role";
-import { Input } from "@/components/shared/input";
 
 const HeroesFilter = () => {
   const [query, setQuery] = useState("");
