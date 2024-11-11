@@ -36,6 +36,7 @@ interface HeroFyiContainer {
 function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
   const router = useRouter();
   const { selectedTab, setSelectedTab } = useTabStore();
+  const [selectedRankState, setSelectedRankState] = useState(0);
 
   useEffect(() => {
     setSelectedTab("heroes");
@@ -120,13 +121,21 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
     <div className="flex flex-col">
       <div className="flex flex-col sm:flex-row sm:gap-x-1.5">
         <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
-          <div className="flex flex-row gap-x-4">
+          <div className="relative flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:gap-x-4">
             <Image
-              src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_256,w_192,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
+              src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_800,w_600,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
               alt={hero.heroName}
-              width={192}
-              height={256}
-              className="h-[255px] w-[240px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat sm:h-[300px] sm:w-[230px]"
+              width={600}
+              height={800}
+              className="z-10 h-[256px] w-[192px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat drop-shadow-md transition-opacity duration-500 ease-in-out sm:h-[293px] sm:w-[244px]"
+              priority
+            />
+            <Image
+              src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_1000,w_1200,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
+              alt={hero.heroName}
+              width={600}
+              height={800}
+              className="absolute top-0 z-0 h-[256px] min-w-full overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat opacity-50 transition-opacity duration-500 ease-in-out sm:opacity-0"
               priority
             />
 
@@ -178,8 +187,9 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
                     Winrate
                   </p>
                   <p className="font-sat text-[12px] font-semibold sm:text-[20px]">
-                    {`${(heroStats.data[0].winRate * 100).toFixed(2)}%` ||
-                      "0.00%"}
+                    {`${(
+                      heroStats.data[selectedRankState].winRate * 100
+                    ).toFixed(2)}%` || "0.00%"}
                   </p>
                 </div>
                 <div className="flex flex-col">
@@ -187,15 +197,17 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
                     Pick
                   </p>
                   <p className="font-sat text-[12px] font-semibold sm:text-[20px]">
-                    {`${(heroStats.data[0].pickRate * 100).toFixed(2)}%` ||
-                      "0.00%"}
+                    {`${(
+                      heroStats.data[selectedRankState].pickRate * 100
+                    ).toFixed(2)}%` || "0.00%"}
                   </p>
                 </div>
                 <div className="flex flex-col">
                   <p className="font-heading text-[12px] sm:text-[16px]">Ban</p>
                   <p className="font-sat text-[12px] font-semibold sm:text-[20px]">
-                    {`${(heroStats.data[0].banRate * 100).toFixed(2)}%` ||
-                      "0.00%"}
+                    {`${(
+                      heroStats.data[selectedRankState].banRate * 100
+                    ).toFixed(2)}%` || "0.00%"}
                   </p>
                 </div>
               </div>

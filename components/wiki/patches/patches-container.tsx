@@ -35,7 +35,12 @@ export default function PatchContainer({ patches }: IPatch) {
 
   return (
     <div className="mt-4 flex w-full flex-col">
-      <div className="flex flex-col">
+      <p className="text-lg ml-2 text-gray-400">
+        We are currently in the process of updating the patch notes, striving to
+        provide you with the most accurate and valuable information. Thank you
+        for your patience as we work to deliver the best experience possible.
+      </p>
+      {/* <div className="flex flex-col">
         {sortedYears.map((year, i) => (
           <React.Fragment key={year}>
             <div className="flex flex-row items-center">
@@ -79,7 +84,7 @@ export default function PatchContainer({ patches }: IPatch) {
             ))}
           </React.Fragment>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
