@@ -1,142 +1,119 @@
-import { useState } from "react";
-
 interface TimeStampProps {
   date: string[];
   time: string[];
 }
 
-function countLeapYears(month: number, year: number) {
-  let years = year;
-
-  if (month <= 2) {
-    years--;
-  }
-
+function countLeapYears(year: number, month: number) {
+  let adjustedYear = year;
+  if (month <= 2) adjustedYear--;
   return (
-    Math.floor(years / 4) - Math.floor(years / 100) + Math.floor(years / 400)
+    Math.floor(adjustedYear / 4) -
+    Math.floor(adjustedYear / 100) +
+    Math.floor(adjustedYear / 400)
   );
 }
 
-function getDifference(date: string[], currDate: string[]) {
+function calculateDateDifference(date: string[], currDate: string[]) {
   const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-  let n1 = Number(date[0]) * 365 + Number(date[2]);
-
-  for (let i = 0; i < Number(date[1]) - 1; i++) {
-    n1 += monthDays[i];
-  }
-
-  n1 += countLeapYears(Number(date[1]), Number(date[0]));
-
-  let n2 = Number(currDate[2]) * 365 + Number(currDate[1]);
-  for (let i = 0; i < Number(currDate[0]) - 1; i++) {
-    n2 += monthDays[i];
-  }
-  n2 += countLeapYears(Number(currDate[0]), Number(currDate[2]));
-  return n2 - n1;
+  const getTotalDays = (d: string[]) => {
+    let days = Number(d[2]) + Number(d[0]) * 365;
+    for (let i = 0; i < Number(d[1]) - 1; i++) days += monthDays[i];
+    return days + countLeapYears(Number(d[0]), Number(d[1]));
+  };
+  return getTotalDays(currDate) - getTotalDays(date);
 }
 
-// Main function which finds difference
-function getTimeDiff(
-  hour1: string,
-  hour2: string,
-  minute1: string,
-  minute2: string
+function calculateTimeDifference(
+  startHour: string,
+  endHour: string,
+  startMinute: string,
+  endMinute: string
 ) {
-  let hourDiff = Number(hour2) - Number(hour1) - 1;
+  let hoursDiff = Number(endHour) - Number(startHour);
+  let minutesDiff = Number(endMinute) - Number(startMinute);
 
-  // difference between minutes
-  let minDiff = Number(minute2) + (60 - Number(minute1));
-
-  if (minDiff >= 60) {
-    hourDiff++;
-    minDiff = minDiff - 60;
+  if (minutesDiff < 0) {
+    minutesDiff += 60;
+    hoursDiff -= 1;
   }
 
-  return [hourDiff, minDiff];
+  return [hoursDiff, minutesDiff];
 }
 
-function addOrSubtractOneDay(date: string[], diff: number) {
-  const year = Number(date[0]);
-  const month = Number(date[1]);
-  const day = Number(date[2]);
-
-  const newDate = new Date(year, month - 1, day + diff);
-  const currDate = [
+function adjustDateByDays(date: string[], days: number) {
+  const [year, month, day] = date.map(Number);
+  const newDate = new Date(year, month - 1, day + days);
+  return [
     newDate.getFullYear().toString(),
     (newDate.getMonth() + 1).toString(),
     newDate.getDate().toString(),
   ];
-
-  return currDate;
 }
 
-function handleTimeZone(time: string[], region: string) {
-  if (region[3] === "+") {
-    const diff = region.split("+");
-    const result = Number(time[0]) + Number(diff[1]) / 100;
+function handleTimeZoneAdjustment(time: string[], timezoneOffset: string) {
+  const offsetHours = Number(timezoneOffset.slice(1)) / 100;
+  const adjustedHour = timezoneOffset.startsWith("+")
+    ? Number(time[0]) + offsetHours
+    : Number(time[0]) - offsetHours;
 
-    if (result >= 24) {
-      return [String(result - 24), "+"];
-    }
-    return [String(result), "no change"];
-  }
+  const newHour = adjustedHour < 0 ? adjustedHour + 24 : adjustedHour % 24;
+  const dayChange =
+    adjustedHour >= 24 ? "+" : adjustedHour < 0 ? "-" : "no change";
 
-  const diff = region.split("-");
-  const result = Number(time[0]) - Number(diff[1]) / 100;
-
-  if (result < 0) {
-    return [String(result + 24), "-"];
-  }
-  return [String(result), "no change"];
+  return [String(newHour), dayChange];
 }
 
 const TimeStamp: React.FC<TimeStampProps> = ({ date, time }) => {
-  const newDate = new Date();
+  const currentDate = new Date();
   const currDate = [
-    (newDate.getMonth() + 1).toString(),
-    newDate.getDate().toString(),
-    newDate.getFullYear().toString(),
+    currentDate.getFullYear().toString(),
+    (currentDate.getMonth() + 1).toString(),
+    currentDate.getDate().toString(),
   ];
-  const currTime = new Date().toTimeString().split(":");
-  const region = currTime[2].split(" ");
-  const temp = handleTimeZone(time, region[1]);
-  time[0] = temp[0];
+  const currTime = [
+    currentDate.getHours().toString(),
+    currentDate.getMinutes().toString(),
+  ];
+  const timezoneOffset = currentDate.toTimeString().split(" ")[1];
 
-  if (temp[1] === "+") {
-    date = addOrSubtractOneDay(date, 1);
-  } else if (temp[1] === "-") {
-    date = addOrSubtractOneDay(date, -1);
-  }
+  const [adjustedHour, dayChange] = handleTimeZoneAdjustment(
+    time,
+    timezoneOffset
+  );
+  time[0] = adjustedHour;
+  if (dayChange === "+") date = adjustDateByDays(date, 1);
+  else if (dayChange === "-") date = adjustDateByDays(date, -1);
 
-  const diff = getDifference(date, currDate);
+  const dayDiff = calculateDateDifference(date, currDate);
 
-  if (diff === 0) {
-    const timeDiff = getTimeDiff(time[0], currTime[0], time[1], currTime[1]);
-
+  if (dayDiff === 0) {
+    const [hoursAgo, minutesAgo] = calculateTimeDifference(
+      time[0],
+      currTime[0],
+      time[1],
+      currTime[1]
+    );
     return (
       <div>
         <p className="text-xs mt-2 truncate leading-5 text-gray-500 ease-in-out">
-          {timeDiff[0] > 0 &&
-            `${timeDiff[0]} ${timeDiff[0] === 1 ? "hour" : "hours"} ago`}
-          {timeDiff[0] === 0 && timeDiff[1] === 0 && "Recently"}
-          {timeDiff[0] === 0 &&
-            timeDiff[1] !== 0 &&
-            `${timeDiff[1]} ${timeDiff[1] === 1 ? "minute" : "minutes"} ago`}
+          {hoursAgo > 0
+            ? `${hoursAgo} ${hoursAgo === 1 ? "hour" : "hours"} ago`
+            : minutesAgo > 0
+            ? `${minutesAgo} ${minutesAgo === 1 ? "minute" : "minutes"} ago`
+            : "Recently"}
         </p>
       </div>
     );
   }
 
-  if (diff === 1) {
+  if (dayDiff === 1) {
+    const hoursAgo = Number(currTime[0]) + 24 - Number(time[0]);
     return (
       <div>
         <p className="text-xs mt-2 truncate leading-5 text-gray-500 ease-in-out">
-          {Number(currTime[0]) + 24 - Number(time[0]) > 24
+          {hoursAgo > 24
             ? "1 day ago"
-            : `${Number(currTime[0]) + 24 - Number(time[0])} ${
-                Number(currTime[0]) - Number(time[0]) === 1 ? "hour" : "hours"
-              } ago`}
+            : `${hoursAgo} ${hoursAgo === 1 ? "hour" : "hours"} ago`}
         </p>
       </div>
     );
@@ -145,16 +122,15 @@ const TimeStamp: React.FC<TimeStampProps> = ({ date, time }) => {
   return (
     <div>
       <p className="text-xs mt-2 truncate leading-5 text-gray-500 ease-in-out">
-        {diff >= 365 &&
-          `${Math.floor(diff / 365)} ${
-            Math.floor(diff / 365) === 1 ? "year" : "years"
-          } ago`}
-        {Math.floor(diff * 0.032855) >= 1 &&
-          `${Math.floor(diff * 0.032855)} ${
-            Math.floor(diff * 0.032855) === 1 ? "month" : "months"
-          } ago`}
-        {Math.floor(diff * 0.032855) < 1 &&
-          `${diff} ${diff === 1 ? "day" : "days"} ago`}
+        {dayDiff >= 365
+          ? `${Math.floor(dayDiff / 365)} ${
+              Math.floor(dayDiff / 365) === 1 ? "year" : "years"
+            } ago`
+          : dayDiff >= 30
+          ? `${Math.floor(dayDiff / 30)} ${
+              Math.floor(dayDiff / 30) === 1 ? "month" : "months"
+            } ago`
+          : `${dayDiff} ${dayDiff === 1 ? "day" : "days"} ago`}
       </p>
     </div>
   );
