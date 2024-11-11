@@ -41,7 +41,7 @@ model Hero {
   heroId  Int          @unique
   tier    String
   role    String[]
-  stats   HeroStats
+  stats   HeroStatsOld
   details HeroDetails?
 }
 
@@ -101,6 +101,12 @@ type SkillTag {
   skillTagId   Int
   skillTagName String
   skillTagRGB  Int[]
+}
+
+type HeroStatsOld {
+  all           Stats
+  mythic        Stats
+  glory         Stats
 }
 
 type HeroStats {

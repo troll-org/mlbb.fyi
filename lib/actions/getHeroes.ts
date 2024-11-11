@@ -27,6 +27,21 @@ export async function getOldHeroes() {
   }
 }
 
+export async function getOldOldHeroes() {
+  try {
+    const heroes = await prisma.hero.findMany({
+      include: {
+        details: true,
+      },
+    });
+    return heroes;
+  } catch (error) {
+    console.log(error);
+
+    throw new Error("Failed to fetch heroes");
+  }
+}
+
 export async function getOneHero(heroPath?: string) {
   try {
     await clientPromise("game-core");

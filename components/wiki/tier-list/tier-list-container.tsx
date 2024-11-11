@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { NewHero } from "@prisma/client";
+import { Hero } from "@prisma/client";
 
 const tiers = [
   { tier: "OP", color: "#3652ba" },
@@ -14,7 +14,7 @@ const tiers = [
 ];
 
 interface TierListProps {
-  heroes: NewHero[] | null;
+  heroes: Hero[] | null;
 }
 
 export default function TierContainer({ heroes }: TierListProps) {
@@ -52,20 +52,14 @@ export default function TierContainer({ heroes }: TierListProps) {
                     <div
                       key={j}
                       onClick={() => {
-                        router.push(
-                          `/wiki/heroes/${hero.heroName.toLowerCase()}`
-                        );
+                        router.push(`/wiki/heroes/${hero.name.toLowerCase()}`);
                       }}
                       className="mx-auto cursor-pointer"
                     >
                       <div className="relative">
                         <Image
-                          src={
-                            hero.heroImg.split("/image/upload/")[0] +
-                            "/image/upload/c_fill,h_220,w_220,g_north/" +
-                            hero.heroImg.split("/image/upload/")[1]
-                          }
-                          alt={hero.heroImg}
+                          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_220,w_220,g_north/mlbb.fyi/hero/${hero.name}.webp`}
+                          alt={hero.name}
                           width={110}
                           height={110}
                           className="h-[55px] w-[55px] rounded-full sm:h-[110px] sm:w-[110px]"
@@ -83,8 +77,8 @@ export default function TierContainer({ heroes }: TierListProps) {
                           opacity: 1;
                         }
                       `}</style>
-                      <p className="mt-2 text-center text-[10px] md:text-[14px]">
-                        {hero.heroName}
+                      <p className="mt-2 text-center text-[10px]  md:text-[14px]">
+                        {hero?.name}
                       </p>
                     </div>
                   ))}
