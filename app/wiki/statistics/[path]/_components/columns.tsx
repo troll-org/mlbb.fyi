@@ -33,7 +33,7 @@ export const columns: ColumnDef<HeroData>[] = [
           href={`/wiki/heroes/${(
             row.getValue("heroName") as string
           ).toLowerCase()}`}
-          className="flex flex-row items-center font-semibold hover:cursor-pointer hover:underline"
+          className="flex flex-row items-center sm:font-semibold hover:cursor-pointer hover:underline"
         >
           {row.getValue("heroName")}
         </Link>
@@ -56,7 +56,7 @@ export const columns: ColumnDef<HeroData>[] = [
     },
     cell: ({ cell }) => {
       return (
-        <p className="flex items-center justify-end font-sat text-sm font-semibold md:text-[16px]">
+        <p className="flex items-center justify-end font-sat text-sm sm:font-semibold md:text-[16px]">
           {(cell.row.original.heroPicks.winRate * 100).toFixed(2)}%
         </p>
       );
@@ -78,7 +78,7 @@ export const columns: ColumnDef<HeroData>[] = [
     },
     cell: ({ cell }) => {
       return (
-        <p className="flex items-center justify-end font-sat text-sm font-semibold md:text-[16px]">
+        <p className="flex items-center justify-end font-sat text-sm sm:font-semibold md:text-[16px]">
           {(cell.row.original.heroPicks.rate * 100).toFixed(2)}%
         </p>
       );
@@ -100,7 +100,7 @@ export const columns: ColumnDef<HeroData>[] = [
     },
     cell: ({ cell }) => {
       return (
-        <p className="flex items-center justify-end font-sat text-sm font-semibold md:text-[16px]">
+        <p className="flex items-center justify-end font-sat text-sm sm:font-semibold md:text-[16px]">
           {(cell.row.original.heroBans.rate * 100).toFixed(2)}%
         </p>
       );
