@@ -84,7 +84,7 @@ function StatsDetailContent({
     <Table>
       <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
-          <TableRow key={headerGroup.id} className="border-b border-navy-700">
+          <TableRow key={headerGroup.id} className="border-b border-ocean">
             {headerGroup.headers.map((header) => {
               return (
                 <TableHead key={header.id} className="px-0">
@@ -106,7 +106,7 @@ function StatsDetailContent({
             <TableRow
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
-              className="border-b border-navy-700"
+              className="border-b border-ocean"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id} className="px-0 py-2 sm:p-4">

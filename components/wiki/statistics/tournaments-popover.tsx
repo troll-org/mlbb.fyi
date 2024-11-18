@@ -42,7 +42,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
-                className="w-full max-w-md justify-start overflow-hidden text-ellipsis whitespace-nowrap border-navy-700 text-sm font-semibold data-[state=open]:bg-white/5"
+                className="w-full max-w-md justify-start overflow-hidden text-ellipsis whitespace-nowrap border-ocean text-sm font-semibold data-[state=open]:bg-white/5"
               >
                 <span className="block overflow-hidden text-ellipsis whitespace-nowrap">
                   {selectedTournament
@@ -54,7 +54,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
                 </span>
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-full max-w-md border-navy-700 p-0">
+            <PopoverContent className="w-full max-w-md border-ocean p-0">
               <Command>
                 <CommandInput
                   placeholder="Search tournament..."

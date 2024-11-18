@@ -127,15 +127,15 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                   setSearchTerm("");
                 }}
               >
-                <ChevronLeft className="transition-all hover:text-navy-300 hover:duration-300" />
+                <ChevronLeft className="transition-all hover:text-ocean hover:duration-300" />
               </button>
             )}
-            <div className="flex grow flex-row items-center gap-2 rounded-xl border border-navy-300 bg-transparent">
+            <div className="flex grow flex-row items-center gap-2 rounded-xl border border-ocean bg-transparent">
               <div
                 className={cn(
                   "flex grow flex-row items-center",
                   isInputFocused
-                    ? "rounded-l-lg border focus:ring-1 focus:ring-navy-200 focus:ring-offset-0"
+                    ? "rounded-l-lg border focus:ring-1 focus:ring-ocean focus:ring-offset-0"
                     : ""
                 )}
               >
@@ -160,17 +160,17 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                 />
                 {searchTerm.length !== 0 && (
                   <button onClick={() => setSearchTerm("")}>
-                    <X className="mr-2 transition-all hover:text-navy-300 hover:duration-300" />
+                    <X className="mr-2 transition-all hover:text-ocean hover:duration-300" />
                   </button>
                 )}
               </div>
               <button>
-                <Search className="mr-2 transition-all hover:text-navy-300 hover:duration-300" />
+                <Search className="mr-2 transition-all hover:text-ocean hover:duration-300" />
               </button>
             </div>
           </form>
           <select
-            className="h-[2.45rem] w-24 rounded-xl border border-navy-300/50 bg-black p-2 shadow-sm  focus:outline-none"
+            className="h-[2.45rem] w-24 rounded-xl border border-ocean bg-black p-2 shadow-sm  focus:outline-none"
             value={selectedOption}
             onChange={handleChange}
           >

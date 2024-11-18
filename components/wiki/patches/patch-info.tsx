@@ -40,7 +40,7 @@ export default function PatchFyi({ patch, patches }: IPatch) {
                 className="flex cursor-pointer flex-row items-center"
                 onClick={() => router.push(`${previousPatch?.version}`)}
               >
-                <ArrowLeft className="hover:text-navy-200 hover:duration-300" />
+                <ArrowLeft className="hover:text-ocean hover:duration-300" />
                 <p className="text-lg ml-2 font-sat font-semibold sm:text-xl">
                   {previousPatch?.version}
                 </p>
@@ -62,7 +62,7 @@ export default function PatchFyi({ patch, patches }: IPatch) {
                 <p className="text-lg ml-2 font-sat font-semibold sm:text-xl ">
                   {nextPatch?.version}
                 </p>
-                <ArrowRight className="hover:text-navy-200 hover:duration-300" />
+                <ArrowRight className="hover:text-ocean hover:duration-300" />
               </div>
             )}
           </div>
@@ -128,7 +128,7 @@ export default function PatchFyi({ patch, patches }: IPatch) {
                   {i !== heading.fields.length - 1 && field.name && (
                     <div className="relative my-8">
                       <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t border-navy-400" />
+                        <span className="w-full border-t border-ocean" />
                       </div>
                       <div className="text-xs relative flex justify-center">
                         <span className="text-muted-foreground bg-[#151515] px-2"></span>

@@ -22,14 +22,14 @@ const Progress = React.forwardRef<
     <ProgressPrimitive.Root
       ref={ref}
       className={cn(
-        "relative h-[10px] w-full overflow-hidden rounded-full bg-pblack",
+        "relative h-[10px] w-full overflow-hidden rounded-full bg-white/10",
         className
       )}
       {...props}
     >
       {pos == "right" ? (
         <ProgressPrimitive.Indicator
-          className="h-full w-full flex-1 rounded-full bg-gradient-to-r from-navy-800 to-navy-500 opacity-80 transition-all duration-700 ease-in-out"
+          className="h-full w-full flex-1 rounded-full bg-gradient-to-r from-ocean to-ocean opacity-80 transition-all duration-700 ease-in-out"
           style={{
             transform: `translateX(${
               100 - (((currentValue || 0) * 100) / (max || 0) || 0)
@@ -38,7 +38,7 @@ const Progress = React.forwardRef<
         />
       ) : (
         <ProgressPrimitive.Indicator
-          className="h-full w-full flex-1 rounded-full bg-gradient-to-r from-navy-800 to-navy-500 opacity-80 transition-transform duration-700 ease-in-out"
+          className="h-full w-full flex-1 rounded-full bg-gradient-to-r from-ocean to-ocean opacity-80 transition-transform duration-700 ease-in-out"
           style={{
             transform: `translateX(-${
               100 - (((currentValue || 0) * 100) / (max || 0) || 0)
