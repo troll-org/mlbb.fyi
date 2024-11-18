@@ -56,7 +56,11 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
       <div className="space-y-4 md:w-[200px]">
         <HeroSearch />
         <GradiantCard
-          className={cn("w-full p-2", "border border-cloud/10 bg-cloud/5")}
+          variant="default"
+          className={cn(
+            "w-full p-2"
+            // "border border-cloud/10 bg-cloud/5"
+          )}
         >
           <HeroFilter orientation="vertical" />
         </GradiantCard>

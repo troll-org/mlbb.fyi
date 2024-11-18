@@ -13,7 +13,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      "mask relative inline-flex h-12 w-fit cursor-grab items-center justify-center overflow-hidden rounded-2xl bg-neutral-950 px-1.5 py-1 text-center backdrop-blur-xl after:absolute after:inset-0 after:rounded-2xl after:bg-gradient-to-b after:from-ocean after:via-ocean after:to-ocean after:p-px",
+      "mask relative inline-flex h-10 w-fit cursor-grab items-center justify-center overflow-hidden rounded-2xl border border-cloud/10 bg-cloud/10 p-0.5 text-center backdrop-blur-xl after:absolute after:inset-0 after:rounded-2xl",
       className
     )}
     {...props}
@@ -28,7 +28,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex w-full items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all duration-300 hover:rounded-2xl hover:bg-gray-500/25 focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:rounded-xl data-[state=active]:bg-ocean data-[state=active]:text-white data-[state=active]:shadow-sm ",
+      "inline-flex w-full items-center justify-center whitespace-nowrap rounded-2xl px-3 py-1.5 text-sm font-medium transition-all duration-300 hover:bg-cloud/10 focus-visible:border focus-visible:border-cloud/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cloud/10 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-deepocean data-[state=active]:text-white data-[state=active]:shadow-sm ",
       className
     )}
     {...props}
@@ -43,7 +43,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "mt-1.5 focus-visible:outline-none focus-visible:ring-0",
+      "mt-2 focus-visible:outline-none focus-visible:ring-0",
       className
     )}
     {...props}
