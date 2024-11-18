@@ -36,7 +36,11 @@ function ContentLayout({ children }: LayoutWikiProps) {
   }, [active, setSelectedTab]);
 
   return (
-    <Tabs value={selectedTab} defaultValue="heroes" className="mt-4 w-full">
+    <Tabs
+      value={selectedTab}
+      defaultValue="heroes"
+      className="mt-4 w-full pl-3"
+    >
       <div className="no-scrollbar h-[52px] overflow-x-scroll">
         <TabsList className="flex shrink-0 space-x-1">
           {WikiTabList.map((item, i) => (
