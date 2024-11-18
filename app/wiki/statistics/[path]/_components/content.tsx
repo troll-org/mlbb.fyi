@@ -24,13 +24,22 @@ import { columns } from "@/app/wiki/statistics/[path]/_components/columns";
 
 function StatsDetailContent({
   tournamentData,
+  query,
 }: {
   tournamentData: TournamentsDocument;
+  query?: string;
 }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
+  const filteredData = React.useMemo(() => {
+    if (!query) return tournamentData.data;
+    return tournamentData.data.filter((row) =>
+      row.heroName.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [query, tournamentData.data]);
+
   const table = useReactTable({
-    data: tournamentData.data,
+    data: filteredData,
     columns: columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,

@@ -9,6 +9,7 @@ import Redirect from "@/components/redirect";
 import getHeroStats from "@/lib/actions/getHeroStats";
 import { getOneHero } from "@/lib/actions/getHeroes";
 import HeroDetails from "@/components/wiki/heroes/hero-details";
+import { getHeroTier } from "@/lib/actions/getHeroTier";
 
 async function findIndexById(arr: any[], targetId: string): Promise<number> {
   for (let i = 0; i < arr.length; i++) {
@@ -31,6 +32,7 @@ export default async function HeroPage({
   }
 
   const heroStats = await getHeroStats(hero?._id.toString());
+  const heroTier = await getHeroTier(hero?._id.toString());
 
   // const [heroBuild, heroSpell, heroEmblem, heroCounter, heroCorr] =
   //   await Promise.all([
@@ -48,6 +50,7 @@ export default async function HeroPage({
       <HeroDetails
         hero={hero}
         heroStats={heroStats}
+        heroTier={heroTier}
         // hero={hero}
         // heroBuild={heroBuild.data?.items || []}
         // heroSpell={heroSpell.data?.spells || []}

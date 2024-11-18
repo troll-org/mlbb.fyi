@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import { TournamentsDocument } from "@/lib/mongoose/schema/tournaments";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Input } from "@/components/shared/input";
 import {
   Command,
   CommandEmpty,
@@ -27,10 +28,27 @@ interface IStats {
 export default function StatsContainer({ children, tourNames }: IStats) {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [selectedTournament, setSelectedTournament] = useState(
     pathname?.split("/")[3]
   );
   const [popoverOpen, setPopoverOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const qParam = searchParams?.get("q") || "";
+    setSearchTerm(qParam);
+  }, [searchParams]);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newSearchTerm = e.target.value;
+    setSearchTerm(newSearchTerm);
+    const query = new URLSearchParams();
+    if (newSearchTerm) {
+      query.set("q", newSearchTerm);
+    }
+    router.replace(`${pathname}?${query.toString()}`);
+  };
 
   return (
     <GradiantCard variant="clean" className="min-h-screen">
@@ -39,8 +57,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              className="w-full max-w-md justify-between border-navy-700 font-semibold data-[state=open]:bg-white/10"
-              // aria-expanded={!!selectedTournament}
+              className="w-full max-w-md justify-between border-navy-700 font-semibold data-[state=open]:bg-white/5"
             >
               {selectedTournament
                 ? tourNames.find(
@@ -79,6 +96,13 @@ export default function StatsContainer({ children, tourNames }: IStats) {
             </Command>
           </PopoverContent>
         </Popover>
+        <Input
+          type="text"
+          placeholder="Search heroes..."
+          value={searchTerm}
+          onChange={handleSearch}
+          className="rounded-lg border-navy-700 py-4"
+        />
       </div>
 
       {children}

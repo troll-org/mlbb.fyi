@@ -5,15 +5,24 @@ import React from "react";
 
 async function TournamentsDetailPage({
   params,
+  searchParams,
 }: {
   params: {
     path: string;
+  };
+  searchParams: {
+    q?: string;
   };
 }) {
   const tournamentData: TournamentsDocument =
     await getAllHeroStatsByTournamentPath(params.path);
 
-  return <StatsDetailContent tournamentData={tournamentData} />;
+  return (
+    <StatsDetailContent
+      tournamentData={tournamentData}
+      query={searchParams.q}
+    />
+  );
 }
 
 export default TournamentsDetailPage;

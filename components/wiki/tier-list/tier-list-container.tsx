@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
 
-const tiers = [
+export const tiers = [
   { tier: "S", color: "#3652ba" },
-  { tier: "A", color: "#4ade80" },
+  { tier: "A", color: "#059669" },
   { tier: "B", color: "#fde047" },
   { tier: "C", color: "#FFA500" },
   { tier: "D", color: "#FF6347" },

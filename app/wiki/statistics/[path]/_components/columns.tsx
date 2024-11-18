@@ -33,7 +33,7 @@ export const columns: ColumnDef<HeroData>[] = [
           href={`/wiki/heroes/${(
             row.getValue("heroName") as string
           ).toLowerCase()}`}
-          className="flex flex-row items-center sm:font-semibold hover:cursor-pointer hover:underline"
+          className="flex flex-row items-center hover:cursor-pointer hover:underline sm:font-semibold"
         >
           {row.getValue("heroName")}
         </Link>

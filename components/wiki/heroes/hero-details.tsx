@@ -6,36 +6,25 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useTabStore from "@/lib/state/useTabStore";
 import { GradiantCard } from "@/components/shared/gradiant-card";
-import { NewHero } from "@prisma/client";
 import { Progress } from "@/components/shared/progress";
 import Image from "next/image";
-import MatchInsights from "@/components/profile/profile-stats/match-insights";
 import { HeroStatsDocuments } from "@/lib/mongoose/schema/heroes-statistics";
 import { Button } from "@/components/shared/button";
 import { RefreshCcw } from "lucide-react";
+import { tiers } from "@/components/wiki/tier-list/tier-list-container";
 
 interface HeroFyiContainer {
   hero: HeroesDocument;
   heroStats: HeroStatsDocuments;
-  // heroBuild: Object[] | null;
-  // heroSpell: Object[] | null;
-  // heroEmblem: Object[] | null;
-  // heroWeakAgainst?: Object[] | null;
-  // heroStrongAgainst?: Object[] | null;
+  heroTier?: string;
 }
 
-// heroStats,
-// heroBuild,
-// heroSpell,
-// heroEmblem,
-// heroWeakAgainst,
-// heroStrongAgainst,
-// matches,
-// classicIndex,
-// rankedIndex,
-// showWR,
+const getTierColor = (tier?: string) => {
+  const foundTier = tiers.find((t) => t.tier === tier);
+  return foundTier ? foundTier.color : "#000";
+};
 
-function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
+function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
   const router = useRouter();
   const { selectedTab, setSelectedTab } = useTabStore();
   const [selectedRankState, setSelectedRankState] = useState(0);
@@ -47,18 +36,6 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // const uniqueSpells = Array.from(
-  //   new Set(heroSpell?.map((spell) => spell.name))
-  // );
-
-  // const uniqueEmblems = Array.from(
-  //   new Set(heroEmblem?.map((emblem) => emblem.name))
-  // );
-
-  // const uniqueCounters = Array.from(
-  //   new Set(heroWeakAgainst?.map((hero) => hero))
-  // );
 
   const heroDetails = hero.heroDetails;
   const data = [
@@ -164,8 +141,11 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
                       />
                     ))}
                 </div>
-                <div className="text-md mb-1 rounded-full bg-navy-600 px-4 font-semibold ">
-                  <p>{"X"}</p>
+                <div
+                  className={`text-md mb-1 rounded-full px-4 font-semibold`}
+                  style={{ backgroundColor: getTierColor(heroTier) }}
+                >
+                  <p>{heroTier || "X"}</p>
                 </div>
               </div>
               <div className="mb-1 flex flex-row items-center">
@@ -344,31 +324,6 @@ function HeroDetails({ hero, heroStats }: HeroFyiContainer) {
     </div>
   </GradiantCard> */}
       </div>
-
-      {/* {showWR && (
-  <div className="mt-1.5 flex flex-col gap-y-1.5 sm:flex-row sm:gap-x-1.5">
-    <MatchInsights
-      title={`Your classic ${heroDetails?.heroName} matches`}
-      totalMatches={matches[0]?.data?.[classicIndex]?.total ?? 0}
-      winrate={
-        (matches?.[0]?.data?.[classicIndex]?.win /
-          matches?.[0]?.data?.[classicIndex]?.total || 0) * 100
-      }
-      isBound={matches}
-      isHorizontal={true}
-    />
-    <MatchInsights
-      title={`Your ranked ${heroDetails?.heroName} matches`}
-      totalMatches={matches?.[1]?.data?.[rankedIndex]?.total ?? 0}
-      winrate={
-        (matches?.[1]?.data?.[rankedIndex]?.win /
-          matches?.[1]?.data?.[rankedIndex]?.total || 0) * 100
-      }
-      isBound={matches}
-      isHorizontal={true}
-    />
-  </div>
-)} */}
 
       {/* <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
   {heroStrongAgainst.length !== 0 && (
