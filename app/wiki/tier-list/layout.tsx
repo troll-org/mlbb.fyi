@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-export async function TierPage({ children }: { children: React.ReactNode }) {
+async function TierPage({ children }: { children: React.ReactNode }) {
   return (
     <TabsContent
       value="tier-list"
