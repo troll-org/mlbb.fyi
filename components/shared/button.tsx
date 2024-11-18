@@ -13,9 +13,9 @@ const buttonVariants = cva(
         outline: "bg-transparent border border-slate-200 hover:bg-slate-800",
         subtle: "bg-slate-100 text-slate-900 hover:bg-slate-200",
         gradiantNavy:
-          "bg-gradient-to-tl from-ocean 600 to-oceanhover:shadow-ocean 300/30 hover:shadow-lg hover:opacity-95",
+          "bg-gradient-to-tl from-ocean to-deepocean hover:shadow-ocean hover:shadow-lg hover:opacity-95",
         gradiantNavySec:
-          "bg-transparent border-ocean 600 border-2 shadow-ocean 600/70 hover:shadow-ocean 600/70 hover:shadow-lg hover:opacity-85 shadow-inner hover:bg-gradient-to-tl hover:from-ocean 600 hover:to-ocean 400",
+          "bg-transparent border-ocean border-2 shadow-ocean hover:shadow-ocean hover:shadow-lg hover:opacity-85 shadow-inner hover:bg-gradient-to-tl hover:from-ocean 600 hover:to-deepocean",
         ghost: "hover:bg-accent hover:text-accent-foreground",
       },
       size: {

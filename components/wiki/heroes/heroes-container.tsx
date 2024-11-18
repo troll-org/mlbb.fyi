@@ -8,6 +8,7 @@ import HeroSearch from "@/components/hero-search";
 import HeroCard from "./hero-card";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import { Query } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface IHeroesContainer {
   heroes: HeroesDocument[];
@@ -58,11 +59,14 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
 
   return (
     <>
-      <GradiantCard className="h-fit w-full px-6 md:w-[200px]" variant="clean">
+      <div className="space-y-4 md:w-[200px]">
         <HeroSearch />
-
-        <HeroFilter orientation="vertical" />
-      </GradiantCard>
+        <GradiantCard
+          className={cn("w-full p-2", "border border-cloud/10 bg-cloud/5")}
+        >
+          <HeroFilter orientation="vertical" />
+        </GradiantCard>
+      </div>
       <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
         {filteredHeroes.map((hero) => (
           <div key={hero.heroName} className="mx-auto">

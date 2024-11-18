@@ -95,8 +95,8 @@ export default async function RootLayout({
         )}
         <body
           className={cn(
-            "relative mx-auto mb-8 mt-24 bg-deepocean text-white selection:bg-ocean selection:text-white",
-            "after:fixed after:inset-x-0 after:top-[-1450px] after:z-[-1] after:mx-auto after:h-[1280px] after:w-[1880px] after:rounded-full after:bg-ocean after:blur-[400px]"
+            "relative mx-auto mb-8 mt-24 bg-deepocean text-cloud"
+            // "after:fixed after:inset-x-0 after:top-[-1450px] after:z-[-1] after:mx-auto after:h-[1280px] after:w-[1880px] after:rounded-full after:bg-sea after:blur-[400px]"
           )}
         >
           <ToasterProvider />

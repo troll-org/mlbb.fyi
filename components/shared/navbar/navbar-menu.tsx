@@ -123,7 +123,8 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
         <ul
           className={cn(
             "md:flex md:flex-row",
-            "items-center md:gap-x-6 md:gap-y-0 md:p-0",
+            // md:gap-x-6 md:gap-y-0 md:p-0
+            "items-center ",
             collapse ? "flex flex-col gap-y-4 p-4 font-semibold" : "hidden"
           )}
         >
@@ -147,9 +148,9 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                       : menu.href
                   }
                   className={cn(
-                    "cursor-pointer font-medium hover:text-ocean hover:transition-all hover:duration-300",
+                    "px-3 py-2 font-medium text-cloud/50 hover:text-cloud hover:transition-all hover:duration-150",
                     active === menu.name.toLowerCase() &&
-                      "underline:ease-in-out underline decoration-ocean decoration-2 underline-offset-4"
+                      "underline:ease-in-out text-cloud underline decoration-2 underline-offset-4"
                   )}
                 >
                   {menu.name}
