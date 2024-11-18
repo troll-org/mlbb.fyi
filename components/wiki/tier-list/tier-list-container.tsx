@@ -3,6 +3,9 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
+import { GradiantCard } from "@/components/shared/gradiant-card";
+import HeroSearch from "@/components/hero-search";
+import HeroFilter from "@/components/hero-filter";
 
 export const tiers = [
   { tier: "S", color: "#3652ba" },
@@ -19,11 +22,14 @@ interface TierListProps {
 export default function TierContainer({ heroes }: TierListProps) {
   const router = useRouter();
   return (
-    <div className="mt-4 flex w-full flex-col gap-4">
-      <p className="text-lg ml-2 text-gray-400">
-        mlbb.fyi tier list is updated daily based on the win, pick and ban rate
-        of each hero in major Mobile Legends tournament
-      </p>
+    <div className="flex w-full flex-col gap-4">
+      {/* <GradiantCard
+        className="flex h-fit w-full flex-col gap-4 px-6"
+        variant="clean"
+      >
+        <HeroFilter />
+        <HeroSearch />
+      </GradiantCard> */}
       <div className="flex w-full flex-col gap-4">
         {tiers.map((item, i) => {
           const filteredHeroes = heroes?.filter((hero) =>
@@ -68,6 +74,10 @@ export default function TierContainer({ heroes }: TierListProps) {
           );
         })}
       </div>
+      <p className="text-lg ml-2 text-gray-400">
+        mlbb.fyi tier list is updated daily based on the win, pick and ban rate
+        of each hero in major Mobile Legends tournament
+      </p>
     </div>
   );
 }
