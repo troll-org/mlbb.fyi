@@ -50,7 +50,7 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={clsx(
-        "fixed left-[50%] z-50 flex w-11/12 max-w-md translate-x-[-50%] flex-col gap-4 rounded-lg border border-none bg-zinc-900 p-6 shadow-lg animate-in focus:border-zinc-300 focus:outline-none active:border-none active:outline-none data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0",
+        "fixed left-[50%] z-50 flex w-11/12 max-w-md translate-x-[-50%] flex-col gap-4 rounded-lg border border-cloud/10 bg-deepocean p-6 shadow-lg animate-in focus:border-cloud/10 focus:outline-none active:border-none active:outline-none data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:rounded-lg sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0",
         className
       )}
       {...props}
@@ -119,7 +119,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={clsx("text-sm text-zinc-100", className)}
+    className={clsx("text-sm text-cloud/10", className)}
     {...props}
   />
 ));
