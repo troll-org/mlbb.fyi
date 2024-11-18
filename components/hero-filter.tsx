@@ -56,7 +56,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
       className={`flex items-center gap-8 ${
         orientation === "horizontal"
           ? "flex-row"
-          : "mt-4 flex-row gap-24 md:mt-1 md:flex-col md:items-start md:gap-4"
+          : "flex-row gap-24 md:mt-1 md:flex-col md:items-start md:gap-4"
       }`}
     >
       <ul className="flex flex-col gap-2">
@@ -69,7 +69,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
         </p>
         <div
           className={`flex gap-2 ${
-            orientation === "horizontal" ? "flex-row" : "flex-col"
+            orientation === "horizontal" ? "flex-row" : "flex-row md:flex-col"
           }`}
         >
           {HeroType.map(({ name: type }, i) => (
@@ -89,12 +89,14 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
                   <Image
                     src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1685987710/mlbb.fyi/heroType/${type}.webp`}
                     alt={type}
-                    width={orientation === "horizontal" ? 36 : 24}
-                    height={orientation === "horizontal" ? 36 : 24}
+                    width={36}
+                    height={36}
                   />
                 </div>
                 {orientation === "vertical" && (
-                  <Label className="cursor-pointer">{type}</Label>
+                  <Label className="ml-2 hidden cursor-pointer md:block">
+                    {type}
+                  </Label>
                 )}
               </li>
             </React.Fragment>
@@ -106,7 +108,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
         <p className="text-medium text-sm">Role</p>
         <div
           className={`flex gap-2 ${
-            orientation === "horizontal" ? "flex-row" : "flex-col"
+            orientation === "horizontal" ? "flex-row" : "flex-row md:flex-col"
           }`}
         >
           {HeroRole.map(({ name: lane }, i) => (
@@ -126,12 +128,14 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
                   <Image
                     src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1685987710/mlbb.fyi/heroRole/${lane}.webp`}
                     alt={lane}
-                    width={orientation === "horizontal" ? 36 : 24}
-                    height={orientation === "horizontal" ? 36 : 24}
+                    width={36}
+                    height={36}
                   />
                 </div>
                 {orientation === "vertical" && (
-                  <Label className="cursor-pointer">{lane}</Label>
+                  <Label className="ml-2 hidden cursor-pointer md:block">
+                    {lane}
+                  </Label>
                 )}
               </li>
             </React.Fragment>
