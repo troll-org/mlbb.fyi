@@ -39,7 +39,7 @@ function ContentLayout({ children }: LayoutWikiProps) {
     <Tabs
       value={selectedTab}
       defaultValue="heroes"
-      className="mt-4 w-full pl-3"
+      className="mt-4 w-full md:pl-3"
     >
       <div className="no-scrollbar h-[52px] overflow-x-scroll">
         <TabsList className="flex shrink-0 space-x-1">
