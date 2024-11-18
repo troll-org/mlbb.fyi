@@ -2,31 +2,22 @@
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Hero } from "@prisma/client";
+import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
 
 const tiers = [
-  { tier: "OP", color: "#3652ba" },
-  { tier: "S", color: "#4ade80" },
-  { tier: "A", color: "#fde047" },
-  { tier: "B", color: "#FFA500" },
-  { tier: "C", color: "#FF6347" },
-  { tier: "D", color: "#FF4500" },
+  { tier: "S", color: "#3652ba" },
+  { tier: "A", color: "#4ade80" },
+  { tier: "B", color: "#fde047" },
+  { tier: "C", color: "#FFA500" },
+  { tier: "D", color: "#FF6347" },
 ];
 
 interface TierListProps {
-  heroes: Hero[] | null;
+  heroes: HeroTierDocument[];
 }
 
 export default function TierContainer({ heroes }: TierListProps) {
   const router = useRouter();
-  const filteredHeroes = heroes?.filter((hero) =>
-    tiers.some((tier) => {
-      if (tier.tier === "OP" && hero.tier === "SS") {
-        return true;
-      }
-      return tier.tier === hero.tier;
-    })
-  );
   return (
     <div className="mt-4 flex w-full flex-col gap-4">
       <p className="text-lg ml-2 text-gray-400">
@@ -36,7 +27,7 @@ export default function TierContainer({ heroes }: TierListProps) {
       <div className="flex w-full flex-col gap-4">
         {tiers.map((item, i) => {
           const filteredHeroes = heroes?.filter((hero) =>
-            hero.tier === "SS" ? item.tier === "OP" : hero.tier === item.tier
+            hero.tier === "S" ? item.tier === "S" : hero.tier === item.tier
           );
 
           return (
