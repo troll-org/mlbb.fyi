@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Checkbox } from "@/components/shared/checkbox";
 import { Label } from "@/components/shared/label";
 import { HeroType } from "@/lib/hero-type";
 import useHeroFilter from "@/lib/state/useHeroFilter";
 import { HeroRole } from "@/lib/hero-role";
+import Image from "next/image";
 
 const HeroesFilter = () => {
   const [query, setQuery] = useState("");
@@ -40,19 +40,32 @@ const HeroesFilter = () => {
             <p className="text-medium mt-1 text-sm">Type</p>
             {HeroType.map((type, i) => (
               <React.Fragment key={i}>
-                <li className="flex w-full items-center gap-1.5">
-                  <Checkbox
-                    id={type.name}
-                    onClick={() =>
-                      addOrRemove(
-                        type.name.toLowerCase().replace(" ", ""),
-                        "type"
+                <li
+                  className="flex w-full cursor-pointer items-center gap-1 "
+                  onClick={() =>
+                    addOrRemove(
+                      type.name.toLowerCase().replace(" ", ""),
+                      "type"
+                    )
+                  }
+                >
+                  <div
+                    className={`flex items-center gap-1.5 transition-all duration-500 ease-in-out hover:opacity-100 ${
+                      heroFilter.type.includes(
+                        type.name.toLowerCase().replace(" ", "")
                       )
-                    }
-                  />
-                  <Label htmlFor={type.name} className="mt-[1px]">
-                    {type.name}
-                  </Label>
+                        ? "opacity-100"
+                        : "opacity-20"
+                    }`}
+                  >
+                    <Image
+                      src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1685987710/mlbb.fyi/heroType/${type.name}.webp`}
+                      alt={type.name}
+                      width={24}
+                      height={24}
+                    />
+                    <Label className="cursor-pointer">{type.name}</Label>
+                  </div>
                 </li>
               </React.Fragment>
             ))}
@@ -61,19 +74,32 @@ const HeroesFilter = () => {
             <p className="text-medium mt-1 text-sm">Role</p>
             {HeroRole.map((role, i) => (
               <React.Fragment key={i}>
-                <li className="flex w-full items-center gap-1.5">
-                  <Checkbox
-                    id={role.name}
-                    onClick={() =>
-                      addOrRemove(
-                        role.name.toLowerCase().replace(" ", ""),
-                        "role"
+                <li
+                  className="flex w-full cursor-pointer items-center gap-1"
+                  onClick={() =>
+                    addOrRemove(
+                      role.name.toLowerCase().replace(" ", ""),
+                      "role"
+                    )
+                  }
+                >
+                  <div
+                    className={`flex  items-center gap-1.5 transition-all duration-500 ease-in-out hover:opacity-100 ${
+                      heroFilter.role.includes(
+                        role.name.toLowerCase().replace(" ", "")
                       )
-                    }
-                  />
-                  <Label htmlFor={role.name} className="mt-[1px]">
-                    {role.name}
-                  </Label>
+                        ? "opacity-100"
+                        : "opacity-20"
+                    }`}
+                  >
+                    <Image
+                      src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1685987710/mlbb.fyi/heroRole/${role.name}.webp`}
+                      alt={role.name}
+                      width={24}
+                      height={24}
+                    />
+                    <Label className="cursor-pointer">{role.name}</Label>
+                  </div>
                 </li>
               </React.Fragment>
             ))}

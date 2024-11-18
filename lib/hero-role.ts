@@ -1,22 +1,17 @@
 export const HeroRole = [
   {
     name: "Jungle",
-    icon: "",
   },
   {
-    name: "Mid Lane",
-    icon: "",
+    name: "Mid",
   },
   {
-    name: "Exp Lane",
-    icon: "",
+    name: "Exp",
   },
   {
-    name: "Gold Lane",
-    icon: "",
+    name: "Gold",
   },
   {
     name: "Roam",
-    icon: "",
   },
 ];
