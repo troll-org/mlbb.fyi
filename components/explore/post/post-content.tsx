@@ -179,7 +179,7 @@ const PostContent: React.FC<PostContentProp> = ({
                       >
                         <button
                           type="button"
-                          className="flex h-5 w-5 items-center justify-center rounded-full transition-all ease-in-out hover:text-navy-300 hover:duration-300 focus:outline-none"
+                          className="flex h-5 w-5 items-center justify-center rounded-full transition-all ease-in-out hover:text-ocean hover:duration-300 focus:outline-none"
                           onClick={handleClick}
                         >
                           <MoreVertical />
@@ -187,11 +187,11 @@ const PostContent: React.FC<PostContentProp> = ({
                         {isOpen && (
                           <div className="absolute right-0 mt-2 w-40 origin-top-right ">
                             <div
-                              className="rounded-lg bg-lblack py-1"
+                              className="rounded-lg bg-black/80 py-1"
                               role="none"
                             >
                               <button
-                                className="block px-4 py-2 hover:text-navy-300 hover:duration-300"
+                                className="block px-4 py-2 hover:text-ocean hover:duration-300"
                                 onClick={() => {
                                   setEditActive(!editActive);
                                   setIsOpen(!isOpen);
@@ -227,7 +227,7 @@ const PostContent: React.FC<PostContentProp> = ({
                   by
                 </p>
                 <Link href={`/profile/${post.createdBy}/statistics`}>
-                  <p className="text-xs mt-2 truncate leading-5 text-gray-500 ease-in-out hover:text-navy-300 hover:underline">
+                  <p className="text-xs mt-2 truncate leading-5 text-gray-500 ease-in-out hover:text-ocean hover:underline">
                     {post.createdBy}
                   </p>
                 </Link>
@@ -236,7 +236,7 @@ const PostContent: React.FC<PostContentProp> = ({
                 <ul role="list" className="flex flex-row items-center gap-1">
                   {post.tags?.map((tag: string) => (
                     <p
-                      className="text-xs mt-2 truncate leading-5 text-navy-300 ease-in-out"
+                      className="text-xs mt-2 truncate leading-5 text-ocean ease-in-out"
                       key={tag}
                     >{`#${tag}`}</p>
                   ))}
@@ -255,7 +255,7 @@ const PostContent: React.FC<PostContentProp> = ({
                 {expandedable && (
                   <button
                     onClick={toggleExpand}
-                    className="font-bold text-navy-300 transition-all ease-in-out hover:underline hover:duration-300"
+                    className="font-bold text-ocean transition-all ease-in-out hover:underline hover:duration-300"
                   >
                     {!expanded ? "See more" : "See less"}
                   </button>

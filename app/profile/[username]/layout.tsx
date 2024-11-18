@@ -97,7 +97,7 @@ export default async function LayoutProfile({
   return (
     <main className="max-w-[1280px] xl:mx-auto">
       <div className="flex flex-1 flex-col gap-1.5 md:flex-row">
-        <div className="mx-auto flex gap-1.5 text-softGray">
+        <div className="mx-auto flex gap-1.5 text-cloud">
           <ProfileBio
             currentUser={currentUser}
             user={isExistingUser}

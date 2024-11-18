@@ -98,7 +98,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
         className={cn(
           "md:static md:flex md:h-auto md:bg-transparent",
           collapse
-            ? "fixed inset-0 top-[54px] z-10 h-screen bg-bgblack/80"
+            ? "fixed inset-0 top-[54px] z-10 h-screen bg-deepocean/80"
             : "hidden"
         )}
       >
@@ -147,9 +147,9 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                       : menu.href
                   }
                   className={cn(
-                    "cursor-pointer font-medium hover:text-navy-300 hover:transition-all hover:duration-300",
+                    "cursor-pointer font-medium hover:text-ocean hover:transition-all hover:duration-300",
                     active === menu.name.toLowerCase() &&
-                      "underline:ease-in-out underline decoration-navy-300 decoration-2 underline-offset-4"
+                      "underline:ease-in-out underline decoration-ocean decoration-2 underline-offset-4"
                   )}
                 >
                   {menu.name}
@@ -168,7 +168,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                 className="flex h-6 w-[72px] rounded-2xl p-2"
                 variant="gradiantNavy"
               >
-                <span className="stroke-[3] text-[16px] text-softGray">
+                <span className="stroke-[3] text-[16px] text-cloud">
                   Sign In
                 </span>
               </Button>
@@ -183,7 +183,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                 className="group h-8 w-8 rounded-full p-2"
                 variant="gradiantNavy"
               >
-                <Settings className="stroke-[3] text-softGray group-hover:rotate-180 group-hover:transition-all group-hover:duration-500" />
+                <Settings className="stroke-[3] text-cloud group-hover:rotate-180 group-hover:transition-all group-hover:duration-500" />
               </Button>
               <Button
                 onClick={() => {
@@ -192,7 +192,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                 className="h-8 w-8 rounded-full p-2"
                 variant="gradiantNavy"
               >
-                <LogOutIcon className="stroke-[3] text-softGray" />
+                <LogOutIcon className="stroke-[3] text-cloud" />
               </Button>
             </li>
           )}

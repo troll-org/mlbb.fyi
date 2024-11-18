@@ -206,7 +206,7 @@ const PostForm = ({ currUser }: { currUser?: SafeUser }) => {
             <DialogFit
               title="Choose image (Max 5 MB)"
               triggerChild={
-                <Paperclip className="mr-2 mt-1 cursor-pointer transition-all ease-in-out hover:text-navy-300 hover:duration-300" />
+                <Paperclip className="mr-2 mt-1 cursor-pointer transition-all ease-in-out hover:text-ocean hover:duration-300" />
               }
             >
               <div>

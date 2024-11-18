@@ -35,7 +35,7 @@ const HeroSearch: React.FC = () => {
       placeholder="Search heroes..."
       value={searchTerm}
       onChange={handleSearch}
-      className="rounded-lg border-navy-700 py-4"
+      className="rounded-lg border-ocean py-4"
     />
   );
 };

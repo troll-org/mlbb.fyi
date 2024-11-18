@@ -39,7 +39,7 @@ const ProfileDesc: React.FC<ProfileDescProps> = ({ user, mlbbAcc }) => {
           {mlbbAcc ? (
             <>
               {mlbbAcc.nickname}
-              <span className="rounded-full bg-navy-600 px-2 text-sm font-semibold shadow-inner ">
+              <span className="rounded-full bg-ocean px-2 text-sm font-semibold shadow-inner ">
                 {mlbbAcc.accId}
               </span>
             </>

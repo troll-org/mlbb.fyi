@@ -102,7 +102,7 @@ const NewCommentForm: React.FC<CommentProps> = ({ postId, img }) => {
               ) : (
                 <SendIcon
                   size={20}
-                  className="mb-[6px] rotate-45 hover:text-navy-300 hover:duration-300"
+                  className="mb-[6px] rotate-45 hover:text-ocean hover:duration-300"
                 />
               )}
             </button>
