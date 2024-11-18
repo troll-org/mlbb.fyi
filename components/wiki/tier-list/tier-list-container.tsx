@@ -1,11 +1,10 @@
 "use client";
 
+import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
-import { GradiantCard } from "@/components/shared/gradiant-card";
-import HeroSearch from "@/components/hero-search";
-import HeroFilter from "@/components/hero-filter";
+import { Query } from "@/lib/types";
 
 export const tiers = [
   { tier: "S", color: "#3652ba" },
@@ -17,22 +16,49 @@ export const tiers = [
 
 interface TierListProps {
   heroes: HeroTierDocument[];
+  query: Query;
 }
 
-export default function TierContainer({ heroes }: TierListProps) {
+export default function TierContainer({ heroes, query }: TierListProps) {
   const router = useRouter();
+  const filteredHeroes = React.useMemo(() => {
+    if (!query) return heroes;
+
+    const { q, type, lane } = query;
+
+    return heroes.filter((hero) => {
+      const matchesQuery =
+        !q || hero.name.toLowerCase().includes(q.toLowerCase());
+
+      const matchesType =
+        !type ||
+        type
+          .split(",")
+          .every((typeFilter) =>
+            hero.heroRoleType.some((roleType) =>
+              roleType.toLowerCase().includes(typeFilter.toLowerCase())
+            )
+          );
+
+      const matchesLane =
+        !lane ||
+        lane
+          .split(",")
+          .every((laneFilter) =>
+            hero.heroLaneType.some((laneType) =>
+              laneType.toLowerCase().includes(laneFilter.toLowerCase())
+            )
+          );
+
+      return matchesQuery && matchesType && matchesLane;
+    });
+  }, [query, heroes]);
+
   return (
     <div className="flex w-full flex-col gap-4">
-      {/* <GradiantCard
-        className="flex h-fit w-full flex-col gap-4 px-6"
-        variant="clean"
-      >
-        <HeroFilter />
-        <HeroSearch />
-      </GradiantCard> */}
       <div className="flex w-full flex-col gap-4">
         {tiers.map((item, i) => {
-          const filteredHeroes = heroes?.filter((hero) =>
+          const tierHeroes = filteredHeroes?.filter((hero) =>
             hero.tier === "S" ? item.tier === "S" : hero.tier === item.tier
           );
 
@@ -45,7 +71,7 @@ export default function TierContainer({ heroes }: TierListProps) {
               <p className="w-3 text-center font-heading sm:w-6">{item.tier}</p>
               <div className="ml-4 h-fit w-full rounded-r-lg bg-black py-8">
                 <div className="mx-4 grid grid-cols-3 flex-row gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
-                  {filteredHeroes?.map((hero, j) => (
+                  {tierHeroes?.map((hero, j) => (
                     <div
                       key={j}
                       onClick={() => {

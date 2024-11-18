@@ -9,6 +9,8 @@ interface Stats {
 export interface HeroTierDocument {
   heroId: Types.ObjectId;
   name: string;
+  heroLaneType: string[];
+  heroRoleType: string[];
   combinedScore: number;
   currentMetaScore: number;
   currentMetaStats: Stats;

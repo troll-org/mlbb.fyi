@@ -48,6 +48,8 @@ export async function getHeroTierWithNames({ select }: { select?: string }) {
           _id: 0,
           tier: 1,
           name: "$hero.heroName",
+          heroLaneType: "$hero.heroLaneType",
+          heroRoleType: "$hero.heroRoleType",
           ...(select ? { [select]: 1 } : {}),
         },
       },

@@ -60,13 +60,12 @@ const HeroSearch: React.FC = () => {
         placeholder="Search heroes..."
         value={searchTerm}
         onChange={handleSearch}
-        // className="rounded-lg border-cloud py-4"
       />
       {isLoading && (
         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
           <svg
             fill="none"
-            className="h-8 w-8 animate-spin text-pwhite "
+            className="text-pwhite h-8 w-8 animate-spin "
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
           >
