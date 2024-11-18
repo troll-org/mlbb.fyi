@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { LogOutIcon, Settings } from "lucide-react";
+import { LogOutIcon, PersonStandingIcon, Settings } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { SafeUser } from "@/types";
@@ -12,6 +12,15 @@ import Burger from "../icons/burger";
 import { Button } from "../button";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/shared/command";
+import { wikiQuickLinks } from "@/lib/configs/wiki-links";
 
 interface NavMenuProps {
   currentUser?: SafeUser | null;
@@ -57,6 +66,21 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
       ? ""
       : pathArray?.[1];
 
+  // command
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
   return (
     <>
       <div
@@ -78,6 +102,24 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
             : "hidden"
         )}
       >
+        <CommandDialog open={open} onOpenChange={setOpen}>
+          <CommandInput placeholder="Search wiki's..." />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading="Heroes">
+              {wikiQuickLinks[0].subItems?.map((hero) => (
+                <CommandItem key={hero.path} asChild>
+                  <Link href={hero.path}>
+                    {" "}
+                    <PersonStandingIcon />
+                    {hero.label}
+                  </Link>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </CommandList>
+        </CommandDialog>
+
         <ul
           className={cn(
             "md:flex md:flex-row",
