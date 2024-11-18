@@ -42,7 +42,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
-                className="w-full max-w-md justify-start overflow-hidden text-ellipsis whitespace-nowrap border-cloud/10 text-sm font-semibold data-[state=open]:bg-cloud/10"
+                className="flex h-10 w-full max-w-md justify-start rounded-lg border border-cloud/10 bg-cloud/5 px-3 py-2 text-sm backdrop-blur-lg focus:outline-none focus:ring-1 focus:ring-cloud/30 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:bg-cloud/10"
               >
                 <span className="block overflow-hidden text-ellipsis whitespace-nowrap">
                   {selectedTournament

@@ -1,15 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
-import HeroFilter from "@/components/hero-filter";
-import HeroSearch from "@/components/hero-search";
 import HeroCard from "./hero-card";
-import { GradiantCard } from "@/components/shared/gradiant-card";
 import { Query } from "@/lib/types";
-import { cn } from "@/lib/utils";
-
 interface IHeroesContainer {
   heroes: HeroesDocument[];
   query: Query;
@@ -18,7 +13,7 @@ interface IHeroesContainer {
 const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
   const router = useRouter();
 
-  const filteredHeroes = useMemo(() => {
+  const filteredHeroes = React.useMemo(() => {
     if (!query) return heroes;
 
     const { q, type, lane } = query;
@@ -53,19 +48,6 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
 
   return (
     <>
-      <div className="space-y-4 md:w-[200px]">
-        <HeroSearch />
-        <GradiantCard
-          variant="default"
-          className={cn(
-            "w-full p-2"
-            // "border border-cloud/10 bg-cloud/5"
-          )}
-        >
-          <HeroFilter orientation="vertical" />
-        </GradiantCard>
-      </div>
-
       {filteredHeroes.length > 0 ? (
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
           {filteredHeroes.map((hero) => (
