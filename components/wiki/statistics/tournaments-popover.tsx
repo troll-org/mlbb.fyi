@@ -57,13 +57,15 @@ export default function StatsContainer({ children, tourNames }: IStats) {
           <PopoverTrigger asChild>
             <Button
               variant="outline"
-              className="w-full max-w-md justify-between border-navy-700 font-semibold data-[state=open]:bg-white/5"
+              className="w-full max-w-md justify-start overflow-hidden text-ellipsis whitespace-nowrap border-navy-700 text-sm font-semibold data-[state=open]:bg-white/5"
             >
-              {selectedTournament
-                ? tourNames.find(
-                    (tourney) => tourney.tournamentPath === selectedTournament
-                  )?.tournamentName
-                : "Select a tournament..."}
+              <span className="block overflow-hidden text-ellipsis whitespace-nowrap">
+                {selectedTournament
+                  ? tourNames.find(
+                      (tourney) => tourney.tournamentPath === selectedTournament
+                    )?.tournamentName
+                  : "Select tournament..."}
+              </span>
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-full max-w-md border-navy-700 p-0">
