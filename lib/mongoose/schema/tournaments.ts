@@ -43,6 +43,8 @@ export interface PickAndBans {
 export interface HeroData {
   heroId: Types.ObjectId;
   heroName: string;
+  heroLaneType: string[];
+  heroRoleType: string[];
   heroPicks: HeroPicks;
   blueSidePicks: SidePicks;
   redSidePicks: SidePicks;

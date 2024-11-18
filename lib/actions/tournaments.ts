@@ -51,34 +51,91 @@ export async function getAllTournamentsName(): Promise<TournamentsDocument[]> {
   }
 }
 
+// export async function getAllHeroStatsByTournamentPath(tournamentPath: string) {
+//   try {
+//     await clientPromise("game-core");
+//     const heroDataForTournament = await Tournaments.aggregate([
+//       {
+//         $match: { tournamentPath: tournamentPath },
+//       },
+//       {
+//         $project: {
+//           data: {
+//             // heroId: 1,
+//             heroName: 1,
+//             heroPicks: 1,
+//             heroBans: 1,
+//             // pickAndBans: 1,
+//             // heroTopPlayedWith: 1,
+//             // heroTopPlayedVs: 1,
+//             // Exclude blueSidePicks and redSidePicks
+//           },
+//           // dataSourceUrl: 1,
+//           // scrapedAt: 1,
+//           tournamentDates: 1,
+//           tournamentName: 1,
+//           tournamentPath: 1,
+//         },
+//       },
+//     ]);
+
+//     return JSON.parse(JSON.stringify(heroDataForTournament[0]));
+//   } catch (error) {
+//     console.error(error);
+//     throw new Error("Failed to fetch tournaments");
+//   }
+// }
+
 export async function getAllHeroStatsByTournamentPath(tournamentPath: string) {
   try {
     await clientPromise("game-core");
+
     const heroDataForTournament = await Tournaments.aggregate([
       {
         $match: { tournamentPath: tournamentPath },
       },
       {
+        $unwind: "$data",
+      },
+      {
+        $lookup: {
+          from: "Heroes",
+          localField: "data.heroId",
+          foreignField: "_id",
+          as: "heroDetails",
+        },
+      },
+      {
+        $unwind: {
+          path: "$heroDetails",
+          preserveNullAndEmptyArrays: true,
+        },
+      },
+      {
         $project: {
           data: {
-            // heroId: 1,
-            heroName: 1,
-            heroPicks: 1,
-            heroBans: 1,
-            // pickAndBans: 1,
-            // heroTopPlayedWith: 1,
-            // heroTopPlayedVs: 1,
-            // Exclude blueSidePicks and redSidePicks
+            heroId: "$data.heroId",
+            heroName: "$data.heroName",
+            heroPicks: "$data.heroPicks",
+            heroBans: "$data.heroBans",
+            heroLaneType: "$heroDetails.heroLaneType",
+            heroRoleType: "$heroDetails.heroRoleType",
           },
-          // dataSourceUrl: 1,
-          // scrapedAt: 1,
           tournamentDates: 1,
           tournamentName: 1,
           tournamentPath: 1,
         },
       },
+      {
+        $group: {
+          _id: "$_id",
+          data: { $push: "$data" },
+          tournamentDates: { $first: "$tournamentDates" },
+          tournamentName: { $first: "$tournamentName" },
+          tournamentPath: { $first: "$tournamentPath" },
+        },
+      },
     ]);
-
     return JSON.parse(JSON.stringify(heroDataForTournament[0]));
   } catch (error) {
     console.error(error);

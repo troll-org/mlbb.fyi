@@ -4,7 +4,6 @@ import { TournamentsDocument } from "@/lib/mongoose/schema/tournaments";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -22,20 +21,56 @@ import {
 } from "@tanstack/react-table";
 import { columns } from "@/app/wiki/statistics/[path]/_components/columns";
 
+interface Query {
+  q?: string;
+  type?: string;
+  lane?: string;
+}
+
 function StatsDetailContent({
   tournamentData,
   query,
 }: {
   tournamentData: TournamentsDocument;
-  query?: string;
+  query: Query;
 }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
 
   const filteredData = React.useMemo(() => {
     if (!query) return tournamentData.data;
-    return tournamentData.data.filter((row) =>
-      row.heroName.toLowerCase().includes(query.toLowerCase())
-    );
+
+    const { q, type, lane } = query;
+
+    return tournamentData.data.filter((row) => {
+      const matchesQuery =
+        !q ||
+        (typeof q === "string" &&
+          row.heroName.toLowerCase().includes(q.toLowerCase()));
+
+      const matchesType =
+        !type ||
+        (typeof type === "string" &&
+          type
+            .split(",")
+            .every((typeFilter) =>
+              row.heroRoleType?.some((roleType) =>
+                roleType.toLowerCase().includes(typeFilter.toLowerCase())
+              )
+            ));
+
+      const matchesRole =
+        !lane ||
+        (typeof lane === "string" &&
+          lane
+            .split(",")
+            .every((laneFilter) =>
+              row.heroLaneType?.some((laneType) =>
+                laneType.toLowerCase().includes(laneFilter.toLowerCase())
+              )
+            ));
+
+      return matchesQuery && matchesType && matchesRole;
+    });
   }, [query, tournamentData.data]);
 
   const table = useReactTable({
