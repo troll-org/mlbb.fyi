@@ -1,5 +1,7 @@
 import getHeroes from "@/lib/actions/getHeroes";
-import { TabsContent } from "@/components/shared/tabs";
+import { GradiantCard } from "@/components/shared/gradiant-card";
+import HeroFilter from "@/components/hero-filter";
+import HeroSearch from "@/components/hero-search";
 import HeroesContainer from "@/components/wiki/heroes/heroes-container";
 import { Metadata } from "next";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
@@ -34,12 +36,16 @@ async function HeroesPage({
   });
 
   return (
-    <TabsContent
-      value="heroes"
-      className="flex w-full flex-col gap-5 md:flex-row"
-    >
+    <>
+      <GradiantCard
+        className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col md:gap-0"
+        variant="clean"
+      >
+        <HeroSearch />
+        <HeroFilter orientation="vertical" />
+      </GradiantCard>
       <HeroesContainer heroes={heroes} query={searchParams} />
-    </TabsContent>
+    </>
   );
 }
 
