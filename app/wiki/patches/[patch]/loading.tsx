@@ -3,7 +3,7 @@ function Loading() {
     <div className="flex items-center justify-center pt-32">
       <svg
         fill="none"
-        className="h-8 w-8 animate-spin text-pwhite "
+        className="h-8 w-8 animate-spin text-white "
         viewBox="0 0 32 32"
         xmlns="http://www.w3.org/2000/svg"
       >

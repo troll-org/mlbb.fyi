@@ -24,7 +24,7 @@ const HeroCard = ({
         />
       </div>
       <div className="relative w-full">
-        <p className="absolute inset-x-0 top-[-28px] mx-1  mt-[6px] rounded-md bg-navy-900/60 p-0.5 text-center text-[10px] font-medium shadow-inner shadow-navy-500/40">
+        <p className="absolute inset-x-0  top-[-28px] mx-1 mt-[6px] rounded-md bg-ocean p-0.5 text-center text-[10px] font-medium shadow-inner shadow-ocean">
           {hero.heroName}
         </p>
       </div>

@@ -8,14 +8,14 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-pblack text-white hover:bg-sblack duration-300",
+        default: "bg-black text-white hover:bg-white/5 duration-300",
         destructive: "bg-red-500 text-white hover:bg-red-600",
         outline: "bg-transparent border border-slate-200 hover:bg-slate-800",
         subtle: "bg-slate-100 text-slate-900 hover:bg-slate-200",
         gradiantNavy:
-          "bg-gradient-to-tl from-navy-600 to-navy-400 hover:shadow-navy-300/30 hover:shadow-lg hover:opacity-95",
+          "bg-gradient-to-tl from-ocean to-deepocean hover:shadow-ocean hover:shadow-lg hover:opacity-95",
         gradiantNavySec:
-          "bg-transparent border-navy-600 border-2 shadow-navy-600/70 hover:shadow-navy-600/70 hover:shadow-lg hover:opacity-85 shadow-inner hover:bg-gradient-to-tl hover:from-navy-600 hover:to-navy-400",
+          "bg-transparent border-ocean border-2 shadow-ocean hover:shadow-ocean hover:shadow-lg hover:opacity-85 shadow-inner hover:bg-gradient-to-tl hover:from-ocean 600 hover:to-deepocean",
         ghost: "hover:bg-accent hover:text-accent-foreground",
       },
       size: {

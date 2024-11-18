@@ -38,7 +38,7 @@ async function HeroesPage({
   return (
     <>
       <GradiantCard
-        className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col md:gap-0"
+        className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col"
         variant="clean"
       >
         <HeroSearch />

@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
 import HeroCard from "./hero-card";
 import { Query } from "@/lib/types";
-
 interface IHeroesContainer {
   heroes: HeroesDocument[];
   query: Query;

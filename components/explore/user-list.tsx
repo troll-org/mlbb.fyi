@@ -203,7 +203,7 @@ const UserList: React.FC<UserListProps> = ({ filter, currentUser }) => {
                     </div>
                   </div>
                   {index !== users.length - 1 && (
-                    <div className="absolute inset-x-0 bottom-0 mx-[-23px] h-0.5 bg-navy-400/30"></div>
+                    <div className="absolute inset-x-0 bottom-0 mx-[-23px] h-0.5 bg-ocean"></div>
                   )}
                 </div>
               );

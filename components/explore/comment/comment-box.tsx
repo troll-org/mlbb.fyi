@@ -124,16 +124,16 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment, postId, userId }) => {
             <div className="relative inline-block text-left">
               <button
                 type="button"
-                className="flex h-5 w-5 items-center justify-center rounded-full transition-all ease-in-out hover:text-navy-300 hover:duration-300 focus:outline-none"
+                className="flex h-5 w-5 items-center justify-center rounded-full transition-all ease-in-out hover:text-ocean hover:duration-300 focus:outline-none"
                 onClick={handleClick}
               >
                 <MoreVertical />
               </button>
               {isOpen && (
                 <div className="absolute right-0 z-50 mt-2 w-40 origin-top-right">
-                  <div className="rounded-lg bg-lblack py-1" role="none">
+                  <div className="rounded-lg bg-black/80 py-1" role="none">
                     <button
-                      className="block px-4 py-2 hover:text-navy-300 hover:duration-300"
+                      className="block px-4 py-2 hover:text-ocean hover:duration-300"
                       onClick={() => {
                         setEditActive(!editActive);
                         setIsOpen(!isOpen);
@@ -184,7 +184,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment, postId, userId }) => {
               {expandedable && (
                 <button
                   onClick={toggleExpand}
-                  className="font-bold text-navy-300 transition-all ease-in-out hover:underline hover:duration-300"
+                  className="font-bold text-ocean transition-all ease-in-out hover:underline hover:duration-300"
                 >
                   {!expanded ? "See more" : "See less"}
                 </button>
@@ -342,7 +342,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment, postId, userId }) => {
         {comment.replies && comment.replies.length !== 0 && (
           <div>
             <button
-              className="flex cursor-pointer flex-row items-center transition-all ease-in-out hover:text-navy-300 hover:duration-300"
+              className="flex cursor-pointer flex-row items-center transition-all ease-in-out hover:text-ocean hover:duration-300"
               onClick={() => setIsEnableReplyList(!isEnableReplyList)}
             >
               <MessagesSquare className="mr-2 h-5 w-5" />
@@ -356,7 +356,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment, postId, userId }) => {
         )}
         <div>
           <button
-            className="flex cursor-pointer flex-row items-center transition-all ease-in-out hover:text-navy-300 hover:duration-300"
+            className="flex cursor-pointer flex-row items-center transition-all ease-in-out hover:text-ocean hover:duration-300"
             onClick={() => setIsAddingReply(!isAddingReply)}
           >
             <Reply className="mr-2 h-5 w-5" />

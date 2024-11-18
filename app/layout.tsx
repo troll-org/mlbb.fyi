@@ -61,7 +61,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.className} ${fontHeading.variable} ${fontSatoshi.variable} text-softGray`}
+      className={`${inter.className} ${fontHeading.variable} ${fontSatoshi.variable} text-cloud`}
     >
       <CSPostHogProvider>
         {process.env.NODE_ENV === "production" && (
@@ -95,8 +95,8 @@ export default async function RootLayout({
         )}
         <body
           className={cn(
-            "relative mx-auto mb-8 mt-24 bg-bgblack text-pwhite selection:bg-navy-400 selection:text-white",
-            "after:fixed after:inset-x-0 after:top-[-1450px] after:z-[-1] after:mx-auto after:h-[1280px] after:w-[1880px] after:rounded-full after:bg-navy-500 after:blur-[400px]"
+            "relative mx-auto mb-8 mt-24 bg-deepocean text-cloud"
+            // "after:fixed after:inset-x-0 after:top-[-1450px] after:z-[-1] after:mx-auto after:h-[1280px] after:w-[1880px] after:rounded-full after:bg-sea after:blur-[400px]"
           )}
         >
           <ToasterProvider />

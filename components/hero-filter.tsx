@@ -56,13 +56,13 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
       className={`flex items-center gap-8 ${
         orientation === "horizontal"
           ? "flex-row"
-          : "flex-row gap-24 md:mt-1 md:flex-col md:items-start md:gap-4"
+          : "mt-4 flex-row gap-24 md:mt-0 md:flex-col md:items-start md:gap-4"
       }`}
     >
       <ul className="flex flex-col gap-2">
         <p
           className={`text-medium text-sm ${
-            orientation === "horizontal" ? "mt-1" : "md:mt-4"
+            orientation === "horizontal" ? "mt-1" : "md:mt-0"
           }`}
         >
           Type
@@ -81,7 +81,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
                     ?.split(",")
                     .includes(type.toLowerCase())
                     ? "opacity-100"
-                    : "opacity-20"
+                    : "opacity-40"
                 }`}
                 onClick={() => handleTypeClick(type)}
               >
@@ -120,7 +120,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
                     ?.split(",")
                     .includes(lane.toLowerCase())
                     ? "opacity-100"
-                    : "opacity-20"
+                    : "opacity-40"
                 }`}
                 onClick={() => handleRoleClick(lane)}
               >

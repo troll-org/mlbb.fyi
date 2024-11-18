@@ -436,7 +436,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
                     {heroDetails.heroSkill[0].skillTag &&
                       heroDetails.heroSkill[0].skillTag.map((tag, i) => (
                         <div key={i}>
-                          <div className="mb-1 rounded-full bg-navy-600/50 px-2 py-0.5 text-sm ">
+                          <div className="mb-1 rounded-full bg-ocean px-2 py-0.5 text-sm ">
                             {tag.skillTagName.toUpperCase()}
                           </div>
                         </div>
@@ -474,7 +474,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
                         {skills.skillTag &&
                           skills.skillTag.map((tag, i) => (
                             <div key={i}>
-                              <div className="mb-1 rounded-full bg-navy-600/50 px-2 py-0.5 text-sm ">
+                              <div className="mb-1 rounded-full bg-ocean px-2 py-0.5 text-sm ">
                                 {tag.skillTagName.toUpperCase()}
                               </div>
                             </div>

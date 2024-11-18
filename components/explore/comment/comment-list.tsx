@@ -30,7 +30,7 @@ const CommentList: React.FC<CommentListProps> = ({
             <React.Fragment key={comment.id}>
               <CommentBox comment={comment} postId={postId} userId={userId} />
               {index !== comments.length - 1 && (
-                <div className="absolute inset-x-[1px] h-0.5 w-full bg-navy-400/30"></div>
+                <div className="absolute inset-x-[1px] h-0.5 w-full bg-ocean"></div>
               )}
             </React.Fragment>
           ))}
