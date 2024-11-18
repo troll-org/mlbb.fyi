@@ -33,7 +33,7 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
 
   return (
     <GradiantCard
-      className="sticky top-20 hidden h-full max-h-[90vh] w-[750px] rounded-3xl md:block"
+      className="sticky top-[3.75rem] hidden h-full max-h-[90vh] max-w-[360px] rounded-3xl md:block"
       variant="clean"
     >
       <div className="flex items-center justify-between">

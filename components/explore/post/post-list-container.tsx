@@ -105,7 +105,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
   };
 
   return (
-    <div className="no-scrollbar max-h-[90vh] w-full overflow-scroll md:w-[2000px]">
+    <div className="no-scrollbar flex max-h-fit w-full flex-col overflow-auto">
       <div className="mb-2">
         <div className="flex flex-row items-center gap-2">
           <form
