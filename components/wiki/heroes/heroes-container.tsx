@@ -53,18 +53,6 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
-        {filteredHeroes.map((hero) => (
-          <div key={hero.heroName} className="mx-auto">
-            <HeroCard
-              hero={hero}
-              onClick={() => {
-                router.push(`/wiki/heroes/${hero.heroPath}`);
-              }}
-            />
-          </div>
-        ))}
-      </div>
       <div className="space-y-4 md:w-[200px]">
         <HeroSearch />
         <GradiantCard
