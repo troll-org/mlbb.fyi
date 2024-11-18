@@ -84,7 +84,7 @@ const PostBox: React.FC<PostBoxProps> = ({ post, posts, index, currUser }) => {
       <div className="flex min-w-0 flex-col">
         <Link
           href={`/explore/${post.id}`}
-          className="text-white-500mt-0.5 flex text-xl font-semibold leading-6 ease-in-out hover:text-ocean hover:duration-300"
+          className="text-cloud/80 mt-0.5 flex text-xl font-semibold leading-6 ease-in-out hover:text-cloud hover:duration-300"
         >
           {post.title}
         </Link>
@@ -105,7 +105,7 @@ const PostBox: React.FC<PostBoxProps> = ({ post, posts, index, currUser }) => {
           <ul role="list" className="flex flex-row items-center gap-1">
             {post.tags?.map((tag: string) => (
               <p
-                className="text-xs mt-2 truncate leading-5 text-ocean ease-in-out"
+                className="text-xs mt-2 truncate leading-5 text-cloud/80 ease-in-out"
                 key={tag}
               >{`#${tag}`}</p>
             ))}
