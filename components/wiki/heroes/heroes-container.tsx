@@ -2,94 +2,69 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { NewHero } from "@prisma/client";
-import useHeroFilter from "@/lib/state/useHeroFilter";
-import HeroesFilter from "./heroes-filter";
-import HeroCard from "./hero-card";
-import { Input } from "@/components/shared/input";
-import { GradiantCard } from "@/components/shared/gradiant-card";
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
+import HeroFilter from "@/components/hero-filter";
+import HeroSearch from "@/components/hero-search";
+import HeroCard from "./hero-card";
+import { GradiantCard } from "@/components/shared/gradiant-card";
+import { Query } from "@/lib/types";
 
 interface IHeroesContainer {
   heroes: HeroesDocument[];
+  query: Query;
 }
 
-const HeroesContainer = ({ heroes }: IHeroesContainer) => {
+const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
   const router = useRouter();
-  const heroFilter = useHeroFilter();
-  const [filteredHeroes, setFilteredHeroes] = useState<HeroesDocument[] | null>(
-    null
-  );
-  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredHeroes, setFilteredHeroes] =
+    useState<HeroesDocument[]>(heroes);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const applyFilters = (query: Query) => {
+    const { q, type, lane } = query;
 
-  useEffect(() => {
-    setFilteredHeroes(null);
-    heroFilter.type = [];
-    heroFilter.role = [];
-  }, []);
+    const filtered = heroes.filter((hero) => {
+      const matchesQuery =
+        !q || hero.heroName.toLowerCase().includes(q.toLowerCase());
 
-  useEffect(() => {
-    if (heroes !== null) {
-      const filtered = heroes.filter((hero) => {
-        const isTypeFilterEmpty = heroFilter.type.length === 0;
-        const isRoleFilterEmpty = heroFilter.role.length === 0;
-
-        if (isTypeFilterEmpty && isRoleFilterEmpty) {
-          return true;
-        }
-
-        if (isTypeFilterEmpty) {
-          return heroFilter.role.every((role) =>
-            hero.heroLaneType.includes(role)
+      const matchesType =
+        !type ||
+        type
+          .split(",")
+          .every((typeFilter) =>
+            hero.heroRoleType.some((roleType) =>
+              roleType.toLowerCase().includes(typeFilter.toLowerCase())
+            )
           );
-        }
 
-        if (isRoleFilterEmpty) {
-          return heroFilter.type.every((type) =>
-            hero.heroRoleType.includes(type)
+      const matchesLane =
+        !lane ||
+        lane
+          .split(",")
+          .every((laneFilter) =>
+            hero.heroLaneType.some((laneType) =>
+              laneType.toLowerCase().includes(laneFilter.toLowerCase())
+            )
           );
-        }
 
-        return (
-          heroFilter.type.every((type) => hero.heroRoleType.includes(type)) &&
-          heroFilter.role.every((role) => hero.heroLaneType.includes(role))
-        );
-      });
+      return matchesQuery && matchesType && matchesLane;
+    });
 
-      setFilteredHeroes(filtered);
-    } else {
-      setFilteredHeroes(null);
-    }
-  }, [heroFilter.type, heroFilter.role, heroes]);
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+    setFilteredHeroes(filtered);
   };
 
-  const displayedHeroes = filteredHeroes || heroes;
-
-  const filteredDisplayedHeroes = displayedHeroes?.filter((hero) =>
-    hero.heroName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    applyFilters(query); // Apply filters initially based on the passed query
+  }, [query, heroes]);
 
   return (
     <>
       <GradiantCard className="h-fit w-full px-6 md:w-[200px]" variant="clean">
-        <Input
-          type="text"
-          placeholder="Search heroes..."
-          value={searchTerm}
-          onChange={handleSearch}
-          className="h-7 rounded-xl"
-        />
-        <HeroesFilter />
+        <HeroSearch />
+
+        <HeroFilter orientation="vertical" />
       </GradiantCard>
       <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
-        {filteredDisplayedHeroes?.map((hero) => (
+        {filteredHeroes.map((hero) => (
           <div key={hero.heroName} className="mx-auto">
             <HeroCard
               hero={hero}

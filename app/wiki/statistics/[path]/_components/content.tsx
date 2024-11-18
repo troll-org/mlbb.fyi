@@ -21,11 +21,7 @@ import {
 } from "@tanstack/react-table";
 import { columns } from "@/app/wiki/statistics/[path]/_components/columns";
 
-interface Query {
-  q?: string;
-  type?: string;
-  lane?: string;
-}
+import { Query } from "@/lib/types";
 
 function StatsDetailContent({
   tournamentData,

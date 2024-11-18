@@ -1,7 +1,4 @@
 import getHeroes from "@/lib/actions/getHeroes";
-
-import { NewHero } from "@prisma/client";
-
 import { TabsContent } from "@/components/shared/tabs";
 import HeroesContainer from "@/components/wiki/heroes/heroes-container";
 import { Metadata } from "next";
@@ -23,7 +20,15 @@ export const metadata: Metadata = {
   },
 };
 
-async function HeroesPage() {
+async function HeroesPage({
+  searchParams,
+}: {
+  searchParams: {
+    q?: string;
+    type?: string;
+    lane?: string;
+  };
+}) {
   const heroes = await getHeroes({
     select: "-heroDetails -heroImageOriginUrl -_id",
   });
@@ -33,7 +38,7 @@ async function HeroesPage() {
       value="heroes"
       className="flex w-full flex-col gap-5 md:flex-row"
     >
-      <HeroesContainer heroes={heroes} />
+      <HeroesContainer heroes={heroes} query={searchParams} />
     </TabsContent>
   );
 }
