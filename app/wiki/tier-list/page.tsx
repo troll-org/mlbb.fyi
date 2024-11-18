@@ -26,7 +26,7 @@ async function TierListPage({
         <HeroFilter />
         <HeroSearch />
       </GradiantCard>
-      <TierContainer heroes={heroes} query={searchParams} />;
+      <TierContainer heroes={heroes} query={searchParams} />
     </div>
   );
 }
