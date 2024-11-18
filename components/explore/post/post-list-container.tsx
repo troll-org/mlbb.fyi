@@ -14,6 +14,8 @@ import { CustomInput } from "../search-input";
 import PostContainer from "./post-container";
 import PostList from "./post-list";
 import UserList from "../user-list";
+import { Input } from "@/components/shared/input";
+import { Select } from "@/components/shared/select";
 
 interface PostListContainerProps {
   currentUser?: SafeUser | null;
@@ -139,7 +141,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                     : ""
                 )}
               >
-                <CustomInput
+                <Input
                   type="text"
                   placeholder={
                     selectedOption === -3
@@ -153,30 +155,36 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                     const inputValue = e.target.value;
                     setSearchTerm(inputValue);
                   }}
-                  className="flex h-9 grow bg-transparent outline-none"
+                  className="flex h-9 grow border-none bg-transparent"
                   maxLength={selectedOption === -2 ? 20 : 50}
                   onFocus={() => setIsInputFocused(true)}
                   onBlur={() => setIsInputFocused(false)}
                 />
                 {searchTerm.length !== 0 && (
                   <button onClick={() => setSearchTerm("")}>
-                    <X className="mr-2 transition-all hover:text-ocean hover:duration-300" />
+                    <X className="mr-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
                   </button>
                 )}
               </div>
               <button>
-                <Search className="mr-2 transition-all hover:text-ocean hover:duration-300" />
+                <Search className="mr-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
               </button>
             </div>
           </form>
           <select
-            className="h-[2.45rem] w-24 rounded-xl border border-ocean bg-black p-2 shadow-sm  focus:outline-none"
+            className="h-[2.45rem] w-24 rounded-xl border border-ocean bg-transparent p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-ocean"
             value={selectedOption}
             onChange={handleChange}
           >
-            <option value={-3}>Post</option>
-            <option value={-2}>Tag</option>
-            <option value={-1}>User</option>
+            <option value={-3} className="bg-ocean">
+              Post
+            </option>
+            <option value={-2} className="bg-ocean">
+              Tag
+            </option>
+            <option value={-1} className="bg-ocean">
+              User
+            </option>
           </select>
         </div>
         {/* <div>
