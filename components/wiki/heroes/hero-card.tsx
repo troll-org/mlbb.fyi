@@ -27,8 +27,7 @@ const HeroCard = ({ hero }: { hero: HeroesDocument }) => {
       <div className="relative w-full">
         <div
           className={cn(
-            "absolute inset-x-0 top-[-34px] mx-1 mt-[6px] rounded-md bg-ocean/40 p-0.5 backdrop-blur-sm"
-            // "flex items-center gap-0.5"
+            "absolute inset-x-0 top-[-26px] mx-1 block rounded-md bg-ocean/40 p-0.5 backdrop-blur-sm"
           )}
         >
           <p className="text-center text-sm font-medium">{hero.heroName}</p>

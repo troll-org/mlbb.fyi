@@ -1,12 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
 import { Query } from "@/lib/types";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import HeroCard from "@/components/wiki/heroes/hero-card";
+import html2canvas from "html2canvas";
+import { Button } from "@/components/shared/button";
 
 export const tiers = [
   { tier: "S", color: "#3652ba" },
@@ -56,9 +58,30 @@ export default function TierContainer({ heroes, query }: TierListProps) {
     });
   }, [query, heroes]);
 
+  const container = useRef<HTMLDivElement>(null);
+
+  const captureComponent = async () => {
+    if (container.current) {
+      const canvas = await html2canvas(container.current, {
+        allowTaint: true,
+        useCORS: true,
+        backgroundColor: "#030F1C",
+      });
+      const dataUrl = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "tier-list.png";
+      link.click();
+    }
+  };
+
   return (
     <>
-      <div className="flex w-full flex-col gap-4">
+      <Button variant="default" type="button" onClick={captureComponent}>
+        Download
+      </Button>
+
+      <div ref={container} className="flex w-full flex-col gap-4">
         {tiers.map((item, i) => {
           const tierHeroes = filteredHeroes?.filter(
             (hero) => hero.tier === item.tier
@@ -76,7 +99,7 @@ export default function TierContainer({ heroes, query }: TierListProps) {
                 {item.tier}
               </p>
 
-              <div className="ml-16 mr-4 grid grid-cols-[repeat(auto-fit,minmax(122px,1fr))] gap-4">
+              <div className="ml-16 mr-4 grid grid-cols-[repeat(auto-fill,minmax(122px,1fr))] gap-4">
                 {tierHeroes?.map((hero, j) => (
                   <div
                     key={j}
