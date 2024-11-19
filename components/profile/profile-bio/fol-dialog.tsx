@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./shared/dialog";
+} from "@/components/shared/dialog";
 
 interface FolDialogProps {
   children: React.ReactNode;
