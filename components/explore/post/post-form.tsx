@@ -146,15 +146,15 @@ const PostForm = ({ currUser }: { currUser?: SafeUser }) => {
           <div className="flex h-fit items-center gap-2.5 rounded-lg p-2 pt-0">
             <Image
               src={
-              comment.userImage === ""
+              currUser?.image === ""
                 ? "/nana.jpg"
-                : comment.userImage?.includes("/image/upload")
+                : currUser?.image.includes("/image/upload")
                 ? `${
-                    comment.userImage?.split("/image/upload/")[0]
+                    currUser?.image.split("/image/upload/")[0]
                   }/image/upload/c_fill,h_150,w_150/${
-                    comment.userImage?.split("/image/upload/")[1]
+                    currUser?.image.split("/image/upload/")[1]
                   }`
-                : comment.userImage || "/nana.jpg"
+                : currUser?.image || "/nana.jpg"
             }
               alt="image"
               width={48}
