@@ -145,11 +145,21 @@ const PostForm = ({ currUser }: { currUser?: SafeUser }) => {
         >
           <div className="flex h-fit items-center gap-2.5 rounded-lg p-2 pt-0">
             <Image
-              src={(currUser?.image as string) || "/nana.jpg"}
+              src={
+              comment.userImage === ""
+                ? "/nana.jpg"
+                : comment.userImage?.includes("/image/upload")
+                ? `${
+                    comment.userImage?.split("/image/upload/")[0]
+                  }/image/upload/c_fill,h_150,w_150/${
+                    comment.userImage?.split("/image/upload/")[1]
+                  }`
+                : comment.userImage || "/nana.jpg"
+            }
               alt="image"
               width={48}
               height={48}
-              className="h-auto w-auto rounded-full object-cover"
+              className="h-12 w-12 rounded-full object-cover"
             />
             <textarea
               placeholder="Title"
