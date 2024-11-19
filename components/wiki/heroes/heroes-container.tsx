@@ -49,16 +49,9 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
   return (
     <>
       {filteredHeroes.length > 0 ? (
-        <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {filteredHeroes.map((hero) => (
-            <div key={hero.heroName} className="mx-auto">
-              <HeroCard
-                hero={hero}
-                onClick={() => {
-                  router.push(`/wiki/heroes/${hero.heroPath}`);
-                }}
-              />
-            </div>
+            <HeroCard hero={hero} key={hero.heroName} />
           ))}
         </div>
       ) : (
