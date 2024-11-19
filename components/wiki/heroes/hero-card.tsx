@@ -1,7 +1,6 @@
 "use client";
 
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
-import { NewHero } from "@prisma/client";
 import Image from "next/image";
 
 const HeroCard = ({
@@ -12,8 +11,11 @@ const HeroCard = ({
   onClick: () => void;
 }) => {
   return (
-    <div className="w-fit cursor-pointer p-1.5 " onClick={onClick}>
-      <div className="relative h-32 w-24 overflow-hidden rounded-lg">
+    <div
+      className="mx-auto w-fit cursor-pointer self-auto p-1.5"
+      onClick={onClick}
+    >
+      <div className="relative w-24 overflow-hidden rounded-lg">
         <Image
           src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_256,w_192,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
           alt={hero.heroName}

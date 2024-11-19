@@ -109,7 +109,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
               alt={hero.heroName}
               width={600}
               height={800}
-              className="z-10 h-[256px] w-[192px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat drop-shadow-md transition-opacity duration-500 ease-in-out sm:h-[293px] sm:w-[244px]"
+              className="z-10 h-[256px] w-[192px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat drop-shadow-md transition-opacity duration-500 ease-in-out sm:h-[293px] sm:w-[270px]"
               priority
             />
             <Image
@@ -324,96 +324,6 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
     </div>
   </GradiantCard> */}
       </div>
-
-      {/* <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
-  {heroStrongAgainst.length !== 0 && (
-    <>
-      <p className="font-heading text-xl md:text-3xl">Strong against</p>
-      <div className="my-4">
-        <div className="grid grid-cols-3 flex-row gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
-          {heroStrongAgainst.map((hero, i) => (
-            <div
-              key={i}
-              onClick={() => {
-                router.push(`/wiki/heroes/${hero.name.toLowerCase()}`);
-              }}
-              className="mx-auto cursor-pointer"
-            >
-              <div className="relative">
-                <Image
-                  src={
-                    hero?.img?.split("/image/upload/")[0] +
-                    "/image/upload/c_fill,h_220,w_220,g_north/" +
-                    hero?.img?.split("/image/upload/")[1]
-                  }
-                  alt={hero.name}
-                  width={110}
-                  height={110}
-                  className="h-[55px] w-[55px] rounded-full sm:h-[110px] sm:w-[110px]"
-                  loading="lazy"
-                />
-
-                <div className="bg-opacity/75 absolute bottom-0 left-0 h-[55px] w-[55px] items-center rounded-full bg-black/80 py-1 text-center text-sm font-medium text-white opacity-0 transition-opacity duration-200 sm:h-[110px] sm:w-[110px]"></div>
-              </div>
-              <style jsx>{`
-                .relative:hover .absolute {
-                  opacity: 1;
-                }
-              `}</style>
-              <p className="mt-2 text-center text-[10px]  md:text-[14px]">
-                {hero?.name}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  )}
-
-  <p className="font-heading text-xl md:text-3xl">Weak against</p>
-  <div className="my-4">
-    <div className="grid grid-cols-3 flex-row gap-4 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
-      {uniqueCounters.map((counter, i) => (
-        <div
-          key={i}
-          onClick={() => {
-            router.push(`/wiki/heroes/${counter.name.toLowerCase()}`);
-          }}
-          className="mx-auto cursor-pointer"
-        >
-          <div className="relative">
-            <Image
-              src={
-                counter?.img?.split("/image/upload/")[0] +
-                "/image/upload/c_fill,h_220,w_220,g_north/" +
-                counter?.img?.split("/image/upload/")[1]
-              }
-              alt={counter.name}
-              width={110}
-              height={110}
-              className="h-[55px] w-[55px] rounded-full sm:h-[110px] sm:w-[110px]"
-              loading="lazy"
-            />
-
-            <div className="bg-opacity/75 absolute bottom-0 left-0 h-[55px] w-[55px] items-center rounded-full bg-black/80 py-1 text-center text-sm font-medium text-white opacity-0 transition-opacity duration-200 sm:h-[110px] sm:w-[110px]">
-               <p className="mt-3 justify-center text-[10px] md:mt-11 md:text-[14px]">
-                      {counter?.name}
-                    </p>
-            </div>
-          </div>
-          <style jsx>{`
-            .relative:hover .absolute {
-              opacity: 1;
-            }
-          `}</style>
-          <p className="mt-2 text-center text-[10px]  md:text-[14px]">
-            {counter?.name}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</GradiantCard>*/}
 
       <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
         <p className="font-heading text-xl md:text-3xl">Passive</p>
