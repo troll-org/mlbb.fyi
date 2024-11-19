@@ -1,7 +1,6 @@
-import getCurrentUser from "@/lib/actions/getCurrentUser";
-import getUser from "@/lib/actions/getUser";
-import getMlbbData from "@/lib/actions/getMlbbData";
-import isUserBound from "@/lib/actions/isUserBound";
+import { getCurrentUser } from "@/lib/actions/user";
+import getUser from "@/lib/actions/user";
+import { getMlbbData, isUserBound } from "@/lib/actions/user";
 
 import { notFound } from "next/navigation";
 import { TabsContent } from "@/components/shared/tabs";

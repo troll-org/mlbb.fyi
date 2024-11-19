@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import getCurrentUser from "@/lib/actions/getCurrentUser";
-import getUser from "@/lib/actions/getUser";
-import isUserBound from "@/lib/actions/isUserBound";
+import { getCurrentUser } from "@/lib/actions/user";
+import getUser from "@/lib/actions/user";
+import { isUserBound } from "@/lib/actions/user";
 import { NextResponse } from "next/server";
 import ProfileBio from "@/components/profile/bio";
 import ProfileTab from "@/components/profile/profile-tab";

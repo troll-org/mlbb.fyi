@@ -1,6 +1,6 @@
 import Settings from "@/components/profile/settings";
-import getCurrentUser from "@/lib/actions/getCurrentUser";
-import getMlbbAcc from "@/lib/actions/getMlbbAcc";
+import { getCurrentUser } from "@/lib/actions/user";
+import { getMlbbAcc } from "@/lib/actions/user";
 import { Suspense } from "react";
 
 async function SettingsPage() {

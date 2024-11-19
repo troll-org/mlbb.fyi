@@ -1,6 +1,6 @@
-import getCurrentUser from "@/lib/actions/getCurrentUser";
+import { getCurrentUser } from "@/lib/actions/user";
 import SyncForm from "@/components/profile/bind-account/bind-form";
-import getMlbbAcc from "@/lib/actions/getMlbbAcc";
+import { getMlbbAcc } from "@/lib/actions/user";
 import Prompt from "@/components/shared/prompt";
 
 export default async function AppBind() {

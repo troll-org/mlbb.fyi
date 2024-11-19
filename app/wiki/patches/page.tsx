@@ -1,4 +1,4 @@
-import getPatches from "@/lib/actions/getPatches";
+import getPatches from "@/lib/actions/patches";
 
 import { Patch } from "@prisma/client";
 import { Metadata } from "next";

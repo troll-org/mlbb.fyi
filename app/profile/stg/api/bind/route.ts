@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import getMlbbAcc from "@/lib/actions/getMlbbAcc";
+import { getMlbbAcc } from "@/lib/actions/user";
 import { bindAcc } from "@/lib/utils";
 import prisma from "@/lib/prismadb";
 

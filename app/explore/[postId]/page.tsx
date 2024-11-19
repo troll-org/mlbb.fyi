@@ -1,5 +1,5 @@
-import getCurrentUser from "@/lib/actions/getCurrentUser";
-import getUser from "@/lib/actions/getUser";
+import { getCurrentUser } from "@/lib/actions/user";
+import getUser from "@/lib/actions/user";
 
 import Post from "@/components/explore/post";
 import { IFullPost } from "@/types";

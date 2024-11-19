@@ -1,5 +1,5 @@
-import getCurrentUser from "@/lib/actions/getCurrentUser";
-import getMlbbAcc from "@/lib/actions/getMlbbAcc";
+import { getCurrentUser } from "@/lib/actions/user";
+import { getMlbbAcc } from "@/lib/actions/user";
 
 import CodeForm from "@/components/profile/bind-account/code-form";
 import Prompt from "@/components/shared/prompt";
