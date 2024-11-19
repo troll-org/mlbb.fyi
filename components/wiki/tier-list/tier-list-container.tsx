@@ -121,7 +121,7 @@ export default function TierContainer({ heroes, query }: TierListProps) {
 
   return (
     <>
-      <Button variant="default" type="button" onClick={captureComponent}>
+      <Button variant="default" type="button" onClick={captureComponent} className="hidden md:block">
         Download
       </Button>
 
