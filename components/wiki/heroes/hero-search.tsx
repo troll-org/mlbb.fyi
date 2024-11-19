@@ -60,6 +60,7 @@ const HeroSearch: React.FC = () => {
         placeholder="Search heroes..."
         value={searchTerm}
         onChange={handleSearch}
+        className="bg-transparent"
       />
       {isLoading && (
         <div className="absolute inset-y-0 right-0 flex items-center pr-3">
