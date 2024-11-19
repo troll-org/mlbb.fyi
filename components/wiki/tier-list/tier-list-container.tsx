@@ -6,6 +6,7 @@ import Image from "next/image";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
 import { Query } from "@/lib/types";
 import { GradiantCard } from "@/components/shared/gradiant-card";
+import HeroCard from "@/components/wiki/heroes/hero-card";
 
 export const tiers = [
   { tier: "S", color: "#3652ba" },
@@ -75,7 +76,7 @@ export default function TierContainer({ heroes, query }: TierListProps) {
                 {item.tier}
               </p>
 
-              <div className="ml-16 mr-4 grid grid-cols-4 flex-row gap-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
+              <div className="ml-16 mr-4 grid grid-cols-[repeat(auto-fit,minmax(122px,1fr))] gap-4">
                 {tierHeroes?.map((hero, j) => (
                   <div
                     key={j}
@@ -84,7 +85,17 @@ export default function TierContainer({ heroes, query }: TierListProps) {
                     }}
                     className="relative mx-auto cursor-pointer"
                   >
-                    <div className="overflow-hidden rounded-full">
+                    <HeroCard
+                      hero={
+                        {
+                          heroName: hero.name,
+                          heroPath: hero.name.toLowerCase(),
+                          heroRoleType: hero.heroRoleType,
+                          heroLaneType: hero.heroLaneType,
+                        } as any
+                      }
+                    />
+                    {/* <div className="overflow-hidden rounded-xl">
                       <Image
                         src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_220,w_220,g_north/mlbb.fyi/hero/${hero.name}.webp`}
                         alt={hero.name}
@@ -93,10 +104,10 @@ export default function TierContainer({ heroes, query }: TierListProps) {
                         className="h-[55px] w-[55px] bg-cover bg-top bg-no-repeat transition-all duration-300 ease-in-out hover:scale-110 sm:h-[110px] sm:w-[110px]"
                         loading="lazy"
                       />
-                    </div>
-                    <p className="mt-2 text-center text-[10px] font-semibold md:text-[14px]">
+                    </div> */}
+                    {/* <p className="mt-2 text-center text-[10px] font-semibold md:text-[14px]">
                       {hero?.name}
-                    </p>
+                    </p> */}
                   </div>
                 ))}
               </div>

@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/shared/button";
 import HeroFilter from "@/components/wiki/heroes/hero-filter";
 import HeroSearch from "@/components/wiki/heroes/hero-search";
+import { cn } from "@/lib/utils";
 
 interface IStats {
   children: React.ReactNode;
@@ -40,11 +41,13 @@ export default function StatsContainer({ children, tourNames }: IStats) {
         <div className="mb-8 flex gap-4">
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
-              <Button
-                variant="outline"
-                className="flex h-10 w-full max-w-md justify-start rounded-lg border border-cloud/10 bg-cloud/5 px-3 py-2 text-sm backdrop-blur-lg focus:outline-none focus:ring-1 focus:ring-cloud/30 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:bg-cloud/10"
-              >
-                <span className="block overflow-hidden text-ellipsis whitespace-nowrap">
+              <Button className="flex h-10 w-full max-w-md justify-start rounded-lg border border-cloud/10 bg-transparent px-3 py-2 text-sm backdrop-blur-lg focus:outline-none focus:ring-1 focus:ring-cloud/30 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:bg-cloud/5 data-[state=open]:ring-1 data-[state=open]:ring-cloud/30">
+                <span
+                  className={cn(
+                    "block overflow-hidden whitespace-nowrap font-medium",
+                    selectedTournament ? "text-cloud" : "text-cloud/80"
+                  )}
+                >
                   {selectedTournament
                     ? tourNames.find(
                         (tourney) =>

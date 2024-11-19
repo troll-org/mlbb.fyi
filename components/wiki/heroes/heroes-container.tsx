@@ -47,17 +47,11 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
   }, [query, heroes]);
 
   return (
-    <>
+    <div className="w-full">
       {filteredHeroes.length > 0 ? (
-        <div className="grid h-auto max-h-32 auto-rows-auto grid-cols-3 items-start gap-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(122px,1fr))] gap-4">
           {filteredHeroes.map((hero) => (
-            <HeroCard
-              key={hero.heroName}
-              hero={hero}
-              onClick={() => {
-                router.push(`/wiki/heroes/${hero.heroPath}`);
-              }}
-            />
+            <HeroCard hero={hero} key={hero.heroName} />
           ))}
         </div>
       ) : (
@@ -65,7 +59,7 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
           No such hero found
         </p>
       )}
-    </>
+    </div>
   );
 };
 
