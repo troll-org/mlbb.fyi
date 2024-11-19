@@ -11,7 +11,7 @@ const NotFoundPage = () => {
   }, []);
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
+    <div className="flex flex-col mt-60 items-center justify-center">
       <h1 className="font-heading text-4xl">Ooops...</h1>
       <h2 className="mb-4 font-semibold">This page cannot be found</h2>
       <Link
