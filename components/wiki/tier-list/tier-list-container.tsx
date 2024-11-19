@@ -103,34 +103,21 @@ export default function TierContainer({ heroes, query }: TierListProps) {
                 {tierHeroes?.map((hero, j) => (
                   <div
                     key={j}
-                    onClick={() => {
-                      router.push(`/wiki/heroes/${hero.name.toLowerCase()}`);
-                    }}
+                    // onClick={() => {
+                    //   router.push(`/wiki/heroes/${hero.name.toLowerCase()}`);
+                    // }}
                     className="relative mx-auto cursor-pointer"
                   >
                     <HeroCard
                       hero={
                         {
                           heroName: hero.name,
-                          heroPath: hero.name.toLowerCase(),
+                          heroPath: hero.heroPath,
                           heroRoleType: hero.heroRoleType,
                           heroLaneType: hero.heroLaneType,
                         } as any
                       }
                     />
-                    {/* <div className="overflow-hidden rounded-xl">
-                      <Image
-                        src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_220,w_220,g_north/mlbb.fyi/hero/${hero.name}.webp`}
-                        alt={hero.name}
-                        width={110}
-                        height={110}
-                        className="h-[55px] w-[55px] bg-cover bg-top bg-no-repeat transition-all duration-300 ease-in-out hover:scale-110 sm:h-[110px] sm:w-[110px]"
-                        loading="lazy"
-                      />
-                    </div> */}
-                    {/* <p className="mt-2 text-center text-[10px] font-semibold md:text-[14px]">
-                      {hero?.name}
-                    </p> */}
                   </div>
                 ))}
               </div>

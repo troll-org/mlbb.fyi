@@ -72,30 +72,30 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
             orientation === "horizontal" ? "flex-row" : "flex-row md:flex-col"
           }`}
         >
-          {HeroType.map(({ name: type }, i) => (
+          {HeroType.map((type, i) => (
             <React.Fragment key={i}>
               <li
                 className={`flex cursor-pointer items-center gap-1.5 transition-all duration-500 ease-in-out hover:opacity-100 ${
                   searchParams
                     ?.get("type")
                     ?.split(",")
-                    .includes(type.toLowerCase())
+                    .includes(type.key.toLowerCase())
                     ? "opacity-100"
                     : "opacity-40"
                 }`}
-                onClick={() => handleTypeClick(type)}
+                onClick={() => handleTypeClick(type.key)}
               >
                 <div className="flex items-center gap-1.5">
                   <Image
-                    src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1685987710/mlbb.fyi/heroType/${type}.webp`}
-                    alt={type}
+                    src={`https://res.cloudinary.com/dvm5vog2j/image/upload/mlbb.fyi/heroType/${type.key}.webp`}
+                    alt={type.label}
                     width={36}
                     height={36}
                   />
                 </div>
                 {orientation === "vertical" && (
                   <Label className="ml-2 hidden cursor-pointer md:block">
-                    {type}
+                    {type.label}
                   </Label>
                 )}
               </li>
@@ -111,30 +111,30 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
             orientation === "horizontal" ? "flex-row" : "flex-row md:flex-col"
           }`}
         >
-          {HeroRole.map(({ name: lane }, i) => (
+          {HeroRole.map((role, i) => (
             <React.Fragment key={i}>
               <li
                 className={`flex cursor-pointer items-center gap-1.5 transition-all duration-500 ease-in-out hover:opacity-100 ${
                   searchParams
                     ?.get("lane")
                     ?.split(",")
-                    .includes(lane.toLowerCase())
+                    .includes(role.key.toLowerCase())
                     ? "opacity-100"
                     : "opacity-40"
                 }`}
-                onClick={() => handleRoleClick(lane)}
+                onClick={() => handleRoleClick(role.key)}
               >
                 <div className="flex items-center gap-1.5 ">
                   <Image
-                    src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1685987710/mlbb.fyi/heroRole/${lane}.webp`}
-                    alt={lane}
+                    src={`https://res.cloudinary.com/dvm5vog2j/image/upload/mlbb.fyi/heroRole/${role.key}.webp`}
+                    alt={role.label}
                     width={36}
                     height={36}
                   />
                 </div>
                 {orientation === "vertical" && (
                   <Label className="ml-2 hidden cursor-pointer md:block">
-                    {lane}
+                    {role.label}
                   </Label>
                 )}
               </li>

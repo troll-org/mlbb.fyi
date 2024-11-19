@@ -41,37 +41,51 @@ export type SafeUser = Omit<
 
 export const HeroRole = [
   {
-    name: "Jungle",
+    key: "explane",
+    label: "Exp",
   },
   {
-    name: "Mid",
+    key: "jungle",
+    label: "Jungle",
   },
   {
-    name: "Exp",
+    key: "goldlane",
+    label: "Gold",
   },
   {
-    name: "Gold",
+    key: "roam",
+    label: "Roam",
   },
   {
-    name: "Roam",
+    key: "midlane",
+    label: "Mid",
   },
 ];
 
 export const HeroType = [
   {
-    name: "Assassin",
+    key: "fighter",
+    label: "Fighter",
   },
   {
-    name: "Fighter",
+    key: "tank",
+    label: "Tank",
   },
   {
-    name: "Mage",
+    key: "marksman",
+    label: "Marksman",
   },
   {
-    name: "Support",
+    key: "mage",
+    label: "Mage",
   },
   {
-    name: "Tank",
+    key: "support",
+    label: "Support",
+  },
+  {
+    key: "assassin",
+    label: "Assassin",
   },
 ];
 

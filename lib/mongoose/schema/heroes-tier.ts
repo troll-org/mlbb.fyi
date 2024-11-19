@@ -11,6 +11,7 @@ export interface HeroTierDocument {
   name: string;
   heroLaneType: string[];
   heroRoleType: string[];
+  heroPath: string;
   combinedScore: number;
   currentMetaScore: number;
   currentMetaStats: Stats;

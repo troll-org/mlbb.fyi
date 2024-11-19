@@ -50,6 +50,7 @@ export async function getHeroTierWithNames({ select }: { select?: string }) {
           name: "$hero.heroName",
           heroLaneType: "$hero.heroLaneType",
           heroRoleType: "$hero.heroRoleType",
+          heroPath: "$hero.heroPath",
           ...(select ? { [select]: 1 } : {}),
         },
       },
