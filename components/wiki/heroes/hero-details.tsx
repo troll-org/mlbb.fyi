@@ -117,7 +117,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
               alt={hero.heroName}
               width={600}
               height={800}
-              className="absolute top-0 -z-10 h-[256px] min-w-full overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat opacity-50 transition-opacity duration-500 ease-in-out sm:opacity-0"
+              className="absolute top-0 -z-10 h-[256px] min-w-full overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat opacity-50 blur-2xl transition-opacity duration-500 ease-in-out sm:opacity-0"
               priority
             />
 
