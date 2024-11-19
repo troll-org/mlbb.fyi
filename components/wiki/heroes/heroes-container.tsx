@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
 import HeroCard from "./hero-card";
-import { Query } from "@/lib/types";
+import { Query } from "@/types";
 interface IHeroesContainer {
   heroes: HeroesDocument[];
   query: Query;

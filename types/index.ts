@@ -1,4 +1,4 @@
-import { Comment, Post, Reply, User } from "@prisma/client";
+import { User, Comment, Post, Reply } from "@prisma/client";
 
 declare global {
   namespace NodeJS {
@@ -38,6 +38,48 @@ export type SafeUser = Omit<
   updatedAt: string;
   emailVerified?: string;
 };
+
+export const HeroRole = [
+  {
+    name: "Jungle",
+  },
+  {
+    name: "Mid",
+  },
+  {
+    name: "Exp",
+  },
+  {
+    name: "Gold",
+  },
+  {
+    name: "Roam",
+  },
+];
+
+export const HeroType = [
+  {
+    name: "Assassin",
+  },
+  {
+    name: "Fighter",
+  },
+  {
+    name: "Mage",
+  },
+  {
+    name: "Support",
+  },
+  {
+    name: "Tank",
+  },
+];
+
+export interface Query {
+  q?: string;
+  type?: string;
+  lane?: string;
+}
 
 export interface IFullComment extends Comment {
   replies: Reply[];

@@ -2,7 +2,6 @@
 
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
 import { cn } from "@/lib/utils";
-import { NewHero } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 

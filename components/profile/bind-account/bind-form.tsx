@@ -12,13 +12,6 @@ import LoadingDots from "@/components/shared/icons/loading-dots";
 
 const bodyToast = (msg: string) => <div className="">{msg}</div>;
 
-const toastStyle = {
-  style: {
-    backgroundColor: `background-color: rgb(137 111 242 / var(--tw-bg-opacity))`,
-    borderWidth: "1px",
-  },
-};
-
 interface BindFormProps {
   currentUser?: SafeUser | null;
 }

@@ -31,18 +31,18 @@ export default async function Signin() {
   }
 
   return (
-    <main className="flex mt-60 items-center justify-center">
-  <div className="text-center">
-    <h1 className="text-[44px] font-bold leading-10 tracking-tight md:text-[64px] md:leading-[60px]">
-      Sign in
-    </h1>
-    <p className="pt-3 text-[16px] md:text-[16px]">
-      Join the community and dominate the battlefield!
-    </p>
-    <Suspense>
-      <LoginForm csrfToken={csrfToken} />
-    </Suspense>
-  </div>
-</main>
+    <main className="mt-60 flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-[44px] font-bold leading-10 tracking-tight md:text-[64px] md:leading-[60px]">
+          Sign in
+        </h1>
+        <p className="pt-3 text-[16px] md:text-[16px]">
+          Join the community and dominate the battlefield!
+        </p>
+        <Suspense>
+          <LoginForm csrfToken={csrfToken} />
+        </Suspense>
+      </div>
+    </main>
   );
 }

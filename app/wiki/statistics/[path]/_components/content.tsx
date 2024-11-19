@@ -21,7 +21,7 @@ import {
 } from "@tanstack/react-table";
 import { columns } from "@/app/wiki/statistics/[path]/_components/columns";
 
-import { Query } from "@/lib/types";
+import { Query } from "@/types";
 
 function StatsDetailContent({
   tournamentData,

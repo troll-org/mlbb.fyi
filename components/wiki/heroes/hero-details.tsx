@@ -31,7 +31,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
 
   useEffect(() => {
     setSelectedTab("heroes");
-  }, []);
+  }, [setSelectedTab]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

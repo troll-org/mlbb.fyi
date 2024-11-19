@@ -54,7 +54,7 @@ const PostContent: React.FC<PostContentProp> = ({
   useEffect(() => {
     setLike(post?.likes.includes(currUser?.id as string));
     setDislike(post?.dislikes.includes(currUser?.id as string));
-  }, [post]);
+  }, [post, currUser?.id]);
   const [totalVotes, setTotalVotes] = useState<number>(post.totalVotes);
 
   const [editActive, setEditActive] = useState<boolean>(false);
@@ -179,7 +179,7 @@ const PostContent: React.FC<PostContentProp> = ({
                       >
                         <button
                           type="button"
-                          className="flex h-5 w-5 items-center text-cloud/80 justify-center rounded-full transition-all ease-in-out hover:text-cloud hover:duration-300 focus:outline-none"
+                          className="flex h-5 w-5 items-center justify-center rounded-full text-cloud/80 transition-all ease-in-out hover:text-cloud hover:duration-300 focus:outline-none"
                           onClick={handleClick}
                         >
                           <MoreVertical />

@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
-import { Query } from "@/lib/types";
+import { Query } from "@/types";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import HeroCard from "@/components/wiki/heroes/hero-card";
 import html2canvas from "html2canvas";

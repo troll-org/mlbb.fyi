@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { HeroRole, HeroType } from "@/lib/types";
+import { HeroRole, HeroType } from "@/types";
 import { Label } from "@/components/shared/label";
 
 interface HeroFilterProps {

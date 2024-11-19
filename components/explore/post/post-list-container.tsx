@@ -10,12 +10,10 @@ import useTagStore from "@/lib/state/useTagStore";
 
 import { ChevronLeft, Search, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/shared/tabs";
-import { CustomInput } from "../search-input";
 import PostContainer from "./post-container";
 import PostList from "./post-list";
 import UserList from "../user-list";
 import { Input } from "@/components/shared/input";
-import { Select } from "@/components/shared/select";
 
 interface PostListContainerProps {
   currentUser?: SafeUser | null;
@@ -47,7 +45,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
   useEffect(() => {
     const storedFilter = window.sessionStorage.getItem("searchTerm");
     setSearchTerm(storedFilter || "");
-  }, []);
+  }, [setSearchTerm]);
 
   useEffect(() => {
     window.sessionStorage.setItem("searchTerm", searchTerm);
@@ -58,7 +56,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
   useEffect(() => {
     const storedFilter = window.sessionStorage.getItem("filter");
     setFilter(storedFilter || "");
-  }, []);
+  }, [setFilter]);
 
   useEffect(() => {
     window.sessionStorage.setItem("filter", filter);
@@ -69,7 +67,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
   useEffect(() => {
     const storedSearchTag = window.sessionStorage.getItem("searchTag");
     setSearchTag(storedSearchTag || "");
-  }, []);
+  }, [setSearchTag]);
 
   useEffect(() => {
     window.sessionStorage.setItem("searchTag", searchTag);
@@ -80,7 +78,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
   useEffect(() => {
     const storedOption = window.sessionStorage.getItem("selectedOption");
     setSelectedOption(Number(storedOption) || -3);
-  }, []);
+  }, [setSelectedOption]);
 
   useEffect(() => {
     window.sessionStorage.setItem("selectedOption", String(selectedOption));

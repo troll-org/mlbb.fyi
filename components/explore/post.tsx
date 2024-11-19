@@ -1,6 +1,7 @@
 "use client";
 
-import { IFullPost, SafeUser } from "@/types";
+import { SafeUser } from "@/types";
+import { IFullPost } from "@/types";
 import { User } from "@prisma/client";
 
 import PostContent from "@/components/explore/post/post-content";

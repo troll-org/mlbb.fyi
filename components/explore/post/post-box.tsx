@@ -42,8 +42,7 @@ const PostBox: React.FC<PostBoxProps> = ({ post, posts, index, currUser }) => {
   useEffect(() => {
     setLike(post?.likes.includes(currUser?.id as string));
     setDislike(post?.dislikes.includes(currUser?.id as string));
-  }, [post]);
-  const [totalVotes, setTotalVotes] = useState<number>(post.totalVotes);
+  }, [post, currUser?.id]);
   const [loading, setLoading] = useState(false);
 
   const dateTime = post.createdAt.toString().split("T");
@@ -84,7 +83,7 @@ const PostBox: React.FC<PostBoxProps> = ({ post, posts, index, currUser }) => {
       <div className="flex min-w-0 flex-col">
         <Link
           href={`/explore/${post.id}`}
-          className="text-cloud/80 mt-0.5 flex text-xl font-semibold leading-6 ease-in-out hover:text-cloud hover:duration-300"
+          className="mt-0.5 flex text-xl font-semibold leading-6 text-cloud/80 ease-in-out hover:text-cloud hover:duration-300"
         >
           {post.title}
         </Link>
