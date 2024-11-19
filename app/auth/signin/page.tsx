@@ -31,7 +31,7 @@ export default async function Signin() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center overflow-hidden">
+    <main className="flex mt-60 items-center justify-center">
   <div className="text-center">
     <h1 className="text-[44px] font-bold leading-10 tracking-tight md:text-[64px] md:leading-[60px]">
       Sign in
