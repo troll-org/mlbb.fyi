@@ -18,8 +18,8 @@ import {
   PopoverTrigger,
 } from "@/components/shared/popover";
 import { Button } from "@/components/shared/button";
-import HeroFilter from "@/components/hero-filter";
-import HeroSearch from "@/components/hero-search";
+import HeroFilter from "@/components/wiki/heroes/hero-filter";
+import HeroSearch from "@/components/wiki/heroes/hero-search";
 
 interface IStats {
   children: React.ReactNode;

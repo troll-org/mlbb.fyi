@@ -40,7 +40,7 @@ const NewCommentForm: React.FC<CommentProps> = ({ postId, img }) => {
         alt=""
         width={48}
         height={48}
-        className="mr-4 items-start rounded-full object-none object-left"
+        className="mr-4 items-start rounded-full object-center"
         placeholder="blur"
         blurDataURL={
           img?.split("/image/upload/")[0] +

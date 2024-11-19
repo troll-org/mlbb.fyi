@@ -2,11 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { toast } from "sonner";
-import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 
-import { postFetcher } from "@/lib/utils";
 import { IFullComment } from "@/types";
 
 import {
@@ -101,7 +99,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment, postId, userId }) => {
             alt=""
             width={48}
             height={48}
-            className="mr-4 h-12 w-12 rounded-full object-none object-left"
+            className="mr-4 h-12 w-12 rounded-full object-center"
             placeholder="blur"
             blurDataURL={
               comment.userImage?.split("/image/upload/")[0] +

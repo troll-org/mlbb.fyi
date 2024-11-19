@@ -145,17 +145,7 @@ const PostForm = ({ currUser }: { currUser?: SafeUser }) => {
         >
           <div className="flex h-fit items-center gap-2.5 rounded-lg p-2 pt-0">
             <Image
-              src={
-              currUser?.image === ""
-                ? "/nana.jpg"
-                : currUser?.image.includes("/image/upload")
-                ? `${
-                    currUser?.image.split("/image/upload/")[0]
-                  }/image/upload/c_fill,h_150,w_150/${
-                    currUser?.image.split("/image/upload/")[1]
-                  }`
-                : currUser?.image || "/nana.jpg"
-            }
+              src={(currUser?.image as string) || "/nana.jpg"}
               alt="image"
               width={48}
               height={48}

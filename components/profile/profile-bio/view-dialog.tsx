@@ -9,7 +9,7 @@ import Link from "next/link";
 import { revalPath } from "@/lib/revalidate";
 
 import { Button } from "@/components/shared/button";
-import FolDialog from "@/components/fol-dialog";
+import FolDialog from "@/components/profile/profile-bio/fol-dialog";
 import LoadingDots from "@/components/shared/icons/loading-dots";
 import { SafeUser } from "@/types";
 
