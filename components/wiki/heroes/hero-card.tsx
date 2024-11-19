@@ -7,11 +7,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HeroCard = ({ hero }: { hero: HeroesDocument }) => {
-  console.log(hero.heroLaneType);
-
   return (
     <Link
-      className={cn("m-1.5 w-fit cursor-pointer rounded-lg")}
+      className={cn("w-fit cursor-pointer rounded-lg")}
       href={`/wiki/heroes/${hero.heroPath}`}
       prefetch={false}
     >

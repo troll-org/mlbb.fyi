@@ -47,9 +47,9 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
   }, [query, heroes]);
 
   return (
-    <>
+    <div className="w-full">
       {filteredHeroes.length > 0 ? (
-        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(122px,1fr))] gap-4">
           {filteredHeroes.map((hero) => (
             <HeroCard hero={hero} key={hero.heroName} />
           ))}
@@ -59,7 +59,7 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
           No such hero found
         </p>
       )}
-    </>
+    </div>
   );
 };
 
