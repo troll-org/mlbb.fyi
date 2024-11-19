@@ -62,11 +62,55 @@ export default function TierContainer({ heroes, query }: TierListProps) {
 
   const captureComponent = async () => {
     if (container.current) {
-      const canvas = await html2canvas(container.current, {
+      // Wrap the container with padding using a clone
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "20px"; // Set desired padding
+      wrapper.style.backgroundColor = "#030F1C"; // Match the canvas background
+      wrapper.style.display = "block"; // Prevent width stretch
+
+      // Create a text element for the title
+      const title = document.createElement("div");
+      title.innerText = "mlbb.fyi ; Mobile Legend Bang Bang Hero Tier List"; // Add your desired text
+      title.style.fontSize = "24px"; // Adjust font size
+      title.style.color = "#FFFFFF"; // Adjust text color
+      title.style.fontWeight = "bold"; // Make the text bold
+      title.style.textAlign = "center"; // Center the text
+      title.style.marginBottom = "10px"; // Add spacing below the title
+
+      // Create a text element for the date, hero lane, and type
+      const details = document.createElement("div");
+      const currentDate = new Date().toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      }); // Generate current date in "19 November 2024" format
+      const heroLane = query.lane ? `Lane: ${query.lane}` : "Lane: All"; // Dynamic lane
+      const heroType = query.type ? `Type: ${query.type}` : "Type: All"; // Dynamic type
+      details.innerText = `${currentDate} | ${heroLane} | ${heroType}`;
+      details.style.fontSize = "16px"; // Smaller font size for details
+      details.style.color = "#FFFFFF"; // Text color
+      details.style.textAlign = "center"; // Center the details
+      details.style.marginBottom = "20px"; // Add spacing below the details
+
+      // Clone the container and append it after the details
+      const clonedContainer = container.current.cloneNode(true);
+      wrapper.appendChild(title); // Add the title
+      wrapper.appendChild(details); // Add the details
+      wrapper.appendChild(clonedContainer); // Add the cloned content
+
+      document.body.appendChild(wrapper); // Temporarily add to DOM for rendering
+
+      // Capture the wrapper with html2canvas
+      const canvas = await html2canvas(wrapper, {
         allowTaint: true,
         useCORS: true,
-        backgroundColor: "#030F1C",
+        backgroundColor: null, // Set null to maintain wrapper's background color
       });
+
+      // Clean up after rendering
+      document.body.removeChild(wrapper);
+
+      // Generate the image and download
       const dataUrl = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = dataUrl;
