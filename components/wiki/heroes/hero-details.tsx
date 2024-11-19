@@ -131,9 +131,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
                     hero.heroLaneType.map((lane, i) => (
                       <Image
                         key={i}
-                        src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1686042255/mlbb.fyi/heroRole/${formatWord(
-                          lane
-                        )}.webp`}
+                        src={`https://res.cloudinary.com/dvm5vog2j/image/upload/v1686042255/mlbb.fyi/heroRole/${lane}.webp`}
                         alt={lane || ""}
                         width={25}
                         height={25}
