@@ -49,6 +49,47 @@ export const metadata: Metadata = {
       "Boost your Mobile Legends gameplay with hero statistics, optimal builds, and connect with expert players.",
     ...defaultTwitterMD,
   },
+  keywords: [
+    "Mobile Legends",
+    "Mobile Legends Bang Bang",
+    "MLBB",
+    "Mobile Legends heroes",
+    "hero statistics",
+    "Mobile Legends builds",
+    "optimal builds",
+    "Mobile Legends tips",
+    "Mobile Legends guide",
+    "MLBB guide",
+    "Mobile Legends gameplay",
+    "Mobile Legends strategies",
+    "Mobile Legends community",
+    "Mobile Legends expert players",
+    "MLBB meta",
+    "Mobile Legends builds and stats",
+    "Mobile Legends analytics",
+    "Mobile Legends tier list",
+    "Mobile Legends hero builds",
+    "MLBB gameplay improvement",
+    "Mobile Legends data",
+    "Mobile Legends player rankings",
+    "Mobile Legends matchmaking",
+    "Mobile Legends pro builds",
+    "MLBB advanced stats",
+    "Mobile Legends game tips",
+    "Mobile Legends tactics",
+    "MLBB builds and strategies",
+    "Mobile Legends in-depth analysis",
+    "Mobile Legends esports",
+    "MLBB pro player insights",
+    "Mobile Legends win rates",
+    "Mobile Legends patch updates",
+    "Mobile Legends hero guides",
+    "MLBB ranking improvement",
+    "Mobile Legends climb ranks",
+    "MLBB skills improvement",
+    "Mobile Legends tips and tricks",
+    "Mobile Legends gameplay mastery",
+  ],
 };
 
 export default async function RootLayout({
@@ -81,10 +122,7 @@ export default async function RootLayout({
           </>
         )}
         <body
-          className={cn(
-            "relative mx-auto mb-8 mt-24 bg-deepocean text-cloud"
-            // "after:fixed after:inset-x-0 after:top-[-1450px] after:z-[-1] after:mx-auto after:h-[1280px] after:w-[1880px] after:rounded-full after:bg-sea after:blur-[400px]"
-          )}
+          className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >
           <ToasterProvider />
           <Navbar currentUser={currentUser} />
