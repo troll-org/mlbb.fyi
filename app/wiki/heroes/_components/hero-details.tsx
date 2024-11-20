@@ -105,7 +105,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
         <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
           <div className="relative flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:gap-x-4">
             <Image
-              src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_800,w_600,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
+              src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_800,w_600,g_north/mlbb.fyi/heroBase/${hero.heroPath}.webp`}
               alt={hero.heroName}
               width={600}
               height={800}
@@ -113,7 +113,7 @@ function HeroDetails({ hero, heroStats, heroTier }: HeroFyiContainer) {
               priority
             />
             <Image
-              src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_1000,w_1200,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
+              src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_1000,w_1200,g_north/mlbb.fyi/heroBase/${hero.heroPath}.webp`}
               alt={hero.heroName}
               width={600}
               height={800}

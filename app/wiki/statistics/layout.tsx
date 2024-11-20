@@ -1,26 +1,33 @@
 import { Metadata } from "next";
-
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
-
 import { TabsContent } from "@/components/shared/tabs";
 import TournamentsPopover from "@/app/wiki/statistics/_components/tournaments-popover";
 import { getAllTournamentsName } from "@/lib/actions/tournaments";
 
 export const metadata: Metadata = {
-  title: "Statistics",
+  title: {
+    template: "%s - mlbb.fyi",
+    default: "mlbb.fyi Statistics",
+  },
   description:
-    "Get the latest statistics of win rates, pick rates, ban rates of heroes in Mobile Legends: Bang Bang",
+    "Get the latest statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
   openGraph: {
-    title: "Statistics",
+    title: {
+      template: "%s - mlbb.fyi",
+      default: "mlbb.fyi Statistics",
+    },
     description:
-      "Get the latest statistics of win rates, pick rates, ban rates of heroes in Mobile Legends: Bang Bang",
-    url: "https://mlbb.fyi/wiki/patches",
+      "Get the latest statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
+    url: "https://mlbb.fyi/wiki/statistics",
     ...defaultOpenGraphMD,
   },
   twitter: {
-    title: "Statistics",
+    title: {
+      template: "%s - mlbb.fyi",
+      default: "mlbb.fyi Statistics",
+    },
     description:
-      "Get the latest statistics of win rates, pick rates, ban rates of heroes in Mobile Legends: Bang Bang",
+      "Get the latest statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
     ...defaultTwitterMD,
   },
 };

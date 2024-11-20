@@ -6,8 +6,8 @@ import ContentLayout from "./content-layout";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
   title: {
-    template: "%s - mlbb.fyi wiki",
-    default: "mlbb.fyi wiki",
+    template: "%s - mlbb.fyi",
+    default: "mlbb.fyi",
   },
   description:
     "mlbb.fyi wiki: Your ultimate source for the latest Mobile Legends info. Find guides, tips, and strategies all in one place.",

@@ -20,9 +20,11 @@ export const columns: ColumnDef<HeroData>[] = [
     cell: ({ row }) => (
       <div className="flex flex-row text-start font-sat text-sm md:text-[16px]">
         <Image
-          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_192,w_192,g_north/mlbb.fyi/hero/${row.getValue(
-            "heroName"
-          )}.webp`}
+          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_192,w_192,g_north/mlbb.fyi/heroBase/${(
+            row.getValue("heroName") as string
+          )
+            .toLowerCase()
+            .replace(/[^a-zA-Z0-9]/g, "_")}.webp`}
           alt={row.getValue("heroName")}
           width={48}
           height={48}
