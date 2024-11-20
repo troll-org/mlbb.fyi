@@ -65,7 +65,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
       className={`flex items-center gap-8 ${
         orientation === "horizontal"
           ? "flex-row"
-          : "mt-4 flex-row gap-24 md:mt-0 md:flex-col md:items-start md:gap-4"
+          : "flex-row gap-24 md:mt-0 md:flex-col md:items-start md:gap-4"
       }`}
     >
       {/* Type Filter */}

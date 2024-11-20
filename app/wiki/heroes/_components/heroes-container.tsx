@@ -4,6 +4,10 @@ import React, { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
 import HeroCard from "./hero-card";
+import { GradiantCard } from "@/components/shared/gradiant-card";
+import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
+import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
+
 interface IHeroesContainer {
   heroes: HeroesDocument[];
 }
@@ -44,19 +48,28 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
   }, [q, type, lane, heroes]);
 
   return (
-    <div className="w-full">
-      {filteredHeroes.length > 0 ? (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(122px,max-content))] justify-center gap-4 md:justify-start">
-          {filteredHeroes.map((hero) => (
-            <HeroCard hero={hero} key={hero.heroName} />
-          ))}
-        </div>
-      ) : (
-        <p className="text-lg ml-2 mt-4 font-heading md:ml-0 md:text-xl">
-          No such hero found
-        </p>
-      )}
-    </div>
+    <>
+      <GradiantCard
+        className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col"
+        variant="clean"
+      >
+        <HeroSearch />
+        <HeroFilter orientation="vertical" />
+      </GradiantCard>
+      <div className="w-full">
+        {filteredHeroes.length > 0 ? (
+          <div className="hero-grid-container grid justify-center gap-4 md:justify-start">
+            {filteredHeroes.map((hero) => (
+              <HeroCard hero={hero} key={hero.heroName} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-lg ml-2 mt-4 font-heading md:ml-0 md:text-xl">
+            No such hero found
+          </p>
+        )}
+      </div>
+    </>
   );
 };
 

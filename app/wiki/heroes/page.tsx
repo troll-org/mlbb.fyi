@@ -1,7 +1,4 @@
 import getHeroes from "@/lib/actions/getHeroes";
-import { GradiantCard } from "@/components/shared/gradiant-card";
-import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
-import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
 import HeroesContainer from "@/app/wiki/heroes/_components/heroes-container";
 import { Metadata } from "next";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
@@ -27,18 +24,7 @@ async function HeroesPage() {
     select: "-heroDetails -heroImageOriginUrl -_id",
   });
 
-  return (
-    <>
-      <GradiantCard
-        className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col"
-        variant="clean"
-      >
-        <HeroSearch />
-        <HeroFilter orientation="vertical" />
-      </GradiantCard>
-      <HeroesContainer heroes={heroes} />
-    </>
-  );
+  return <HeroesContainer heroes={heroes} />;
 }
 
 export default HeroesPage;

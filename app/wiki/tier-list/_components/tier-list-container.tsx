@@ -7,6 +7,8 @@ import { GradiantCard } from "@/components/shared/gradiant-card";
 import HeroCard from "@/app/wiki/heroes/_components/hero-card";
 import html2canvas from "html2canvas";
 import { Button } from "@/components/shared/button";
+import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
+import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
 
 export const tiers = [
   { tier: "S", color: "#3652ba" },
@@ -111,14 +113,23 @@ export default function TierContainer({ heroes }: TierListProps) {
 
   return (
     <>
-      <Button
-        variant="default"
-        type="button"
-        onClick={captureComponent}
-        className="hidden md:block"
+      <GradiantCard
+        className="flex h-fit w-full flex-col gap-4 px-6"
+        variant="clean"
       >
-        Download
-      </Button>
+        <HeroFilter />
+        <div className="flex flex-row space-x-4">
+          <HeroSearch />
+          <Button
+            variant="default"
+            type="button"
+            onClick={captureComponent}
+            className="hidden md:block"
+          >
+            Download
+          </Button>
+        </div>
+      </GradiantCard>
 
       <div ref={container} className="flex w-full flex-col gap-4">
         {tiers.map((item, i) => {
@@ -158,10 +169,6 @@ export default function TierContainer({ heroes }: TierListProps) {
           );
         })}
       </div>
-      <p className="text-lg ml-2 text-gray-400">
-        mlbb.fyi tier list is updated daily based on the win, pick and ban rate
-        of each hero in major Mobile Legends tournament
-      </p>
     </>
   );
 }

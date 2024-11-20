@@ -60,3 +60,12 @@
     }
   }
 }
+
+.hero-grid-container {
+  grid-template-columns: repeat(auto-fit, minmax(43vw, 1fr));
+}
+@media (min-width: 400px) {
+  .hero-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(122px, max-content));
+  }
+}

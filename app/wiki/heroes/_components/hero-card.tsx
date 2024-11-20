@@ -12,13 +12,13 @@ const HeroCard = ({ hero }: { hero: HeroesDocument }) => {
       href={`/wiki/heroes/${hero.heroPath}`}
       prefetch={false}
     >
-      <div className="relative h-auto w-full overflow-hidden rounded-lg">
+      <div className="relative w-full overflow-hidden rounded-lg">
         <Image
-          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_162,w_122,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
+          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_235,w_175,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
           alt={hero.heroName}
           width={122}
           height={162}
-          className="h-[162px] w-[122px] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat transition-all duration-300 ease-in-out hover:scale-110"
+          className="h-auto w-[43vw] overflow-hidden rounded-lg bg-cover bg-top bg-no-repeat transition-all duration-300 ease-in-out hover:scale-110 sm:w-[122px]"
           loading="lazy"
         />
       </div>
