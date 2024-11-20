@@ -14,7 +14,7 @@ const HeroCard = ({ hero }: { hero: HeroesDocument }) => {
     >
       <div className="relative w-full overflow-hidden rounded-lg">
         <Image
-          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_235,w_175,g_north/mlbb.fyi/hero/${hero.heroName}.webp`}
+          src={`https://res.cloudinary.com/dvm5vog2j/image/upload/c_fill,h_235,w_175,g_north/mlbb.fyi/heroBase/${hero.heroPath}.webp`}
           alt={hero.heroName}
           width={122}
           height={162}
