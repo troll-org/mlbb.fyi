@@ -52,6 +52,7 @@ export const metadata: Metadata = {
     "mlbb S-tier and A-tier heroes",
     "Mobile Legends counter picks tier list",
   ],
+  category: "Tier List",
   twitter: {
     title: "Hero Tier List | Best Meta MLBB Heroes",
     description:
