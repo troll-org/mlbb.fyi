@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useMemo, Suspense } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/shared/input";
 
@@ -84,4 +84,10 @@ const HeroSearch: React.FC = () => {
   );
 };
 
-export default HeroSearch;
+const HeroSearchWrapper: React.FC = () => (
+  <Suspense>
+    <HeroSearch />
+  </Suspense>
+);
+
+export default HeroSearchWrapper;

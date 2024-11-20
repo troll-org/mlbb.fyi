@@ -135,21 +135,15 @@ export default function TierContainer({ heroes, query }: TierListProps) {
               className="relative w-full rounded-lg border file:h-fit"
             >
               <p
-                className="absolute left-0 top-0 flex h-full w-12 items-center justify-center rounded-l-lg text-center font-heading"
+                className="absolute left-0 top-0 flex w-full items-center justify-center  rounded-t-lg text-center font-heading sm:h-full sm:w-12 sm:rounded-l-lg sm:rounded-tr-none"
                 style={{ background: item.color }}
               >
                 {item.tier}
               </p>
 
-              <div className="ml-16 mr-4 grid grid-cols-[repeat(auto-fill,minmax(122px,1fr))] gap-4">
+              <div className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(122px,1fr))] gap-4 sm:ml-16 sm:mt-0">
                 {tierHeroes?.map((hero, j) => (
-                  <div
-                    key={j}
-                    // onClick={() => {
-                    //   router.push(`/wiki/heroes/${hero.name.toLowerCase()}`);
-                    // }}
-                    className="relative mx-auto cursor-pointer"
-                  >
+                  <div key={j} className="relative mx-auto cursor-pointer">
                     <HeroCard
                       hero={
                         {

@@ -49,7 +49,7 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
   return (
     <div className="w-full">
       {filteredHeroes.length > 0 ? (
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(122px,1fr))] gap-4">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(122px,max-content))] justify-center gap-4 md:justify-start">
           {filteredHeroes.map((hero) => (
             <HeroCard hero={hero} key={hero.heroName} />
           ))}
