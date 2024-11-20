@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HeroRole, HeroType } from "@/types";
@@ -18,6 +18,9 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const [activeTypes, setActiveTypes] = useState<string[]>([]);
+  const [activeRoles, setActiveRoles] = useState<string[]>([]);
+
   const debouncedUpdateQuery = useMemo(
     () =>
       debounce((newSearchParams: URLSearchParams) => {
@@ -28,35 +31,32 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
 
   const handleTypeClick = (type: string) => {
     const newSearchParams = new URLSearchParams(searchParams?.toString());
-    const types = newSearchParams.get("type")
-      ? newSearchParams.get("type")!.split(",")
-      : [];
-    if (types.includes(type.toLowerCase())) {
-      newSearchParams.set(
-        "type",
-        types.filter((t) => t !== type.toLowerCase()).join(",")
-      );
+    const updatedTypes = [...activeTypes];
+
+    if (activeTypes.includes(type.toLowerCase())) {
+      setActiveTypes((prev) => prev.filter((t) => t !== type.toLowerCase()));
+      updatedTypes.splice(updatedTypes.indexOf(type.toLowerCase()), 1);
     } else {
-      types.push(type.toLowerCase());
-      newSearchParams.set("type", types.join(","));
+      setActiveTypes((prev) => [...prev, type.toLowerCase()]);
+      updatedTypes.push(type.toLowerCase());
     }
+    newSearchParams.set("type", updatedTypes.join(","));
     debouncedUpdateQuery(newSearchParams);
   };
 
   const handleRoleClick = (lane: string) => {
     const newSearchParams = new URLSearchParams(searchParams?.toString());
-    const lanes = newSearchParams.get("lane")
-      ? newSearchParams.get("lane")!.split(",")
-      : [];
-    if (lanes.includes(lane.toLowerCase())) {
-      newSearchParams.set(
-        "lane",
-        lanes.filter((r) => r !== lane.toLowerCase()).join(",")
-      );
+    const updatedRoles = [...activeRoles];
+
+    if (activeRoles.includes(lane.toLowerCase())) {
+      setActiveRoles((prev) => prev.filter((r) => r !== lane.toLowerCase()));
+      updatedRoles.splice(updatedRoles.indexOf(lane.toLowerCase()), 1);
     } else {
-      lanes.push(lane.toLowerCase());
-      newSearchParams.set("lane", lanes.join(","));
+      setActiveRoles((prev) => [...prev, lane.toLowerCase()]);
+      updatedRoles.push(lane.toLowerCase());
     }
+
+    newSearchParams.set("lane", updatedRoles.join(","));
     debouncedUpdateQuery(newSearchParams);
   };
 
@@ -68,6 +68,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
           : "mt-4 flex-row gap-24 md:mt-0 md:flex-col md:items-start md:gap-4"
       }`}
     >
+      {/* Type Filter */}
       <ul className="flex flex-col gap-2">
         <p
           className={`text-medium text-sm ${
@@ -85,10 +86,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
             <React.Fragment key={i}>
               <li
                 className={`flex cursor-pointer items-center gap-1.5 transition-all duration-500 ease-in-out hover:opacity-100 ${
-                  searchParams
-                    ?.get("type")
-                    ?.split(",")
-                    .includes(type.key.toLowerCase())
+                  activeTypes.includes(type.key.toLowerCase())
                     ? "opacity-100"
                     : "opacity-40"
                 }`}
@@ -113,6 +111,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
         </div>
       </ul>
 
+      {/* Role Filter */}
       <ul className="flex flex-col gap-2">
         <p className="text-medium text-sm">Role</p>
         <div
@@ -124,16 +123,13 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
             <React.Fragment key={i}>
               <li
                 className={`flex cursor-pointer items-center gap-1.5 transition-all duration-500 ease-in-out hover:opacity-100 ${
-                  searchParams
-                    ?.get("lane")
-                    ?.split(",")
-                    .includes(role.key.toLowerCase())
+                  activeRoles.includes(role.key.toLowerCase())
                     ? "opacity-100"
                     : "opacity-40"
                 }`}
                 onClick={() => handleRoleClick(role.key)}
               >
-                <div className="flex items-center gap-1.5 ">
+                <div className="flex items-center gap-1.5">
                   <Image
                     src={`https://res.cloudinary.com/dvm5vog2j/image/upload/mlbb.fyi/heroRole/${role.key}.webp`}
                     alt={role.label}

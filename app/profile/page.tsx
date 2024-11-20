@@ -1,9 +1,9 @@
+import { getCurrentUser } from "@/lib/actions/user";
+import { redirect } from "next/navigation";
+
 const Page = async () => {
-  return (
-    <div>
-      <h1>Profile</h1>
-    </div>
-  );
+  const currentUser = await getCurrentUser();
+  redirect(currentUser ? `/profile/${currentUser.name}` : "/auth/signin");
 };
 
 export default Page;
