@@ -1,4 +1,4 @@
-import StatsDetailContent from "@/app/wiki/statistics/[path]/_components/content";
+import StatsDetailContent from "@/app/wiki/statistics/_components/content";
 import { getAllHeroStatsByTournamentPath } from "@/lib/actions/tournaments";
 import { TournamentsDocument } from "@/lib/mongoose/schema/tournaments";
 

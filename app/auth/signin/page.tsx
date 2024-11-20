@@ -1,7 +1,7 @@
 import { getCsrfToken } from "next-auth/react";
-import LoginForm from "@/components/login-form";
+import LoginForm from "@/app/auth/signin/_components/login-form";
 import { getCurrentUser } from "@/lib/actions/user";
-import Redirect from "@/components/redirect";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { Metadata } from "next";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
@@ -27,7 +27,7 @@ export default async function Signin() {
   const currentUser = await getCurrentUser();
 
   if (currentUser) {
-    return <Redirect />;
+    redirect("/explore");
   }
 
   return (

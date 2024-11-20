@@ -1,8 +1,8 @@
-import Redirect from "@/components/redirect";
 import getHeroStats from "@/lib/actions/getHeroStats";
 import { getOneHero } from "@/lib/actions/getHeroes";
-import HeroDetails from "@/components/wiki/heroes/hero-details";
+import HeroDetails from "@/app/wiki/heroes/_components/hero-details";
 import { getHeroTier } from "@/lib/actions/getHeroTier";
+import { redirect } from "next/navigation";
 
 export default async function HeroPage({
   params,
@@ -12,7 +12,7 @@ export default async function HeroPage({
   const hero = await getOneHero(params?.hero);
 
   if (!hero) {
-    return <Redirect destination="not-found" />;
+    redirect("/not-found");
   }
 
   const heroStats = await getHeroStats(hero?._id.toString());

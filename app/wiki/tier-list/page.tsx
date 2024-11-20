@@ -1,7 +1,7 @@
-import TierContainer from "@/components/wiki/tier-list/tier-list-container";
+import TierContainer from "@/app/wiki/tier-list/_components/tier-list-container";
 import { GradiantCard } from "@/components/shared/gradiant-card";
-import HeroFilter from "@/components/wiki/heroes/hero-filter";
-import HeroSearch from "@/components/wiki/heroes/hero-search";
+import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
+import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
 import { getHeroTierWithNames } from "@/lib/actions/getHeroTier";
 
 async function TierListPage({

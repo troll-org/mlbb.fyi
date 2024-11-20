@@ -11,7 +11,7 @@ import Image from "next/image";
 import { HeroStatsDocuments } from "@/lib/mongoose/schema/heroes-statistics";
 import { Button } from "@/components/shared/button";
 import { RefreshCcw } from "lucide-react";
-import { tiers } from "@/components/wiki/tier-list/tier-list-container";
+import { tiers } from "@/app/wiki/tier-list/_components/tier-list-container";
 
 interface HeroFyiContainer {
   hero: HeroesDocument;

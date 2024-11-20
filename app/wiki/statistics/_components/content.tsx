@@ -19,7 +19,7 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { columns } from "@/app/wiki/statistics/[path]/_components/columns";
+import { columns } from "@/app/wiki/statistics/_components/columns";
 
 import { Query } from "@/types";
 

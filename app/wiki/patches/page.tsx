@@ -4,7 +4,7 @@ import { Patch } from "@prisma/client";
 import { Metadata } from "next";
 
 import { TabsContent } from "@/components/shared/tabs";
-import PatchesContainer from "@/components/wiki/patches/patches-container";
+import PatchesContainer from "@/app/wiki/patches/_components/patches-container";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 export const metadata: Metadata = {

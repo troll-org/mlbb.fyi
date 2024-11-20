@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 import { signIn } from "next-auth/react";
-import LoadingDots from "./shared/icons/loading-dots";
-import { Button } from "./shared/button";
-import { Input } from "./shared/input";
+import LoadingDots from "@/components/shared/icons/loading-dots";
+import { Button } from "@/components/shared/button";
+import { Input } from "@/components/shared/input";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 import { TabsContent } from "@/components/shared/tabs";
-import TournamentsPopover from "@/components/wiki/statistics/tournaments-popover";
+import TournamentsPopover from "@/app/wiki/statistics/_components/tournaments-popover";
 import { getAllTournamentsName } from "@/lib/actions/tournaments";
 
 export const metadata: Metadata = {

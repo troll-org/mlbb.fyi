@@ -6,7 +6,7 @@ import Image from "next/image";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
 import { Query } from "@/types";
 import { GradiantCard } from "@/components/shared/gradiant-card";
-import HeroCard from "@/components/wiki/heroes/hero-card";
+import HeroCard from "@/app/wiki/heroes/_components/hero-card";
 import html2canvas from "html2canvas";
 import { Button } from "@/components/shared/button";
 
@@ -62,55 +62,48 @@ export default function TierContainer({ heroes, query }: TierListProps) {
 
   const captureComponent = async () => {
     if (container.current) {
-      // Wrap the container with padding using a clone
       const wrapper = document.createElement("div");
-      wrapper.style.padding = "20px"; // Set desired padding
-      wrapper.style.backgroundColor = "#030F1C"; // Match the canvas background
-      wrapper.style.display = "block"; // Prevent width stretch
+      wrapper.style.padding = "20px";
+      wrapper.style.backgroundColor = "#030F1C";
+      wrapper.style.display = "block";
 
-      // Create a text element for the title
       const title = document.createElement("div");
-      title.innerText = "mlbb.fyi ; Mobile Legend Bang Bang Hero Tier List"; // Add your desired text
-      title.style.fontSize = "24px"; // Adjust font size
-      title.style.color = "#FFFFFF"; // Adjust text color
-      title.style.fontWeight = "bold"; // Make the text bold
-      title.style.textAlign = "center"; // Center the text
-      title.style.marginBottom = "10px"; // Add spacing below the title
+      title.innerText = "mlbb.fyi ; Mobile Legend Bang Bang Hero Tier List";
+      title.style.fontSize = "24px";
+      title.style.color = "#FFFFFF";
+      title.style.fontWeight = "bold";
+      title.style.textAlign = "center";
+      title.style.marginBottom = "10px";
 
-      // Create a text element for the date, hero lane, and type
       const details = document.createElement("div");
       const currentDate = new Date().toLocaleDateString("en-GB", {
         day: "2-digit",
         month: "long",
         year: "numeric",
-      }); // Generate current date in "19 November 2024" format
-      const heroLane = query.lane ? `Lane: ${query.lane}` : "Lane: All"; // Dynamic lane
-      const heroType = query.type ? `Type: ${query.type}` : "Type: All"; // Dynamic type
+      });
+      const heroLane = query.lane ? `Lane: ${query.lane}` : "Lane: All";
+      const heroType = query.type ? `Type: ${query.type}` : "Type: All";
       details.innerText = `${currentDate} | ${heroLane} | ${heroType}`;
-      details.style.fontSize = "16px"; // Smaller font size for details
-      details.style.color = "#FFFFFF"; // Text color
-      details.style.textAlign = "center"; // Center the details
-      details.style.marginBottom = "20px"; // Add spacing below the details
+      details.style.fontSize = "16px";
+      details.style.color = "#FFFFFF";
+      details.style.textAlign = "center";
+      details.style.marginBottom = "20px";
 
-      // Clone the container and append it after the details
       const clonedContainer = container.current.cloneNode(true);
-      wrapper.appendChild(title); // Add the title
-      wrapper.appendChild(details); // Add the details
-      wrapper.appendChild(clonedContainer); // Add the cloned content
+      wrapper.appendChild(title);
+      wrapper.appendChild(details);
+      wrapper.appendChild(clonedContainer);
 
-      document.body.appendChild(wrapper); // Temporarily add to DOM for rendering
+      document.body.appendChild(wrapper);
 
-      // Capture the wrapper with html2canvas
       const canvas = await html2canvas(wrapper, {
         allowTaint: true,
         useCORS: true,
-        backgroundColor: null, // Set null to maintain wrapper's background color
+        backgroundColor: null,
       });
 
-      // Clean up after rendering
       document.body.removeChild(wrapper);
 
-      // Generate the image and download
       const dataUrl = canvas.toDataURL("image/png");
       const link = document.createElement("a");
       link.href = dataUrl;
@@ -121,7 +114,12 @@ export default function TierContainer({ heroes, query }: TierListProps) {
 
   return (
     <>
-      <Button variant="default" type="button" onClick={captureComponent} className="hidden md:block">
+      <Button
+        variant="default"
+        type="button"
+        onClick={captureComponent}
+        className="hidden md:block"
+      >
         Download
       </Button>
 

@@ -18,8 +18,8 @@ import {
   PopoverTrigger,
 } from "@/components/shared/popover";
 import { Button } from "@/components/shared/button";
-import HeroFilter from "@/components/wiki/heroes/hero-filter";
-import HeroSearch from "@/components/wiki/heroes/hero-search";
+import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
+import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
 import { cn } from "@/lib/utils";
 
 interface IStats {

@@ -1,8 +1,8 @@
 import getHeroes from "@/lib/actions/getHeroes";
 import { GradiantCard } from "@/components/shared/gradiant-card";
-import HeroFilter from "@/components/wiki/heroes/hero-filter";
-import HeroSearch from "@/components/wiki/heroes/hero-search";
-import HeroesContainer from "@/components/wiki/heroes/heroes-container";
+import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
+import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
+import HeroesContainer from "@/app/wiki/heroes/_components/heroes-container";
 import { Metadata } from "next";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 

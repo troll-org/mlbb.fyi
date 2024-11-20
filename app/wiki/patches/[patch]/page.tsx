@@ -1,6 +1,6 @@
-import PatchFyi from "@/components/wiki/patches/patch-info";
+import PatchFyi from "@/app/wiki/patches/_components/patch-info";
 import prisma from "@/lib/prismadb";
-import Redirect from "@/components/redirect";
+import { redirect } from "next/navigation";
 
 async function getPatch(version: string) {
   try {
@@ -32,7 +32,7 @@ export default async function PatchPage({
   const patchVersion = params.patch;
   const isValidPatch = await getPatch(patchVersion);
   if (!isValidPatch) {
-    return <Redirect destination="not-found" />;
+    redirect("/not-found");
   }
   const patches = await getPathes();
   return <PatchFyi patch={isValidPatch} patches={patches} />;
