@@ -11,6 +11,7 @@ import {
 } from "@/components/shared/table";
 
 import React from "react";
+import { useSearchParams } from "next/navigation";
 
 import {
   flexRender,
@@ -21,22 +22,18 @@ import {
 } from "@tanstack/react-table";
 import { columns } from "@/app/wiki/statistics/_components/columns";
 
-import { Query } from "@/types";
-
 function StatsDetailContent({
   tournamentData,
-  query,
 }: {
   tournamentData: TournamentsDocument;
-  query: Query;
 }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
+  const searchParams = useSearchParams();
+  const q = searchParams?.get("q") || "";
+  const type = searchParams?.get("type") || "";
+  const lane = searchParams?.get("lane") || "";
 
   const filteredData = React.useMemo(() => {
-    if (!query) return tournamentData.data;
-
-    const { q, type, lane } = query;
-
     return tournamentData.data.filter((row) => {
       const matchesQuery =
         !q ||
@@ -67,7 +64,7 @@ function StatsDetailContent({
 
       return matchesQuery && matchesType && matchesRole;
     });
-  }, [query, tournamentData.data]);
+  }, [q, type, lane, tournamentData.data]);
 
   const table = useReactTable({
     data: filteredData,

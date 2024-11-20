@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HeroRole, HeroType } from "@/types";
 import { Label } from "@/components/shared/label";
+import { debounce } from "@/lib/debounce";
 
 interface HeroFilterProps {
   orientation?: "horizontal" | "vertical";
@@ -16,6 +17,14 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const debouncedUpdateQuery = useMemo(
+    () =>
+      debounce((newSearchParams: URLSearchParams) => {
+        router.replace(`${pathname}?${newSearchParams.toString()}`);
+      }, 300),
+    [router, pathname]
+  );
 
   const handleTypeClick = (type: string) => {
     const newSearchParams = new URLSearchParams(searchParams?.toString());
@@ -31,7 +40,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
       types.push(type.toLowerCase());
       newSearchParams.set("type", types.join(","));
     }
-    router.replace(`${pathname}?${newSearchParams.toString()}`);
+    debouncedUpdateQuery(newSearchParams);
   };
 
   const handleRoleClick = (lane: string) => {
@@ -48,7 +57,7 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
       lanes.push(lane.toLowerCase());
       newSearchParams.set("lane", lanes.join(","));
     }
-    router.replace(`${pathname}?${newSearchParams.toString()}`);
+    debouncedUpdateQuery(newSearchParams);
   };
 
   return (

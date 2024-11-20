@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useRef } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { HeroTierDocument } from "@/lib/mongoose/schema/heroes-tier";
-import { Query } from "@/types";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import HeroCard from "@/app/wiki/heroes/_components/hero-card";
 import html2canvas from "html2canvas";
@@ -20,16 +18,15 @@ export const tiers = [
 
 interface TierListProps {
   heroes: HeroTierDocument[];
-  query: Query;
 }
 
-export default function TierContainer({ heroes, query }: TierListProps) {
-  const router = useRouter();
+export default function TierContainer({ heroes }: TierListProps) {
+  const searchParams = useSearchParams();
+  const q = searchParams?.get("q") || "";
+  const type = searchParams?.get("type") || "";
+  const lane = searchParams?.get("lane") || "";
+
   const filteredHeroes = React.useMemo(() => {
-    if (!query) return heroes;
-
-    const { q, type, lane } = query;
-
     return heroes.filter((hero) => {
       const matchesQuery =
         !q || hero.name.toLowerCase().includes(q.toLowerCase());
@@ -56,7 +53,7 @@ export default function TierContainer({ heroes, query }: TierListProps) {
 
       return matchesQuery && matchesType && matchesLane;
     });
-  }, [query, heroes]);
+  }, [q, type, lane, heroes]);
 
   const container = useRef<HTMLDivElement>(null);
 
@@ -81,8 +78,8 @@ export default function TierContainer({ heroes, query }: TierListProps) {
         month: "long",
         year: "numeric",
       });
-      const heroLane = query.lane ? `Lane: ${query.lane}` : "Lane: All";
-      const heroType = query.type ? `Type: ${query.type}` : "Type: All";
+      const heroLane = lane ? `Lane: ${lane}` : "Lane: All";
+      const heroType = type ? `Type: ${type}` : "Type: All";
       details.innerText = `${currentDate} | ${heroLane} | ${heroType}`;
       details.style.fontSize = "16px";
       details.style.color = "#FFFFFF";

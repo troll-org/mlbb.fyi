@@ -4,15 +4,7 @@ import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
 import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
 import { getHeroTierWithNames } from "@/lib/actions/getHeroTier";
 
-async function TierListPage({
-  searchParams,
-}: {
-  searchParams: {
-    q?: string;
-    type?: string;
-    lane?: string;
-  };
-}) {
+async function TierListPage() {
   const heroes = await getHeroTierWithNames({
     select:
       "-_id -combinedScore -currentMetaScore -currentMetaStats -tournamentScore -tournamentStats -updatedAt",
@@ -26,7 +18,7 @@ async function TierListPage({
         <HeroFilter />
         <HeroSearch />
       </GradiantCard>
-      <TierContainer heroes={heroes} query={searchParams} />
+      <TierContainer heroes={heroes} />
     </div>
   );
 }

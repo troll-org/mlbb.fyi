@@ -1,23 +1,20 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { HeroesDocument } from "@/lib/mongoose/schema/heroes";
 import HeroCard from "./hero-card";
-import { Query } from "@/types";
 interface IHeroesContainer {
   heroes: HeroesDocument[];
-  query: Query;
 }
 
-const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
-  const router = useRouter();
+const HeroesContainer = ({ heroes }: IHeroesContainer) => {
+  const searchParams = useSearchParams();
+  const q = searchParams?.get("q") || "";
+  const type = searchParams?.get("type") || "";
+  const lane = searchParams?.get("lane") || "";
 
-  const filteredHeroes = React.useMemo(() => {
-    if (!query) return heroes;
-
-    const { q, type, lane } = query;
-
+  const filteredHeroes = useMemo(() => {
     return heroes.filter((hero) => {
       const matchesQuery =
         !q || hero.heroName.toLowerCase().includes(q.toLowerCase());
@@ -44,7 +41,7 @@ const HeroesContainer = ({ heroes, query }: IHeroesContainer) => {
 
       return matchesQuery && matchesType && matchesLane;
     });
-  }, [query, heroes]);
+  }, [q, type, lane, heroes]);
 
   return (
     <div className="w-full">

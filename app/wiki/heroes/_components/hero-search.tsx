@@ -3,17 +3,7 @@
 import React, { useState, useEffect, useMemo, Suspense } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Input } from "@/components/shared/input";
-
-const debounce = <T extends (...args: any[]) => void>(
-  func: T,
-  delay: number
-): T => {
-  let timer: NodeJS.Timeout;
-  return ((...args: any[]) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => func(...args), delay);
-  }) as T;
-};
+import { debounce } from "@/lib/debounce";
 
 const HeroSearch: React.FC = () => {
   const router = useRouter();

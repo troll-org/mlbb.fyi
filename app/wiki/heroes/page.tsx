@@ -22,15 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-async function HeroesPage({
-  searchParams,
-}: {
-  searchParams: {
-    q?: string;
-    type?: string;
-    lane?: string;
-  };
-}) {
+async function HeroesPage() {
   const heroes = await getHeroes({
     select: "-heroDetails -heroImageOriginUrl -_id",
   });
@@ -44,7 +36,7 @@ async function HeroesPage({
         <HeroSearch />
         <HeroFilter orientation="vertical" />
       </GradiantCard>
-      <HeroesContainer heroes={heroes} query={searchParams} />
+      <HeroesContainer heroes={heroes} />
     </>
   );
 }
