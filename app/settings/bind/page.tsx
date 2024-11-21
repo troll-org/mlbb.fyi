@@ -24,7 +24,7 @@ export default async function AppBind() {
     );
   }
   return (
-    <div className="mt-24">
+    <div className="mt-60">
       <div className="text-center">
         <h1 className="text-[44px] font-bold leading-10 tracking-tight md:text-[64px] md:leading-[60px]">
           Bind
