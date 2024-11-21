@@ -236,9 +236,9 @@ function HeroDetails({
             <Image
               src={heroEquipment.authorOriginImgUrl}
               alt={heroEquipment.authorName}
-              width={40}
-              height={40}
-              className="h-[40px] w-[40px] justify-start rounded-full bg-aqua/70 object-none [object-position:65%_60%]"
+              width={60}
+              height={60}
+              className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full bg-aqua/70 object-none [object-position:65%_60%]"
             />
             <div className="flex flex-col">
               <div className="flex flex-col">
