@@ -49,7 +49,7 @@ const CodeForm: React.FC<CodeFormProps> = ({ currentUser }) => {
             className="mx-auto mt-4 w-fit rounded-2xl"
             variant="gradiantNavySec"
           >
-            <Link href="/profile/stg/bind">Back</Link>
+            <Link href="/settings/bind">Back</Link>
           </Button>
         </div>
       </div>
@@ -74,7 +74,7 @@ const CodeForm: React.FC<CodeFormProps> = ({ currentUser }) => {
         onSubmit={async (e) => {
           e.preventDefault();
           setLoadingSend(true);
-          const bind = await fetch("/profile/stg/api/bind", {
+          const bind = await fetch("/api/settings/bind", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

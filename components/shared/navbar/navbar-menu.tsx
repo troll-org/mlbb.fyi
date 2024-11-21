@@ -144,7 +144,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                     menu.href === "/profile"
                       ? currentUser?.username
                         ? `/profile/${currentUser?.username}`
-                        : "/profile/stg"
+                        : "/settings"
                       : menu.href
                   }
                   className={cn(
@@ -178,7 +178,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
             <li className="flex gap-2">
               <Button
                 onClick={() => {
-                  router.push("/profile/stg");
+                  router.push("/settings");
                   setCollapse(!collapse);
                 }}
                 className="group h-8 w-8 rounded-full p-2"

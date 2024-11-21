@@ -59,7 +59,7 @@ const PostForm = ({ currUser }: { currUser?: SafeUser }) => {
 
   const handleUpload = async (e: any) => {
     e.preventDefault();
-    const sign = await fetch("/profile/stg/api/cdn-sign");
+    const sign = await fetch("/api/settings/cdn-sign");
     const data = await sign.json();
     const url =
       "https://api.cloudinary.com/v1_1/" + data.cloudname + "/auto/upload";

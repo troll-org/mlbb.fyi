@@ -72,7 +72,7 @@ export default async function LayoutProfile({
 
   if (currentUser && !currentUser.username) {
     return NextResponse.redirect(
-      new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/profile/stg`)
+      new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/settings`)
     );
   }
 

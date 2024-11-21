@@ -11,7 +11,7 @@ export default async function AppBindVerify() {
     return (
       <Prompt
         message="You have previously bound your Mobile Legends account"
-        link="/profile/stg"
+        link="/settings"
         button="Back to settings"
       />
     );

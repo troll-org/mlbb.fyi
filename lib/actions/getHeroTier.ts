@@ -45,7 +45,7 @@ export async function getHeroTierWithNames({ select }: { select?: string }) {
       },
       {
         $project: {
-          _id: 0,
+          _id: "$_id",
           tier: 1,
           heroName: "$hero.heroName",
           heroLaneType: "$hero.heroLaneType",

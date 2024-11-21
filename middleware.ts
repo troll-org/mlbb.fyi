@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     }
 
     const get = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/profile/stg/api/bind?email=${token?.email}`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/settings/bind?email=${token?.email}`,
       {
         method: "GET",
       }
@@ -30,7 +30,7 @@ export async function middleware(request: NextRequest) {
     } = await get.json();
 
     if (!data.username) {
-      return NextResponse.rewrite(new URL("/profile/stg", request.url));
+      return NextResponse.rewrite(new URL("/settings", request.url));
     }
   }
 
@@ -42,5 +42,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/profile/stg", "/profile", "/wiki"],
+  matcher: ["/settings", "/profile", "/wiki"],
 };

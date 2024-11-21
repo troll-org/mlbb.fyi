@@ -33,7 +33,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           await signIn("email", {
             email,
             redirect: false,
-            callbackUrl: "/profile/stg?ref=signin",
+            callbackUrl: "/settings?ref=signin",
           })
             .then((res) => {
               if (res?.ok) {
@@ -78,7 +78,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           className="w-full rounded-lg"
           onClick={() => {
             signIn("google", {
-              callbackUrl: "/profile/stg?ref=signin",
+              callbackUrl: "/settings?ref=signin",
             });
           }}
         >
@@ -95,7 +95,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           className="w-full rounded-lg"
           onClick={() => {
             signIn("discord", {
-              callbackUrl: "/profile/stg?ref=signin",
+              callbackUrl: "/settings?ref=signin",
             });
           }}
         >

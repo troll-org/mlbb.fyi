@@ -1,11 +1,14 @@
 import Settings from "@/components/profile/settings";
 import { getCurrentUser } from "@/lib/actions/user";
 import { getMlbbAcc } from "@/lib/actions/user";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 async function SettingsPage() {
   const currentUser = await getCurrentUser();
   const mlbbAcc = await getMlbbAcc(currentUser?.email || "");
+
+  if (!currentUser) redirect("/auth/signin");
 
   return (
     <main>

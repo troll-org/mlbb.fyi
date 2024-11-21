@@ -56,7 +56,7 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
           <Button
             className="h-fit w-fit gap-2 rounded-2xl py-1"
             onClick={() => {
-              router.push("/profile/stg/bind");
+              router.push("/settings/bind");
             }}
             disabled={mlbbAcc ? true : false}
           >
@@ -234,7 +234,7 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
                 links: [link1, link2, link3],
               };
 
-              const set = await fetch("/profile/stg/api/update", {
+              const set = await fetch("/api/settings/update", {
                 method: "POST",
                 body: JSON.stringify(fields),
               });
@@ -245,7 +245,7 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
                 setButtonDisabled(false);
               } else {
                 setLoading(false);
-                revalPath("/profile/stg");
+                revalPath("/settings");
                 toast.success(
                   "Successfully updated profile, kindly wait before making any more updates"
                 );

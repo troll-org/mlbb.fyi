@@ -52,7 +52,7 @@ const BindForm: React.FC<BindFormProps> = ({ currentUser }) => {
           toast(bodyToast(res?.message));
           setLoadingSend(false);
           router.push(
-            `/profile/stg/bind/verify?id=${form.accId}&id=${form.accServer}`
+            `/settings/bind/verify?id=${form.accId}&id=${form.accServer}`
           );
         }
       }}

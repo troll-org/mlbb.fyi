@@ -52,7 +52,7 @@ const EditPicture: React.FC<EditPictureProps> = ({ currentUser }) => {
   });
 
   const handleUpload = async (dataUrl: string) => {
-    const sign = await fetch("/profile/stg/api/cdn-sign");
+    const sign = await fetch("/api/settings/cdn-sign");
     const data = await sign.json();
     const url =
       "https://api.cloudinary.com/v1_1/" + data.cloudname + "/auto/upload";
@@ -80,12 +80,13 @@ const EditPicture: React.FC<EditPictureProps> = ({ currentUser }) => {
         });
         if (upload.ok) {
           toast.success("Successfully updated profile picture");
-          revalPath(
-            `/profile/${currentUser?.username ? currentUser?.username : "stg"}`
-          );
-          router.push(
-            `/profile/${currentUser?.username ? currentUser?.username : "stg"}`
-          );
+          if (currentUser?.username) {
+            revalPath(`/profile/${currentUser.username}`);
+            router.push(`/profile/${currentUser.username}`);
+          } else {
+            revalPath("/settings");
+            router.push("/settings");
+          }
         } else {
           setLoading(false);
           toast.error(msg.message);
