@@ -9,11 +9,9 @@ import Statistics from "@/app/profile/_components/profile-stats/statistics";
 import ProfileList from "@/app/profile/_components/profile-list";
 import { Link2 } from "lucide-react";
 
-async function SubProfilePage(
-  props: {
-    params: Promise<{ username: string; subProfile: string }>;
-  }
-) {
+async function SubProfilePage(props: {
+  params: Promise<{ username: string; subProfile: string }>;
+}) {
   const params = await props.params;
   const currentUser = await getCurrentUser();
   const profileUsername = params.username;
@@ -63,7 +61,7 @@ async function SubProfilePage(
       )}
 
       {params.subProfile === "posts" && (
-        <div className="no-scrollbar max-h-[90vh] w-full grow overflow-scroll">
+        <div className="no-scrollbar max-h-fit w-full overflow-scroll">
           <ProfileList
             username={params.username}
             type="post"
@@ -75,7 +73,7 @@ async function SubProfilePage(
       )}
 
       {params.subProfile === "favourites" && (
-        <div className="no-scrollbar max-h-[90vh] w-full grow overflow-scroll">
+        <div className="no-scrollbar max-h-fit w-full overflow-scroll">
           <ProfileList
             username={params.username}
             type="favourite"

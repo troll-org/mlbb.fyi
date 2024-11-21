@@ -41,17 +41,15 @@ const ProfileList: React.FC<ProfileListProps> = ({
       <>
         {posts && posts.length > 0 && (
           <GradiantCard variant="clean">
-            <ul role="list">
-              {posts?.map((post: Post, index: number) => (
-                <PostBox
-                  post={post}
-                  posts={posts}
-                  index={index}
-                  currUser={currentUser}
-                  key={post.id}
-                />
-              ))}
-            </ul>
+            {posts?.map((post: Post, index: number) => (
+              <PostBox
+                post={post}
+                posts={posts}
+                index={index}
+                currUser={currentUser}
+                key={post.id}
+              />
+            ))}
           </GradiantCard>
         )}
       </>

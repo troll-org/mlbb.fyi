@@ -51,7 +51,7 @@ const ProfileBio: React.FC<ProfileBioProps> = ({
 
   return (
     <>
-      <div className="flex-col">
+      <div className="h-fit flex-col md:sticky md:top-20">
         <GradiantCard
           className="mx-auto h-fit max-w-[16rem] md:mx-0"
           variant="clean"

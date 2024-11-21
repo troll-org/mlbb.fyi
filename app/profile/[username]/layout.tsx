@@ -6,11 +6,9 @@ import { NextResponse } from "next/server";
 import ProfileBio from "@/app/profile/_components/profile-bio/bio";
 import ProfileTab from "@/app/profile/_components/profile-tab";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ username: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ username: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   return {
     metadataBase: new URL("https://mlbb.fyi"),
@@ -66,9 +64,7 @@ export interface LayoutProfileProps {
 export default async function LayoutProfile(props: LayoutProfileProps) {
   const params = await props.params;
 
-  const {
-    children
-  } = props;
+  const { children } = props;
 
   const { username } = params;
 
@@ -101,7 +97,7 @@ export default async function LayoutProfile(props: LayoutProfileProps) {
   return (
     <main className="max-w-[1280px] xl:mx-auto">
       <div className="flex flex-1 flex-col gap-1.5 md:flex-row">
-        <div className="mx-auto flex gap-1.5 text-cloud">
+        <div className="mx-auto flex gap-1.5 text-cloud ">
           <ProfileBio
             currentUser={currentUser}
             user={isExistingUser}

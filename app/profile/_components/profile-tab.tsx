@@ -28,7 +28,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({
       value={selectedProfileTab}
       className="w-full"
     >
-      <div className="no-scrollbar flex h-[52px] justify-center overflow-x-scroll md:justify-start">
+      <div className="z-20 flex h-fit justify-center overflow-x-scroll  md:sticky md:top-20 md:justify-start">
         <TabsList className="flex shrink-0 space-x-1">
           {ProfileTabList.map((item, i) => (
             <Link
