@@ -231,7 +231,7 @@ function HeroDetails({
 
       <GradiantCard className="h-fit w-full" variant="clean">
         <p className="font-heading text-xl md:text-3xl">Equipment</p>
-        <div className="mt-4 flex flex-col items-center justify-start gap-12 md:flex-row md:flex-wrap">
+        <div className="mt-4 flex flex-col items-center justify-start md:gap-12 md:flex-row md:flex-wrap">
           <div className="flex flex-row gap-4">
             <Image
               src={heroEquipment.authorOriginImgUrl}
