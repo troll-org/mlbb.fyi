@@ -238,7 +238,7 @@ function HeroDetails({
               alt={heroEquipment.authorName}
               width={40}
               height={40}
-              className="h-[40px] w-[40px] justify-start rounded-full bg-aqua/70 object-fill"
+              className="h-[40px] w-[40px] justify-start rounded-full bg-aqua/70 object-cover object-[100%_100%]"
             />
             <div className="flex flex-col">
               <div className="flex flex-col">
@@ -260,7 +260,7 @@ function HeroDetails({
                     alt={equipment.equipName}
                     width={60}
                     height={60}
-                    className="w-[8vw] h-[8vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
+                    className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
                   />
                 ))}
               </div>
@@ -276,7 +276,7 @@ function HeroDetails({
                     alt={emblem.emblemSkills.skillname}
                     width={60}
                     height={60}
-                    className="w-[8vw] h-[8vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
+                    className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
                   />
                 ))}
               </div>
@@ -289,7 +289,7 @@ function HeroDetails({
                 alt={heroEquipment.skill[0].skillName}
                 width={60}
                 height={60}
-                className="w-[8vw] h-[8vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
+                className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
               />
             </div>
           </div>
