@@ -1,7 +1,7 @@
 import { getCurrentUser } from "@/lib/actions/user";
 import getUser from "@/lib/actions/user";
 
-import Post from "@/components/explore/post";
+import Post from "@/app/explore/_components/post/post";
 import { IFullPost } from "@/types";
 
 async function getPost(postId: string) {

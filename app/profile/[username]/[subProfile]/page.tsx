@@ -5,8 +5,8 @@ import { getMlbbData, isUserBound } from "@/lib/actions/user";
 import { notFound } from "next/navigation";
 import { TabsContent } from "@/components/shared/tabs";
 
-import Statistics from "@/components/profile/statistics";
-import ProfileList from "@/components/profile/profile-list";
+import Statistics from "@/app/profile/_components/profile-stats/statistics";
+import ProfileList from "@/app/profile/_components/profile-list";
 import { Link2 } from "lucide-react";
 
 async function SubProfilePage({

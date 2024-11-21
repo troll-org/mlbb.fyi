@@ -1,8 +1,8 @@
 import { getCurrentUser } from "@/lib/actions/user";
 import prisma from "@/lib/prismadb";
 
-import RandomUserContainer from "@/components/explore/random-user-container";
-import PostListContainer from "@/components/explore/post/post-list-container";
+import RandomUserContainer from "@/app/explore/_components/random-user-container";
+import PostListContainer from "@/app/explore/_components/post/post-list-container";
 
 export const metadata = {
   metadataBase: new URL("https://mlbb.fyi"),

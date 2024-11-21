@@ -1,7 +1,7 @@
 import { getCurrentUser } from "@/lib/actions/user";
 import { getMlbbAcc } from "@/lib/actions/user";
 
-import CodeForm from "@/components/profile/bind-account/code-form";
+import CodeForm from "@/app/settings/_components/code-form";
 import Prompt from "@/components/shared/prompt";
 
 export default async function AppBindVerify() {

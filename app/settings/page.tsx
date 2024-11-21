@@ -1,4 +1,4 @@
-import Settings from "@/components/profile/settings";
+import Settings from "@/app/settings/_components/settings";
 import { getCurrentUser } from "@/lib/actions/user";
 import { getMlbbAcc } from "@/lib/actions/user";
 import { redirect } from "next/navigation";

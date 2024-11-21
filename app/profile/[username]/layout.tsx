@@ -3,8 +3,8 @@ import { getCurrentUser } from "@/lib/actions/user";
 import getUser from "@/lib/actions/user";
 import { isUserBound } from "@/lib/actions/user";
 import { NextResponse } from "next/server";
-import ProfileBio from "@/components/profile/bio";
-import ProfileTab from "@/components/profile/profile-tab";
+import ProfileBio from "@/app/profile/_components/profile-bio/bio";
+import ProfileTab from "@/app/profile/_components/profile-tab";
 
 export async function generateMetadata({
   params,

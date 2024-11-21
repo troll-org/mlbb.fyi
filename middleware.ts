@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     }
 
     const get = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/settings/bind?email=${token?.email}`,
+      `${process.env.NEXT_PUBLIC_BASE_URL}/settings/api/bind?email=${token?.email}`,
       {
         method: "GET",
       }

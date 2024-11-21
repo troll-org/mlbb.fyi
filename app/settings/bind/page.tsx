@@ -1,5 +1,5 @@
 import { getCurrentUser } from "@/lib/actions/user";
-import SyncForm from "@/components/profile/bind-account/bind-form";
+import SyncForm from "@/app/settings/_components/bind-form";
 import { getMlbbAcc } from "@/lib/actions/user";
 import Prompt from "@/components/shared/prompt";
 
