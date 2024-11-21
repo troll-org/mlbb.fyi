@@ -97,7 +97,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser();
 
   return (
     <html
@@ -125,7 +125,7 @@ export default async function RootLayout({
           className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >
           <ToasterProvider />
-          {/* <Navbar currentUser={currentUser} /> */}
+          <Navbar currentUser={currentUser} />
           <div className="relative mx-auto max-w-[1080px] px-4">{children}</div>
         </body>
       </CSPostHogProvider>
