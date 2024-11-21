@@ -8,9 +8,7 @@ interface Stats {
 
 export interface HeroTierDocument {
   heroId: Types.ObjectId;
-  name: string;
-  heroLaneType: string[];
-  heroRoleType: string[];
+  heroName: string;
   heroPath: string;
   combinedScore: number;
   currentMetaScore: number;
@@ -19,6 +17,8 @@ export interface HeroTierDocument {
   tournamentScore: number;
   tournamentStats: Stats;
   updatedAt: Date;
+  heroLaneType: string[];
+  heroRoleType: string[];
 }
 
 const StatsSchema: Schema<Stats> = new Schema(

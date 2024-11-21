@@ -5,7 +5,6 @@ import { Types } from "mongoose";
 export default async function getHeroStats(heroId: string) {
   try {
     await clientPromise("game-core");
-
     const heroStatsData = await HeroStats.aggregate([
       {
         $match: {

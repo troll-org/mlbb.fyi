@@ -89,12 +89,6 @@ export const HeroType = [
   },
 ];
 
-export interface Query {
-  q?: string;
-  type?: string;
-  lane?: string;
-}
-
 export interface IFullComment extends Comment {
   replies: Reply[];
 }

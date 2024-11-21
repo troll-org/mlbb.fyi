@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Types, ObjectId } from "mongoose";
+import mongoose, { Schema, Types, ObjectId } from "mongoose";
 
 interface Counter {
   heroId: ObjectId;

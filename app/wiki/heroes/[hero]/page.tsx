@@ -2,6 +2,7 @@ import getHeroStats from "@/lib/actions/getHeroStats";
 import { getOneHero } from "@/lib/actions/getHeroes";
 import HeroDetails from "@/app/wiki/heroes/_components/hero-details";
 import { getHeroTier } from "@/lib/actions/getHeroTier";
+import getEquipmentsByHeroId from "@/lib/actions/getHeroEquipments";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 
@@ -107,6 +108,14 @@ export default async function HeroPage({
 
   const heroStats = await getHeroStats(hero?._id.toString());
   const heroTier = await getHeroTier(hero?._id.toString());
+  const heroEquipment = await getEquipmentsByHeroId(hero?._id.toString());
 
-  return <HeroDetails hero={hero} heroStats={heroStats} heroTier={heroTier} />;
+  return (
+    <HeroDetails
+      hero={hero}
+      heroStats={heroStats}
+      heroTier={heroTier}
+      heroEquipment={heroEquipment}
+    />
+  );
 }

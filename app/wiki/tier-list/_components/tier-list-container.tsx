@@ -31,7 +31,7 @@ export default function TierContainer({ heroes }: TierListProps) {
   const filteredHeroes = React.useMemo(() => {
     return heroes.filter((hero) => {
       const matchesQuery =
-        !q || hero.name.toLowerCase().includes(q.toLowerCase());
+        !q || hero.heroName.toLowerCase().includes(q.toLowerCase());
 
       const matchesType =
         !type ||
@@ -155,7 +155,7 @@ export default function TierContainer({ heroes }: TierListProps) {
                     <HeroCard
                       hero={
                         {
-                          heroName: hero.name,
+                          heroName: hero.heroName,
                           heroPath: hero.heroPath,
                           heroRoleType: hero.heroRoleType,
                           heroLaneType: hero.heroLaneType,

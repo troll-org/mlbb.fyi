@@ -1,6 +1,5 @@
 import clientPromise from "@/lib/mongoose";
 import Heroes from "@/lib/mongoose/schema/heroes";
-import prisma from "@/lib/prismadb";
 
 export default async function getHeroes({ select }: { select?: string }) {
   try {
