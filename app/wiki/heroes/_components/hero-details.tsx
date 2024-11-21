@@ -238,7 +238,7 @@ function HeroDetails({
               alt={heroEquipment.authorName}
               width={40}
               height={40}
-              className="h-[40px] w-[40px] justify-start rounded-full bg-aqua/70 object-right-bottom"
+              className="h-[40px] w-[40px] justify-start rounded-full bg-aqua/70 object-none object-right-bottom"
             />
             <div className="flex flex-col">
               <div className="flex flex-col">
