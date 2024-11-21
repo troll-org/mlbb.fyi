@@ -9,11 +9,12 @@ import Statistics from "@/app/profile/_components/profile-stats/statistics";
 import ProfileList from "@/app/profile/_components/profile-list";
 import { Link2 } from "lucide-react";
 
-async function SubProfilePage({
-  params,
-}: {
-  params: { username: string; subProfile: string };
-}) {
+async function SubProfilePage(
+  props: {
+    params: Promise<{ username: string; subProfile: string }>;
+  }
+) {
+  const params = await props.params;
   const currentUser = await getCurrentUser();
   const profileUsername = params.username;
   const isExistingUser = await getUser(profileUsername);

@@ -42,7 +42,7 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ reply, postId, userId }) => {
   const [expandedable, setExpandedable] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
-  const optionRef = useRef();
+  const optionRef = useRef(undefined);
 
   function isExpandable(): boolean | undefined {
     if (containerRef.current && paragraphRef.current) {

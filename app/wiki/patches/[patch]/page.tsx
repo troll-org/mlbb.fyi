@@ -24,11 +24,12 @@ async function getPathes() {
     return null;
   }
 }
-export async function generateMetadata({
-  params,
-}: {
-  params: { patch: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ patch: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const patchVersion = params.patch;
   const patch = await getPatch(patchVersion);
 
@@ -83,11 +84,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function PatchPage({
-  params,
-}: {
-  params: { patch: string };
-}) {
+export default async function PatchPage(
+  props: {
+    params: Promise<{ patch: string }>;
+  }
+) {
+  const params = await props.params;
   const patchVersion = params.patch;
   const isValidPatch = await getPatch(patchVersion);
   if (!isValidPatch) {

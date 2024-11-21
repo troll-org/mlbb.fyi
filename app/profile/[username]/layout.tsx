@@ -6,11 +6,12 @@ import { NextResponse } from "next/server";
 import ProfileBio from "@/app/profile/_components/profile-bio/bio";
 import ProfileTab from "@/app/profile/_components/profile-tab";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { username: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ username: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   return {
     metadataBase: new URL("https://mlbb.fyi"),
     title: `@${params.username} - mlbb.fyi`,
@@ -58,14 +59,17 @@ const ProfileTabList = [
 ];
 
 export interface LayoutProfileProps {
-  params: { username: string };
+  params: Promise<{ username: string }>;
   children: React.ReactNode;
 }
 
-export default async function LayoutProfile({
-  params,
-  children,
-}: LayoutProfileProps) {
+export default async function LayoutProfile(props: LayoutProfileProps) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   const { username } = params;
 
   const currentUser = await getCurrentUser();

@@ -14,11 +14,12 @@ async function formatHeroName(slug: string): Promise<string> {
     .join(" ");
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { hero: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ hero: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const title = await formatHeroName(params.hero);
 
   const dynamicKeywords = [
@@ -95,11 +96,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function HeroPage({
-  params,
-}: {
-  params: { hero: string };
-}) {
+export default async function HeroPage(
+  props: {
+    params: Promise<{ hero: string }>;
+  }
+) {
+  const params = await props.params;
   const hero = await getOneHero(params?.hero);
 
   if (!hero) {

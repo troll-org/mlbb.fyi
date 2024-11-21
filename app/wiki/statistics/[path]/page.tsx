@@ -8,11 +8,12 @@ function formatTitle(slug: string): string {
   return slug.replace(/-/g, " ").toUpperCase();
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { path: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ path: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const title = formatTitle(params.path);
   const dynamicKeywords = [
     `${title} tournament statistics`,
@@ -75,13 +76,14 @@ export async function generateMetadata({
   };
 }
 
-async function TournamentsDetailPage({
-  params,
-}: {
-  params: {
-    path: string;
-  };
-}) {
+async function TournamentsDetailPage(
+  props: {
+    params: Promise<{
+      path: string;
+    }>;
+  }
+) {
+  const params = await props.params;
   const tournamentData: TournamentsDocument =
     await getAllHeroStatsByTournamentPath(params.path);
 

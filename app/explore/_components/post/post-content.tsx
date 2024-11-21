@@ -66,7 +66,7 @@ const PostContent: React.FC<PostContentProp> = ({
   const [expandedable, setExpandedable] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const paragraphRef = useRef<HTMLParagraphElement>(null);
-  const optionRef = useRef();
+  const optionRef = useRef(undefined);
 
   const [isOpen, setIsOpen] = useState(false);
   const dateTime = new Date(post?.createdAt).toISOString().split("T");

@@ -68,7 +68,7 @@ export async function getHeroTierWithNames({ select }: { select?: string }) {
         },
       },
     ]);
-    return heroesData;
+    return JSON.parse(JSON.stringify(heroesData));
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch hero tiers with names");

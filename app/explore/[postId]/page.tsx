@@ -15,11 +15,12 @@ async function getPost(postId: string) {
   return await get.json();
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { postId: string };
-}) {
+export default async function PostPage(
+  props: {
+    params: Promise<{ postId: string }>;
+  }
+) {
+  const params = await props.params;
   const postId = params.postId;
   const post: IFullPost = await getPost(postId);
   const currentUser = await getCurrentUser();
