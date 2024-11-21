@@ -33,6 +33,18 @@ export async function getHeroTierWithNames({ select }: { select?: string }) {
 
     const heroesData = await HeroTier.aggregate([
       {
+        $sort: { updatedAt: -1 },
+      },
+      {
+        $group: {
+          _id: "$heroId",
+          doc: { $first: "$$ROOT" },
+        },
+      },
+      {
+        $replaceRoot: { newRoot: "$doc" },
+      },
+      {
         $lookup: {
           from: "Heroes",
           localField: "heroId",
@@ -51,6 +63,7 @@ export async function getHeroTierWithNames({ select }: { select?: string }) {
           heroLaneType: "$hero.heroLaneType",
           heroRoleType: "$hero.heroRoleType",
           heroPath: "$hero.heroPath",
+          updatedAt: 1,
           ...(select ? { [select]: 1 } : {}),
         },
       },
