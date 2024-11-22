@@ -1,7 +1,4 @@
 import prisma from "@/lib/prismadb";
-import { getServerSession } from "next-auth/next";
-
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 export default async function getUser(username: string) {
   return await prisma.user.findFirst({
@@ -12,35 +9,6 @@ export default async function getUser(username: string) {
       posts: true,
     },
   });
-}
-
-export async function getCurrentUser() {
-  try {
-    const session = await getServerSession(authOptions);
-
-    if (!session?.user?.email) {
-      return null;
-    }
-
-    const currentUser = await prisma.user.findUnique({
-      where: {
-        email: session.user.email as string,
-      },
-    });
-
-    if (!currentUser) {
-      return null;
-    }
-
-    return {
-      ...currentUser,
-      emailVerified: currentUser.emailVerified?.toISOString(),
-      createdAt: currentUser.createdAt.toISOString(),
-      updatedAt: currentUser.updatedAt.toISOString(),
-    };
-  } catch (error: any) {
-    return null;
-  }
 }
 
 export async function getMlbbAcc(email?: string) {

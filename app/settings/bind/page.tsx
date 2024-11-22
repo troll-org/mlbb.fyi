@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/actions/user";
+import getCurrentUser from "@/lib/actions/getCurrentUser";
 import SyncForm from "@/app/settings/_components/bind-form";
 import { getMlbbAcc } from "@/lib/actions/user";
 import Prompt from "@/components/shared/prompt";

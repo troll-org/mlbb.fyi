@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import cloudinary from "cloudinary";
 import { cdn } from "@/lib/cloudinary";
-import { getCurrentUser } from "@/lib/actions/user";
+import getCurrentUser from "@/lib/actions/getCurrentUser";
 
 cdn;
 const signUploadForm = () => {

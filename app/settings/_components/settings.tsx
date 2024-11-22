@@ -20,7 +20,7 @@ import DialogFit from "../../../components/shared/dialog-fit";
 import { revalPath } from "@/lib/revalidate";
 
 interface ISettings {
-  currentUser?: SafeUser | null;
+  currentUser: SafeUser;
   mlbbAcc?: MlbbAcc | null;
 }
 

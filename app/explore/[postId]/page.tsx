@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/actions/user";
+import getCurrentUser from "@/lib/actions/getCurrentUser";
 import getUser from "@/lib/actions/user";
 
 import Post from "@/app/explore/_components/post/post";
@@ -15,11 +15,9 @@ async function getPost(postId: string) {
   return await get.json();
 }
 
-export default async function PostPage(
-  props: {
-    params: Promise<{ postId: string }>;
-  }
-) {
+export default async function PostPage(props: {
+  params: Promise<{ postId: string }>;
+}) {
   const params = await props.params;
   const postId = params.postId;
   const post: IFullPost = await getPost(postId);

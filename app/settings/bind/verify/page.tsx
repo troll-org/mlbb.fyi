@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/actions/user";
+import getCurrentUser from "@/lib/actions/getCurrentUser";
 import { getMlbbAcc } from "@/lib/actions/user";
 
 import CodeForm from "@/app/settings/_components/code-form";

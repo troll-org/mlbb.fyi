@@ -1,4 +1,4 @@
-import { getCurrentUser } from "@/lib/actions/user";
+import getCurrentUser from "@/lib/actions/getCurrentUser";
 import { redirect } from "next/navigation";
 
 const Page = async () => {
