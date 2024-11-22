@@ -12,11 +12,11 @@ export async function generateMetadata(props: {
   const params = await props.params;
   return {
     metadataBase: new URL("https://mlbb.fyi"),
-    title: `@${params.username} - mlbb.fyi`,
+    title: `@${params.username}`,
     description:
       "Access hero statistics, optimal builds, and connect with a community of expert players.",
     openGraph: {
-      title: `@${params.username} - mlbb.fyi`,
+      title: `@${params.username}`,
       description:
         "Access hero statistics, optimal builds, and connect with a community of expert players.",
       url: "https://mlbb.fyi",

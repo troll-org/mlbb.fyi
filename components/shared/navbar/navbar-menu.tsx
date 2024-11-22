@@ -64,7 +64,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
       ? ""
       : pathArray?.[1];
 
-  // command
   const [open, setOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -108,7 +107,6 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
               {wikiQuickLinks[0].subItems?.map((hero) => (
                 <CommandItem key={hero.path} asChild>
                   <Link href={hero.path}>
-                    {" "}
                     <PersonStandingIcon />
                     {hero.label}
                   </Link>
@@ -121,9 +119,8 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
         <ul
           className={cn(
             "md:flex md:flex-row",
-            // md:gap-x-6 md:gap-y-0 md:p-0
             "items-center ",
-            collapse ? "flex flex-col gap-y-4 p-4 font-semibold" : "hidden"
+            collapse ? "flex flex-col gap-y-4 font-semibold" : "hidden"
           )}
         >
           {MenuList.map((menu) => {
