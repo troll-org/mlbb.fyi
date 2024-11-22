@@ -20,7 +20,7 @@ import DialogFit from "../../../components/shared/dialog-fit";
 import { revalPath } from "@/lib/revalidate";
 
 interface ISettings {
-  currentUser: SafeUser;
+  currentUser?: SafeUser | null;
   mlbbAcc?: MlbbAcc | null;
 }
 
@@ -40,6 +40,11 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
     currentUser?.desc ? currentUser.desc.length : 0
   );
   const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  if (!currentUser) {
+    router.push("/auth/signin");
+    return null;
+  }
 
   if (currentUser?.username && params?.get("ref") === "signin") {
     router.push("/explore");
