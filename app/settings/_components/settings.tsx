@@ -116,7 +116,7 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
                   width={16}
                   height={16}
                   className="h-4 w-4"
-                  color="#3652ba"
+                  color="#c0e6ff"
                 />
                 <p className="text-bold mt-1 text-sm hover:underline">
                   Edit profile picture

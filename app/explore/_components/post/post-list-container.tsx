@@ -104,10 +104,10 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
 
   return (
     <div className="no-scrollbar flex max-h-fit w-full flex-col overflow-auto">
-      <div className="mb-2">
-        <div className="flex flex-row items-center gap-2">
+      <div className="mb-1.5">
+        <div className="flex flex-row items-center gap-1.5">
           <form
-            className="flex grow flex-row items-center gap-2"
+            className="flex grow flex-row items-center gap-1.5"
             onSubmit={(e) => {
               e.preventDefault();
 
@@ -130,15 +130,8 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                 <ChevronLeft className="transition-all hover:text-ocean hover:duration-300" />
               </button>
             )}
-            <div className="flex grow flex-row items-center gap-2 rounded-xl border border-ocean bg-transparent">
-              <div
-                className={cn(
-                  "flex grow flex-row items-center",
-                  isInputFocused
-                    ? "rounded-l-lg border focus:ring-1 focus:ring-ocean focus:ring-offset-0"
-                    : ""
-                )}
-              >
+            <div className="flex grow flex-row items-center gap-2 rounded-xl border border-ocean bg-cloud/5">
+              <div className="flex grow flex-row items-center">
                 <Input
                   type="text"
                   placeholder={
@@ -153,14 +146,19 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                     const inputValue = e.target.value;
                     setSearchTerm(inputValue);
                   }}
-                  className="flex h-9 grow border-none bg-transparent"
+                  className={cn(
+                    "flex h-9 grow rounded-r-none border-none bg-transparent pr-20",
+                    isInputFocused
+                      ? "rounded-l-lg focus:ring-aqua focus:ring-offset-0"
+                      : ""
+                  )}
                   maxLength={selectedOption === -2 ? 20 : 50}
                   onFocus={() => setIsInputFocused(true)}
                   onBlur={() => setIsInputFocused(false)}
                 />
                 {searchTerm.length !== 0 && (
                   <button onClick={() => setSearchTerm("")}>
-                    <X className="mr-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
+                    <X className="ml-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
                   </button>
                 )}
               </div>
@@ -170,7 +168,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
             </div>
           </form>
           <select
-            className="h-[2.45rem] w-24 rounded-xl border border-ocean bg-transparent p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-ocean"
+            className="h-[2.45rem] w-24 rounded-xl border border-ocean bg-cloud/5 p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-ocean"
             value={selectedOption}
             onChange={handleChange}
           >
@@ -185,13 +183,6 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
             </option>
           </select>
         </div>
-        {/* <div>
-          {isTagInputFocused && (
-            <p className="text-sm text-neutral-500">
-              {tagCharacterCount} / {20} characters
-            </p>
-          )}
-        </div> */}
       </div>
       {(selectedOption === -3 || selectedOption === -2) && currentUser && (
         <PostContainer currUser={currentUser} />
@@ -228,6 +219,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
           />
         </div>
       )}
+
       {selectedOption === -1 && (
         <UserList filter={filter} currentUser={currentUser} />
       )}

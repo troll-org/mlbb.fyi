@@ -139,7 +139,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                     menu.href === "/profile"
                       ? currentUser?.username
                         ? `/profile/${currentUser?.username}`
-                        : "/settings"
+                        : "/auth/signin"
                       : menu.href
                   }
                   className={cn(
@@ -183,6 +183,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
               </Button>
               <Button
                 onClick={() => {
+                  setCollapse(!collapse);
                   signOut({ callbackUrl: "/" });
                 }}
                 className="h-8 w-8 rounded-full p-2"
