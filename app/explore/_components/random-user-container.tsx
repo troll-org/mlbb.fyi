@@ -40,7 +40,7 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
         <h2 className="font-heading text-xl font-bold tracking-wide">
           Connect with others
         </h2>
-        <button disabled={loading}>
+         /* <button disabled={loading}>
           {loading ? (
             <>
               <LoadingDots color="#FAFAFA" />
@@ -53,7 +53,7 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
               }}
             />
           )}
-        </button>
+        </button> */ 
       </div>
       <ul className="mt-3 flex flex-col gap-3">
         {newRandomUsers.length !== 0 ? (
