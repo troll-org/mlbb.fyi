@@ -53,7 +53,7 @@ async function getInitialRandomUsers() {
         not: null,
       },
     },
-    take: 15,
+    take: 5,
     skip: skip,
     orderBy: {
       name: "desc",
