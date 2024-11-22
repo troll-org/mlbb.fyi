@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { CheckCircle, UserCog, XCircle } from "lucide-react";
@@ -52,7 +52,7 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
   }
 
   return (
-    <>
+    <div>
       <h1 className="text-center font-heading text-3xl font-bold">
         Profile Settings
       </h1>
@@ -267,7 +267,7 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
           </Button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
