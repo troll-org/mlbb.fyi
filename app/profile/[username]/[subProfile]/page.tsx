@@ -39,7 +39,7 @@ async function SubProfilePage(props: {
   return (
     <TabsContent
       value={params.subProfile}
-      className="flex w-full flex-col gap-1.5 md:flex-row"
+      className="flex w-full flex-col justify-center gap-1.5 md:flex-row"
     >
       {params.subProfile === "statistics" && (
         <div className="flex w-full flex-col gap-1.5">
@@ -50,9 +50,9 @@ async function SubProfilePage(props: {
               isBound={isBoundProfile ? true : false}
             />
           ) : (
-            <div className="mt-4 flex h-screen flex-col items-center justify-center">
-              <Link2 className="h-20 w-20" />
-              <p className="text-md mb-[560px] px-20 text-center font-heading md:mb-96 md:ml-3 md:text-2xl">
+            <div className="mt-4 flex flex-col items-center justify-center md:mt-40">
+              <Link2 className="h-10 w-10 md:h-16 md:w-16" />
+              <p className="text-md text-center font-heading md:text-2xl">
                 Mobile Legends account hasn&apos;t been bound yet
               </p>
             </div>
@@ -61,27 +61,23 @@ async function SubProfilePage(props: {
       )}
 
       {params.subProfile === "posts" && (
-        <div className="no-scrollbar max-h-fit w-full overflow-scroll">
-          <ProfileList
-            username={params.username}
-            type="post"
-            isOwnProfile={isOwnProfile}
-            hasPosts={hasPosts}
-            currentUser={currentUser}
-          />
-        </div>
+        <ProfileList
+          username={params.username}
+          type="post"
+          isOwnProfile={isOwnProfile}
+          hasPosts={hasPosts}
+          currentUser={currentUser}
+        />
       )}
 
       {params.subProfile === "favourites" && (
-        <div className="no-scrollbar max-h-fit w-full overflow-scroll">
-          <ProfileList
-            username={params.username}
-            type="favourite"
-            isOwnProfile={isOwnProfile}
-            hasPosts={hasFavs}
-            currentUser={currentUser}
-          />
-        </div>
+        <ProfileList
+          username={params.username}
+          type="favourite"
+          isOwnProfile={isOwnProfile}
+          hasPosts={hasFavs}
+          currentUser={currentUser}
+        />
       )}
     </TabsContent>
   );

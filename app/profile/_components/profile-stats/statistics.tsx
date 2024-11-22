@@ -47,15 +47,15 @@ const Statistics: React.FC<StatisticsProps> = ({
 
   return (
     <div className="mx-auto flex w-full flex-col items-center justify-center gap-1.5 md:flex-row md:items-start">
-      <div className="flex w-full max-w-lg flex-col gap-y-1.5 md:w-fit">
+      <div className="flex w-full flex-col gap-y-1.5 md:w-fit">
         <div className="flex w-full flex-row gap-x-1.5 ">
           <InfoCard
-            className="w-fit md:max-w-[200px]"
+            className="w-full md:max-w-[200px]"
             title="Heroes"
             value={heroes}
           />
           <InfoCard
-            className="w-fit md:max-w-[200px]"
+            className="w-full md:max-w-[200px]"
             title="Played"
             value={totalMatchPlayed}
           />
@@ -78,7 +78,7 @@ const Statistics: React.FC<StatisticsProps> = ({
               }
             />
             {isBound && (
-              <p className="mt-2 hidden px-2 text-justify text-neutral-500 md:block md:text-[8px] xl:text-[10px]">
+              <p className="mt-2 hidden px-2 text-justify text-cloud/50 md:block md:text-[0.475rem] lg:text-[10px]">
                 mlbb.fyi, an offspring of the audacious 2023 Orbital project,
                 emerges as an independent entity, untethered from the
                 endorsement of Moonton or Mobile Legends: Bang Bang. Its
@@ -90,7 +90,7 @@ const Statistics: React.FC<StatisticsProps> = ({
         </div>
       </div>
 
-      <div className="flex w-full max-w-lg flex-col gap-1.5 md:max-h-2">
+      <div className="flex w-full flex-col gap-1.5 md:max-h-2">
         <Favourites
           title="Classic Favourites"
           viewMatchPlayed={viewMatchPlayed}

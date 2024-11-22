@@ -1,8 +1,6 @@
 "use client";
 
 import { GradiantCard } from "@/components/shared/gradiant-card";
-import { cn } from "@/lib/utils";
-import { CatIcon } from "lucide-react";
 
 interface InfoCardProps {
   className?: string;

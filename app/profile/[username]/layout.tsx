@@ -96,15 +96,14 @@ export default async function LayoutProfile(props: LayoutProfileProps) {
 
   return (
     <main className="max-w-[1280px] xl:mx-auto">
-      <div className="flex flex-1 flex-col gap-1.5 md:flex-row">
-        <div className="mx-auto flex gap-1.5 text-cloud ">
-          <ProfileBio
-            currentUser={currentUser}
-            user={isExistingUser}
-            mlbbAcc={isBoundProfile}
-            isOwnProfile={isOwnProfile}
-          />
-        </div>
+      <div className="flex flex-col gap-1.5 md:flex-row">
+        <ProfileBio
+          currentUser={currentUser}
+          user={isExistingUser}
+          mlbbAcc={isBoundProfile}
+          isOwnProfile={isOwnProfile}
+        />
+
         <ProfileTab
           ProfileTabList={ProfileTabList}
           isExistingUser={isExistingUser}

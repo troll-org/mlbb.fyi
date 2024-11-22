@@ -1,9 +1,9 @@
 function Loading() {
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex items-center justify-center pt-60">
       <svg
         fill="none"
-        className="mb-80 h-8 w-8 animate-spin text-white "
+        className="h-8 w-8 animate-spin text-white "
         viewBox="0 0 32 32"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -15,7 +15,7 @@ function Loading() {
           stroke="4"
         />
       </svg>
-      <p className="mb-80 font-heading text-2xl md:ml-3">Loading...</p>
+      <p className="font-heading text-2xl md:ml-3">Loading...</p>
     </div>
   );
 }

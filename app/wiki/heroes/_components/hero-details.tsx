@@ -232,13 +232,13 @@ function HeroDetails({
       <GradiantCard className="h-fit w-full" variant="clean">
         <p className="font-heading text-xl md:text-3xl">Equipment</p>
         <div className="mt-4 flex flex-col items-center justify-start gap-4 md:flex-row md:flex-wrap lg:gap-12">
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-row items-center gap-4">
             <Image
               src={heroEquipment.authorOriginImgUrl}
               alt={heroEquipment.authorName}
               width={60}
               height={60}
-              className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full bg-aqua/70 object-none [object-position:65%_60%]"
+              className="h-[10.6667vw] w-[10.6667vw] justify-start bg-transparent object-cover md:h-[60px] md:w-[60px]"
             />
             <div className="flex flex-col">
               <div className="flex flex-col">
@@ -260,7 +260,7 @@ function HeroDetails({
                     alt={equipment.equipName}
                     width={60}
                     height={60}
-                    className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
+                    className="h-[10.6667vw] w-[10.6667vw] justify-start rounded-full object-cover md:h-[60px] md:w-[60px]"
                   />
                 ))}
               </div>
@@ -276,7 +276,7 @@ function HeroDetails({
                     alt={emblem.emblemSkills.skillname}
                     width={60}
                     height={60}
-                    className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
+                    className="h-[10.6667vw] w-[10.6667vw] justify-start rounded-full object-cover md:h-[60px] md:w-[60px]"
                   />
                 ))}
               </div>
@@ -289,7 +289,7 @@ function HeroDetails({
                 alt={heroEquipment.skill[0].skillName}
                 width={60}
                 height={60}
-                className="w-[10.6667vw] h-[10.6667vw] md:h-[60px] md:w-[60px] justify-start rounded-full object-cover"
+                className="h-[10.6667vw] w-[10.6667vw] justify-start rounded-full object-cover md:h-[60px] md:w-[60px]"
               />
             </div>
           </div>

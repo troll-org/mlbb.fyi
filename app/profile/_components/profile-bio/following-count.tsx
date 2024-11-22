@@ -13,7 +13,7 @@ import FolDialog from "@/app/profile/_components/profile-bio/fol-dialog";
 import LoadingDots from "@/components/shared/icons/loading-dots";
 import { SafeUser } from "@/types";
 
-interface ViewDialogProps {
+interface FollowingCountProps {
   baseInfo?: {
     username: string;
     following: string[];
@@ -24,7 +24,10 @@ interface ViewDialogProps {
   currentUser?: SafeUser | null;
 }
 
-const ViewDialog: React.FC<ViewDialogProps> = ({ baseInfo, currentUser }) => {
+const FollowingCount: React.FC<FollowingCountProps> = ({
+  baseInfo,
+  currentUser,
+}) => {
   const path = usePathname();
 
   const [loading, setLoading] = useState(false);
@@ -47,7 +50,7 @@ const ViewDialog: React.FC<ViewDialogProps> = ({ baseInfo, currentUser }) => {
     }[]
   >();
   return (
-    <div className="mt-6 flex flex-row justify-between px-3 font-sat font-semibold">
+    <div className="mx-auto mt-8 flex max-w-[14rem] flex-row justify-between px-3 font-sat font-semibold">
       <div
         onClick={async () => {
           const get = await fetch(
@@ -309,4 +312,4 @@ const ViewDialog: React.FC<ViewDialogProps> = ({ baseInfo, currentUser }) => {
   );
 };
 
-export default ViewDialog;
+export default FollowingCount;

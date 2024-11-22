@@ -17,7 +17,7 @@ interface IdentityHolderProps {
 
 const IdentityHolder: React.FC<IdentityHolderProps> = ({ user, baseInfo }) => {
   return (
-    <>
+    <div>
       <div className="relative mx-auto h-[150px] w-[150px] overflow-hidden rounded-full">
         <Image
           src={
@@ -43,13 +43,13 @@ const IdentityHolder: React.FC<IdentityHolderProps> = ({ user, baseInfo }) => {
           }
         />
       </div>
-      <h1 className="mt-3 text-center font-heading text-xl">
+      <h1 className="my-3 text-center font-heading text-xl">
         {baseInfo?.username}
       </h1>
-      <p className="mb-4 px-2 text-center text-sm font-normal leading-4">
+      <p className="px-2 text-center text-sm font-normal leading-4">
         {user?.desc}
       </p>
-    </>
+    </div>
   );
 };
 

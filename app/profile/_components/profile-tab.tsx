@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -26,10 +26,10 @@ const ProfileTab: React.FC<ProfileTabProps> = ({
     <Tabs
       defaultValue="statistics"
       value={selectedProfileTab}
-      className="w-full"
+      className="mt-4 w-full space-y-4 md:mt-0 md:space-y-1.5"
     >
-      <div className="z-20 flex h-fit justify-center overflow-x-scroll  md:sticky md:top-20 md:justify-start">
-        <TabsList className="flex shrink-0 space-x-1">
+      <div className="flex justify-center md:justify-start">
+        <TabsList className="flex items-baseline  space-x-1 ">
           {ProfileTabList.map((item, i) => (
             <Link
               href={`/profile/${isExistingUser?.username + item.href}`}
@@ -46,6 +46,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({
           ))}
         </TabsList>
       </div>
+
       {children}
     </Tabs>
   );

@@ -1,20 +1,10 @@
-"use client";;
-import { use } from "react";
+import { redirect } from "next/navigation";
 
-import { useRouter } from "next/navigation";
-
-export default function ProfilePage(
-  props: {
-    params: Promise<{ username: string }>;
-  }
-) {
-  const params = use(props.params);
-  const router = useRouter();
+export default async function ProfilePage(props: {
+  params: Promise<{ username: string }>;
+}) {
+  const params = await props.params;
   const profileUsername = params.username;
 
-  if (typeof window !== "undefined") {
-    router.push(`/profile/${profileUsername}/statistics`);
-  }
-
-  return null;
+  redirect(`/profile/${profileUsername}/statistics`);
 }
