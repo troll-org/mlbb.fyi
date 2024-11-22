@@ -1,4 +1,4 @@
-import getCurrentUser from "@/lib/actions/getCurrentUser";
+import { getCurrentUser } from "@/lib/actions/user";
 import getUser from "@/lib/actions/user";
 
 import Post from "@/app/explore/_components/post/post";

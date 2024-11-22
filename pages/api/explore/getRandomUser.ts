@@ -1,5 +1,5 @@
 import prisma from "@/lib/prismadb";
-import getCurrentUser from "@/lib/actions/getCurrentUser";
+import { getCurrentUser } from "@/lib/actions/user";
 import { NextApiRequest, NextApiResponse } from "next";
 
 const skipGenerator = (total: number) => {

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import getCurrentUser from "@/lib/actions/getCurrentUser";
+import { getCurrentUser } from "@/lib/actions/user";
 import getUser from "@/lib/actions/user";
 import { isUserBound } from "@/lib/actions/user";
 import { NextResponse } from "next/server";

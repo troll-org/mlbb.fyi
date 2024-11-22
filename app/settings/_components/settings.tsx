@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { CheckCircle, UserCog, XCircle } from "lucide-react";

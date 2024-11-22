@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Metadata } from "next";
 
-import getCurrentUser from "@/lib/actions/getCurrentUser";
+import { getCurrentUser } from "@/lib/actions/user";
 import ToasterProvider from "@/components/toaster-provider";
 import Navbar from "@/components/shared/navbar/navbar";
 import { cn } from "@/lib/utils";

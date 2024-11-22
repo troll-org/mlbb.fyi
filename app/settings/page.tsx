@@ -1,7 +1,6 @@
 import Settings from "@/app/settings/_components/settings";
-import getCurrentUser from "@/lib/actions/getCurrentUser";
+import { getCurrentUser } from "@/lib/actions/user";
 import { getMlbbAcc } from "@/lib/actions/user";
-import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 async function SettingsPage() {
@@ -10,7 +9,6 @@ async function SettingsPage() {
 
   return (
     <Suspense>
-      {" "}
       <Settings currentUser={currentUser} mlbbAcc={mlbbAcc} />
     </Suspense>
   );
