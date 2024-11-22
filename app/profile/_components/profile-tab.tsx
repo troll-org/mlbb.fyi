@@ -26,26 +26,24 @@ const ProfileTab: React.FC<ProfileTabProps> = ({
     <Tabs
       defaultValue="statistics"
       value={selectedProfileTab}
-      className="mt-4 w-full space-y-4 md:mt-0 md:space-y-1.5"
+      className="mt-3 w-full space-y-3 md:mt-0 md:space-y-1.5"
     >
-      <div className="flex justify-center md:justify-start">
-        <TabsList className="flex items-baseline  space-x-1 ">
-          {ProfileTabList.map((item, i) => (
+      <TabsList className="flex w-full items-center justify-center space-x-1.5 md:w-fit md:justify-start ">
+        {ProfileTabList.map((item, i) => (
+          <TabsTrigger
+            value={item.name.toLowerCase()}
+            onClick={() => setSelectedProfileTab(item.name.toLowerCase())}
+            key={i}
+          >
             <Link
               href={`/profile/${isExistingUser?.username + item.href}`}
-              key={i}
               scroll={false}
             >
-              <TabsTrigger
-                value={item.name.toLowerCase()}
-                onClick={() => setSelectedProfileTab(item.name.toLowerCase())}
-              >
-                {item.name}
-              </TabsTrigger>
+              {item.name}
             </Link>
-          ))}
-        </TabsList>
-      </div>
+          </TabsTrigger>
+        ))}
+      </TabsList>
 
       {children}
     </Tabs>

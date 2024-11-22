@@ -11,8 +11,8 @@ import useTagStore from "@/lib/state/useTagStore";
 import { ChevronLeft, Search, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/shared/tabs";
 import PostForm from "@/app/explore/_components/post/post-form";
-import PostList from "./post-list";
-import UserList from "../user-list";
+import PostList from "@/app/explore/_components/post/post-list";
+import UserList from "@/app/explore/_components/user-list";
 import { Input } from "@/components/shared/input";
 
 interface PostListContainerProps {
@@ -187,7 +187,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
       {(selectedOption === -3 || selectedOption === -2) && (
         <div className="flex flex-col gap-2">
           <Tabs value={selectedTab} className="flex w-full">
-            <TabsList className="flex w-full space-x-4">
+            <TabsList className="flex w-full space-x-3">
               {ExploreTabList.map((item, i) => {
                 if (item.name === "Following" && !currentUser) {
                   return null;
