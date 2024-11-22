@@ -5,7 +5,9 @@ import { redirect } from "next/navigation";
 
 async function SettingsPage() {
   const currentUser = await getCurrentUser();
-  if (!currentUser) redirect("/auth/signin");
+  if (!currentUser) {
+    redirect("/auth/signin");
+  }
   const mlbbAcc = await getMlbbAcc(currentUser?.email || "");
 
   return <Settings currentUser={currentUser} mlbbAcc={mlbbAcc} />;
