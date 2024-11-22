@@ -33,14 +33,14 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
 
   return (
     <GradiantCard
-      className="sticky top-[3.75rem] hidden h-full max-h-[90vh] max-w-[360px] rounded-3xl md:block"
+      className="sticky top-[3.75rem] hidden h-full max-h-[90vh] max-w-[360px] rounded-3xl lg:block"
       variant="clean"
     >
       <div className="flex items-center justify-between">
         <h2 className="font-heading text-xl font-bold tracking-wide">
           Connect with others
         </h2>
-         <button disabled={loading}>
+        <button disabled={loading}>
           {loading ? (
             <>
               <LoadingDots color="#FAFAFA" />
@@ -61,7 +61,7 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
             <li key={user.id} className="flex gap-3">
               <Image
                 src={user.image || "/nana.jpg"}
-                alt={user.name as string}
+                alt={(user.name as string) || "User Avatar"}
                 width={48}
                 height={48}
                 className="h-12 w-12 rounded-full"

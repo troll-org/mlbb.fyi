@@ -10,7 +10,7 @@ import useTagStore from "@/lib/state/useTagStore";
 
 import { ChevronLeft, Search, X } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/shared/tabs";
-import PostContainer from "./post-container";
+import PostForm from "@/app/explore/_components/post/post-form";
 import PostList from "./post-list";
 import UserList from "../user-list";
 import { Input } from "@/components/shared/input";
@@ -103,94 +103,91 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
   };
 
   return (
-    <div className="no-scrollbar flex max-h-fit w-full flex-col overflow-auto">
-      <div className="mb-1.5">
-        <div className="flex flex-row items-center gap-1.5">
-          <form
-            className="flex grow flex-row items-center gap-1.5"
-            onSubmit={(e) => {
-              e.preventDefault();
+    <div className="flex max-h-fit w-full flex-col space-y-3">
+      <div className="flex flex-row items-center gap-1.5">
+        <form
+          className="flex grow"
+          onSubmit={(e) => {
+            e.preventDefault();
 
-              if (selectedOption !== -2) {
-                setFilter(searchTerm);
-              } else {
+            if (selectedOption !== -2) {
+              setFilter(searchTerm);
+            } else {
+              setFilter("");
+              setSearchTag(searchTerm);
+            }
+          }}
+        >
+          {(filter !== "" || searchTag !== "") && (
+            <button
+              onClick={() => {
                 setFilter("");
-                setSearchTag(searchTerm);
-              }
-            }}
-          >
-            {(filter !== "" || searchTag !== "") && (
-              <button
-                onClick={() => {
-                  setFilter("");
-                  setSearchTag("");
-                  setSearchTerm("");
+                setSearchTag("");
+                setSearchTerm("");
+              }}
+            >
+              <ChevronLeft className="mr-2 transition-all hover:text-ocean hover:duration-300" />
+            </button>
+          )}
+          <div className="flex grow flex-row items-center gap-2 rounded-xl border border-ocean bg-cloud/5">
+            <div className="flex grow flex-row items-center">
+              <Input
+                type="text"
+                placeholder={
+                  selectedOption === -3
+                    ? "Search posts..."
+                    : selectedOption === -2
+                    ? "Search tags..."
+                    : "Search users..."
+                }
+                value={searchTerm}
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  setSearchTerm(inputValue);
                 }}
-              >
-                <ChevronLeft className="transition-all hover:text-ocean hover:duration-300" />
-              </button>
-            )}
-            <div className="flex grow flex-row items-center gap-2 rounded-xl border border-ocean bg-cloud/5">
-              <div className="flex grow flex-row items-center">
-                <Input
-                  type="text"
-                  placeholder={
-                    selectedOption === -3
-                      ? "Search posts..."
-                      : selectedOption === -2
-                      ? "Search posts with a tag... (Up to 20 characters)"
-                      : "Search users..."
-                  }
-                  value={searchTerm}
-                  onChange={(e) => {
-                    const inputValue = e.target.value;
-                    setSearchTerm(inputValue);
-                  }}
-                  className={cn(
-                    "flex h-9 grow rounded-r-none border-none bg-transparent pr-20",
-                    isInputFocused
-                      ? "rounded-l-lg focus:ring-aqua focus:ring-offset-0"
-                      : ""
-                  )}
-                  maxLength={selectedOption === -2 ? 20 : 50}
-                  onFocus={() => setIsInputFocused(true)}
-                  onBlur={() => setIsInputFocused(false)}
-                />
-                {searchTerm.length !== 0 && (
-                  <button onClick={() => setSearchTerm("")}>
-                    <X className="ml-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
-                  </button>
+                className={cn(
+                  "flex h-9 grow rounded-r-none border-none bg-transparent pr-20",
+                  isInputFocused
+                    ? "rounded-l-lg focus:ring-aqua focus:ring-offset-0"
+                    : ""
                 )}
-              </div>
-              <button>
-                <Search className="mr-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
-              </button>
+                maxLength={selectedOption === -2 ? 20 : 50}
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => setIsInputFocused(false)}
+              />
+              {searchTerm.length !== 0 && (
+                <button onClick={() => setSearchTerm("")}>
+                  <X className="ml-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
+                </button>
+              )}
             </div>
-          </form>
-          <select
-            className="h-[2.45rem] w-24 rounded-xl border border-ocean bg-cloud/5 p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-ocean"
-            value={selectedOption}
-            onChange={handleChange}
-          >
-            <option value={-3} className="bg-ocean">
-              Post
-            </option>
-            <option value={-2} className="bg-ocean">
-              Tag
-            </option>
-            <option value={-1} className="bg-ocean">
-              User
-            </option>
-          </select>
-        </div>
+            <button>
+              <Search className="mr-2 text-cloud/80 transition-all hover:text-cloud hover:duration-300" />
+            </button>
+          </div>
+        </form>
+        <select
+          className="h-[2.45rem] w-fit rounded-xl border border-ocean bg-cloud/5 p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-ocean"
+          value={selectedOption}
+          onChange={handleChange}
+        >
+          <option value={-3} className="bg-ocean">
+            Post
+          </option>
+          <option value={-2} className="bg-ocean">
+            Tag
+          </option>
+          <option value={-1} className="bg-ocean">
+            User
+          </option>
+        </select>
+        {currentUser && <PostForm currUser={currentUser} />}
       </div>
-      {(selectedOption === -3 || selectedOption === -2) && currentUser && (
-        <PostContainer currUser={currentUser} />
-      )}
+
       {(selectedOption === -3 || selectedOption === -2) && (
-        <div className="mt-5 flex flex-col gap-2">
-          <Tabs value={selectedTab} className="mt-4 flex w-full">
-            <TabsList className="flex shrink-0 space-x-4">
+        <div className="flex flex-col gap-2">
+          <Tabs value={selectedTab} className="flex w-full">
+            <TabsList className="flex w-full space-x-4">
               {ExploreTabList.map((item, i) => {
                 if (item.name === "Following" && !currentUser) {
                   return null;
