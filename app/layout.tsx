@@ -23,10 +23,20 @@ const fontSatoshi = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
-  icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/favicon.png", type: "image/png" }],
-    apple: [{ url: "/icon.png", sizes: "180x180" }],
-  },
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      url: "/favicon.png",
+    },
+    {
+      rel: "apple-touch-icon",
+      type: "image/png",
+      sizes: "180x180",
+      url: "/favicon.png",
+    },
+  ],
   title: {
     template: "%s - mlbb.fyi",
     default: "mlbb.fyi - Elevate Your Mobile Legends Game",
