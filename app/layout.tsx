@@ -24,8 +24,8 @@ const fontSatoshi = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: [{ url: "/favicon.ico" }, { url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/icon.png", sizes: "180x180" }],
   },
   title: {
     template: "%s - mlbb.fyi",
