@@ -21,8 +21,6 @@ const fontSatoshi = localFont({
   variable: "--font-satoshi",
 });
 
-
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
   title: {
