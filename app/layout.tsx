@@ -21,22 +21,31 @@ const fontSatoshi = localFont({
   variable: "--font-satoshi",
 });
 
+
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
-  icons: [
-    {
-      rel: "icon",
-      type: "image/png",
-      sizes: "32x32",
-      url: "/favicon.png",
-    },
-    {
-      rel: "apple-touch-icon",
-      type: "image/png",
-      sizes: "180x180",
-      url: "/apple-touch-icon.png",
-    },
-  ],
+  // icons: [
+  //   {
+  //     rel: "icon",
+  //     type: "image/x-icon",
+  //     sizes: "16x16",
+  //     url: "/icons/favicon.ico",
+  //   },
+
+  //   {
+  //     rel: "icon",
+  //     type: "image/svg+xml",
+  //     sizes: "16x16",
+  //     url: "/icons/favicon.svg",
+  //   },
+  //   {
+  //     rel: "apple-touch-icon",
+  //     type: "image/png",
+  //     sizes: "180x180",
+  //     url: "/icons/apple-touch-icon.png",
+  //   },
+  // ],
   title: {
     template: "%s - mlbb.fyi",
     default: "mlbb.fyi - Elevate Your Mobile Legends Game",
@@ -137,6 +146,9 @@ export default async function RootLayout({
         <body
           className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >
+          <link rel="icon" href="/icons/mlbb.ico?v=2" sizes="16x16" type="image/x-icon" />
+          <link rel="icon" href="/icons/favicon.svg?v=2" type="image/svg+xml" />
+          <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png?v=2" sizes="180x180" />
           <ToasterProvider />
           <Navbar currentUser={currentUser} />
           <div className="relative mx-auto max-w-[1080px] px-4">{children}</div>
