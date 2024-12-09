@@ -17,8 +17,12 @@ const HomeBanner: React.FC = () => {
         <Image
           src="/dawn.webp"
           alt="Background"
-          fill
-          className="w-screen opacity-20"
+          layout="fill"
+          className="w-screen opacity-0 transition-opacity duration-1000 ease-in-out"
+          onLoadingComplete={(img) => {
+            img.classList.remove("opacity-0");
+            img.classList.add("opacity-20");
+          }}
         />
       </div>
       <div className="flex h-[84vh] items-center justify-center px-8 sm:px-4">
