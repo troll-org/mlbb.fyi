@@ -82,7 +82,7 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ reply, postId, userId }) => {
               src={
                 reply.userImage?.split("/image/upload/")[0] +
                   "/image/upload/c_fill,h_150,w_150/" +
-                  reply.userImage?.split("/image/upload/")[1] || "/nana.jpg"
+                  reply.userImage?.split("/image/upload/")[1] || "/nana.webp"
               }
               alt=""
               width={48}

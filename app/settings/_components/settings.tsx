@@ -91,14 +91,14 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
             <Image
               src={
                 currentUser?.image === ""
-                  ? "/nana.jpg"
+                  ? "/nana.webp"
                   : currentUser?.image?.includes("/image/upload")
                   ? `${
                       currentUser?.image?.split("/image/upload/")[0]
                     }/image/upload/c_fill,h_150,w_150/${
                       currentUser?.image?.split("/image/upload/")[1]
                     }`
-                  : currentUser?.image || "/nana.jpg"
+                  : currentUser?.image || "/nana.webp"
               }
               alt=""
               width={150}

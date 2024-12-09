@@ -155,7 +155,7 @@ const PostForm = ({ currUser }: { currUser: SafeUser }) => {
           >
             <div className="flex h-fit items-center gap-2.5 rounded-lg p-2 pt-0">
               <Image
-                src={(currUser?.image as string) || "/nana.jpg"}
+                src={(currUser?.image as string) || "/nana.webp"}
                 alt="image"
                 width={48}
                 height={48}

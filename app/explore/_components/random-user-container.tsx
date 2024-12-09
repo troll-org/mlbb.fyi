@@ -60,7 +60,7 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
           newRandomUsers.map((user) => (
             <li key={user.id} className="flex gap-3">
               <Image
-                src={user.image || "/nana.jpg"}
+                src={user.image || "/nana.webp"}
                 alt={(user.name as string) || "User Avatar"}
                 width={48}
                 height={48}

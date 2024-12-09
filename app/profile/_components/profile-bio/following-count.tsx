@@ -87,7 +87,7 @@ const FollowingCount: React.FC<FollowingCountProps> = ({
                     >
                       <li className="flex items-center gap-4 p-2">
                         <Image
-                          src={fol.image || "/nana.jpg"}
+                          src={fol.image || "/nana.webp"}
                           alt="pic"
                           width={44}
                           height={44}
@@ -216,7 +216,7 @@ const FollowingCount: React.FC<FollowingCountProps> = ({
                     >
                       <li className="flex items-center gap-4 p-2">
                         <Image
-                          src={fol.image || "/nana.jpg"}
+                          src={fol.image || "/nana.webp"}
                           alt="pic"
                           width={44}
                           height={44}

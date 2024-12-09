@@ -35,7 +35,7 @@ const NewCommentForm: React.FC<CommentProps> = ({ postId, img }) => {
             ? img.split("/image/upload/")[0] +
               "/image/upload/c_fill,h_150,w_150/" +
               img.split("/image/upload/")[1]
-            : "/nana.jpg"
+            : "/nana.webp"
         }
         alt=""
         width={48}

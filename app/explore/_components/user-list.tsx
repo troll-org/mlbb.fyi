@@ -88,7 +88,7 @@ const UserList: React.FC<UserListProps> = ({ filter, currentUser }) => {
                 >
                   <div className="flex flex-row items-center">
                     <Image
-                      src={user.image || "/nana.jpg"}
+                      src={user.image || "/nana.webp"}
                       alt={user.name as string}
                       width={48}
                       height={48}

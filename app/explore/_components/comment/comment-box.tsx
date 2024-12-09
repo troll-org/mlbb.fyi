@@ -87,14 +87,14 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment, postId, userId }) => {
           <Image
             src={
               comment.userImage === ""
-                ? "/nana.jpg"
+                ? "/nana.webp"
                 : comment.userImage?.includes("/image/upload")
                 ? `${
                     comment.userImage?.split("/image/upload/")[0]
                   }/image/upload/c_fill,h_150,w_150/${
                     comment.userImage?.split("/image/upload/")[1]
                   }`
-                : comment.userImage || "/nana.jpg"
+                : comment.userImage || "/nana.webp"
             }
             alt=""
             width={48}
