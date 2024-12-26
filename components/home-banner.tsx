@@ -32,7 +32,7 @@ const HomeBanner: React.FC = () => {
               Elevate Your Mobile <br className="hidden md:block" /> Legends
               Game
             </h1>
-            <p className="pt-3 text-[14px] leading-tight text-gray-100 md:text-[18px]">
+            <p className="mt-8 text-[14px] leading-tight text-gray-100 md:text-[18px]">
               Access hero statistics, optimal builds, and connect
               <br className="hidden md:block" /> with a community of expert
               players.
