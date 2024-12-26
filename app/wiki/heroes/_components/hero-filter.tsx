@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { HeroRole, HeroType } from "@/types";
@@ -20,6 +20,14 @@ const HeroFilter: React.FC<HeroFilterProps> = ({
 
   const [activeTypes, setActiveTypes] = useState<string[]>([]);
   const [activeRoles, setActiveRoles] = useState<string[]>([]);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams?.toString());
+    const types = params.get("type")?.split(",") || [];
+    const roles = params.get("lane")?.split(",") || [];
+    setActiveTypes(types);
+    setActiveRoles(roles);
+  }, [searchParams]);
 
   const debouncedUpdateQuery = useMemo(
     () =>
