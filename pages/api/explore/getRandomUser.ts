@@ -26,7 +26,7 @@ export default async function GET(req: NextApiRequest, res: NextApiResponse) {
           not: null,
         },
       },
-      take: 5,
+      take: 10,
       skip: skip,
       orderBy: {
         name: "desc",
