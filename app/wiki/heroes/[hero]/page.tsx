@@ -14,76 +14,15 @@ async function formatHeroName(slug: string): Promise<string> {
     .join(" ");
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ hero: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ hero: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const title = await formatHeroName(params.hero);
-
-  const dynamicKeywords = [
-    `${title} hero statistics`,
-    `${title} Mobile Legends guide`,
-    `${title} MLBB guide`,
-    `${title} hero builds`,
-    `${title} recommended equipment`,
-    `${title} hero abilities`,
-    `${title} hero role`,
-    `${title} hero counters`,
-    `${title} hero synergies`,
-    `${title} win rates`,
-    `${title} pick rates`,
-    `${title} ban rates`,
-    `${title} performance analysis`,
-    `${title} pro builds`,
-    `${title} tier ranking`,
-    `${title} gameplay tips`,
-    `${title} hero spotlight`,
-    `How to play ${title}`,
-    `${title} Mobile Legends stats`,
-    `${title} MLBB hero tier`,
-    `${title} Mobile Legends gameplay`,
-    `${title} hero combos`,
-    `Best items for ${title}`,
-    `${title} Mobile Legends hero`,
-    `Meta analysis for ${title}`,
-    `Counters for ${title}`,
-    `Best matchups for ${title}`,
-    `Builds to dominate with ${title}`,
-    `Optimal equipment for ${title}`,
-    `Skill breakdown for ${title}`,
-    `${title} tier list placement`,
-    `Pro tips for ${title}`,
-    `${title} Mobile Legends strategies`,
-    `Advanced strategies for ${title}`,
-    `Playstyle tips for ${title}`,
-    `${title} MLBB win conditions`,
-    `Effective team comps with ${title}`,
-    `${title} Mobile Legends nerfs`,
-    `${title} hero buffs`,
-    `Patch updates for ${title}`,
-    `${title} MLBB item builds`,
-    `Effective counters to ${title}`,
-    `Best roles for ${title}`,
-    `${title} match performance`,
-    `${title} hero strengths`,
-    `${title} hero weaknesses`,
-    `${title} Mobile Legends tips and tricks`,
-    `${title} hero mastery`,
-    `${title} Mobile Legends esports insights`,
-    `${title} gameplay adjustments`,
-  ];
 
   return {
     title,
     description: `Discover detailed statistics, tier information, and other insights about ${title} in Mobile Legends: Bang Bang.`,
-    keywords: [
-      "Mobile Legends heroes",
-      "MLBB heroes",
-      "Mobile Legends hero guides",
-      ...dynamicKeywords,
-    ],
     openGraph: {
       title,
       description: `Explore ${title}'s win rates, pick rates, ban rates, and tier rankings in Mobile Legends: Bang Bang.`,
@@ -96,11 +35,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function HeroPage(
-  props: {
-    params: Promise<{ hero: string }>;
-  }
-) {
+export default async function HeroPage(props: {
+  params: Promise<{ hero: string }>;
+}) {
   const params = await props.params;
   const hero = await getOneHero(params?.hero);
 
