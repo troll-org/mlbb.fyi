@@ -82,6 +82,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
               redirect: false,
               callbackUrl: "/settings?r=signin",
             });
+            router.push("/settings?r=signin");
           }}
         >
           <Image
@@ -100,6 +101,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
               redirect: false,
               callbackUrl: "/settings?r=signin",
             });
+            router.push("/settings?r=signin");
           }}
         >
           <Image
