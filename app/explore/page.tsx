@@ -6,7 +6,7 @@ import PostListContainer from "@/app/explore/_components/post-list-container";
 
 export const metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
-  title: "Explore - mlbb.fyi",
+  title: "Explore",
   description:
     "Access hero statistics, optimal builds, and connect with a community of expert players.",
   openGraph: {
