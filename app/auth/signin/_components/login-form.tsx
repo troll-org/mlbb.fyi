@@ -8,10 +8,11 @@ import LoadingDots from "@/components/shared/icons/loading-dots";
 import { Button } from "@/components/shared/button";
 import { Input } from "@/components/shared/input";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
   const params = useSearchParams();
+  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -78,6 +79,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           className="w-full rounded-lg"
           onClick={() => {
             signIn("google", {
+              redirect: false,
               callbackUrl: "/settings?r=signin",
             });
           }}
@@ -95,6 +97,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           className="w-full rounded-lg"
           onClick={() => {
             signIn("discord", {
+              redirect: false,
               callbackUrl: "/settings?r=signin",
             });
           }}
