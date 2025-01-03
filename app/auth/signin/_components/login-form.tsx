@@ -8,7 +8,7 @@ import LoadingDots from "@/components/shared/icons/loading-dots";
 import { Button } from "@/components/shared/button";
 import { Input } from "@/components/shared/input";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
   const params = useSearchParams();
@@ -32,7 +32,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           setLoading(true);
           await signIn("email", {
             email,
-            callbackUrl: "/settings?r=signin",
+            redirectTo: "/settings?r=signin",
           })
             .then((res) => {
               if (res?.ok) {
@@ -75,16 +75,14 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
       <div className="mt-4 flex justify-center gap-2">
         <Button
           className="w-full rounded-lg"
-          onClick={async (e) => {
-            e.preventDefault();
-            await signIn("google", {
-              redirect: false,
-              callbackUrl: "/settings?r=signin",
+          onClick={() => {
+            signIn("google", {
+              redirectTo: "/settings?r=signin",
             });
           }}
         >
           <Image
-            className="mr-1"
+            className="mr-2"
             src={"/google.svg"}
             alt="Google"
             width="20"
@@ -94,15 +92,14 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
         </Button>
         <Button
           className="w-full rounded-lg"
-          onClick={async (e) => {
-            e.preventDefault();
-            await signIn("discord", {
-              callbackUrl: "/settings?r=signin",
+          onClick={() => {
+            signIn("discord", {
+              redirectTo: "/settings?r=signin",
             });
           }}
         >
           <Image
-            className="mr-1"
+            className="mr-2"
             src={"/discord.svg"}
             alt="Discord"
             width="20"
