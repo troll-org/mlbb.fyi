@@ -33,7 +33,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           await signIn("email", {
             email,
             redirect: false,
-            callbackUrl: "/settings?ref=signin",
+            callbackUrl: "/settings?r=signin",
           })
             .then((res) => {
               if (res?.ok) {
@@ -68,7 +68,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           <span className="w-full border-t" />
         </div>
         <div className="text-xs relative flex justify-center">
-          <span className="text-muted-foreground bg-[#151515] px-2">
+          <span className="bg-[#151515] px-2 text-muted-foreground">
             or sign in with
           </span>
         </div>
@@ -78,7 +78,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           className="w-full rounded-lg"
           onClick={() => {
             signIn("google", {
-              callbackUrl: "/settings?ref=signin",
+              callbackUrl: "/settings?r=signin",
             });
           }}
         >
@@ -95,7 +95,7 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           className="w-full rounded-lg"
           onClick={() => {
             signIn("discord", {
-              callbackUrl: "/settings?ref=signin",
+              callbackUrl: "/settings?r=signin",
             });
           }}
         >

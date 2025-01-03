@@ -46,7 +46,7 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
     return null;
   }
 
-  if (currentUser?.username && params?.get("ref") === "signin") {
+  if (currentUser?.username && params?.get("r") === "signin") {
     router.push("/explore");
     return null;
   }
