@@ -12,7 +12,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
   const params = useSearchParams();
-  const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -33,7 +32,6 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
           setLoading(true);
           await signIn("email", {
             email,
-            redirect: false,
             callbackUrl: "/settings?r=signin",
           })
             .then((res) => {
@@ -77,12 +75,12 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
       <div className="mt-4 flex justify-center gap-2">
         <Button
           className="w-full rounded-lg"
-          onClick={() => {
-            signIn("google", {
+          onClick={async (e) => {
+            e.preventDefault();
+            await signIn("google", {
               redirect: false,
               callbackUrl: "/settings?r=signin",
             });
-            router.push("/settings?r=signin");
           }}
         >
           <Image
@@ -96,12 +94,11 @@ export default function LoginForm({ csrfToken }: { csrfToken?: string }) {
         </Button>
         <Button
           className="w-full rounded-lg"
-          onClick={() => {
-            signIn("discord", {
-              redirect: false,
+          onClick={async (e) => {
+            e.preventDefault();
+            await signIn("discord", {
               callbackUrl: "/settings?r=signin",
             });
-            router.push("/settings?r=signin");
           }}
         >
           <Image
