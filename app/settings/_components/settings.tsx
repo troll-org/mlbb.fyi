@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { CheckCircle, UserCog, XCircle } from "lucide-react";
@@ -46,10 +46,11 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
     return null;
   }
 
-  if (currentUser?.username && params?.get("r") === "signin") {
-    router.push("/explore");
-    return null;
-  }
+  useEffect(() => {
+    if (currentUser?.username && params?.get("r") === "signin") {
+      router.push("/explore");
+    }
+  }, []);
 
   return (
     <div>
