@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     default: "mlbb.fyi - Elevate Your Mobile Legends Game",
   },
   description:
-    "Boost your Mobile Legends gameplay with hero statistics, optimal builds, and connect with expert players.",
+    "Boost your Mobile Legends (MLBB) gameplay with hero statistics, optimal builds, and connect with expert players",
   openGraph: {
     title: {
       template: "%s - mlbb.fyi",
       default: "mlbb.fyi - Elevate Your Mobile Legends Game",
     },
     description:
-      "Boost your Mobile Legends gameplay with hero statistics, optimal builds, and connect with expert players.",
+      "Boost your Mobile Legends (MLBB) gameplay with hero statistics, optimal builds, and connect with expert players",
     url: "https://mlbb.fyi",
     ...defaultOpenGraphMD,
   },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       default: "mlbb.fyi - Elevate Your Mobile Legends Game",
     },
     description:
-      "Boost your Mobile Legends gameplay with hero statistics, optimal builds, and connect with expert players.",
+      "Boost your Mobile Legends (MLBB) gameplay with hero statistics, optimal builds, and connect with expert players",
     ...defaultTwitterMD,
   },
 };

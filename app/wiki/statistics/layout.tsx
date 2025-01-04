@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     default: "mlbb.fyi Statistics",
   },
   description:
-    "Get the latest statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
+    "Get the latest Mobile Legends (MLBB) statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
   openGraph: {
     title: {
       template: "%s - mlbb.fyi",
       default: "mlbb.fyi Statistics",
     },
     description:
-      "Get the latest statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
+      "Get the latest Mobile Legends (MLBB) statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
     url: "https://mlbb.fyi/wiki/statistics",
     ...defaultOpenGraphMD,
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       default: "mlbb.fyi Statistics",
     },
     description:
-      "Get the latest statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
+      "Get the latest Mobile Legends (MLBB) statistics of win rates, pick rates, ban rates of heroes from Major Mobile Legends: Bang Bang Tournaments",
     ...defaultTwitterMD,
   },
 };

@@ -42,15 +42,15 @@ export async function generateMetadata(props: {
 
   return {
     title: `Patch ${formattedVersion}`,
-    description: `Explore the details, updates, and changes in patch ${formattedVersion} for Mobile Legends: Bang Bang.`,
+    description: `Explore the details, updates, and changes in Mobile Legends (MLBB) patch ${formattedVersion}`,
     openGraph: {
       title: `Patch ${formattedVersion}`,
-      description: `Dive into the patch ${formattedVersion} updates, including hero balances, item adjustments, and bug fixes.`,
+      description: `Dive into the Mobile Legends (MLBB) patch ${formattedVersion} updates, including hero balances, item adjustments, and bug fixes.`,
       url: `https://mlbb.fyi/wiki/patches/${patchVersion}`,
     },
     twitter: {
       title: `Patch ${formattedVersion}`,
-      description: `Learn more about patch ${formattedVersion} updates and changes for Mobile Legends: Bang Bang.`,
+      description: `Learn more about Mobile Legends (MLBB) patch ${formattedVersion} updates and changes`,
     },
   };
 }

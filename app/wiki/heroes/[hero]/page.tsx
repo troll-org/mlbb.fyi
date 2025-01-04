@@ -22,15 +22,15 @@ export async function generateMetadata(props: {
 
   return {
     title,
-    description: `Discover detailed statistics, tier information, and other insights about ${title} in Mobile Legends: Bang Bang.`,
+    description: `Discover detailed statistics, tier information, and other insights about Mobile Legends (MLBB) ${title}`,
     openGraph: {
       title,
-      description: `Explore ${title}'s win rates, pick rates, ban rates, and tier rankings in Mobile Legends: Bang Bang.`,
+      description: `Explore Mobile Legends (MLBB) ${title}'s win rates, pick rates, ban rates, and tier rankings `,
       url: `https://mlbb.fyi/wiki/heroes/${params.hero}`,
     },
     twitter: {
       title: `${title} - mlbb.fyi Hero`,
-      description: `Learn more about ${title}'s performance in Mobile Legends: Bang Bang.`,
+      description: `Learn more about Mobile Legends (MLBB) ${title}'s performance`,
     },
   };
 }
