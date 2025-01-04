@@ -61,10 +61,10 @@ export default function StatsContainer({ children, tourNames }: IStats) {
               <Command>
                 <CommandInput
                   placeholder="Search tournament..."
-                  className=" p-0 font-semibold"
+                  className="p-0 font-semibold"
                 />
                 <CommandList>
-                  <CommandEmpty className="p-4 text-sm font-semibold">
+                  <CommandEmpty className="p-4 text-sm font-semibold text-cloud">
                     No tournament found
                   </CommandEmpty>
                   <CommandGroup>
@@ -77,7 +77,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
                           router.push(`/wiki/statistics/${currentValue}`);
                           setPopoverOpen(false);
                         }}
-                        className="cursor-pointer font-semibold transition-all duration-300 ease-in-out hover:bg-white/10"
+                        className="cursor-pointer font-semibold text-cloud transition-all duration-300 ease-in-out hover:bg-white/10"
                       >
                         {tourney.tournamentName}
                       </CommandItem>
