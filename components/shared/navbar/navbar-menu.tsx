@@ -100,13 +100,13 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
         )}
       >
         <CommandDialog open={open} onOpenChange={setOpen}>
-          <CommandInput placeholder="Search wiki's..." />
+          <CommandInput placeholder="Search heroes..." />
           <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandEmpty>No results found</CommandEmpty>
             <CommandGroup heading="Heroes">
               {wikiQuickLinks[0].subItems?.map((hero) => (
                 <CommandItem key={hero.path} asChild>
-                  <Link href={hero.path}>
+                  <Link href={hero.path} className="text-cloud">
                     <PersonStandingIcon />
                     {hero.label}
                   </Link>
