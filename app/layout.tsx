@@ -63,7 +63,7 @@ export default async function RootLayout({
       className={`${inter.className} ${fontHeading.variable} ${fontSatoshi.variable} text-cloud`}
     >
       <CSPostHogProvider>
-        {/* {process.env.NODE_ENV === "production" && (
+        {process.env.NODE_ENV === "production" && (
           <>
             <Script
               async
@@ -78,7 +78,7 @@ export default async function RootLayout({
                 gtag('config', 'G-RYMVSHE2KQ');`}
             </Script>
           </>
-        )} */}
+        )}
         <body
           className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >
