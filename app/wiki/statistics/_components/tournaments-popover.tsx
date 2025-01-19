@@ -41,7 +41,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
         <div className="mb-8 flex gap-4">
           <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
             <PopoverTrigger asChild>
-              <Button className="flex h-10 w-full max-w-md justify-start rounded-lg border border-cloud/10 bg-transparent px-3 py-2 text-sm backdrop-blur-lg focus:outline-none focus:ring-1 focus:ring-cloud/30 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:bg-cloud/5 data-[state=open]:ring-1 data-[state=open]:ring-cloud/30">
+              <Button className="flex h-10 w-full max-w-md justify-start rounded-lg border border-cloud/10 bg-transparent px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-cloud/30 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:bg-cloud/5 data-[state=open]:ring-1 data-[state=open]:ring-cloud/30">
                 <span
                   className={cn(
                     "block overflow-hidden whitespace-nowrap font-medium",
