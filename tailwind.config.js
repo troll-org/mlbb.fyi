@@ -3,6 +3,9 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
+    future: {
+       hoverOnlyWhenSupported: true
+    },
     darkMode: ["class"],
     content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
