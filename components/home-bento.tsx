@@ -84,7 +84,7 @@ const HomeBento: React.FC = () => {
             alt="Cricle"
             width={338}
             height={347}
-            className="z-1 absolute -top-[100] h-[24.09722222vw] w-[23.4722222vw] lg:-top-[120] xl:-top-[160] 2xl:-top-[200]"
+            className="z-1 absolute -top-[100px] h-[24.09722222vw] w-[23.4722222vw] lg:-top-[120px] xl:-top-[160px] 2xl:-top-[200px]"
           />
           <div className="z-10 mt-40 flex flex-col items-center justify-center text-center">
             <div className="text-lg p-2 font-heading lg:text-xl xl:text-2xl">
