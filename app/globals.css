@@ -122,14 +122,27 @@
   padding: 0 1rem;
 }
 
+.disable-height {
+  height: fit-content !important;
+}
+
+@media (max-width: 768px) {
+  .disable-height {
+    height: 50vh !important;
+    top: 10% !important;
+  }
+}
+
 .hero-grid-container {
   grid-template-columns: repeat(auto-fit, minmax(43vw, 1fr));
 }
+
 @media (min-width: 400px) {
   .hero-grid-container {
     grid-template-columns: repeat(auto-fit, minmax(122px, max-content));
   }
 }
+
 @layer base {
   * {
     @apply border-border;

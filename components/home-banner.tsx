@@ -18,10 +18,10 @@ const HomeBanner: React.FC = () => {
           src="/dawn.webp"
           alt="Background"
           layout="fill"
-          className="w-screen opacity-0 transition-opacity duration-1000 ease-in-out"
+          className="disable-height w-screen opacity-0 transition-opacity duration-1000 ease-in-out"
           onLoadingComplete={(img) => {
             img.classList.remove("opacity-0");
-            img.classList.add("opacity-20");
+            img.classList.add("opacity-25");
           }}
         />
       </div>
