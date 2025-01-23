@@ -32,7 +32,8 @@ const HomeBento: React.FC = () => {
                 href="/wiki/statistics"
                 className="z-20 flex flex-row items-center font-heading"
               >
-                Live stats here <ChevronRight className="ml-0.5 lg:mt-1" />
+                Live stats here{" "}
+                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
               </Link>
             </div>
           </div>
@@ -60,7 +61,7 @@ const HomeBento: React.FC = () => {
                 className="z-20 flex flex-row items-center font-heading"
               >
                 Your hero's tier here{" "}
-                <ChevronRight className="ml-0.5 lg:mt-1" />
+                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
               </Link>
             </div>
           </div>
@@ -98,7 +99,8 @@ const HomeBento: React.FC = () => {
                 href="/explore"
                 className="text-lg z-20 mx-auto flex flex-row items-center font-heading lg:text-xl xl:text-2xl"
               >
-                Get Involved <ChevronRight className="ml-0.5 lg:mt-1" />
+                Get Involved{" "}
+                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
               </Link>
             </div>
           </div>
@@ -126,13 +128,13 @@ const HomeBento: React.FC = () => {
               <div className="text-lg font-heading lg:text-xl xl:text-2xl">
                 Conquer & Be Unstoppable
               </div>
-              <div className="flex flex-col gap-4 text-xl">
+              <div className="flex flex-col items-center gap-4 text-xl">
                 <Link
                   href="/settings"
                   className=" z-20 flex flex-row items-center self-end font-heading  text-sm xl:text-xl"
                 >
                   Track your stats now{" "}
-                  <ChevronRight className="ml-0.5 lg:mt-1" />
+                  <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
                 </Link>
               </div>
             </div>
@@ -151,7 +153,7 @@ const HomeBento: React.FC = () => {
             <div className="text-lg p-2 font-heading lg:text-xl xl:text-2xl">
               Hero Wiki
             </div>
-            <div className="flex flex-col gap-8 text-sm xl:text-xl 2xl:gap-16">
+            <div className="flex flex-col gap-4 text-sm xl:text-xl 2xl:gap-6">
               <p className="max-w-[20vw] text-[#A1ACBE]">
                 Detailed equipment, skills, and info for every hero
               </p>
@@ -159,7 +161,8 @@ const HomeBento: React.FC = () => {
                 href="/wiki/heroes"
                 className="text-lg z-20 mx-auto flex flex-row items-center font-heading lg:text-xl xl:text-2xl"
               >
-                Master your hero <ChevronRight className="ml-0.5 lg:mt-1" />
+                Master your hero{" "}
+                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
               </Link>
             </div>
           </div>
