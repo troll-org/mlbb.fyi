@@ -9,14 +9,6 @@ module.exports = {
   darkMode: ["class"],
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    screens: {
-      xs: "480px", // Custom breakpoint for extra small screens
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1280px",
-      "2xl": "1536px",
-    },
     fontSize: {
       sm: "0.8rem",
       base: ["16px", "100px"],
