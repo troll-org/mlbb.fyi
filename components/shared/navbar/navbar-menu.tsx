@@ -80,17 +80,33 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
 
   return (
     <>
-      <div
-        className={cn(
-          "flex cursor-pointer md:hidden",
-          "transition-transform duration-200"
+      <div className="flex flex-row items-center justify-between gap-4">
+        {!currentUser && (
+          <div className="block md:hidden md:items-center">
+            <Button
+              onClick={() => {
+                router.push("/auth/signin");
+              }}
+              className="flex h-6 w-[72px] rounded-2xl p-2"
+              variant="gradiantNavy"
+            >
+              <span className="stroke-[3] text-[16px] text-cloud">Sign In</span>
+            </Button>
+          </div>
         )}
-        onClick={() => {
-          setCollapse(!collapse);
-        }}
-      >
-        {collapse ? <Close /> : <Burger />}
+        <div
+          className={cn(
+            "flex cursor-pointer md:hidden",
+            "transition-transform duration-200"
+          )}
+          onClick={() => {
+            setCollapse(!collapse);
+          }}
+        >
+          {collapse ? <Close /> : <Burger />}
+        </div>
       </div>
+
       <div
         className={cn(
           "md:static md:flex md:h-auto md:bg-transparent",
@@ -161,7 +177,7 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentUser }) => {
                   router.push("/auth/signin");
                   setCollapse(!collapse);
                 }}
-                className="flex h-6 w-[72px] rounded-2xl p-2"
+                className="hidden h-6 w-[72px] rounded-2xl p-2 md:flex"
                 variant="gradiantNavy"
               >
                 <span className="stroke-[3] text-[16px] text-cloud">
