@@ -43,11 +43,11 @@ const CommandInput = React.forwardRef<
     className="flex items-center border-b border-cloud/10 px-3"
     cmdk-input-wrapper=""
   >
-    <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+    <Search className="mr-2 h-4 w-4 shrink-0 text-cloud opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        "flex h-11 w-full rounded-lg bg-transparent py-3 text-sm outline-none placeholder:text-cloud disabled:cursor-not-allowed disabled:opacity-50",
+        "flex h-11 w-full rounded-lg bg-transparent py-3 text-sm text-cloud outline-none placeholder:text-cloud/50 disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       {...props}
@@ -90,7 +90,7 @@ const CommandGroup = React.forwardRef<
   <CommandPrimitive.Group
     ref={ref}
     className={cn(
-      "text-foreground [&_[cmdk-group-heading]]:text-xs overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-cloud",
+      "[&_[cmdk-group-heading]]:text-xs overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-cloud",
       className
     )}
     {...props}
@@ -105,7 +105,7 @@ const CommandSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.Separator
     ref={ref}
-    className={cn("bg-border -mx-1 h-px", className)}
+    className={cn("-mx-1 h-px bg-border", className)}
     {...props}
   />
 ));
@@ -135,7 +135,7 @@ const CommandShortcut = ({
   return (
     <span
       className={cn(
-        "text-xs text-muted-foreground ml-auto tracking-widest",
+        "text-xs ml-auto tracking-widest text-muted-foreground",
         className
       )}
       {...props}

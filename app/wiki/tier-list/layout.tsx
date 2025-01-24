@@ -5,11 +5,11 @@ import { TabsContent } from "@/components/shared/tabs";
 export const metadata: Metadata = {
   title: "Hero Tier List | Best Meta MLBB Heroes",
   description:
-    "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks.",
+    "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks",
   openGraph: {
     title: "Hero Tier List | Best Meta MLBB Heroes",
     description:
-      "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks.",
+      "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks",
     url: "https://mlbb.fyi/wiki/tier-list",
     ...defaultOpenGraphMD,
   },
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "Hero Tier List | Best Meta MLBB Heroes",
     description:
-      "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks.",
+      "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks",
     ...defaultTwitterMD,
   },
 };

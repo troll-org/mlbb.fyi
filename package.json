@@ -39,7 +39,7 @@
     "lazysizes": "^5.3.2",
     "lucide-react": "^0.216.0",
     "mongoose": "^7.2.3",
-    "next": "15.0.3",
+    "next": "^15.1.4",
     "next-auth": "^4.24.7",
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.9",

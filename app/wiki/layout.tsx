@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     default: "mlbb.fyi",
   },
   description:
-    "mlbb.fyi wiki: Your ultimate source for the latest Mobile Legends info. Find guides, tips, and strategies all in one place.",
+    "Mobile Legends (MLBB) Wiki: Your ultimate source for the latest Mobile Legends info. Find guides, tips, and strategies all in mlbb.fyi",
   openGraph: {
     title: {
       template: "%s - mlbb.fyi wiki",
       default: "mlbb.fyi",
     },
     description:
-      "mlbb.fyi wiki: Your ultimate source for the latest Mobile Legends info. Find guides, tips, and strategies all in one place.",
+      "Mobile Legends (MLBB) Wiki: Your ultimate source for the latest Mobile Legends info. Find guides, tips, and strategies all in mlbb.fyi",
     url: "https://mlbb.fyi",
     ...defaultOpenGraphMD,
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       default: "mlbb.fyi",
     },
     description:
-      "mlbb.fyi wiki: Your ultimate source for the latest Mobile Legends info. Find guides, tips, and strategies all in one place.",
+      "Mobile Legends (MLBB) Wiki: Your ultimate source for the latest Mobile Legends info. Find guides, tips, and strategies all in mlbb.fyi",
     ...defaultTwitterMD,
   },
 };

@@ -9,14 +9,14 @@ export const metadata: Metadata = {
     default: "mlbb.fyi Heroes",
   },
   description:
-    "Discover comprehensive statistics, detailed information, and recommended equipment for all Mobile Legends: Bang Bang heroes",
+    "Discover comprehensive statistics, detailed information, and recommended equipment for all Mobile Legends (MLBB) heroes",
   openGraph: {
     title: {
       template: "%s - mlbb.fyi",
       default: "mlbb.fyi Heroes",
     },
     description:
-      "Discover comprehensive statistics, detailed information, and recommended equipment for all Mobile Legends: Bang Bang heroes",
+      "Discover comprehensive statistics, detailed information, and recommended equipment for all Mobile Legends (MLBB) heroes",
     url: "https://mlbb.fyi/wiki/heroes",
     ...defaultOpenGraphMD,
   },
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       default: "mlbb.fyi Heroes",
     },
     description:
-      "Discover comprehensive statistics, detailed information, and recommended equipment for all Mobile Legends: Bang Bang heroes",
+      "Discover comprehensive statistics, detailed information, and recommended equipment for all Mobile Legends (MLBB) heroes",
     ...defaultTwitterMD,
   },
 };

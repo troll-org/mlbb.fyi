@@ -9,16 +9,16 @@ import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 export const metadata: Metadata = {
   title: "Patches",
-  description: "List of all patches in Mobile Legends: Bang Bang",
+  description: "List of all Mobile Legends (MLBB) patches",
   openGraph: {
     title: "Patches",
-    description: "List of all patches in Mobile Legends: Bang Bang",
+    description: "List of all Mobile Legends (MLBB) patches",
     url: "https://mlbb.fyi/wiki/patches",
     ...defaultOpenGraphMD,
   },
   twitter: {
     title: "Patches",
-    description: "List of all patches in Mobile Legends: Bang Bang",
+    description: "List of all Mobile Legends (MLBB) patches",
     ...defaultTwitterMD,
   },
 };

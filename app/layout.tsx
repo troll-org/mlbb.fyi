@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Metadata } from "next";
+import Script from "next/script";
 
 import { getCurrentUser } from "@/lib/actions/user";
 import ToasterProvider from "@/components/toaster-provider";
@@ -28,14 +29,14 @@ export const metadata: Metadata = {
     default: "mlbb.fyi - Elevate Your Mobile Legends Game",
   },
   description:
-    "Boost your Mobile Legends gameplay with hero statistics, optimal builds, and connect with expert players.",
+    "Boost your Mobile Legends (MLBB) gameplay with hero statistics, optimal builds, and connect with expert players",
   openGraph: {
     title: {
       template: "%s - mlbb.fyi",
       default: "mlbb.fyi - Elevate Your Mobile Legends Game",
     },
     description:
-      "Boost your Mobile Legends gameplay with hero statistics, optimal builds, and connect with expert players.",
+      "Boost your Mobile Legends (MLBB) gameplay with hero statistics, optimal builds, and connect with expert players",
     url: "https://mlbb.fyi",
     ...defaultOpenGraphMD,
   },
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
       default: "mlbb.fyi - Elevate Your Mobile Legends Game",
     },
     description:
-      "Boost your Mobile Legends gameplay with hero statistics, optimal builds, and connect with expert players.",
+      "Boost your Mobile Legends (MLBB) gameplay with hero statistics, optimal builds, and connect with expert players",
     ...defaultTwitterMD,
   },
 };
@@ -63,7 +64,7 @@ export default async function RootLayout({
       className={`${inter.className} ${fontHeading.variable} ${fontSatoshi.variable} text-cloud`}
     >
       <CSPostHogProvider>
-        {/* {process.env.NODE_ENV === "production" && (
+        {process.env.NODE_ENV === "production" && (
           <>
             <Script
               async
@@ -78,7 +79,7 @@ export default async function RootLayout({
                 gtag('config', 'G-RYMVSHE2KQ');`}
             </Script>
           </>
-        )} */}
+        )}
         <body
           className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >

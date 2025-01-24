@@ -5,16 +5,16 @@ import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 
 export const metadata: Metadata = {
   title: "Heroes",
-  description: "List of all heroes in Mobile Legends: Bang Bang",
+  description: "List of all Mobile Legends (MLBB) heroes",
   openGraph: {
     title: "Heroes",
-    description: "List of all heroes in Mobile Legends: Bang Bang",
+    description: "List of all Mobile Legends (MLBB) heroes",
     url: "https://mlbb.fyi/wiki/heroes",
     ...defaultOpenGraphMD,
   },
   twitter: {
     title: "Heroes",
-    description: "List of all heroes in Mobile Legends: Bang Bang",
+    description: "List of all Mobile Legends (MLBB) heroes",
     ...defaultTwitterMD,
   },
 };

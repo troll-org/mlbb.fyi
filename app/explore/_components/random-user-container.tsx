@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { User } from "@prisma/client";
-import { GradiantCard } from "../../../components/shared/gradiant-card";
+import { GradiantCard } from "@/components/shared/gradiant-card";
 import { RotateCcw } from "lucide-react";
-import LoadingDots from "../../../components/shared/icons/loading-dots";
+import LoadingDots from "@/components/shared/icons/loading-dots";
 
 interface RandomUserProps {
   randomUsers: User[];
