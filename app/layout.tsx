@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Metadata } from "next";
 import Script from "next/script";
-import Footer from "@/components/footer";
 
 import { getCurrentUser } from "@/lib/actions/user";
 import ToasterProvider from "@/components/toaster-provider";
@@ -86,9 +85,7 @@ export default async function RootLayout({
         >
           <ToasterProvider />
           <Navbar currentUser={currentUser} />
-          <div className="layout-container">
-            {children} <Footer />
-          </div>
+          <div className="layout-container">{children}</div>
         </body>
       </CSPostHogProvider>
     </html>
