@@ -13,7 +13,7 @@ function Footer() {
         variant: "default",
       })} mx-auto mt-16 !max-w-[1280px] `}
     >
-      <div className="mx-auto max-w-[1080px] py-16 font-sat">
+      <div className="mx-auto max-w-[1080px] px-6 py-16 font-sat md:px-0">
         <div className="flex justify-between">
           <NavLogo />
           <div className="flex flex-wrap gap-16">
@@ -33,11 +33,10 @@ function Footer() {
 
         <hr className="my-8 border-cloud/10" />
 
-        <div className="flex justify-between">
+        <div className="flex justify-between text-[10px] md:text-sm">
           <p>© 2024 copyright mlbb.fyi all rights reserved</p>
-          <p className="text-end">
-            Data sourced from the official Mobile Legends Bang Bang website
-            <br />
+          <p className="max-w-[200px] text-end  md:max-w-[400px]">
+            Data sourced from the official Mobile Legends Bang Bang website.
             This site is not affiliated with or endorsed by Moonton
           </p>
         </div>
