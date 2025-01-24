@@ -7,24 +7,24 @@ import { ChevronRight } from "lucide-react";
 
 const HomeBento: React.FC = () => {
   return (
-    <div className="mx-auto grid max-w-[1280px] gap-4 lg:gap-5">
+    <div className="md:pt-0 lg:gap-5 mx-auto grid max-w-[1280px] gap-4 pt-16">
       {/* First row: Two columns */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5">
-        <GradiantCard className="relative flex h-[17.708vw] flex-col justify-start overflow-hidden px-6 py-5 lg:px-10 lg:py-7">
-          <div className="absolute -left-[20vw] -top-[7.5vw] h-[11.6vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-3xl"></div>
-          <div className="absolute bottom-0 z-10 h-[2vw] w-full bg-[#2B334A] blur-xl"></div>
+      <div className="md:grid-cols-2 lg:gap-5 grid grid-cols-1 gap-4">
+        <GradiantCard className="md:h-[17.708vw] md:w-full md:px-6 md:py-5 lg:px-10 lg:py-7 relative flex h-[100vw] w-[93.3333vw] flex-col justify-start overflow-hidden p-7">
+          <div className="md:-left-[20vw] md:-top-[7.5vw] md:h-[11.6vw] md:blur-3xl absolute -left-8 -top-[4vw] h-[24vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-2xl"></div>
+          <div className="md:h-[2vw] md:w-full absolute bottom-0 left-0 z-10 h-[6vw] w-[100vw] bg-[#2B334A] blur-xl"></div>
           <Image
             src="/stats.webp"
             alt="Statistics"
             width={265}
             height={208}
-            className="z-1 absolute bottom-0 right-0 h-[14.444444444vw] w-[18.402777787vw]"
+            className="z-1 md:h-[14.444444444vw] md:w-[18.402777787vw] absolute bottom-0 right-0 h-[59.2vw] w-[75vw]"
           />
-          <div className="z-10 flex h-full flex-col justify-between text-left">
-            <div className="text-lg font-heading lg:text-xl xl:text-2xl">
+          <div className="md:justify-between md:gap-0 z-10 flex h-full flex-col gap-4 text-left">
+            <div className="text-lg lg:text-xl xl:text-2xl font-heading">
               Access Most Reliable Statistics
             </div>
-            <div className="flex flex-col gap-2 text-sm lg:gap-4 xl:text-xl">
+            <div className="lg:gap-4 xl:text-xl flex flex-col gap-2 text-sm">
               <p className="text-[#A1ACBE]">
                 Leverage live stats for smarter, <br /> and winning decision
               </p>
@@ -33,26 +33,26 @@ const HomeBento: React.FC = () => {
                 className="z-20 flex flex-row items-center font-heading"
               >
                 Live stats here{" "}
-                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
+                <ChevronRight className="xl:h-6 xl:w-6 ml-0.5 h-4 w-4" />
               </Link>
             </div>
           </div>
         </GradiantCard>
-        <GradiantCard className="flex h-[17.708vw] flex-col justify-start overflow-hidden px-6 py-5 lg:px-10 lg:py-7">
-          <div className="absolute -left-[44vw] h-[11.6vw] w-[55.556vw] rotate-[211deg] bg-[#6829A8] opacity-20 blur-3xl"></div>{" "}
-          <div className="absolute bottom-0 z-10 h-[2vw] w-full bg-[#2B334A] blur-xl"></div>
+        <GradiantCard className="md:h-[17.708vw] md:w-full md:px-6 md:py-5 lg:px-10 lg:py-7 flex h-[100vw] w-[93.3333vw] flex-col justify-start overflow-hidden p-7">
+          <div className="md:-left-[44vw] md:h-[11.6vw] md:rotate-[211deg] md:blur-3xl absolute -left-8 -top-[4vw] h-[24vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-2xl"></div>{" "}
+          <div className="md:h-[2vw] md:w-full absolute bottom-0 left-0 z-10 h-[6vw] w-[100vw] bg-[#2B334A] blur-xl"></div>
           <Image
             src="/tier.webp"
             alt="Tier List"
             width={238}
             height={192}
-            className="z-1 absolute bottom-0 right-0 h-[13.3333333vw] w-[16.5277778vw]"
+            className="z-1 md:h-[13.3333333vw] md:w-[16.5277778vw] absolute bottom-0 right-0 h-[59.2vw] w-[75vw]"
           />
-          <div className="z-10 flex h-full flex-col justify-between text-left">
-            <div className="text-lg font-heading lg:text-xl xl:text-2xl">
+          <div className="md:justify-between md:gap-0 z-10 flex h-full flex-col gap-4 text-left">
+            <div className="text-lg lg:text-xl xl:text-2xl font-heading">
               Up-to-date Tier List
             </div>
-            <div className="flex flex-col gap-2 text-sm lg:gap-4 xl:text-xl">
+            <div className="lg:gap-4 xl:text-xl flex flex-col gap-2 text-sm">
               <p className="text-[#A1ACBE]">
                 Identify top-tier heroes <br /> to dominate matches
               </p>
@@ -61,7 +61,7 @@ const HomeBento: React.FC = () => {
                 className="z-20 flex flex-row items-center font-heading"
               >
                 Your hero's tier here{" "}
-                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
+                <ChevronRight className="xl:h-6 xl:w-6 ml-0.5 h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -69,10 +69,10 @@ const HomeBento: React.FC = () => {
       </div>
 
       {/* Second row: Three columns */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5">
-        <GradiantCard className="flex flex-col items-center justify-center overflow-hidden px-6 py-5 lg:px-10 lg:py-7">
-          <div className="absolute top-0 h-[11.6vw] w-[55.556vw] bg-[#6829A8] opacity-20 blur-3xl"></div>
-          <div className="absolute bottom-0 z-10 h-[2vw] w-full bg-[#2B334A] blur-xl"></div>
+      <div className="md:grid-cols-3 lg:gap-5 grid grid-cols-1 gap-4">
+        <GradiantCard className="md:h-full md:w-full md:px-6 md:py-5 lg:px-10 lg:py-7 flex h-[100vw] w-[93.3333vw] flex-col items-center  justify-center overflow-hidden p-7">
+          <div className="md:top-0 md:h-[11.6vw] md:rotate-0 md:blur-3xl absolute -left-8 -top-[4vw] h-[24vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-2xl"></div>
+          <div className="md:h-[2vw] md:w-full absolute bottom-0 left-0 z-10 h-[6vw] w-[100vw] bg-[#2B334A] blur-xl"></div>
           <Image
             src="/dawn.webp"
             alt="Dawn"
@@ -84,85 +84,89 @@ const HomeBento: React.FC = () => {
             alt="Cricle"
             width={338}
             height={347}
-            className="z-1 absolute -top-[100px] h-[24.09722222vw] w-[23.4722222vw] lg:-top-[120px] xl:-top-[160px] 2xl:-top-[200px]"
+            className="z-1 md:-top-[100px]  md:h-[24.09722222vw] md:w-[23.4722222vw] lg:-top-[120px] xl:-top-[160px] 2xl:-top-[200px] absolute -top-[180px] h-[90vw] w-[90.133vw]"
           />
           <div className="z-10 mt-40 flex flex-col items-center justify-center text-center">
-            <div className="text-lg p-2 font-heading lg:text-xl xl:text-2xl">
+            <div className="text-lg sm:mt-48 md:mt-0 lg:text-xl xl:text-2xl mt-16 p-2 font-heading">
               Top Forum & Positive Community
             </div>
-            <div className="flex flex-col gap-14  text-sm xl:text-xl">
-              <p className="max-w-[20vw] text-[#A1ACBE]">
+            <div className="md:gap-14 xl:text-xl flex flex-col  gap-4 text-sm">
+              <p className="md:max-w-[20vw] text-[#A1ACBE]">
                 Connect with top players and engage in positive, active
                 discussions
               </p>
               <Link
                 href="/explore"
-                className="text-lg z-20 mx-auto flex flex-row items-center font-heading lg:text-xl xl:text-2xl"
+                className="text-lg lg:text-xl xl:text-2xl z-20 mx-auto flex flex-row items-center font-heading"
               >
                 Get Involved{" "}
-                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
+                <ChevronRight className="xl:h-6 xl:w-6 ml-0.5 h-4 w-4" />
               </Link>
             </div>
           </div>
         </GradiantCard>
-        <div className="flex flex-col gap-4 lg:gap-5">
-          <GradiantCard className="flex h-[33vw] shrink-0 flex-col items-center justify-center overflow-hidden lg:h-[32vw] xl:h-[17.708vw]">
+        <div className="lg:gap-5 flex flex-col gap-4">
+          <GradiantCard className="md:flex lg:h-[32vw] xl:h-[17.708vw] hidden h-[33vw] shrink-0 flex-col items-center justify-center overflow-hidden">
             <div className="absolute -left-[32vw] -top-[7.5vw] h-[11.6vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-3xl"></div>
             <div className="absolute -bottom-1 -right-[48vw] h-[11.6vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-3xl"></div>
             <div className="absolute bottom-0 z-20 h-[1vw] w-full bg-[#2B334A] blur-xl"></div>
-            <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl">
+            <h1 className="sm:text-4xl md:text-5xl font-heading text-2xl">
               mlbb.fyi
             </h1>
           </GradiantCard>
-          <GradiantCard className="flex shrink-0 flex-col justify-start overflow-hidden px-6 py-5 lg:h-[20vw] lg:px-10 lg:py-7 xl:h-[17.708vw]">
-            <div className="absolute -right-[32vw] -top-[7.5vw] h-[11.6vw] w-[55.556vw] rotate-[21deg] bg-[#6829A8] opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-0 z-10 h-[2vw] w-full bg-[#2B334A] blur-xl"></div>
+          <GradiantCard className="md:h-[20vw] md:px-6 md:py-5 lg:h-[20vw] lg:px-10 lg:py-7 xl:h-[17.708vw] flex h-[100vw] w-[93.3333vw] shrink-0 flex-col justify-start overflow-hidden p-7">
+            <div className="md:-top-[7.5vw] md:h-[11.6vw] md:rotate-[21deg] md:blur-3xl absolute -left-8 -right-[32vw] -top-[4vw] h-[24vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-2xl"></div>
+            <div className="md:h-[2vw] md:w-full absolute bottom-0 left-0 z-10 h-[6vw] w-[100vw] bg-[#2B334A] blur-xl"></div>
             <Image
               src="/profile.webp"
               alt="Profile"
               width={1282}
               height={786}
-              className="z-1 absolute -left-16 bottom-0 h-[13.64583333vw] w-[22.3263889vw] opacity-80"
+              className="z-1 md:-left-16 md:h-[13.64583333vw] md:w-[22.3263889vw] absolute -left-8 bottom-0 h-[56vw] w-[100vw] opacity-80"
             />
-            <div className="z-10 flex h-full flex-col justify-between gap-8 text-left lg:gap-0 ">
-              <div className="text-lg font-heading lg:text-xl xl:text-2xl">
+            <div className="md:justify-between lg:gap-0 z-10 flex h-full flex-col gap-4 text-left ">
+              <div className="text-lg lg:text-xl xl:text-2xl font-heading">
                 Conquer & Be Unstoppable
               </div>
-              <div className="flex flex-col items-center gap-4 text-xl">
+              <div className="md:items-center md:gap-0 xl:text-xl flex flex-col  items-start gap-2 text-sm">
+                <p className="md:hidden md:max-w-[20vw] text-[#A1ACBE]">
+                  Track your MLBB analytics
+                </p>
                 <Link
                   href="/settings"
-                  className=" z-20 flex flex-row items-center self-end font-heading  text-sm xl:text-xl"
+                  className=" md:self-end xl:text-xl z-20 flex flex-row items-center self-start  font-heading text-sm"
                 >
                   Track your stats now{" "}
-                  <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
+                  <ChevronRight className="xl:h-6 xl:w-6 ml-0.5 h-4 w-4" />
                 </Link>
               </div>
             </div>
           </GradiantCard>
         </div>
-        <GradiantCard className="flex flex-col justify-start overflow-hidden px-10 py-7">
-          <div className="degree absolute -bottom-12 z-10 h-[6vw] w-[50vw] -rotate-[5deg] bg-[#2B334A] blur-xl"></div>
+        <GradiantCard className="md:h-full md:w-full md:px-10 flex h-[100vw] w-[93.3333vw] flex-col justify-start overflow-hidden  px-7 py-7">
+          <div className="md:hidden absolute -left-8 -right-[32vw] -top-[4vw] block h-[24vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-2xl "></div>
+          <div className="degree md:-bottom-12 md:w-[50vw] absolute bottom-0 left-0 z-10 h-[6vw] w-[100vw] -rotate-[5deg] bg-[#2B334A] blur-xl"></div>
           <Image
             src="/mathilda.webp"
             alt="Mathilda"
             width={639}
             height={426}
-            className="z-1 xl:-bottom- absolute -bottom-40 left-0 xl:-bottom-[304px] 2xl:-bottom-60"
+            className="z-1 sm:-bottom-80 md:-bottom-40 md:w-full xl:-bottom-[304px] 2xl:-bottom-60 absolute -bottom-72 left-0 w-[93.3333vw] xs:-bottom-96"
           />
           <div className="z-10 flex flex-col items-center justify-center text-center">
-            <div className="text-lg p-2 font-heading lg:text-xl xl:text-2xl">
+            <div className="text-lg lg:text-xl xl:text-2xl p-2 font-heading">
               Hero Wiki
             </div>
-            <div className="flex flex-col gap-4 text-sm xl:text-xl 2xl:gap-6">
-              <p className="max-w-[20vw] text-[#A1ACBE]">
+            <div className="xl:text-xl 2xl:gap-6 flex flex-col gap-4 text-sm">
+              <p className="md:max-w-[20vw] text-[#A1ACBE]">
                 Detailed equipment, skills, and info for every hero
               </p>
               <Link
                 href="/wiki/heroes"
-                className="text-lg z-20 mx-auto flex flex-row items-center font-heading lg:text-xl xl:text-2xl"
+                className="text-lg lg:text-xl xl:text-2xl z-20 mx-auto flex flex-row items-center font-heading"
               >
                 Master your hero{" "}
-                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
+                <ChevronRight className="xl:h-6 xl:w-6 ml-0.5 h-4 w-4" />
               </Link>
             </div>
           </div>

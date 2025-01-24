@@ -11,9 +11,9 @@ function Footer() {
     <div
       className={`${cardVariants({
         variant: "default",
-      })} mx-auto mt-16 !max-w-[1280px] `}
+      })} mx-auto mt-4 !max-w-[1280px] md:mt-16 `}
     >
-      <div className="mx-auto max-w-[1080px] px-6 py-16 font-sat md:px-4">
+      <div className="mx-auto max-w-[1080px] px-6 py-16 font-sat md:px-0">
         <div className="flex justify-between">
           <NavLogo />
           <div className="flex flex-wrap gap-16">
