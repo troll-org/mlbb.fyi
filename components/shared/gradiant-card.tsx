@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import Info from "./icons/info";
 import { VariantProps, cva } from "class-variance-authority";
 
-const cardVariants = cva("mask relative w-full", {
+export const cardVariants = cva("mask relative w-full", {
   variants: {
     variant: {
       default:
