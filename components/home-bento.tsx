@@ -151,7 +151,7 @@ const HomeBento: React.FC = () => {
             alt="Mathilda"
             width={639}
             height={426}
-            className="z-1 custom-bottom absolute left-0 w-[93.3333vw] md:w-full"
+            className="z-1 absolute left-0 top-[100px] w-[93.3333vw] md:top-[160px] md:w-full lg:top-[180px] "
           />
           <div className="z-10 flex flex-col items-start justify-center gap-4 text-center md:items-center md:gap-0">
             <div className="text-lg p-0 font-heading md:p-2 lg:text-xl xl:text-2xl">

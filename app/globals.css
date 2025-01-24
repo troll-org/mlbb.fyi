@@ -143,36 +143,6 @@
   }
 }
 
-/* Add your global styles here */
-
-.custom-bottom {
-  bottom: -270px;
-}
-
-@media (min-width: 640px) {
-  .custom-bottom {
-    bottom: -409.6px; /* 64% of 640px */
-  }
-}
-
-@media (min-width: 768px) {
-  .custom-bottom {
-    bottom: -230.4px; /* 30% of 768px */
-  }
-}
-
-@media (min-width: 1280px) {
-  .custom-bottom {
-    bottom: -819.2px; /* 64% of 1280px */
-  }
-}
-
-@media (min-width: 1536px) {
-  .custom-bottom {
-    bottom: -552.96px; /* 36% of 1536px */
-  }
-}
-
 @layer base {
   * {
     @apply border-border;
