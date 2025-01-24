@@ -143,6 +143,36 @@
   }
 }
 
+/* Add your global styles here */
+
+.custom-bottom {
+  bottom: -72%;
+}
+
+@media (min-width: 640px) {
+  .custom-bottom {
+    bottom: -64%;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-bottom {
+    bottom: -30%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-bottom {
+    bottom: -64%;
+  }
+}
+
+@media (min-width: 1536px) {
+  .custom-bottom {
+    bottom: -36%;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
