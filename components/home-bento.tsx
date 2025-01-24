@@ -100,7 +100,7 @@ const HomeBento: React.FC = () => {
                 className="text-lg z-20 flex flex-row items-start font-heading md:mx-auto md:items-center lg:text-xl xl:text-2xl"
               >
                 Get Involved{" "}
-                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
+                <ChevronRight className="ml-0.5 h-4 w-4 self-center xl:h-6 xl:w-6" />
               </Link>
             </div>
           </div>
@@ -151,7 +151,7 @@ const HomeBento: React.FC = () => {
             alt="Mathilda"
             width={639}
             height={426}
-            className="z-1 [min-480px]:-bottom-96 absolute -bottom-72 left-0 w-[93.3333vw] sm:-bottom-80 md:-bottom-40 md:w-full xl:-bottom-[304px] 2xl:-bottom-60"
+            className="z-1 absolute -bottom-[72vw] left-0 w-[93.3333vw] sm:-bottom-[64vw] md:-bottom-40 md:w-full xl:-bottom-[304px] 2xl:-bottom-60"
           />
           <div className="z-10 flex flex-col items-start justify-center gap-4 text-center md:items-center md:gap-0">
             <div className="text-lg p-0 font-heading md:p-2 lg:text-xl xl:text-2xl">
@@ -166,7 +166,7 @@ const HomeBento: React.FC = () => {
                 className="text-lg z-20 flex flex-row items-start font-heading md:mx-auto md:items-center lg:text-xl xl:text-2xl"
               >
                 Master your hero{" "}
-                <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
+                <ChevronRight className="ml-0.5 h-4 w-4 self-center xl:h-6 xl:w-6" />
               </Link>
             </div>
           </div>
