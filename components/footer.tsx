@@ -4,21 +4,27 @@ import { cardVariants } from "@/components/shared/gradiant-card";
 import NavLogo from "@/components/shared/navbar/navbar-logo";
 import Link from "next/link";
 import React from "react";
+import footerConfig from "@/lib/configs/footer";
 
 function Footer() {
   return (
-    <div className={cardVariants({ variant: "default" })}>
+    <div
+      className={`${cardVariants({
+        variant: "default",
+      })} mx-auto max-w-[1440px] `}
+    >
       <div className="mx-auto max-w-[1080px] py-16 font-sat">
         <div className="flex justify-between">
           <NavLogo />
           <div className="flex flex-wrap gap-16">
-            {Array.from({ length: 1 }).map((x, i) => (
-              <div className="space-y-3">
-                <p>Mlbb.fyi</p>
-                <div className="flex flex-col gap-2.5">
-                  {Array.from({ length: 4 }).map((x, i) => {
-                    return <Link href="#">About Mlbb.fyi</Link>;
-                  })}
+            {footerConfig.map((section, index) => (
+              <div key={index} className="space-y-3">
+                <div className="flex flex-col gap-2.5 md:flex-row md:gap-8">
+                  {section.links.map((link, i) => (
+                    <Link key={i} href={link.href} className="hover:underline">
+                      {link.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             ))}
