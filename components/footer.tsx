@@ -11,7 +11,7 @@ function Footer() {
     <div
       className={`${cardVariants({
         variant: "default",
-      })} mx-auto max-w-[1440px] `}
+      })} mx-auto mt-16 !max-w-[1280px] `}
     >
       <div className="mx-auto max-w-[1080px] py-16 font-sat">
         <div className="flex justify-between">
