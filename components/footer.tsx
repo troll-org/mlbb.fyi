@@ -19,7 +19,7 @@ function Footer() {
           <div className="flex flex-wrap gap-16">
             {footerConfig.map((section, index) => (
               <div key={index} className="space-y-3">
-                <div className="flex flex-col gap-2.5 md:flex-row md:gap-8">
+                <div className="flex flex-col gap-2.5 font-medium md:flex-row md:gap-8">
                   {section.links.map((link, i) => (
                     <Link key={i} href={link.href} className="hover:underline">
                       {link.name}
