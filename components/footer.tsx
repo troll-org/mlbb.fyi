@@ -13,7 +13,7 @@ function Footer() {
         variant: "default",
       })} mx-auto mt-16 !max-w-[1280px] `}
     >
-      <div className="mx-auto max-w-[1080px] px-6 py-16 font-sat md:px-0">
+      <div className="mx-auto max-w-[1080px] px-6 py-16 font-sat md:px-4">
         <div className="flex justify-between">
           <NavLogo />
           <div className="flex flex-wrap gap-16">
