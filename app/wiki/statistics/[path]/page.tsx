@@ -12,7 +12,7 @@ export async function generateMetadata(props: {
   params: Promise<{ path: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const title = formatTitle(params.path);
+  const title = formatTitle(decodeURIComponent(params.path));
 
   return {
     title,
@@ -37,6 +37,7 @@ async function TournamentsDetailPage(props: {
   }>;
 }) {
   const params = await props.params;
+  params.path = decodeURIComponent(params.path);
   const tournamentData: TournamentsDocument =
     await getAllHeroStatsByTournamentPath(params.path);
 

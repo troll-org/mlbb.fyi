@@ -31,7 +31,7 @@ export default function StatsContainer({ children, tourNames }: IStats) {
   const router = useRouter();
   const pathname = usePathname();
   const [selectedTournament, setSelectedTournament] = useState(
-    pathname?.split("/")[3]
+    decodeURIComponent(pathname?.split("/")[3] || "")
   );
   const [popoverOpen, setPopoverOpen] = useState(false);
   return (

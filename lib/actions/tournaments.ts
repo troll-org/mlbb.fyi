@@ -55,6 +55,8 @@ export async function getAllHeroStatsByTournamentPath(tournamentPath: string) {
   try {
     await clientPromise("game-core");
 
+    tournamentPath = decodeURIComponent(tournamentPath);
+
     const heroDataForTournament = await Tournaments.aggregate([
       {
         $match: { tournamentPath: tournamentPath },
@@ -101,6 +103,7 @@ export async function getAllHeroStatsByTournamentPath(tournamentPath: string) {
         },
       },
     ]);
+
     return JSON.parse(JSON.stringify(heroDataForTournament[0]));
   } catch (error) {
     console.error(error);

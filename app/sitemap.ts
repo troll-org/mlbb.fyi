@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     ...stats.map((stat) => ({
-      url: `${url}/wiki/statistics/${stat.tournamentPath}`,
+      url: `${url}/wiki/statistics/${encodeURIComponent(stat.tournamentPath)}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as "weekly",
       priority: 0.9,
