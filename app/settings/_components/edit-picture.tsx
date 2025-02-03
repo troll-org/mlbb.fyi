@@ -11,7 +11,7 @@ import { SafeUser } from "@/types";
 import { Button } from "@/components/shared/button";
 import LoadingDots from "@/components/shared/icons/loading-dots";
 import { Paperclip } from "lucide-react";
-import { Slider } from "@mui/material";
+import { Slider } from "@/components/shared/slider";
 import AvatarEditor from "react-avatar-editor";
 import { revalPath } from "@/lib/revalidate";
 
@@ -133,17 +133,13 @@ const EditPicture: React.FC<EditPictureProps> = ({ currentUser }) => {
                 rotate={0}
               />
               <Slider
+                defaultValue={[33]}
                 min={10}
                 max={50}
-                sx={{
-                  margin: "0 auto",
-                  width: "50%",
-                  color: "##3652ba",
+                value={[slideValue]}
+                onValueChange={(value) => {
+                  setSlideValue(value[0]);
                 }}
-                size="medium"
-                defaultValue={slideValue}
-                value={slideValue}
-                onChange={(e: any) => setSlideValue(e.target.value)}
               />
             </>
           )}
