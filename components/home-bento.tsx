@@ -7,7 +7,7 @@ import { ChevronRight } from "lucide-react";
 
 const HomeBento: React.FC = () => {
   return (
-    <div className="mx-auto grid max-w-[1280px] gap-4 pt-16 md:pt-0 lg:gap-5">
+    <div className="mx-auto grid max-w-[1280px] gap-4 pt-0 md:pt-32 lg:gap-5">
       {/* First row: Two columns */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5">
         <GradiantCard className="relative flex h-[100vw] w-[93.3333vw] flex-col justify-start overflow-hidden p-7 md:h-[17.708vw] md:w-full md:px-6 md:py-5 lg:px-10 lg:py-7">

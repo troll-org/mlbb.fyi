@@ -123,7 +123,7 @@
 }
 
 .disable-height {
-  height: fit-content !important;
+  height: 85vh !important;
 }
 
 @media (max-width: 768px) {
