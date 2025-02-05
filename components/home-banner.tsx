@@ -39,7 +39,7 @@ const HomeBanner: React.FC = () => {
             </p>
 
             <Link
-              href="/explore"
+              href="/wiki/tier-list"
               className="mx-auto mt-8 h-10 w-fit rounded-3xl bg-cloud px-4 py-2 font-semibold text-black transition-all duration-300 ease-in-out hover:opacity-80"
             >
               Get Started
