@@ -10,6 +10,7 @@ import Navbar from "@/components/shared/navbar/navbar";
 import { cn } from "@/lib/utils";
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 import { CSPostHogProvider } from "@/components/cllent-provider";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -83,9 +84,10 @@ export default async function RootLayout({
         <body
           className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >
-          <ToasterProvider />
           <Navbar currentUser={currentUser} />
-          <div className="layout-container">{children}</div>
+          <main className="layout-container">{children}</main>
+          <Footer />
+          <ToasterProvider />
         </body>
       </CSPostHogProvider>
     </html>

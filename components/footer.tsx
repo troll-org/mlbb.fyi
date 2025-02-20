@@ -5,10 +5,15 @@ import NavLogo from "@/components/shared/navbar/navbar-logo";
 import Link from "next/link";
 import React from "react";
 import footerConfig from "@/lib/configs/footer";
+import { usePathname } from "next/navigation";
 
 function Footer() {
+  const pathname = usePathname();
+
+  if (pathname !== "/") return;
+
   return (
-    <div
+    <footer
       className={`${cardVariants({
         variant: "default",
       })} mx-auto mt-4 !max-w-[1280px] md:mt-16 `}
@@ -41,7 +46,7 @@ function Footer() {
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 

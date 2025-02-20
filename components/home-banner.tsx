@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const HomeBanner: React.FC = () => {
   return (
-    <>
+    <header>
       <style jsx global>{`
         .layout-container {
           max-width: 100% !important;
@@ -47,7 +47,7 @@ const HomeBanner: React.FC = () => {
           </div>
         </main>
       </div>
-    </>
+    </header>
   );
 };
 

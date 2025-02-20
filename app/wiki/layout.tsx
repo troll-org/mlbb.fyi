@@ -38,13 +38,8 @@ export interface LayoutWikiProps {
 
 export default function LayoutWiki({ children }: LayoutWikiProps) {
   return (
-    <main>
-      <h1 className="ml-3 max-w-4xl font-heading text-2xl leading-10 md:text-4xl">
-        mlbb.fyi wiki, your latest and greatest Mobile Legends information in
-        one place
-      </h1>
-
+    <>
       <ContentLayout>{children}</ContentLayout>
-    </main>
+    </>
   );
 }

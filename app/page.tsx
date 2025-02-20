@@ -7,7 +7,6 @@ export default async function Home() {
     <>
       <HomeBanner />
       <HomeBento />
-      <Footer />
     </>
   );
 }
