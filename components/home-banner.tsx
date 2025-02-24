@@ -33,10 +33,10 @@ const HomeBanner: React.FC = () => {
               Elevate Your Mobile <br className="hidden md:block" /> Legends
               Game
             </h1>
-            <p className="mt-6 max-w-[320px] text-[14px] leading-tight text-gray-100 md:max-w-[400px] md:text-[18px]">
+            <h2 className="mt-6 max-w-[320px] text-[14px] leading-tight text-gray-100 md:max-w-[400px] md:text-[18px]">
               Access hero statistics, optimal builds, and connect with a
               community of expert players
-            </p>
+            </h2>
 
             <Link
               href="/wiki/tier-list"

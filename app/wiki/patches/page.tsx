@@ -31,6 +31,7 @@ async function PatchesPage() {
       value="patches"
       className="flex w-full flex-col gap-5 md:flex-row"
     >
+      <h1 className="sr-only text-xl font-bold">Mobile Legend Patches</h1>
       <PatchesContainer patches={patches} />
     </TabsContent>
   );

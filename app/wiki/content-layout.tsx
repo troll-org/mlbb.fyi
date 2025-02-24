@@ -37,13 +37,9 @@ function ContentLayout({ children }: LayoutWikiProps) {
 
   return (
     <>
-      <h1 className="ml-3 max-w-4xl font-heading text-2xl leading-10 md:text-4xl">
-        mlbb.fyi wiki, your latest and greatest Mobile Legends information in
-        one place
-      </h1>{" "}
       <Tabs value={selectedTab} defaultValue="heroes" asChild>
         <section>
-          <nav className="mt-4 w-full md:pl-3">
+          <nav className="mt-4 w-full md:pl-0">
             <div className="no-scrollbar h-[52px] overflow-x-scroll">
               <TabsList className="flex shrink-0 space-x-1">
                 {WikiTabList.map((item, i) => (

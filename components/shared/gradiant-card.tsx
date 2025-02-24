@@ -32,9 +32,9 @@ const GradiantCard = ({
   return (
     <div className={cardVariants({ className, variant })}>
       {title && (
-        <h1 className="text-sm/[10px] font-bold tracking-[-3%] md:text-base/[16px]">
+        <span className="text-sm/[10px] font-bold tracking-[-3%] md:text-base/[16px]">
           {title}
-        </h1>
+        </span>
       )}
       {children}
     </div>

@@ -110,9 +110,9 @@ const HomeBento: React.FC = () => {
             <div className="absolute -left-[32vw] -top-[7.5vw] h-[11.6vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-3xl"></div>
             <div className="absolute -bottom-1 -right-[48vw] h-[11.6vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-3xl"></div>
             <div className="absolute bottom-0 z-20 h-[1vw] w-full bg-[#2B334A] blur-xl"></div>
-            <h1 className="font-heading text-2xl sm:text-4xl md:text-5xl">
+            <span className="font-heading text-2xl sm:text-4xl md:text-5xl">
               mlbb.fyi
-            </h1>
+            </span>
           </GradiantCard>
           <GradiantCard className="flex h-[100vw] w-[93.3333vw] shrink-0 flex-col justify-start overflow-hidden p-7 md:h-[20vw] md:px-6 md:py-5 lg:h-[20vw] lg:px-10 lg:py-7 xl:h-[17.708vw]">
             <div className="absolute -left-8 -right-[32vw] -top-[4vw] h-[24vw] w-[55.556vw] -rotate-[21deg] bg-[#6829A8] opacity-20 blur-2xl md:-top-[7.5vw] md:h-[11.6vw] md:rotate-[21deg] md:blur-3xl"></div>

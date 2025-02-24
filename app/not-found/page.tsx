@@ -12,8 +12,8 @@ const NotFoundPage = () => {
 
   return (
     <div className="mt-60 flex flex-col items-center justify-center">
-      <h1 className="font-heading text-4xl">Ooops...</h1>
-      <h2 className="mb-4 font-semibold">This page cannot be found</h2>
+      <h1 className="font-heading text-4xl">Not Found</h1>
+      <p className="mb-4 font-semibold">Oopps, this page cannot be found</p>
       <Link
         href="/"
         className={cn(

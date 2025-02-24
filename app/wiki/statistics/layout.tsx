@@ -40,6 +40,7 @@ async function StatisticsPage({ children }: { children: React.ReactNode }) {
       value="statistics"
       className="flex w-full flex-col gap-5 md:flex-row"
     >
+      <h1 className="sr-only text-xl font-bold">Mobile Legend Tournaments</h1>
       <TournamentsPopover tourNames={tourNames}>{children}</TournamentsPopover>
     </TabsContent>
   );

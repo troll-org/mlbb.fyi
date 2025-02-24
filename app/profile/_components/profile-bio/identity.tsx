@@ -43,12 +43,12 @@ const IdentityHolder: React.FC<IdentityHolderProps> = ({ user, baseInfo }) => {
           }
         />
       </div>
-      <h1 className="my-3 text-center font-heading text-xl">
+      <span className="my-3 text-center font-heading text-xl">
         {baseInfo?.username}
-      </h1>
-      <p className="px-2 text-center text-sm font-normal leading-4">
+      </span>
+      <span className="px-2 text-center text-sm font-normal leading-4">
         {user?.desc}
-      </p>
+      </span>
     </div>
   );
 };

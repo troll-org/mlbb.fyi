@@ -28,6 +28,7 @@ async function TierPage({ children }: { children: React.ReactNode }) {
       value="tier-list"
       className="flex w-full flex-col gap-5 md:flex-row"
     >
+      <h1 className="sr-only text-xl font-bold">Mobile Legend Tier List</h1>
       {children}
     </TabsContent>
   );
