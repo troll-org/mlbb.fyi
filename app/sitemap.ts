@@ -1,3 +1,4 @@
+import { pageList } from "@/app/wiki/tier-list/(static)/[path]/config";
 import getHeroes from "@/lib/actions/getHeroes";
 import { getAllTournamentsName } from "@/lib/actions/tournaments";
 import { MetadataRoute } from "next";
@@ -10,6 +11,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
 
   const stats = await getAllTournamentsName();
+
+  const dsa = pageList.map((p) => ({
+    url: `${url}/wiki/tier-list/${p.path}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
 
   return [
     {
@@ -36,6 +44,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    ...pageList.map((hero) => ({
+      url: `${url}/wiki/tier-list/${hero.path}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as "weekly",
+      priority: 0.9,
+    })),
     {
       url: `${url}/wiki/statistics`,
       lastModified: new Date(),
