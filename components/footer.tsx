@@ -6,6 +6,7 @@ import Link from "next/link";
 import React from "react";
 import footerConfig from "@/lib/configs/footer";
 import { usePathname } from "next/navigation";
+import { pageList } from "@/app/wiki/tier-list/(static)/[path]/config";
 
 function Footer() {
   const pathname = usePathname();
@@ -19,12 +20,14 @@ function Footer() {
       })} mx-auto mt-4 !max-w-[1280px] md:mt-16 `}
     >
       <div className="mx-auto max-w-[1080px] px-6 py-16 font-sat md:px-0">
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-8">
           <NavLogo />
-          <div className="flex flex-wrap gap-16">
+          <div className="flex flex-wrap gap-8 md:gap-16">
             {footerConfig.map((section, index) => (
               <div key={index} className="space-y-3">
-                <div className="flex flex-col gap-2.5 font-medium md:flex-row md:gap-8">
+                <strong className="font-bold">{section.title}</strong>
+
+                <div className="flex flex-col gap-2 font-medium">
                   {section.links.map((link, i) => (
                     <Link key={i} href={link.href} className="hover:underline">
                       {link.name}
