@@ -4,8 +4,8 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: ["/"],
-      disallow: ["/wiki/", "/explore/"],
+      allow: ["/", "/wiki/", "/profile/"],
+      disallow: ["/explore/"],
     },
     sitemap: "https://mlbb.fyi/sitemap.xml",
   };
