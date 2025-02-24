@@ -22,7 +22,10 @@ const footerConfig = [
       },
       { name: "Best Roamer 2025", href: "/wiki/tier-list/best-roamer-2025" },
       { name: "Best Jungler 2025", href: "/wiki/tier-list/best-jungler-2025" },
-      { name: "Best Mid lane 2025", href: "/wik/tier-list/best-mid-lane-2025" },
+      {
+        name: "Best Mid lane 2025",
+        href: "/wiki/tier-list/best-mid-lane-2025",
+      },
     ],
   },
 ];
