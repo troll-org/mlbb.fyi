@@ -5,6 +5,7 @@ import { getHeroTier } from "@/lib/actions/getHeroTier";
 import getEquipmentsByHeroId from "@/lib/actions/getHeroEquipments";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
+import { defaultOpenGraphMD } from "@/lib/configs/metadata";
 
 async function formatHeroName(slug: string): Promise<string> {
   return slug
@@ -18,19 +19,23 @@ export async function generateMetadata(props: {
   params: Promise<{ hero: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const title = await formatHeroName(params.hero);
+  const heroName = await formatHeroName(params.hero);
+
+  const title = `${heroName} - Mobile Legends: Bang Bang (MLBB) Heroes`;
 
   return {
     title,
-    description: `Discover detailed statistics, tier information, and other insights about Mobile Legends (MLBB) ${title}`,
+    description: `Get the latest MLBB ${heroName} stats! Discover win rates, tier rankings, optimal builds, and counter strategies. Master ${heroName} now!`,
     openGraph: {
       title,
-      description: `Explore Mobile Legends (MLBB) ${title}'s win rates, pick rates, ban rates, and tier rankings `,
+      description: `Get the latest MLBB ${heroName} stats! Discover win rates, tier rankings, optimal builds, and counter strategies. Master ${heroName} now!`,
       url: `https://mlbb.fyi/wiki/heroes/${params.hero}`,
+      ...defaultOpenGraphMD,
     },
     twitter: {
-      title: `${title} - mlbb.fyi Hero`,
-      description: `Learn more about Mobile Legends (MLBB) ${title}'s performance`,
+      title,
+      description: `Get the latest MLBB ${heroName} stats! Discover win rates, tier rankings, optimal builds, and counter strategies. Master ${heroName} now!`,
+      ...defaultOpenGraphMD,
     },
   };
 }

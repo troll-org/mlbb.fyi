@@ -6,12 +6,12 @@ const NavLogo = () => {
   const router = useRouter();
   return (
     <>
-      <h1
+      <span
         onClick={() => router.push("/")}
         className="cursor-pointer font-heading text-[24px]"
       >
         mlbb.fyi
-      </h1>
+      </span>
     </>
   );
 };

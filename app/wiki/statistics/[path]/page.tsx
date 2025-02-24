@@ -12,20 +12,21 @@ export async function generateMetadata(props: {
   params: Promise<{ path: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const title = formatTitle(decodeURIComponent(params.path));
+  const tourName = formatTitle(decodeURIComponent(params.path));
+  const title = `${tourName} - Tournament MLBB`;
 
   return {
     title,
-    description: `Get the win rates, pick rates, ban rates of heroes at ${title}`,
+    description: `Analyze Mobile Legends: Bang Bang (MLBB) tournament hero stats from ${tourName}. Get detailed win rates, pick rates, and ban rates. See which heroes dominated the pro scene. Gain competitive insights.`,
     openGraph: {
       title,
-      description: `Get the win rates, pick rates, ban rates of heroes at ${title}`,
+      description: `Analyze Mobile Legends: Bang Bang (MLBB) tournament hero stats from ${tourName}. Get detailed win rates, pick rates, and ban rates. See which heroes dominated the pro scene. Gain competitive insights.`,
       url: `https://mlbb.fyi/wiki/statistics/${params.path}`,
       ...defaultOpenGraphMD,
     },
     twitter: {
       title,
-      description: `Get the win rates, pick rates, ban rates of heroes at ${title}`,
+      description: `Analyze Mobile Legends: Bang Bang (MLBB) tournament hero stats from ${tourName}. Get detailed win rates, pick rates, and ban rates. See which heroes dominated the pro scene. Gain competitive insights.`,
       ...defaultTwitterMD,
     },
   };

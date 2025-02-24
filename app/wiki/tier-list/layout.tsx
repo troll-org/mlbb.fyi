@@ -3,21 +3,21 @@ import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 import { TabsContent } from "@/components/shared/tabs";
 
 export const metadata: Metadata = {
-  title: "Hero Tier List | Best Meta MLBB Heroes",
+  title: "Mobile Legends Heroes Tier List | Best Meta MLBB Heroes",
   description:
-    "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks",
+    "Discover the latest Mobile Legends: Bang Bang (MLBB) Hero Tier List. See top meta heroes, stats, and builds for every role. Updated daily to help you climb ranks!",
   openGraph: {
-    title: "Hero Tier List | Best Meta MLBB Heroes",
+    title: "Mobile Legends Heroes Tier List | Best Meta MLBB Heroes",
     description:
-      "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks",
+      "Discover the latest Mobile Legends: Bang Bang (MLBB) Hero Tier List. See top meta heroes, stats, and builds for every role. Updated daily to help you climb ranks!",
     url: "https://mlbb.fyi/wiki/tier-list",
     ...defaultOpenGraphMD,
   },
   category: "Tier List",
   twitter: {
-    title: "Hero Tier List | Best Meta MLBB Heroes",
+    title: "Mobile Legends Heroes Tier List | Best Meta MLBB Heroes",
     description:
-      "Uncover the definitive Mobile Legends: Bang Bang (MLBB) hero tier list. Get insights on top-performing heroes for every role, regularly updated with current meta trends. Access stats, builds, and expert tips to enhance your gameplay and rise through the ranks",
+      "Discover the latest Mobile Legends: Bang Bang (MLBB) Hero Tier List. See top meta heroes, stats, and builds for every role. Updated daily to help you climb ranks!",
     ...defaultTwitterMD,
   },
 };
