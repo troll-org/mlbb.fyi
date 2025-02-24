@@ -69,6 +69,7 @@ export default async function ExplorePage() {
 
   return (
     <div className="relative flex w-full gap-1.5">
+      <h1 className="sr-only text-xl font-bold">Explore</h1>
       <PostListContainer currentUser={currentUser} />
       <RandomUserContainer randomUsers={randomUsers} />
     </div>

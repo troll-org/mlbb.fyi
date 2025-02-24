@@ -11,6 +11,9 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
   return {
+    alternates: {
+      canonical: "https://mlbb.fyi/profile/" + params.username,
+    },
     metadataBase: new URL("https://mlbb.fyi"),
     title: `@${params.username}`,
     description:
