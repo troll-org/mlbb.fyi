@@ -35,6 +35,7 @@ export async function generateMetadata(props: {
       description: `Stay ahead of the meta! Get the latest and most accurate ${pageConfig.name} tier list for Mobile Legends: Bang Bang (MLBB) 2025. Discover the top heroes and strategies.`,
       ...defaultOpenGraphMD,
     },
+    keywords: pageConfig.keywords,
   };
 }
 
