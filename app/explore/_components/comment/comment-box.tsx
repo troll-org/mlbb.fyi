@@ -182,7 +182,7 @@ const CommentBox: React.FC<CommentBoxProps> = ({ comment, postId, userId }) => {
               {expandedable && (
                 <button
                   onClick={toggleExpand}
-                  className="font-bold text-ocean transition-all ease-in-out hover:underline hover:duration-300"
+                  className="font-bold text-sea transition-all ease-in-out hover:underline hover:duration-300"
                 >
                   {!expanded ? "See more" : "See less"}
                 </button>

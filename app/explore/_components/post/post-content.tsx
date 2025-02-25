@@ -224,7 +224,7 @@ const PostContent: React.FC<PostContentProp> = ({
                   by
                 </p>
                 <Link href={`/profile/${post.createdBy}/statistics`}>
-                  <p className="text-xs mt-2 truncate leading-5 text-cloud/80 ease-in-out hover:text-cloud hover:underline">
+                  <p className="text-xs mt-2 truncate leading-5 text-cloud/80 ease-in-out hover:text-sea hover:underline">
                     {post.createdBy}
                   </p>
                 </Link>

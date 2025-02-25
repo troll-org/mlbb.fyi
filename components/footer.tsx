@@ -3,13 +3,17 @@
 import { cardVariants } from "@/components/shared/gradiant-card";
 import NavLogo from "@/components/shared/navbar/navbar-logo";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import footerConfig from "@/lib/configs/footer";
-import { usePathname } from "next/navigation";
-import { pageList } from "@/app/wiki/tier-list/(static)/[path]/config";
 
 function Footer() {
-  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
   return (
     <footer className="layout-container">
       <div
