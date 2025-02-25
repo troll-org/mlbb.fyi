@@ -10,11 +10,6 @@ import { pageList } from "@/app/wiki/tier-list/(static)/[path]/config";
 
 function Footer() {
   const pathname = usePathname();
-  console.log(pathname);
-
-  // if (pathname !== "/wiki") return;
-  // if (pathname !== "/") return;
-
   return (
     <footer className="layout-container">
       <div
