@@ -158,7 +158,7 @@ const PostContent: React.FC<PostContentProp> = ({
         <ArrowLeftCircle className="mr-3 h-8 w-8 " />
         <p className=" font-semibold">Back to explore</p>
       </div>
-      <GradiantCard className="mb-1.5 grow" variant="clean">
+      <GradiantCard className="grow" variant="clean">
         {editActive ? (
           <EditForm post={post} onCancel={() => closeEdit()} />
         ) : (
