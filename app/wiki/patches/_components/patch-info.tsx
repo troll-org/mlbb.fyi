@@ -17,7 +17,7 @@ export default function PatchFyi({ patch, patches }: IPatch) {
   const { setPageName } = useBreadcrumb();
   useEffect(() => {
     window.scrollTo(0, 0);
-    setPageName(patch?.patchName);
+    setPageName(patch?.version);
   }, [patch, setPageName]);
 
 
