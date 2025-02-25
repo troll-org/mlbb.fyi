@@ -15,12 +15,6 @@ interface IPatch {
 
 export default function PatchFyi({ patch, patches }: IPatch) {
   const { setPageName } = useBreadcrumb();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setPageName(patch?.version);
-  }, [patch, setPageName]);
-
-
   const patchIndex: number = patch
     ? patches?.findIndex((item) => item.id === patch.id) || 0
     : -1;
@@ -34,6 +28,12 @@ export default function PatchFyi({ patch, patches }: IPatch) {
 
   const router = useRouter();
   const dateFormat = /^\d{2}\/\d{2}\/\d{4}/;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setPageName(patch?.version);
+  }, [patch, setPageName]);
+  
   return (
     <div className="flex flex-col">
       <div className="mx-auto w-full max-w-screen-lg px-4 mb-4">
