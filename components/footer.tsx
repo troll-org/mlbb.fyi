@@ -20,7 +20,7 @@ function Footer() {
       <div
         className={`${cardVariants({
           variant: "default",
-        })} mx-auto mt-4 !max-w-[1280px] md:mt-16 `}
+        })} mx-auto mt-4 !max-w-[1280px]`}
       >
         <div className="mx-auto px-6 py-8 font-sat md:px-6">
           <div className="flex justify-between gap-8">
