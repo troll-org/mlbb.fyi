@@ -31,7 +31,7 @@ const Post: React.FC<PostProps> = ({ currentUser, post, user }) => {
         userId={currentUser?.id}
         comments={post?.comments}
       />
-    </>
+    </div>
   );
 };
 
