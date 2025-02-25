@@ -1,6 +1,6 @@
 function Loading() {
   return (
-    <div className="mx-auto mb-72 flex items-center justify-center pt-72">
+    <div className="mx-auto flex items-center justify-center pb-72 pt-72">
       <svg
         fill="none"
         className="h-8 w-8 animate-spin text-white "
