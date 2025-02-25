@@ -28,7 +28,7 @@ const items = [
   },
   {
     key: "statistics",
-    label: "Tournaments Statistics",
+    label: "Tournament Statistics",
   },
 ];
 
