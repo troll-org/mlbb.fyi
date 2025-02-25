@@ -6,6 +6,7 @@ import { GradiantCard } from "@/components/shared/gradiant-card";
 import { Patch } from "@prisma/client";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useBreadcrumb } from "@/app/wiki/breadcrumb-context";
 
 interface IPatch {
   patch: Patch | null;
@@ -13,9 +14,12 @@ interface IPatch {
 }
 
 export default function PatchFyi({ patch, patches }: IPatch) {
+  const { setPageName } = useBreadcrumb();
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    setPageName(patch?.patchName);
+  }, [patch, setPageName]);
+
 
   const patchIndex: number = patch
     ? patches?.findIndex((item) => item.id === patch.id) || 0
