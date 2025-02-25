@@ -57,7 +57,7 @@ function BreadcrumbWiki() {
           {!isChild ? (
             parentName?.label
           ) : (
-            <BreadcrumbLink href="/wiki/heroes">
+            <BreadcrumbLink href={`/wiki/${parentKey}`}>
               {parentName?.label}
             </BreadcrumbLink>
           )}
