@@ -2,6 +2,17 @@ import { Metadata } from "next";
 
 import { defaultOpenGraphMD, defaultTwitterMD } from "@/lib/configs/metadata";
 import ContentLayout from "./content-layout";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/shared/breadcrumb";
+import { BookIcon } from "lucide-react";
+import BreadcrumbWiki from "@/app/wiki/breadcrumb-wiki";
+import BreadcrumbProvider from "@/app/wiki/breadcrumb-context";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mlbb.fyi"),
@@ -38,8 +49,12 @@ export interface LayoutWikiProps {
 
 export default function LayoutWiki({ children }: LayoutWikiProps) {
   return (
-    <>
-      <ContentLayout>{children}</ContentLayout>
-    </>
+    <BreadcrumbProvider>
+      <ContentLayout>
+        <BreadcrumbWiki />
+
+        {children}
+      </ContentLayout>
+    </BreadcrumbProvider>
   );
 }

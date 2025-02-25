@@ -39,7 +39,7 @@ function ContentLayout({ children }: LayoutWikiProps) {
     <>
       <Tabs value={selectedTab} defaultValue="heroes" asChild>
         <section>
-          <nav className="mt-4 w-full md:pl-0">
+          {/* <nav className="mt-4 w-full md:pl-0">
             <div className="no-scrollbar h-[52px] overflow-x-scroll">
               <TabsList className="flex shrink-0 space-x-1">
                 {WikiTabList.map((item, i) => (
@@ -54,7 +54,7 @@ function ContentLayout({ children }: LayoutWikiProps) {
                 ))}
               </TabsList>
             </div>
-          </nav>
+          </nav> */}
           <article>{children}</article>
         </section>
       </Tabs>

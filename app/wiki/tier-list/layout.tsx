@@ -24,11 +24,11 @@ export const metadata: Metadata = {
 
 async function TierPage({ children }: { children: React.ReactNode }) {
   return (
-    <TabsContent
-      value="tier-list"
-      className="flex w-full flex-col gap-5 md:flex-row"
-    >
-      <h1 className="sr-only text-xl font-bold">Mobile Legend Tier List</h1>
+    <TabsContent value="tier-list">
+      <h1 className="pb-4 pl-2 font-heading text-3xl font-bold">
+        Mobile Legend Tier List
+      </h1>
+
       {children}
     </TabsContent>
   );

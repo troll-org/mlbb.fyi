@@ -30,7 +30,7 @@ const MenuList = [
   {
     name: "Wiki",
     active: false,
-    href: "/wiki/heroes",
+    href: "/wiki",
   },
   {
     name: "Explore",

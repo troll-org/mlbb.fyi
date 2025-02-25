@@ -27,11 +27,11 @@ async function PatchesPage() {
   const patches: Patch[] | null = await getPatches();
 
   return (
-    <TabsContent
-      value="patches"
-      className="flex w-full flex-col gap-5 md:flex-row"
-    >
-      <h1 className="sr-only text-xl font-bold">Mobile Legend Patches</h1>
+    <TabsContent value="patches">
+      <h1 className="pb-4 pl-2 font-heading text-3xl font-bold">
+        Mobile Legend Patches
+      </h1>
+
       <PatchesContainer patches={patches} />
     </TabsContent>
   );

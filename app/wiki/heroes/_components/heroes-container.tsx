@@ -16,6 +16,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/shared/breadcrumb";
 import { BookIcon } from "lucide-react";
+import { useBreadcrumb } from "@/app/wiki/breadcrumb-context";
 
 interface IHeroesContainer {
   heroes: HeroesDocument[];
@@ -58,7 +59,10 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
 
   return (
     <div className="flex flex-col gap-1.5">
-      <Breadcrumb className="py-2 pl-2">
+      <h1 className="pb-4 pl-2 font-heading text-3xl font-bold">
+        Mobile Legend Heroes
+      </h1>
+      {/* <Breadcrumb className="py-2 pl-2">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/wiki">
@@ -71,7 +75,7 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
             <BreadcrumbPage>Heroes</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
-      </Breadcrumb>
+      </Breadcrumb> */}
       <div className="flex w-full flex-col gap-4 md:flex-row">
         <GradiantCard
           className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col"

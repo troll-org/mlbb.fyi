@@ -1,11 +1,17 @@
 const footerConfig = [
   {
-    title: "Quick Links",
+    title: "Wiki",
     links: [
       { name: "Heroes", href: "/wiki/heroes" },
       { name: "Tier List", href: "/wiki/tier-list" },
       { name: "Statistics", href: "/wiki/statistics" },
       { name: "Patches", href: "/wiki/patches" },
+    ],
+  },
+  {
+    title: "Quick Links",
+    links: [
+      { name: "Wiki", href: "/wiki" },
       { name: "Explore", href: "/explore" },
     ],
   },

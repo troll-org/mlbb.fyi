@@ -32,12 +32,7 @@ export const metadata: Metadata = {
 };
 
 async function HeroesPage({ children }: { children: React.ReactNode }) {
-  return (
-    <TabsContent value="heroes">
-      <h1 className="sr-only text-xl font-bold">Mobile Legend Heroes</h1>
-      {children}
-    </TabsContent>
-  );
+  return <TabsContent value="heroes">{children}</TabsContent>;
 }
 
 export default HeroesPage;

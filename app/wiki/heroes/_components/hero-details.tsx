@@ -23,6 +23,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/shared/breadcrumb";
+import { useBreadcrumb } from "@/app/wiki/breadcrumb-context";
 
 interface HeroFyiContainer {
   hero: HeroesDocument;
@@ -43,6 +44,7 @@ function HeroDetails({
   heroEquipment,
 }: HeroFyiContainer) {
   const router = useRouter();
+  const { setPageName } = useBreadcrumb();
   const { selectedTab, setSelectedTab } = useTabStore();
   const [selectedRankState, setSelectedRankState] = useState(0);
 
@@ -52,6 +54,7 @@ function HeroDetails({
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setPageName(hero.heroName);
   }, []);
 
   const heroDetails = hero.heroDetails;
@@ -117,25 +120,7 @@ function HeroDetails({
   }
 
   return (
-    <div className="flex flex-col gap-1.5">
-      <Breadcrumb className="py-2 pl-2">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/wiki">
-              <BookIcon size={16} aria-hidden="true" />
-              <span className="sr-only">Wiki's</span>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/wiki/heroes">Heroes</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{hero.heroName}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+    <div className="mt-4 flex flex-col gap-1.5">
       <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
         <div className="relative flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:gap-x-4">
           <Image
@@ -158,9 +143,9 @@ function HeroDetails({
           <div className="flex w-full flex-col gap-x-1.5 ">
             <div className="flex items-center justify-between">
               <div className="flex flex-row items-center gap-2">
-                <p className="font-heading text-xl md:text-3xl">
+                <h1 className="font-heading text-xl md:text-3xl">
                   {hero.heroName}
-                </p>
+                </h1>
                 {hero.heroLaneType &&
                   hero.heroLaneType.map((lane, i) => (
                     <Image

@@ -112,7 +112,7 @@ export default function TierContainer({ heroes }: TierListProps) {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-1.5">
       <GradiantCard
         className="flex h-fit w-full flex-col gap-4 px-6"
         variant="clean"
@@ -169,6 +169,6 @@ export default function TierContainer({ heroes }: TierListProps) {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
