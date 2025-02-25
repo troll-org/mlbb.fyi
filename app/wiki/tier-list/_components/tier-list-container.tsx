@@ -112,7 +112,7 @@ export default function TierContainer({ heroes }: TierListProps) {
   };
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-4 lg:gap-5">
       <GradiantCard
         className="flex h-fit w-full flex-col gap-4 px-6"
         variant="clean"
@@ -131,7 +131,7 @@ export default function TierContainer({ heroes }: TierListProps) {
         </div>
       </GradiantCard>
 
-      <div ref={container} className="flex w-full flex-col gap-4">
+      <div ref={container} className="flex w-full flex-col gap-4 lg:gap-5">
         {tiers.map((item, i) => {
           const tierHeroes = filteredHeroes?.filter(
             (hero) => hero.tier === item.tier
