@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import { TournamentsDocument } from "@/lib/mongoose/schema/tournaments";
 import { usePathname, useRouter } from "next/navigation";
@@ -21,6 +21,7 @@ import { Button } from "@/components/shared/button";
 import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
 import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
 import { cn } from "@/lib/utils";
+import { useBreadcrumb } from "@/app/wiki/breadcrumb-context";
 
 interface IStats {
   children: React.ReactNode;
@@ -30,10 +31,16 @@ interface IStats {
 export default function StatsContainer({ children, tourNames }: IStats) {
   const router = useRouter();
   const pathname = usePathname();
+  const { setPageName } = useBreadcrumb();
   const [selectedTournament, setSelectedTournament] = useState(
     decodeURIComponent(pathname?.split("/")[3] || "")
   );
   const [popoverOpen, setPopoverOpen] = useState(false);
+
+  useEffect(() => {
+    setPageName(selectedTournament);
+  }, [selectedTournament]);
+  
   return (
     <GradiantCard variant="clean" className="min-h-screen">
       <div className="flex flex-col gap-4">
