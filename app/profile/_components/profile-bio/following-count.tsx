@@ -105,7 +105,7 @@ const FollowingCount: React.FC<FollowingCountProps> = ({
                     <div className="mb-3 ml-auto flex">
                       {!isOwnProfile && !isFollowing && (
                         <Button
-                          className="mx-auto mt-2 flex h-7 w-28 justify-center rounded-2xl px-10 py-1"
+                          className="mx-auto mt-5 flex h-7 w-28 justify-center rounded-2xl px-10 py-1"
                           disabled={buttonDisabled}
                           variant="gradiantNavySec"
                           onClick={async (e) => {
@@ -140,7 +140,7 @@ const FollowingCount: React.FC<FollowingCountProps> = ({
                       )}
                       {!isOwnProfile && isFollowing && (
                         <Button
-                          className="mx-auto mt-2 flex h-7 w-28 justify-center rounded-2xl px-10 py-1"
+                          className="mx-auto mt-5 flex h-7 w-28 justify-center rounded-2xl px-10 py-1"
                           disabled={buttonDisabled}
                           onClick={async (e) => {
                             e.preventDefault();
