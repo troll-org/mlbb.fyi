@@ -38,7 +38,7 @@ export default function PatchContainer({ patches }: IPatch) {
       <div className="flex flex-col">
         {sortedYears.map((year, i) => (
           <React.Fragment key={year}>
-            <div className="flex flex-row items-center mt-6 lg:mt-8">
+            <div className={`flex flex-row items-center ${i === 0 ? "mt-0" : "mt-6 lg:mt-8"}`}>
               <h2 className="ml-3 font-heading text-5xl">{year}</h2>
               <p className="text-md ml-3 mt-2 font-semibold text-green-500">
                 ({groupedPatches[year].length} Adjustments)
