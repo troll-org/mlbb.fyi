@@ -3,17 +3,10 @@
 import { cardVariants } from "@/components/shared/gradiant-card";
 import NavLogo from "@/components/shared/navbar/navbar-logo";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import footerConfig from "@/lib/configs/footer";
 
 function Footer() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
   return (
     <footer className="layout-container">
       <div
