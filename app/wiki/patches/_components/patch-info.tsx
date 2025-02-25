@@ -76,7 +76,7 @@ export default function PatchFyi({ patch, patches }: IPatch) {
       </div>
       {patch?.headings.map((heading, i) => (
         <div key={i}>
-          <GradiantCard variant="clean" className="mt-8 w-full pb-12">
+          <GradiantCard variant="clean" className="mt-4 lg:mt-5 w-full pb-12">
             <p className="font-heading text-3xl">{heading.name}</p>
             <div className="mb-8 flex flex-col">
               {heading.fields.map((field, i) => (
