@@ -15,14 +15,6 @@ import { tiers } from "@/app/wiki/tier-list/_components/tier-list-container";
 import HeroEquipment, {
   RecommendedDocument,
 } from "@/lib/mongoose/schema/heroes-equipment";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/shared/breadcrumb";
 import { useBreadcrumb } from "@/app/wiki/breadcrumb-context";
 
 interface HeroFyiContainer {

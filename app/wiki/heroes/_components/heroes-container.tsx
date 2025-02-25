@@ -7,16 +7,6 @@ import HeroCard from "./hero-card";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
 import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/shared/breadcrumb";
-import { BookIcon } from "lucide-react";
-import { useBreadcrumb } from "@/app/wiki/breadcrumb-context";
 
 interface IHeroesContainer {
   heroes: HeroesDocument[];
@@ -62,20 +52,6 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
       <h1 className="pb-4 pl-2 font-heading text-3xl font-bold">
         Mobile Legend Heroes
       </h1>
-      {/* <Breadcrumb className="py-2 pl-2">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/wiki">
-              <BookIcon size={16} aria-hidden="true" />
-              <span className="sr-only">Wiki's</span>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Heroes</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb> */}
       <div className="flex w-full flex-col gap-4 md:flex-row">
         <GradiantCard
           className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col"

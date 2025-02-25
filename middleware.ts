@@ -21,6 +21,11 @@ export async function middleware(request: NextRequest) {
         method: "GET",
       }
     );
+
+    if (get.status === 404) {
+      return NextResponse.redirect(new URL("/not-found", request.url));
+    }
+
     const data: {
       email: string;
       id: string;
@@ -33,10 +38,6 @@ export async function middleware(request: NextRequest) {
       return NextResponse.rewrite(new URL("/settings", request.url));
     }
   }
-
-  // if (path.split("/")[1] === "wiki") {
-  //   return NextResponse.redirect(new URL("/wiki/heroes", request.url));
-  // }
 
   return NextResponse.next();
 }

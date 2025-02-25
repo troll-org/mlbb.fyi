@@ -9,7 +9,6 @@ export default async function getPatches() {
     });
     return patches;
   } catch (error) {
-    console.log("Error", error);
     return null;
   }
 }

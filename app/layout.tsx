@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Metadata } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
+import Loading from "@/app/wiki/tier-list/loading";
 
 import { getCurrentUser } from "@/lib/actions/user";
 import ToasterProvider from "@/components/toaster-provider";
@@ -86,8 +88,10 @@ export default async function RootLayout({
           className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >
           <Navbar currentUser={currentUser} />
-          <main className="layout-container">{children}</main>
-          <Footer />
+          <Suspense fallback={<Loading />}>
+            <main className="layout-container">{children}</main>
+            <Footer />
+          </Suspense>
           <ToasterProvider />
         </body>
       </CSPostHogProvider>
