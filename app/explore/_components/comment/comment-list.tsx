@@ -24,7 +24,7 @@ const CommentList: React.FC<CommentListProps> = ({
 
   if (comments) {
     return (
-      <GradiantCard variant="clean" className=" mt-1.5">
+      <GradiantCard variant="clean">
         <ul role="list">
           {comments.map((comment: IFullComment, index: number) => (
             <React.Fragment key={comment.id}>
