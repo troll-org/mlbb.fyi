@@ -32,7 +32,7 @@ export default function PatchFyi({ patch, patches }: IPatch) {
   const dateFormat = /^\d{2}\/\d{2}\/\d{4}/;
   return (
     <div className="flex flex-col">
-      <div className="mx-auto w-full max-w-screen-lg px-4">
+      <div className="mx-auto w-full max-w-screen-lg px-4 mb-4">
         <div className="my-8">
           <div className="flex w-full items-center justify-between">
             {previousPatch && (
