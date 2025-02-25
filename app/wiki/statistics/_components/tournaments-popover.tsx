@@ -38,8 +38,13 @@ export default function StatsContainer({ children, tourNames }: IStats) {
   const [popoverOpen, setPopoverOpen] = useState(false);
 
   useEffect(() => {
-    setPageName(selectedTournament);
-  }, [selectedTournament]);
+    const tournament = tourNames.find(
+      (tourney) => tourney.tournamentPath === selectedTournament
+    );
+    if (tournament) {
+      setPageName(tournament.tournamentName);
+    }
+  }, [selectedTournament, tourNames, setPageName]);
   
   return (
     <GradiantCard variant="clean" className="min-h-screen">
