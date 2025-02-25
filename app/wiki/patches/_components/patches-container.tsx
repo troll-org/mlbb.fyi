@@ -44,39 +44,41 @@ export default function PatchContainer({ patches }: IPatch) {
                 ({groupedPatches[year].length} Adjustments)
               </p>
             </div>
-            {groupedPatches[year].map((patch, i) => (
-              <div
-                key={i}
-                onClick={() => router.push(`patches/${patch.version}`)}
-                className="mb-4 lg:mb-5 cursor-pointer"
-              >
-                <GradiantCard
-                  className="flex flex-row justify-between p-4 shadow-lg transition-all duration-300 hover:rounded-2xl hover:bg-gray-500/25 "
-                  variant="clean"
+             <div className="flex flex-col gap-4 lg:gap-5">
+              {groupedPatches[year].map((patch, i) => (
+                <div
+                  key={i}
+                  onClick={() => router.push(`patches/${patch.version}`)}
+                  className="cursor-pointer"
                 >
-                  <div className="mr-auto flex flex-col">
-                    <p className="font-sat text-xl font-semibold">
-                      {patch.version}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      Released on {patch.release}
-                    </p>
-                    {patch.intro && (
-                      <p className="mt-4 line-clamp-2 text-justify text-[14px] text-gray-400">
-                        {patch.intro[1]}
+                  <GradiantCard
+                    className="flex flex-row justify-between p-4 shadow-lg transition-all duration-300 hover:rounded-2xl hover:bg-gray-500/25"
+                    variant="clean"
+                  >
+                    <div className="mr-auto flex flex-col">
+                      <p className="font-sat text-xl font-semibold">
+                        {patch.version}
                       </p>
-                    )}
-                  </div>
-                  {year === latestYear && i === 0 && (
-                    <div className="flex items-start">
-                      <div className="text-md rounded-full bg-green-500/30 px-2 font-semibold text-green-500">
-                        <p>Current</p>
-                      </div>
+                      <p className="text-sm text-gray-500">
+                        Released on {patch.release}
+                      </p>
+                      {patch.intro && (
+                        <p className="mt-4 line-clamp-2 text-justify text-[14px] text-gray-400">
+                          {patch.intro[1]}
+                        </p>
+                      )}
                     </div>
-                  )}
-                </GradiantCard>
-              </div>
-            ))}
+                    {year === latestYear && i === 0 && (
+                      <div className="flex items-start">
+                        <div className="text-md rounded-full bg-green-500/30 px-2 font-semibold text-green-500">
+                          <p>Current</p>
+                        </div>
+                      </div>
+                    )}
+                  </GradiantCard>
+                </div>
+              ))}
+            </div>
           </React.Fragment>
         ))}
       </div>
