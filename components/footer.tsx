@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { cardVariants } from "@/components/shared/gradiant-card";
 import NavLogo from "@/components/shared/navbar/navbar-logo";
 import Link from "next/link";
@@ -7,6 +9,22 @@ import React from "react";
 import footerConfig from "@/lib/configs/footer";
 
 function Footer() {
+  const pathname = usePathname();
+  const hideFooterRoutes = ["/auth/signin", "/settings", "/not-found"];
+  const [shouldHideFooter, setShouldHideFooter] = useState(false);
+
+  useEffect(() => {
+    if (pathname) {
+      setShouldHideFooter(
+        hideFooterRoutes.some((route) => pathname.startsWith(route))
+      );
+    }
+  }, [pathname]);
+
+  if (shouldHideFooter) {
+    return null;
+  }
+
   return (
     <footer className="layout-container">
       <div
