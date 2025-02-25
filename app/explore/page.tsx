@@ -68,7 +68,7 @@ export default async function ExplorePage() {
   const randomUsers = await getInitialRandomUsers();
 
   return (
-    <div className="relative flex w-full gap-1.5">
+    <div className="relative flex w-full gap-1.5 lg:gap-5">
       <h1 className="sr-only text-xl font-bold">Explore</h1>
       <PostListContainer currentUser={currentUser} />
       <RandomUserContainer randomUsers={randomUsers} />
