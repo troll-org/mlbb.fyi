@@ -7,6 +7,15 @@ import HeroCard from "./hero-card";
 import { GradiantCard } from "@/components/shared/gradiant-card";
 import HeroFilter from "@/app/wiki/heroes/_components/hero-filter";
 import HeroSearch from "@/app/wiki/heroes/_components/hero-search";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/shared/breadcrumb";
+import { BookIcon } from "lucide-react";
 
 interface IHeroesContainer {
   heroes: HeroesDocument[];
@@ -48,28 +57,44 @@ const HeroesContainer = ({ heroes }: IHeroesContainer) => {
   }, [q, type, lane, heroes]);
 
   return (
-    <>
-      <GradiantCard
-        className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col"
-        variant="clean"
-      >
-        <HeroSearch />
-        <HeroFilter orientation="vertical" />
-      </GradiantCard>
-      <div className="w-full">
-        {filteredHeroes.length > 0 ? (
-          <div className="hero-grid-container grid justify-center gap-4 md:justify-start">
-            {filteredHeroes.map((hero) => (
-              <HeroCard hero={hero} key={hero.heroName} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-lg ml-2 mt-4 font-heading md:ml-0 md:text-xl">
-            No such hero found
-          </p>
-        )}
+    <div className="flex flex-col gap-1.5">
+      <Breadcrumb className="py-2 pl-2">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/wiki">
+              <BookIcon size={16} aria-hidden="true" />
+              <span className="sr-only">Wiki's</span>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Heroes</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <div className="flex w-full flex-col gap-4 md:flex-row">
+        <GradiantCard
+          className="flex h-fit w-full flex-col-reverse gap-4 px-6 md:sticky md:top-20 md:w-[220px] md:flex-col"
+          variant="clean"
+        >
+          <HeroSearch />
+          <HeroFilter orientation="vertical" />
+        </GradiantCard>
+        <div className="w-full">
+          {filteredHeroes.length > 0 ? (
+            <div className="hero-grid-container grid justify-center gap-4 md:justify-start">
+              {filteredHeroes.map((hero) => (
+                <HeroCard hero={hero} key={hero.heroName} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-lg ml-2 mt-4 font-heading md:ml-0 md:text-xl">
+              No such hero found
+            </p>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

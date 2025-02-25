@@ -10,11 +10,19 @@ import { Progress } from "@/components/shared/progress";
 import Image from "next/image";
 import { HeroStatsDocuments } from "@/lib/mongoose/schema/heroes-statistics";
 import { Button } from "@/components/shared/button";
-import { RefreshCcw } from "lucide-react";
+import { ArrowLeftIcon, BookIcon, HomeIcon, RefreshCcw } from "lucide-react";
 import { tiers } from "@/app/wiki/tier-list/_components/tier-list-container";
 import HeroEquipment, {
   RecommendedDocument,
 } from "@/lib/mongoose/schema/heroes-equipment";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/shared/breadcrumb";
 
 interface HeroFyiContainer {
   hero: HeroesDocument;
@@ -110,6 +118,24 @@ function HeroDetails({
 
   return (
     <div className="flex flex-col gap-1.5">
+      <Breadcrumb className="py-2 pl-2">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/wiki">
+              <BookIcon size={16} aria-hidden="true" />
+              <span className="sr-only">Wiki's</span>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/wiki/heroes">Heroes</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{hero.heroName}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
         <div className="relative flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:gap-x-4">
           <Image
