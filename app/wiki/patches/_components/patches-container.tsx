@@ -48,7 +48,7 @@ export default function PatchContainer({ patches }: IPatch) {
               <div
                 key={i}
                 onClick={() => router.push(`patches/${patch.version}`)}
-                className="mb-4 cursor-pointer"
+                className="mb-4 lg:mb-5 cursor-pointer"
               >
                 <GradiantCard
                   className="flex flex-row justify-between p-4 shadow-lg transition-all duration-300 hover:rounded-2xl hover:bg-gray-500/25 "
