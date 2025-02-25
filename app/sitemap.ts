@@ -56,12 +56,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
-    ...stats.map((stat) => ({
-      url: `${url}/wiki/statistics/${encodeURIComponent(stat.tournamentPath)}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as "weekly",
-      priority: 0.9,
-    })),
+    // ...stats.map((stat) => ({
+    //   url: `${url}/wiki/statistics/${encodeURIComponent(stat.tournamentPath)}`,
+    //   lastModified: new Date(),
+    //   changeFrequency: "weekly" as "weekly",
+    //   priority: 0.9,
+    // })),
     {
       url: `${url}/wiki/patches`,
       lastModified: new Date(),
