@@ -21,11 +21,6 @@ export async function middleware(request: NextRequest) {
         method: "GET",
       }
     );
-
-    if (get.status === 404) {
-      return NextResponse.redirect(new URL("/not-found", request.url));
-    }
-
     const data: {
       email: string;
       id: string;
@@ -43,5 +38,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/settings", "/profile", "/wiki"],
+  matcher: "/:path*",
 };
