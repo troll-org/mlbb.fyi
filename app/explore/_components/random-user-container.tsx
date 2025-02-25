@@ -47,7 +47,7 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
             </>
           ) : (
             <RotateCcw
-              className="transition-all ease-in-out hover:text-ocean hover:duration-300 "
+              className="transition-all ease-in-out hover:text-sea hover:duration-300 "
               onClick={async (e) => {
                 handleGenerateRandom(e);
               }}

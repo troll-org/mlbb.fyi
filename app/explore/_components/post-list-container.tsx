@@ -126,7 +126,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                 setSearchTerm("");
               }}
             >
-              <ChevronLeft className="mr-2 transition-all hover:text-ocean hover:duration-300" />
+              <ChevronLeft className="mr-2 transition-all hover:text-sea hover:duration-300" />
             </button>
           )}
           <div className="flex grow flex-row items-center gap-2 rounded-xl border border-ocean bg-cloud/5">

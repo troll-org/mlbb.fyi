@@ -25,10 +25,7 @@ const NewCommentForm: React.FC<CommentProps> = ({ postId, img }) => {
   useAutosizeTextArea(textAreaRef.current, value);
 
   return (
-    <GradiantCard
-      className="flex grow flex-row items-start"
-      variant="clean"
-    >
+    <GradiantCard className="flex grow flex-row items-start" variant="clean">
       <Image
         src={
           img !== ""
@@ -102,7 +99,7 @@ const NewCommentForm: React.FC<CommentProps> = ({ postId, img }) => {
               ) : (
                 <SendIcon
                   size={20}
-                  className="mb-[6px] rotate-45 hover:text-ocean hover:duration-300"
+                  className="mb-[6px] rotate-45 hover:text-sea hover:duration-300"
                 />
               )}
             </button>

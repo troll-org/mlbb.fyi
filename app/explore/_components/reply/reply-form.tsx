@@ -79,7 +79,7 @@ const ReplyForm: React.FC<ReplyProps> = ({ postId, commentId, onReplied }) => {
             ) : (
               <SendIcon
                 size={20}
-                className="mb-[6px] rotate-45 hover:text-ocean hover:duration-300"
+                className="mb-[6px] rotate-45 hover:text-sea hover:duration-300"
               />
             )}
           </button>

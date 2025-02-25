@@ -94,7 +94,7 @@ const PostBox: React.FC<PostBoxProps> = ({ post, posts, index, currUser }) => {
             by
           </p>
           <Link href={`/profile/${post.createdBy}/statistics`}>
-            <p className="text-xs mt-2 truncate leading-5 text-gray-500 ease-in-out hover:text-ocean hover:underline">
+            <p className="text-xs mt-2 truncate leading-5 text-gray-500 ease-in-out hover:text-sea hover:underline">
               {post.createdBy}
             </p>
           </Link>

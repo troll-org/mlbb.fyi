@@ -107,7 +107,7 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ reply, postId, userId }) => {
               <div className="relative inline-block text-left" ref={optionRef}>
                 <button
                   type="button"
-                  className="flex h-5 w-5 items-center justify-center rounded-full transition-all ease-in-out hover:text-ocean hover:duration-300 focus:outline-none"
+                  className="flex h-5 w-5 items-center justify-center rounded-full transition-all ease-in-out hover:text-sea hover:duration-300 focus:outline-none"
                   onClick={handleClick}
                 >
                   <MoreVertical />
@@ -116,7 +116,7 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ reply, postId, userId }) => {
                   <div className="absolute right-0 z-50 mt-2 w-40 origin-top-right">
                     <div className="rounded-lg bg-black/80 py-1" role="none">
                       <button
-                        className="block px-4 py-2 hover:text-ocean hover:duration-300"
+                        className="block px-4 py-2 hover:text-sea hover:duration-300"
                         onClick={() => {
                           setEditActive(!editActive);
                           setIsOpen(!isOpen);
