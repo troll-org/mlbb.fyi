@@ -98,7 +98,7 @@ export default async function LayoutProfile(props: LayoutProfileProps) {
   }
 
   return (
-    <main className="mt-0 max-w-[1280px] md:mt-24 xl:mx-auto">
+    <main className="max-w-[1280px] pt-0 md:pt-24 xl:mx-auto">
       <div className="flex flex-col gap-1.5 md:flex-row">
         <ProfileBio
           currentUser={currentUser}
