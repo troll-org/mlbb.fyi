@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
   return (
     <nav
       className={cn(
-        "fixed inset-x-0 top-0 z-30 mx-auto w-full bg-transparent py-3 backdrop-blur-lg"
+        "fixed inset-x-0 top-0 z-30 mx-auto w-full bg-transparent py-3 backdrop-blur-lg max-w-[1280px]"
       )}
     >
       <div className="layout-container mx-auto flex items-center justify-between">
