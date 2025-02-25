@@ -49,13 +49,9 @@ const Statistics: React.FC<StatisticsProps> = ({
     <div className="mx-auto flex w-full flex-col items-center justify-center gap-1.5 md:flex-row md:items-start">
       <div className="flex w-full flex-col gap-y-1.5 md:w-fit">
         <div className="flex w-full flex-row gap-x-1.5 ">
+          <InfoCard className="w-full" title="Heroes" value={heroes} />
           <InfoCard
-            className="w-full md:max-w-[200px]"
-            title="Heroes"
-            value={heroes}
-          />
-          <InfoCard
-            className="w-full md:max-w-[200px]"
+            className="w-full"
             title="Played"
             value={totalMatchPlayed}
           />

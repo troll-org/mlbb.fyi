@@ -10,7 +10,12 @@ import footerConfig from "@/lib/configs/footer";
 
 function Footer() {
   const pathname = usePathname();
-  const hideFooterRoutes = ["/auth/signin", "/settings", "/not-found"];
+  const hideFooterRoutes = [
+    "/auth/signin",
+    "/settings",
+    "/not-found",
+    "/profile",
+  ];
   const [shouldHideFooter, setShouldHideFooter] = useState(false);
 
   useEffect(() => {
