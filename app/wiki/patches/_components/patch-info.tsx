@@ -31,7 +31,7 @@ export default function PatchFyi({ patch, patches }: IPatch) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setPageName(patch?.version);
+    setPageName(patch?.version ?? null);
   }, [patch, setPageName]);
   
   return (
