@@ -103,7 +103,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
   };
 
   return (
-    <div className="flex max-h-fit w-full flex-col space-y-3">
+    <div className="flex max-h-fit w-full flex-col space-y-3 lg:space-y-5">
       <div className="flex flex-row items-center gap-1.5">
         <form
           className="flex grow"
