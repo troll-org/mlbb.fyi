@@ -185,7 +185,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
       </div>
 
       {(selectedOption === -3 || selectedOption === -2) && (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3 lg:gap-4">
           <Tabs value={selectedTab} className="flex w-full">
             <TabsList className="flex w-full space-x-3">
               {ExploreTabList.map((item, i) => {
