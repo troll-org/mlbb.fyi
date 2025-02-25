@@ -16,7 +16,7 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ currentUser, post, user }) => {
   return (
-    <>
+    <div className="flex flex-col gap-4 lg:gap-5">
       <PostContent
         post={post}
         user={user}
