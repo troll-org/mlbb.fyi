@@ -41,8 +41,13 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
   );
   const [buttonDisabled, setButtonDisabled] = useState(false);
 
+  useEffect(() => {
+    if (!currentUser) {
+      router.push("/auth/signin");
+    }
+  }, [currentUser]);
+
   if (!currentUser) {
-    router.push("/auth/signin");
     return null;
   }
 
