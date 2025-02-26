@@ -1,21 +1,34 @@
 "use client";
 
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { SafeUser } from "@/types";
 import NavLogo from "./navbar-logo";
 import NavMenu from "./navbar-menu";
 
-interface NavbarProps {
-  currentUser?: SafeUser | null;
-}
+const Navbar: React.FC = () => {
+  const [currentUser, setCurrentUser] = useState<SafeUser | null>(null);
 
-const Navbar: React.FC<NavbarProps> = ({ currentUser }) => {
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await fetch("/api/auth/current-user");
+        if (!response.ok) throw new Error("Failed to fetch user");
+
+        const data = await response.json();
+        setCurrentUser(data);
+      } catch (error) {
+        console.error("Error fetching current user:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <nav
       className={cn(
-        "fixed inset-x-0 top-0 z-30 mx-auto w-full bg-transparent py-3 backdrop-blur-lg max-w-[1280px]"
+        "fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-[1280px] bg-transparent py-3 backdrop-blur-lg"
       )}
     >
       <div className="layout-container mx-auto flex items-center justify-between">

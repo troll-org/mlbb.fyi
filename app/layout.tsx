@@ -4,7 +4,6 @@ import localFont from "next/font/local";
 import { Metadata } from "next";
 import Script from "next/script";
 
-import { getCurrentUser } from "@/lib/actions/user";
 import ToasterProvider from "@/components/toaster-provider";
 import Navbar from "@/components/shared/navbar/navbar";
 import { cn } from "@/lib/utils";
@@ -57,8 +56,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const currentUser = await getCurrentUser();
-
   return (
     <html
       lang="en"
@@ -85,7 +82,7 @@ export default async function RootLayout({
         <body
           className={cn("relative mx-auto mb-8 mt-24 bg-deepocean text-cloud")}
         >
-          <Navbar currentUser={currentUser} />
+          <Navbar />
           <main className="layout-container">{children}</main>
           <Footer />
           <ToasterProvider />
