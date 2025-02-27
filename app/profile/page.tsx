@@ -1,5 +1,3 @@
-"use server";
-
 import { getCurrentUser } from "@/lib/actions/user";
 import { redirect } from "next/navigation";
 
@@ -9,7 +7,7 @@ const Page = async () => {
   redirect(
     currentUser
       ? currentUser.name
-        ? `/profile/${currentUser.name}`
+        ? `/profile/${currentUser.name}/statistics`
         : "/settings"
       : "/auth/signin"
   );
