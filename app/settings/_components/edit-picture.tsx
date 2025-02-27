@@ -81,8 +81,8 @@ const EditPicture: React.FC<EditPictureProps> = ({ currentUser }) => {
         if (upload.ok) {
           toast.success("Successfully updated profile picture");
           if (currentUser?.username) {
-            revalPath(`/profile/${currentUser.username}`);
-            router.push(`/profile/${currentUser.username}`);
+            revalPath(`/profile/${currentUser.username}/statistics`);
+            router.push(`/profile/${currentUser.username}/statistics`);
           } else {
             revalPath("/settings");
             router.push("/settings");

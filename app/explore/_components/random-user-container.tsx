@@ -69,7 +69,7 @@ const RandomUser: React.FC<RandomUserProps> = ({ randomUsers }) => {
               <div className="-space-y-1">
                 <Link
                   className="cursor-pointer duration-300 hover:underline hover:decoration-white hover:underline-offset-2"
-                  href={`/profile/${user.username}`}
+                  href={`/profile/${user.username}/statistics`}
                   target="_blank"
                 >
                   {user.username}
