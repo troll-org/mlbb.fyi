@@ -112,7 +112,7 @@ function HeroDetails({
   }
 
   return (
-    <div className="mt-4 flex flex-col gap-1.5">
+    <div className="mt-4 flex flex-col gap-4 lg:gap-5">
       <GradiantCard className="mt-1.5 h-fit w-full" variant="clean">
         <div className="relative flex flex-col items-center justify-center gap-y-4 sm:flex-row sm:gap-x-4">
           <Image
