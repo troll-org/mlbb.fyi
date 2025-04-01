@@ -20,6 +20,15 @@ export const metadata: Metadata = {
       "Discover the latest Mobile Legends: Bang Bang (MLBB) Hero Tier List. See top meta heroes, stats, and builds for every role. Updated daily to help you climb ranks!",
     ...defaultTwitterMD,
   },
+  keywords: [
+    "mlbb tier list",
+    "mobile legends tier list",
+    "tier list mobile legends",
+    "hero tier list mobile legends",
+    "best heroes in mobile legends",
+    "tier list mobile legends",
+    "mlbb hero tier list",
+  ],
 };
 
 async function TierPage({ children }: { children: React.ReactNode }) {
