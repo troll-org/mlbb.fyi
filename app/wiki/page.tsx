@@ -151,7 +151,7 @@ export default async function WikiPage() {
               alt="Lukas-mask"
               width={384}
               height={255}
-              className="z-1 absolute opacity-0 md:h-[17.70833333vw] md:w-[26.666667vw] md:opacity-100"
+              className="z-1 absolute bottom-0 right-0 opacity-0 md:h-[17.70833333vw] md:w-[26.666667vw] md:opacity-100"
             />
             <Image
               src="/lukas.webp"
