@@ -41,7 +41,7 @@ const HomeBanner: React.FC = () => {
             <div className="mt-8 flex flex-row items-center justify-center space-x-4">
               <Link
                 href="/wiki/tier-list"
-                className="text-md mx-auto h-10 w-fit rounded-3xl bg-cloud px-4 py-2 font-semibold text-black transition-all duration-300 ease-in-out hover:opacity-80"
+                className="md:text-md mx-auto flex h-10 w-fit items-center justify-center rounded-3xl bg-cloud px-4 py-2 text-sm font-semibold text-black transition-all duration-300 ease-in-out hover:opacity-80"
               >
                 MLBB Tier List
               </Link>
@@ -52,7 +52,7 @@ const HomeBanner: React.FC = () => {
                     variant: "gradiantNavySec",
                     size: "default",
                   }),
-                  "text-md mx-auto h-10 w-fit rounded-3xl px-4 py-2 font-semibold transition-all duration-300 ease-in-out hover:opacity-80"
+                  "md:text-md mx-auto h-10 w-fit rounded-3xl px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out hover:opacity-80"
                 )}
               >
                 Get Started
