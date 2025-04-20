@@ -28,10 +28,10 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={cn(
-        "fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-[1280px] bg-transparent py-3 backdrop-blur-lg"
+        "fixed inset-x-0 top-0 z-30 mx-auto w-full bg-transparent py-3 backdrop-blur-lg"
       )}
     >
-      <div className="layout-container mx-auto flex items-center justify-between">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between">
         <NavLogo />
         <NavMenu currentUser={currentUser} />
       </div>
