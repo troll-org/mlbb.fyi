@@ -64,7 +64,7 @@ function Footer() {
           <hr className="my-8 border-cloud/10" />
 
           <div className="flex justify-between text-[10px] md:text-sm">
-            <p>© 2024 copyright mlbb.fyi all rights reserved</p>
+            <p>© 2025 copyright mlbb.fyi all rights reserved</p>
             <p className="max-w-[200px] text-end  md:max-w-[400px]">
               Data sourced from the official Mobile Legends Bang Bang website.
               This site is not affiliated with or endorsed by Moonton

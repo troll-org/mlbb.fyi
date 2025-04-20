@@ -121,6 +121,12 @@
   max-width: 1280px;
 }
 
+@media (max-width: 768px) {
+  .layout-container {
+    padding: 0 1rem;
+  }
+}
+
 .disable-height {
   height: 85vh !important;
 }
