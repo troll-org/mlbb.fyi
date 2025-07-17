@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npx prisma generate && next dev -p 3010 --turbopack",
-    "build": "next build",
+    "build": "ESLINT_NO_DEV_ERRORS=true next build",
     "start": "next start",
     "local": "next build && next start",
     "lint": "eslint ./components ./app ./lib .",

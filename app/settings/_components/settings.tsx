@@ -45,17 +45,17 @@ const Settings: React.FC<ISettings> = ({ currentUser, mlbbAcc }) => {
     if (!currentUser) {
       router.push("/auth/signin");
     }
-  }, [currentUser]);
-
-  if (!currentUser) {
-    return null;
-  }
+  }, [currentUser, router]);
 
   useEffect(() => {
     if (currentUser?.username && params?.get("r") === "signin") {
       router.push("/explore");
     }
-  }, []);
+  }, [currentUser?.username, params, router]);
+
+  if (!currentUser) {
+    return null;
+  }
 
   return (
     <div>

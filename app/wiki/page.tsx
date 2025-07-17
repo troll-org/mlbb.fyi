@@ -97,7 +97,7 @@ export default async function WikiPage() {
               </div>
 
               <button className="z-20 flex flex-row items-center font-heading">
-                Your hero's tier here{" "}
+                Your hero&apos;s tier here{" "}
                 <ChevronRight className="ml-0.5 h-4 w-4 xl:h-6 xl:w-6" />
               </button>
             </div>

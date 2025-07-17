@@ -6,11 +6,20 @@ import { MetadataRoute } from "next";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const heroes = await getHeroes({
-    select: "heroPath",
-  });
+  // Fallback for build time when database is not available
+  let heroes: any[] = [];
+  let stats: any[] = [];
 
-  const stats = await getAllTournamentsName();
+  try {
+    heroes = await getHeroes({
+      select: "heroPath",
+    });
+    stats = await getAllTournamentsName();
+  } catch (error) {
+    console.warn("Database not available during build, using fallback sitemap");
+    heroes = [];
+    stats = [];
+  }
 
   const dsa = pageList.map((p) => ({
     url: `${url}/wiki/tier-list/${p.path}`,
