@@ -1,8 +1,8 @@
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/actions/user";
 import getUser from "@/lib/actions/user";
 import { isUserBound } from "@/lib/actions/user";
-import { NextResponse } from "next/server";
 import ProfileBio from "@/app/profile/_components/profile-bio/bio";
 import ProfileTab from "@/app/profile/_components/profile-tab";
 
@@ -74,9 +74,7 @@ export default async function LayoutProfile(props: LayoutProfileProps) {
   const currentUser = await getCurrentUser();
 
   if (currentUser && !currentUser.username) {
-    return NextResponse.redirect(
-      new URL(`${process.env.NEXT_PUBLIC_BASE_URL}/settings`)
-    );
+    redirect("/settings");
   }
 
   const isExistingUser = await getUser(username);
